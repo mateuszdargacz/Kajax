@@ -66,10 +66,9 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <div class="row m0" id="top"></div>
-<ng-view></ng-view>
-<div ng-view=""></div>
-<div ui-view=""></div>
-<ui-view></ui-view>
+<div ng-controller="mainCtrl">
+    <h1>{[{ test }]}</h1>
+</div>
 <div class="all_content" >
 {% block header %}{% include 'includes/header.html' %}{% endblock %}
 {% block slider %}{% include 'includes/slider.html' %}{% endblock %}
@@ -83,8 +82,8 @@
 <script src="{% static 'js/angular.min.js' %}"></script>
 <script src="{% static 'angular_app/app.js' %}"></script>
 <script src="{% static 'angular_app/controllers/main.js' %}"></script>
-<script src="{% static 'angular_app/shared/services.js' %}"></script>
-<script src="{% static 'angular_app/shared/directives.js' %}"></script>
+{#<script src="{% static 'angular_app/shared/services.js' %}"></script>#}
+{#<script src="{% static 'angular_app/shared/directives.js' %}"></script>#}
 <!--  END Angular-->
 
 
@@ -133,7 +132,6 @@
 </script>
 {#{% endcompress %}#}
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-
 </body>
 </html>
 {% endspaceless %}

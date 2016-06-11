@@ -1,5 +1,5 @@
 
-var Kajax = angular.module("Kajax", ["ngCookies", 'ui.state'], function ($interpolateProvider) {
+var Kajax = angular.module("Kajax", [], function ($interpolateProvider) {
         $interpolateProvider.startSymbol("{[{");
         $interpolateProvider.endSymbol("}]}");
     alert()
@@ -7,20 +7,8 @@ var Kajax = angular.module("Kajax", ["ngCookies", 'ui.state'], function ($interp
     }
 );
 
-Kajax.run(function ($http, $cookies) {
-    $http.defaults.headers.common['X-CSRFToken'] = $cookies['csrftoken'];
+Kajax.run(function () {
+
     alert()
 
-});
-
-Kajax.config(function ($routeProvider) {
-        alert()
-    $routeProvider
-        .when("/", {
-            templateUrl: "angular_app/views/main.js",
-            controller: "mainController"
-        })
-        .otherwise({
-            redirectTo: '/'
-        })
 });
