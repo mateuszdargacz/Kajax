@@ -5962,3 +5962,13 @@ a .products-details-cat i {
   td:nth-of-type(5):before { content: "Total"; }
   td:nth-of-type(6):before { content: "Delete Item"; }
 }
+
+
+/* wait_please */
+body > .inner {
+  display: none;
+}
+
+body.pg-loaded > .inner {
+  display: block;
+}

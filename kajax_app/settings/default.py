@@ -40,7 +40,6 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-
 ROOT_URLCONF = 'kajax_app.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -53,7 +52,7 @@ WSGI_APPLICATION = 'kajax_app.wsgi.application'
 DATABASES = {
     'default': {
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'ENGINE': 'django.db.backends.{{ db_engine }}',
+        # 'ENGINE': 'django.db.backends.{{ db_engine }}',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': '{{ db_name }}',
         # The rest is not used with sqlite3:
@@ -87,18 +86,14 @@ LOCAL_APPS = (
 EXTERNAL_APPS = (
     'django_extensions',
     'compressor',
+    'rest_framework',
+    'corsheaders',
 )
 
 # the order is important!
 INSTALLED_APPS = ADMIN_TOOLS + DJANGO_APPS + LOCAL_APPS + EXTERNAL_APPS
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in the directory "static-assets/" then do `./manage.py migrate` on
-# production.
 STATIC_ROOT = '%s/static' % ABS_PROJECT_ROOT
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = '%s/media' % ABS_PROJECT_ROOT
@@ -114,7 +109,6 @@ STATICFILES_DIRS = (
     '%s/static-assets' % ABS_PROJECT_ROOT,
 )
 
-
 # List of finder classes that know how to find static files in various
 # locations.
 STATICFILES_FINDERS = (
@@ -122,7 +116,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
-
 
 SITE_ID = 1
 
@@ -138,7 +131,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 TEMPLATES = [
     {
@@ -161,6 +153,7 @@ TEMPLATES = [
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -171,11 +164,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -208,4 +196,4 @@ LOGGING = {
     }
 }
 
-
+CORS_ORIGIN_ALLOW_ALL = True

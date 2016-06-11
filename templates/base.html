@@ -52,6 +52,7 @@
     <link href="{% static 'vendors/rs-plugin/css/settings.css' %}" rel="stylesheet">
     <link href="{% static 'vendors/magnific/magnific-popup.css' %}" rel="stylesheet">
     <!--    css-->
+    <link rel="stylesheet" href="{% static 'vendors/please_wait/please_wait.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endcompress %}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -65,15 +66,23 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+    <script type="text/javascript" src="{% static 'vendors/please_wait/please_wait.min.js' %}"></script>
+    <script type="text/javascript">
+      window.loading_screen = window.pleaseWait({
+        logo: "{% static 'images/header/logo.png' %}",
+        backgroundColor: '#BC945E',
+        loadingHtml: "<p class='loading-message'>A good day to you fine user!</p>"
+      });
+    </script>
 <div class="row m0" id="top"></div>
-<div ng-controller="mainCtrl">
-    <h1>{[{ test }]}</h1>
-</div>
+
 <div class="all_content" >
 {% block header %}{% include 'includes/header.html' %}{% endblock %}
 {% block slider %}{% include 'includes/slider.html' %}{% endblock %}
-
+<div ng-controller="mainCtrl" class="inner">
+    <h1>{[{ test }]}</h1>
 {% block content %}{% endblock %}
+</div>
 
 {% block footer %}{% include 'includes/footer.html' %}{%  endblock %}
 </div>
