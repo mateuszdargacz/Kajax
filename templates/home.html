@@ -1,48 +1,546 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Home Page{% endblock %}
 
 {% block description %}This page is an awesome home page.{% endblock %}
 
 
 {% block content %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
+    <!--experiance-area-->
+<section class="row our-company-area sectpad" id="about-us">
+   <div class="container">
+       <div class="row m0">
+           <div class="col-md-5">
+                <div class="row m0 company-contact">
+                    <div class="row m0 question-box">
+                        <h2>Quick Free Quote </h2>
+                        <form class="from-contact">
+                            <input type="text" class="form-control" placeholder="Name">
+                            <input type="email" class="form-control" placeholder="Email">
+                            <select class="selectpicker show-tick form-control">
+                                <option>Select Service</option>
+                                <option>pencil</option>
+                                <option >brush</option>
+                            </select>
+                            <textarea class="form-control textarea" placeholder="Description"></textarea>
+                            <button type="submit" class="btn btn-default button submit">
+                                submit now<i class="fa fa-angle-double-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+           </div>
+           <div class="col-md-7 company-info">
+              <div class="row m0 section_header">
+                  <h2>About OUr Company</h2>
+                  <p>Lorem ipsum dolor sit amet, cons ectetur elit. Vestibulum nec odios Suspe ndisse cursus mal suada faci lisis. Lorem ipsum dolor sit ametion consectetur elit. Vesti</p>
+              </div>
+              <ul class="content-list">
+                  <li><a href="#">Interior Furniture Manfacturing</a></li>
+                  <li><a href="#">Reparing of wooden almerah</a></li>
+                  <li><a href="#">Hardwood Flooring</a></li>
+                  <li><a href="#">Renovaion of office furnitures</a></li>
+                  <li><a href="#">Make Quality Products</a></li>
+              </ul>
+              <div class="info-text">
+                   <h4>Expert Workers</h4>
+                   <p>Lorem ipsum dolor sit amet, cons ectetur elit. Vestibulum nec odios Suspe ndisse cursus mal suada faci. Rectetur elit. Vestibulum.</p>
+              </div>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+<!--we-do-->
+<section class="row sectpad we-do-section projects-1" id="services">
     <div class="container">
-        <h1>{{ some_dynamic_value }}</h1>
-
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <div class="row m0 section_header color">
+           <h2>Our Services</h2>
+        </div>
+        <div class="we-do-slider">
+            <div class="we-sliders">
+                <div class="item">
+                    <div class="post-image">
+                        <img src="{% static 'images/we-do/1.jpg' %}"  alt="">
+                    </div>
+                    <a href="#"><h4>HARDWOOD FLOORING</h4></a>
+                    <p>Lorem ipsum dolor sit amet, cons ecte tur elit. Vestibulum nec odios suspe ndisse ipsum dolor sit.</p>
+                </div>
+                <div class="item">
+                    <div class="post-image">
+                        <img src="{% static 'images/we-do/2.jpg' %}"  alt="">
+                    </div>
+                    <a href="#"><h4>Home Wood Work</h4></a>
+                    <p>Lorem ipsum dolor sit amet, cons ecte tur elit. Vestibulum nec odios suspe ndisse ipsum dolor sit.</p>
+                </div>
+                <div class="item">
+                    <div class="post-image">
+                        <img src="{% static 'images/we-do/3.jpg' %}"  alt="">
+                    </div>
+                    <a href="#"><h4>Indoor Furniture</h4></a>
+                    <p>Lorem ipsum dolor sit amet, cons ecte tur elit. Vestibulum nec odios suspe ndisse ipsum dolor sit.</p>
+                </div>
+                <div class="item">
+                    <div class="post-image">
+                        <img src="{% static 'images/we-do/4.jpg' %}"  alt="">
+                    </div>
+                    <a href="#"><h4>Outdoor Furniture</h4></a>
+                    <p>Lorem ipsum dolor sit amet, cons ecte tur elit. Vestibulum nec odios suspe ndisse ipsum dolor sit.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+<!-- Projects -->
+<section class="row latest_projects sectpad projects-1">
+    <div class="container">
+        <div class="row m0 section_header">
+            <h2>Our Latest Projects</h2>
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="row m0 filter_row">
+            <ul class="nav project_filter" id="project_filter2">
+                <li class="active" data-filter="*">all</li>
+                <li data-filter=".indoor">indoor furniture</li>
+                <li data-filter=".renovation">renovation of house</li>
+                <li data-filter=".hardwood">hardwood flooring</li>
+                <li data-filter=".wood_supply">wood supply</li>
+                <li data-filter=".manufacturing">furniture manufacturing</li>
+                <li data-filter=".repairing">repairing</li>
+            </ul>
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="projects2 popup-gallery" id="projects">
+            <div class="grid-sizer"></div>
+            <div class="col-sm-6 col-xs-6 project indoor wood_supply">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/1.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/1.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6 project indoor hardwood renovation renovation">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/2.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/2.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6 project indoor manufacturing">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/3.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/3.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6 project manufacturing repairing">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/4.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/4.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6 project repairing renovation">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/5.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/5.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-6 project indoor wood_supply">
+                <div class="project-img">
+                    <img src="{% static 'images/latest-project/6.jpg' %}" alt="">
+                    <div class="project-text">
+                        <ul class="list-unstyled">
+                            <li><a href="projects-details.html"><i class="icon icon-Linked"></i></a></li>
+                            <li><a href="{% static 'images/latest-project/6.jpg' %}" data-source="projects-details.html" title="KITCHKEN RENOVATION" data-desc="Wood Work of Rack" class="popup"><i class="icon icon-Search"></i></a></li>
+                        </ul>
+                        <div class="row m0">
+                            <a href="projects-details.html"><h3>Kitchken renovation</h3></a>
+                            <p>Wood Work of Racks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <hr>
-</div> <!-- /container -->
+<!--work-shop-->
+<section class="row fluid-work-area">
+    <div class="work-image">
+        <img src="{% static 'images/workshop/work.jpg' %}" alt="">
+    </div>
+    <div class="work-promo">
+        <div class="promo-content">
+            <h2>Welcome to Wood Workshop</h2>
+            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quae rat voluptatem. Ut enim ad minima.</p>
+            <h3>We are available for 24/7 for you requirements</h3>
+            <ul class="nav">
+                <li>Complete Savety Analysis</li>
+                <li>Complete Savety Analysis</li>
+                <li>Certified Company Since 2005</li>
+                <li>Certified Company Since 2005</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--testimonial-->
+<section class="row sectpad testimonial-area" id="testimonials">
+   <div class="container">
+       <div class="row m0 section_header common">
+           <h2>What our client says</h2>
+        </div>
+        <div class="testimonial-sliders">
+            <div class="item">
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/1.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/2.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/3.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/4.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/5.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/6.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/7.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+                <div class="media testimonial">
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="{% static 'images/testimonial/8.jpg' %}"  alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p><span class="quote"></span>Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="#">-  John Michale</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</section>
+
+<!-- latest-news-area -->
+<section class="row sectpad latest-news-area" id="blogs">
+    <div class="container">
+        <div class="row m0 section_header">
+           <h2>latest news</h2>
+        </div>
+        <div class="row latest-content">
+            <div class="col-sm-4 latest">
+                <div class="row m0 latest-image">
+                    <a href="blog.html"><img src="{% static 'images/latest-news/1.jpg' %}" alt=""></a>
+                    <div class="latest-info-date"><a href="#"><h3>14 <small>MAR</small></h3></a></div>
+                </div>
+                <div class="latest-news-text">
+                    <a href="blog.html">
+                        <h4>Wood Work Adds Value to Your Property</h4>
+                    </a>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa nt ium dolor emque laudantium totam.</p>
+                    <div class="row m0 latest-meta">
+                        <a href="#"><i class="fa fa-user"></i>Anjori Meyami</a> <a class="read_more" href="single.html"><i class="fa fa-comments"></i> Comments: 6</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 latest">
+                <div class="row m0 latest-image">
+                    <a href="blog.html"><img src="{% static 'images/latest-news/2.jpg' %}" alt=""></a>
+                    <div class="latest-info-date"><a href="#"><h3>14 <small>MAR</small></h3></a></div>
+                </div>
+                <div class="latest-news-text">
+                    <a href="blog.html">
+                        <h4>Wood Work Adds Value to Your Property</h4>
+                    </a>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa nt ium dolor emque laudantium totam.</p>
+                    <div class="row m0 latest-meta">
+                       <a href="#"><i class="fa fa-user"></i>Anjori Meyami</a> <a class="read_more" href="single.html"><i class="fa fa-comments"></i> Comments: 6</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 latest">
+                <div class="row m0 latest-image">
+                    <a href="blog.html"><img src="{% static 'images/latest-news/3.jpg' %}" alt=""></a>
+                    <div class="latest-info-date"><a href="#"><h3>14 <small>MAR</small></h3></a></div>
+                </div>
+                <div class="latest-news-text">
+                    <a href="blog.html">
+                        <h4>Wood Work Adds Value to Your Property</h4>
+                    </a>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa nt ium dolor emque laudantium totam.</p>
+                    <div class="row m0 latest-meta">
+                        <a href="#"><i class="fa fa-user"></i>Anjori Meyami</a> <a class="read_more" href="single.html"><i class="fa fa-comments"></i> Comments: 6</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row frequently-area" id="faqs">
+    <div class="container">
+        <div class="row m0 section_header">
+           <h2>Frenquently ask questions</h2>
+        </div>
+        <div class="row m0 frequent-content">
+            <h4>Can I change plans at anytime?</h4>
+            <p>Curabitur ac odio aliquam, pellentesque sem feugiat, mattis lectus. Pellentesque a dui ullamcorper, interdum odio vel, placerat nisi.</p>
+            <h4>Can I get a refund?</h4>
+            <p>Morbi commodo hendrerit elementum. Aliquam non sapien dignissim, pharetra sapien eu, semper urna. Integer semper laoreet massa, id elementum neque pharetra sit amet. Phasellus nec massa in mi ultrices tristique sed eu libero.</p>
+            <h4>How do I sign up?</h4>
+            <p>Nam libero orci, rhoncus id est vitae, vehicula venenatis nunc.</p>
+            <h4>What is meant by unlimited?</h4>
+            <p>Donec posuere dolor nunc, a tristique velit hendrerit at. Fusce feugiat rutrum turpis in dictum. Sed a pulvinar augue.</p>
+            <h4>Can I change plans at anytime?</h4>
+            <p>Curabitur ac odio aliquam, pellentesque sem feugiat, mattis lectus. Pellentesque a dui ullamcorper, interdum odio vel, placerat nisi.</p>
+        </div>
+    </div>
+</section>
+
+<!--contact-->
+<section class="row touch landing-page-contact" id="contact">
+    <div class="sectpad touch_bg">
+        <div class="container">
+            <div class="row m0 color section_header">
+                <h2>get in touch</h2>
+                <p>If you are interested in finding out more about how we can help your organization, please fill out the form below. you can call us anytime between 4 A.M. to 2 P. M. GMT</p>
+            </div>
+
+            <div class="row touch_middle">
+                <div class="col-md-4 open_hours">
+                    <div class="row m0 touch_top">
+                        <ul class="nav">
+                            <li class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <i class="fa fa-map-marker"></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        Wood Workshop, 562, Mallin Street New Youk, NY 100 254
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        info@woodworkshopcom
+                                        support@woodworkshopcom
+                                    </div>
+                                </div>
+                            </li>
+                            <li  class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <i class="fa fa-phone"></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        + 1800 562 2487<br>
+                                        + 3215 546 8975
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8 input_form">
+                    <form action="contact_process.php" method="post" id="contactForm">
+                        <input type="text" class="form-control" id="yourname" name="yourname" placeholder="First">
+                        <input type="email" class="form-control" id="youremail" name="youremail" placeholder="Email">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                        <textarea class="form-control" rows="6" id="message" name="message" placeholder="Message"></textarea>
+                        <div class="row m0">
+                            <button type="submit" class="btn btn-default submit">Submit Now</button>
+                        </div>
+                    </form>
+                    <div id="success"><p>Your message sent successfully.</p></div>
+                    <div id="error"><p>Something is wrong. Message cant be sent!</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--MapBox-->
+<section class="map">
+    <div id="mapBox" class="row m0" data-lat="37.3818288" data-lon="-122.0636325" data-zoom="15"></div>
+</section>
+
+
+<!-- clients -->
+<section class="row clients">
+    <div class="container">
+        <div class="row m0 section_header">
+            <h2>Our Clients</h2>
+        </div>
+        <div class="row clients-logos">
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="#"><img src="{% static 'images/clients-logo/1.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="#"><img src="{% static 'images/clients-logo/2.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="#"><img src="{% static 'images/clients-logo/3.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="#"><img src="{% static 'images/clients-logo/4.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="blog-details.html"><img src="{% static 'images/clients-logo/5.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 client">
+                <div class="row m0 inner-logo">
+                   <a href="blog-details.html"><img src="{% static 'images/clients-logo/6.png' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--great-work-->
+<section class="emergency-contact">
+    <div class="left-side">
+        <div class="content">
+            <h3>If you have any wood work  need...</h3>
+            <h3>Simply call our 24 hour emergecny number.</h3>
+            <a href="tel:+018655248503" class="phone"><img src="{% static 'images/great-work/phone.png' %}" alt="">01865 524 8503</a>
+            <a href="tel:+018655248503" class="email"><img src="{% static 'images/great-work/email.png' %}" alt="">info@woodworshop.com</a>
+        </div>
+    </div>
+    <div class="right-side">
+        <img src="{% static 'images/great-work/right-img.jpg' %}" alt="">
+    </div>
+</section>
+
 {% endblock %}
