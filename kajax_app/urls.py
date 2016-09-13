@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from kajax_app.home.views import HomeView
+from home.views import HomeView
 
 admin.autodiscover()
 
 urlpatterns = [
     # Homepage
     url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^api/', include('home.urls', namespace='api')),
+
     url(r'^admin/', include(admin.site.urls)),
 ]

@@ -1,0 +1,15 @@
+<section class="row clients">
+    <div class="container">
+        <div class="row m0 section_header">
+            <h2>Nasi Klienci</h2>
+        </div>
+        <div class="row clients-logos">
+            <div class="col-md-2 col-sm-3 col-xs-6 client" ng-repeat="client in clients">
+                <div class="row m0 inner-logo">
+                   <a ng-href="{[{ client.url }]}"><img ng-src="{[{ client.image }]}" alt="{[{ client.name }]}"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

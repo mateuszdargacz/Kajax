@@ -13,7 +13,6 @@ class SingletonModel(models.Model):
         pass
 
 
-
 class CompanyData(SingletonModel):
     name = models.CharField(max_length=128)
     location = models.CharField(max_length=512)
@@ -22,6 +21,7 @@ class CompanyData(SingletonModel):
 
     def __str__(self):
         return self.name
+
 
 class Slider(SingletonModel):
     name = models.CharField(max_length=128)
@@ -37,6 +37,13 @@ class SliderImage(models.Model):
     short_desc = models.CharField(max_length=256, blank=True, null=True)
     desc = models.TextField(blank=True, null=True)
     slider = models.ForeignKey(Slider, related_name='images')
+    tags = models.CharField(max_length=128, blank=True, null=True)
+    button_text = models.CharField(max_length=64, blank=True, null=True)
+    button_url = models.URLField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slider = Slider.objects.first()
+        super(SliderImage, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.header
@@ -47,7 +54,6 @@ class Service(models.Model):
     name = models.CharField(max_length=128)
     desc = models.TextField()
     image = models.ImageField(upload_to='services/images')
-
 
     def __str__(self):
         return self.name

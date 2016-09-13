@@ -70,7 +70,7 @@
                 top: 11px;
                 bottom: -11px;
                 left: -11px;
-                background: #c56e21;
+                background: #6ba324;
                 Z-INDEX: -1;
             }
             img{
@@ -90,7 +90,7 @@
         list-style: none;
         a{
             font: 500 16px/40px $open;
-            color: #c16717;
+            color: #686b72;
             letter-spacing: 0.3px;
             white-space: nowrap;
             &:before{
@@ -101,7 +101,7 @@
                 height: auto;
             }
             &:hover,&:focus{
-                color: #ca8e3e;
+                color: #86898e;
             }
         }
     }

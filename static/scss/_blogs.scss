@@ -116,7 +116,7 @@
                 margin-left: 12px;
             }
             i{
-                color: #d7953e;
+                color: #6ba324;
                 margin-right: 10px;
                 font-size: 16px;
             }
@@ -152,7 +152,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font:600 13px/30px $open;
-        color: #ae7a51;
+        color: #525355;
         margin-top: 22px;
         padding: 7px 27px 4px 27px;
         display: inline-block;
@@ -287,7 +287,7 @@
             display: inline-block;
             width: 35px;
             height: 2px;
-            background: #e1ba60;
+            background: #6ba324;
             position: absolute;
             bottom: 0;
         }
@@ -711,7 +711,7 @@
         letter-spacing: 1px;
         font:600 13px/30px $open;
         padding: 5px 40px 2px 40px;
-        color: #ae7a51;
+        color: #525355;
         margin-top: 10px;
         border-radius: 0;
         &:hover,&:focus{
@@ -728,7 +728,7 @@
         float: left;
         width: 270px;
         font: 400 14px/30px $open;
-        color: #d7953e;
+        color: #6ba324;
         letter-spacing: 0.3px;
         &:before{
             content: "+";

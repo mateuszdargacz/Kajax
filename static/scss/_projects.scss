@@ -22,7 +22,7 @@
                 }
             }
             &.active{
-                color: #d7953e;
+                color: #6ba324;
             }
             &:before{
                 content: '';
@@ -89,7 +89,7 @@
                     height: 100%;
                     top: 0;
                     left: 0;
-                    background: #c56e21;
+                    background: #6ba324;
                     opacity: 0.90;
                     z-index: -1;
                     transform: scaleX(0);
@@ -212,7 +212,7 @@
                 bottom: 0;
                 right: 100%;                
                 display: block;
-                background: #c56e21;
+                background: #6ba324;
                 opacity: 0.9;
                 @include transition;
             }
@@ -386,7 +386,7 @@
                 content: '';
                 width: 50px;
                 height: 2px;
-                background: #d7953e;
+                background: #6ba324;
                 display: block;
                 margin-top: 12px;
             }

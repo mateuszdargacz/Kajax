@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 from functools import update_wrapper
 
-from django.conf.urls import patterns
-from django.template.defaulttags import url
 from django.utils.encoding import force_text
 
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
 
-from kajax_app.home.models import Slider, CompanyData, SliderImage, Project, ProjectImage, Message, Client
+from home.models import Slider, CompanyData, SliderImage, Project, ProjectImage, Message, Client, Service
 
 __author__ = 'mateuszdargacz@gmail.com'
 __date__ = '6/11/16 / 10:18 AM'
 __git__ = 'https://github.com/mateuszdargacz'
 
-
+admin.autodiscover()
 class SingletonModelAdmin(admin.ModelAdmin):
     change_form_template = "admin/singleton_models/change_form.html"
 
@@ -24,6 +22,7 @@ class SingletonModelAdmin(admin.ModelAdmin):
         return False
 
     def get_urls(self):
+        from django.conf.urls import url
 
         def wrap(view):
             def wrapper(*args, **kwargs):
@@ -31,28 +30,22 @@ class SingletonModelAdmin(admin.ModelAdmin):
 
             return update_wrapper(wrapper, view)
 
-        info = self.model._meta.app_label, self.model._meta.module_name
+        info = self.model._meta.app_label, self.model._meta.model_name
 
-        urlpatterns = patterns('',
-            url(r'^history/$',
-                wrap(self.history_view),
-                {'object_id': '1'},
-                name='%s_%s_history' % info),
-            url(r'^$',
-                wrap(self.change_view),
-                {'object_id': '1'},
-                name='%s_%s_change' % info),
-        )
+        urlpatterns = [
+            url(r'^history/$', wrap(self.history_view), {'object_id': '1'}, name='%s_%s_history' % info),
+            url(r'^$', wrap(self.change_view), {'object_id': '1'}, name='%s_%s_change' % info),
+            url(r'^change/$', wrap(self.change_view), {'object_id': '1'},name='%s_%s_changelist' % info),
+
+        ]
         return urlpatterns
 
     def response_change(self, request, obj):
         """
         Determines the HttpResponse for the change_view stage.
         """
-        opts = obj._meta
-
         msg = _('%(obj)s was changed successfully.') % {'obj': force_text(obj)}
-        if request.POST.has_key("_continue"):
+        if request.POST.get("_continue"):
             self.message_user(request, msg + ' ' + _("You may edit it again below."))
             return HttpResponseRedirect(request.path)
         else:
@@ -60,7 +53,7 @@ class SingletonModelAdmin(admin.ModelAdmin):
             return HttpResponseRedirect("../../")
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
-        if object_id == '1':
+        if object_id=='1':
             self.model.objects.get_or_create(pk=1)
         return super(SingletonModelAdmin, self).change_view(
             request,
@@ -69,12 +62,14 @@ class SingletonModelAdmin(admin.ModelAdmin):
         )
 
 
-admin.register(CompanyData, SingletonModelAdmin)
-admin.register(Slider, SingletonModelAdmin)
-admin.register(SliderImage)
+class SliderImageAdmin(admin.ModelAdmin):
+    exclude = ('slider', )
 
-
-admin.register(Client)
-admin.register(Project)
-admin.register(ProjectImage)
-admin.register(Message)
+admin.site.register(CompanyData, SingletonModelAdmin)
+admin.site.register(Slider, SingletonModelAdmin)
+admin.site.register(SliderImage, SliderImageAdmin)
+admin.site.register(Client)
+admin.site.register(Service)
+admin.site.register(Project)
+admin.site.register(ProjectImage)
+admin.site.register(Message)

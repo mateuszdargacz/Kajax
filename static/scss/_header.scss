@@ -61,7 +61,7 @@ header.row{
             }
             a{
                 font: 15px/30px $open;
-                color: #c89551;
+                color: #79b928;
                 i{
                 }
 
@@ -166,14 +166,14 @@ header.row{
         transform: skew(38deg);  
         &[aria-expanded="false"]{
             background: transparent;
-            border-color: #d3c2ae;
+            border-color: #b0b3b8;
             span{
-                background: #d3c2ae;
+                background: #b0b3b8;
             }
         }
         &[aria-expanded="true"]{
-            background: #c89551;
-            border-color: #c89551;
+            background: #79b928;
+            border-color: #79b928;
             span{
                 background: #fff;
             }
@@ -241,14 +241,14 @@ header.row{
                         letter-spacing: 0.3px;
                         text-transform: uppercase;
                         text-shadow: none;
-                        color: #d3c2ae;
+                        color: #b0b3b8;
                         padding: 0 17px;
                         @include transition;
                         @media (max-width: 1199px){
                             padding: 0 12px;
                         }
                         &:hover{
-                            color:#c89551;
+                            color:#79b928;
                         }
                         & + ul{
                             border: none;
@@ -278,7 +278,7 @@ header.row{
                                     white-space: nowrap;
                                     padding: 0;
                                     font-weight: 600;
-                                    color: #bc945e;
+                                    color: #86898e;
                                     &:before{
                                         content: "\f105";
                                         display: inline-block;
@@ -303,10 +303,10 @@ header.row{
                                     }
                                     &:hover,&:focus{
                                         text-shadow: none;
-                                        color:#d3c2ae;
+                                        color:#b0b3b8;
                                         background: none;
                                         &:before{
-                                            color: #d3c2ae;
+                                            color: #b0b3b8;
                                         }
                                     }
                                 }
@@ -350,7 +350,7 @@ header.row{
                         &>a{
                             background: none;
                             box-shadow: none;
-                            color:#c89551;
+                            color:#79b928;
                             &:before{
                                 display: block;
                             }
@@ -393,12 +393,12 @@ header.row{
                     letter-spacing: 0.3px;
                     text-transform: uppercase;
                     text-shadow: none;
-                    color: #d3c2ae;
+                    color: #b0b3b8;
                     @include transition;
                     padding: 0;
                     color: #d1d0cf;                       
                     &:hover,&:focus{
-                        color: #c89551;
+                        color: #79b928;
                     }
                     & + ul{
                         display: none;                        
@@ -422,14 +422,14 @@ header.row{
                                     line-height: 50px;
                                     font-weight: bold;
                                     text-transform: capitalize;
-                                    color: #c89551;
+                                    color: #79b928;
                                     font-family: $raleway;
                                     margin-top: 0;
                                 }
                             }
                             .cart-content{
                                 padding: 15px 0;
-                                border-top: 1px dashed #c89551;
+                                border-top: 1px dashed #79b928;
                                 z-index: 12;
                                 .img-box{
                                     width: 100px;
@@ -447,7 +447,7 @@ header.row{
                                     h5{
                                         font-size: 13px;
                                         font-family: $open;
-                                        color: #d3c2ae;
+                                        color: #b0b3b8;
                                     }
                                     .rating{
                                         padding-top: 15px;
@@ -468,7 +468,7 @@ header.row{
                                             span{
                                                 font-size: 16px;
                                                 font-weight: 600;
-                                                color: #d3c2ae;
+                                                color: #b0b3b8;
                                                 font-style: italic;
                                                 font-family: "PT Serif",serif;
                                             }
@@ -477,12 +477,12 @@ header.row{
                                 }
                             }
                             .cart-footer{
-                                border-top: 1px dashed #c89551;
+                                border-top: 1px dashed #79b928;
                                 padding-top: 15px;
                                 .total-price{
                                     float: left;
                                     h4{
-                                        color: #c89551;
+                                        color: #79b928;
                                         text-transform: capitalize;
                                         font-weight: 700;
                                         font-size: 14px;
@@ -497,7 +497,7 @@ header.row{
                                         font-size: 14px;
                                         padding: 0;
                                         line-height: 35px;
-                                        color: #d3c2ae;
+                                        color: #b0b3b8;
                                     }
                                     &:hover{
                                         a{

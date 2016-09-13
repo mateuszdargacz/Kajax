@@ -80,7 +80,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
-    'kajax_app.home',
+    'home',
 )
 
 EXTERNAL_APPS = (
@@ -146,6 +146,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
+                'home.context_processors.company_data',
             ],
         },
     },
@@ -153,7 +154,6 @@ TEMPLATES = [
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

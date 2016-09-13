@@ -82,6 +82,7 @@
   PleaseWait = (function() {
     PleaseWait._defaultOptions = {
       backgroundColor: null,
+      background: null,
       logo: null,
       loadingHtml: null,
       template: "<div class='pg-loading-inner'>\n  <div class='pg-loading-center-outer'>\n    <div class='pg-loading-center-middle'>\n      <h1 class='pg-loading-logo-header'>\n        <img class='pg-loading-logo'></img>\n      </h1>\n      <div class='pg-loading-html'>\n      </div>\n    </div>\n  </div>\n</div>",
@@ -101,8 +102,13 @@
       this._loadingElem = document.createElement("div");
       this._loadingHtmlToDisplay = [];
       this._loadingElem.className = "pg-loading-screen";
-      if (this.options.backgroundColor != null) {
+      if (this.options.backgroundColor != null && this.options.background != null) {
         this._loadingElem.style.backgroundColor = this.options.backgroundColor;
+      }
+      console.log('backogruajnf: ', this.options.background);
+      if (this.options.background != null) {
+        this._loadingElem.style.background = this.options.background;
+        alert(this._loadingElem.style.background)
       }
       this._loadingElem.innerHTML = this.options.template;
       this._loadingHtmlElem = this._loadingElem.getElementsByClassName("pg-loading-html")[0];
@@ -192,6 +198,8 @@
       switch (option) {
         case 'backgroundColor':
           return this._loadingElem.style.backgroundColor = value;
+        case 'background':
+          return this._loadingElem.style.background = value;
         case 'logo':
           return this._logoElem.src = value;
         case 'loadingHtml':

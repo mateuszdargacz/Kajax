@@ -5,7 +5,7 @@
         width: calc(50% + 45px);
         float: left;
         position: relative;
-        background: #57371f;
+        background: #525455;
         height: 213px;    
         @media (max-width:767px){
             width: 100%;
@@ -15,7 +15,7 @@
         &:after{
             content: "";
             border-top: 213px solid transparent;
-            border-left: 160px solid #57371f;
+            border-left: 160px solid #525455;
             position: absolute;
             left: 100%;
             top: 0;

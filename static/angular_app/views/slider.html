@@ -1,0 +1,49 @@
+<section class="bannercontainer row">
+    <div class="rev_slider banner row m0" id="rev_slider" data-version="5.0">
+        <ul>
+             <li ng-repeat="slide in slider.images" data-transition="slidehorizontal"  data-delay="10000">
+                <img ng-src="{[{ slide.image }]}"  alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" >
+                <div class="tp-caption sfr tp-resizeme carpenters-h1"
+                    data-x="0" data-hoffset="690"
+                    data-y="255" data-voffset="160"
+                    data-whitespace="nowrap"
+                    data-start="900">
+                    {[{ slide.header }]}
+
+                </div>
+                <div class="tp-caption sfb tp-resizeme carpenters-h2"
+                    data-x="0" data-hoffset="690"
+                    data-y="310" data-voffset="350"
+                    data-whitespace="nowrap"
+                    data-start="1200">
+                    {[{ slide.short_desc }]}
+                </div>
+                <div class="tp-caption sfb tp-resizeme carpenters-ul" ng-if="slide.tags"
+                    data-x="0" data-hoffset="690"
+                    data-y="375" data-voffset="470"
+                    data-whitespace="nowrap"
+                    data-start="1500">
+                    <ul class="nav" >
+                        <li ng-repeat="tag in slide.tags"><a href="#">{[{ tag }]}</a></li>
+                    </ul>
+                </div>
+                <div class="tp-caption sfb tp-resizeme carpenters-p"
+                    data-x="0" data-hoffset="500"
+                    data-y="430" data-voffset="470"
+                    data-whitespace="nowrap"
+                    data-start="1800">
+                    {[{ slide.desc }]}
+                </div>
+                 <div class="tp-caption sfb tp-resizeme carpenters-b" ng-if="slide.button_text"
+                    data-x="0" data-hoffset="690"
+                    data-y="550" data-voffset="555"
+                    data-whitespace="nowrap"
+                    data-start="2000">
+                    <a ng-href="{[{ slide.button_url }]}" class="btn btn-2 submit">{[{ slide.button_text }]}</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</section>
+
