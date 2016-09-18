@@ -100,7 +100,7 @@ MEDIA_ROOT = '%s/media' % ABS_PROJECT_ROOT
 
 # The URL that handles the media, static, etc.
 STATIC_URL = '/static/'
-MEDIA_URL = STATIC_URL + 'media/'
+MEDIA_URL = '/media/'
 
 # THE REST IS PRETTY MUCH DEFAULT
 
