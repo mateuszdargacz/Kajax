@@ -65,6 +65,11 @@ class SingletonModelAdmin(admin.ModelAdmin):
 class SliderImageAdmin(admin.ModelAdmin):
     exclude = ('slider', )
 
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'date_created']
+
+
 admin.site.register(CompanyData, SingletonModelAdmin)
 admin.site.register(Slider, SingletonModelAdmin)
 admin.site.register(SliderImage, SliderImageAdmin)
@@ -72,4 +77,4 @@ admin.site.register(Client)
 admin.site.register(Service)
 admin.site.register(Project)
 admin.site.register(ProjectImage)
-admin.site.register(Message)
+admin.site.register(Message, MessageAdmin)

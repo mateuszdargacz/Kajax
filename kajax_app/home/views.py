@@ -1,8 +1,10 @@
 #! /usr/bin/env python2.7
 from django.views.generic import TemplateView
+from home.forms import MessageForm
 from home.serializers import SliderSerializer, CompanyDataSerializer, ServiceSerializer, ClientSerializer, \
     ProjectSerializer
 from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 
@@ -55,7 +57,14 @@ class ProjectAPIView(ListAPIView):
     serializer_class = ProjectSerializer
     queryset = serializer_class.Meta.model.objects.all()
 
+
 class MessageView(APIView):
 
-    def post(self):
-        pass
+    def post(self, *args, **kwargs):
+        form = MessageForm(self.request.POST or None)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            return Response(status=200)
+        else:
+            return Response(form.errors, status=400)

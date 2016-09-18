@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Kajax Stolarstwo{% endblock %}
 
-{% block description %}This page is an awesome home page.{% endblock %}
+{% block description %}Oferujemy szeroki zakres usług stolarkich w tym schody, drzwi zewnętrzne oraz wewnętrzne, meble, kuchnie na wymiar, tarasy {% endblock %}
+{% block keywords %} schody Trójmiasto , schody Wejherowo, schody Pomorze, schody Pomorskie, Drzwi Trojmiasto, drzwi pomorze, drzwi wejherowo, meble zewnętrzne, tarasy, kuchnie, Trójmiasto stolarz,{% endblock %}
 
 
 {% block content %}
@@ -14,14 +15,26 @@
                     <div class="row m0 company-contact">
                         <div class="row m0 question-box">
                             <h2>Napisz do nas</h2>
-                            <form class="from-contact">
-                                <input type="text" class="form-control" placeholder="Imię i nazwisko">
-                                <input type="email" class="form-control" placeholder="Email">
-                                <textarea class="form-control textarea" placeholder="Wiadomość"></textarea>
-                                <button type="submit" class="btn btn-default button submit">
-                                    Wyślij<i class="fa fa-angle-double-right"></i>
-                                </button>
+                            <form class="from-contact" id="topForm">
+                                {% csrf_token %}
+                                <input type="text" class="form-control" id="main_form_name" name="name"
+                                       placeholder="Imię i Nazwisko">
+                                <input type="email" class="form-control" id="main_form_email" name="email"
+                                       placeholder="Email">
+                                <input type="text" class="form-control" id="main_form_subject" name="subject"
+                                       placeholder="Tytuł">
+                            <textarea class="form-control" rows="6" id="main_form_message" name="message"
+                                      placeholder="Wiadomość"></textarea>
+                                <div class="row m0">
+                                    <button type="submit" class="btn btn-default button submit">
+                                        Wyślij<i class="fa fa-angle-double-right"></i>
+                                    </button>
+                                </div>
                             </form>
+                            <div id="success" style="display: none"><p>Twoja wiadomość została pomyślnie wysłana!</p>
+                            </div>
+                            <div id="error" style="display: none"><p>Coś jest nie tak.... spróbuj wysłać maila lub
+                                skontaktuj się pod podany numer telefonu</p></div>
                         </div>
                     </div>
                 </div>
@@ -65,17 +78,19 @@
         <div class="work-promo">
             <div class="promo-content">
                 <h2>Witamy w Kajax</h2>
-                <p>Zrealizujemy każdy Twój pomysł w dowolnym rodzaju drewna, dodatkowo wzbogacając je elementami metalowymi lub też szkłem.
-                    Bardzo chętnie również zaproponujemy własne rozwiązania, które są popartę wieloletnim doświadczeniem.
+                <p>Zrealizujemy każdy Twój pomysł w dowolnym rodzaju drewna, dodatkowo wzbogacając je elementami
+                    metalowymi lub też szkłem.
+                    Bardzo chętnie również zaproponujemy własne rozwiązania, które są popartę wieloletnim
+                    doświadczeniem.
 
                 </p>
                 <h3>Zadzwoń też jeśli szukasz współpracy do produkcji masowej!</h3>
-{#                <ul class="nav">#}
-{#                    <li>Complete Savety Analysis</li>#}
-{#                    <li>Complete Savety Analysis</li>#}
-{#                    <li>Certified Company Since 2005</li>#}
-{#                    <li>Certified Company Since 2005</li>#}
-{#                </ul>#}
+                {#                <ul class="nav">#}
+                {#                    <li>Complete Savety Analysis</li>#}
+                {#                    <li>Complete Savety Analysis</li>#}
+                {#                    <li>Certified Company Since 2005</li>#}
+                {#                    <li>Certified Company Since 2005</li>#}
+                {#                </ul>#}
             </div>
         </div>
     </section>
@@ -137,19 +152,23 @@
                         </div>
                     </div>
                     <div class="col-md-8 input_form">
-                        <form action="contact_process.php" method="post" id="contactForm">
-                            <input type="text" class="form-control" id="yourname" name="yourname" placeholder="Imię i Nazwisko">
-                            <input type="email" class="form-control" id="youremail" name="Twój email"
+                        <form action="#" method="post" id="contactForm">
+                            {% csrf_token %}
+                            <input type="text" class="form-control" id="main_form_name" name="name"
+                                   placeholder="Imię i Nazwisko">
+                            <input type="email" class="form-control" id="main_form_email" name="email"
                                    placeholder="Email">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Tytuł">
-                            <textarea class="form-control" rows="6" id="message" name="Wiadomość"
-                                      placeholder="Wiadoność"></textarea>
+                            <input type="text" class="form-control" id="main_form_subject" name="subject"
+                                   placeholder="Tytuł">
+                            <textarea class="form-control" rows="6" id="main_form_message" name="message"
+                                      placeholder="Wiadomość"></textarea>
                             <div class="row m0">
                                 <button type="submit" class="btn btn-default submit">Wyślij</button>
                             </div>
                         </form>
-                        <div id="success"><p>Twoja wiadomość została pomyślnie wysłąna!.</p></div>
-                        <div id="error"><p>Coś jest nie tak.... spróbuj wysłać maila lub skontaktuj się pod podany numer telefonu</p></div>
+                        <div id="success"><p>Twoja wiadomość została pomyślnie wysłana!</p></div>
+                        <div id="error"><p>Coś jest nie tak.... spróbuj wysłać maila lub skontaktuj się pod podany numer
+                            telefonu</p></div>
                     </div>
                 </div>
             </div>
@@ -169,10 +188,12 @@
             <div class="content">
                 <h3>Jeśli interesuje Cię coś spoza listy naszych usług,</h3>
                 <h3>po prostu zadzwoń i zapytaj!</h3>
-                <a href="tel:{{ company_data.phone }}" class="phone"><img src="{% static 'images/great-work/phone.png' %}" alt="">
+                <a href="tel:{{ company_data.phone }}" class="phone"><img
+                        src="{% static 'images/great-work/phone.png' %}" alt="">
                     {{ company_data.phone }}
                 </a>
-                <a href="email:{{ company_data.email }}" class="email"><img src="{% static 'images/great-work/email.png' %}" alt="">{{ company_data.email }}</a>
+                <a href="email:{{ company_data.email }}" class="email"><img
+                        src="{% static 'images/great-work/email.png' %}" alt="">{{ company_data.email }}</a>
             </div>
         </div>
         <div class="right-side">
