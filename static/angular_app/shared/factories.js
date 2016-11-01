@@ -4,7 +4,7 @@
  __git__ = 'https://github.com/mateuszdargacz'
  */
 
-Kajax
+Manitou
     .factory('sliderFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
         var deferred = $q.defer();
 
@@ -14,30 +14,13 @@ Kajax
 
         return deferred.promise;
     }])
-    .factory('ServicesFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
+    .factory('LifterFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
         var deferred = $q.defer();
 
-        $http.get('/api/services/').success(function (data) {
-            deferred.resolve(data);
-        });
-
-        return deferred.promise;
-    }])
-    .factory('ProjectsFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
-        var deferred = $q.defer();
-
-        $http.get('/api/projects/').success(function (data) {
-            deferred.resolve(data);
-        });
-
-        return deferred.promise;
-    }])
-    .factory('ClientsFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
-        var deferred = $q.defer();
-
-        $http.get('/api/clients/').success(function (data) {
+        $http.get('/api/lifters/').success(function (data) {
             deferred.resolve(data);
         });
 
         return deferred.promise;
     }]);
+    

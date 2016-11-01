@@ -1,4 +1,4 @@
-Kajax
+Manitou
     .directive('timeAgo', function ($timeout) {
         return {
             restrict: 'A',
@@ -45,33 +45,12 @@ Kajax
                 }
             };
         }])
-    .directive('servicesD', ['$rootScope',
+    .directive('liftersD', ['$rootScope',
         function ($rootScope) {
             return {
-                scope: {services: '='},
-                templateUrl: '/static/angular_app/views/services.html',
+                scope: {lifters: '='},
+                templateUrl: '/static/angular_app/views/lifters.html',
                 link: function (scope, element, attrs) {
-
                 }
             };
         }])
-    .directive('projectsD', ['$rootScope',
-        function ($rootScope) {
-            return {
-                scope: {projects: '='},
-                templateUrl: '/static/angular_app/views/projects.html',
-                link: function (scope, element, attrs) {
-
-                }
-            };
-        }])
-    .directive('clientsD', ['$rootScope',
-        function ($rootScope) {
-            return {
-                scope: {clients: '='},
-                templateUrl: '/static/angular_app/views/clients.html',
-                link: function (scope, element, attrs) {
-
-                }
-            };
-        }]);

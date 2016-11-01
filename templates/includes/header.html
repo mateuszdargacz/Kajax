@@ -1,37 +1,56 @@
 {% load static %}
-<header class="row header navbar-static-top one-page-menu" id="main_navbar">
-    <div class="container">
-
-    </div>
-   <div class="logo_part">
-        <div class="logo">
-            <a href="/" class="brand_logo">
-                <img src="{% static 'images/header/logo.png' %}" alt="logo image">
-            </a>
+<header>
+    <div class="camera_container">
+        <div id="camera" class="camera_wrap">
+            <div data-src="{% static 'images/page-1_slide01.jpg' %}">
+                <div class="camera_caption fadeIn"></div>
+            </div>
+            <div data-src="{% static 'images/page-1_slide02.jpg' %}">
+                <div class="camera_caption fadeIn"></div>
+            </div>
+            <div data-src="{% static 'images/page-1_slide03.jpg' %}">
+                <div class="camera_caption fadeIn"></div>
+            </div>
+            <div data-src="{% static 'images/page-1_slide04.jpg' %}">
+                <div class="camera_caption fadeIn"></div>
+            </div>
         </div>
+        <h2>Quality<em>The highest quality workmanship</em></h2>
     </div>
-    <div class="main-menu">
-        <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_nav" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-
-            <div class="menu row m0" id="main_navigation">
-                <div class="collapse navbar-collapse smooth_scroll" id="main_nav">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#top">Strona Główna</a></li>
-                        <li><a href="#about-us">O nas</a></li>
-                        <li><a href="#services">Usługi</a></li>
-{#                        <li><a href="#projects">Realizacje</a></li>#}
-                        <li><a href="#contact">Kontakt</a></li>
+    <div id="stuck_container" class="stuck_container">
+        <div class="brand">
+            <h1 class="brand_name"><a href="./">suspended ceilings</a></h1>
+            <p class="brand_slogan">Progressive ceiling & bulkhead contractor</p>
+        </div>
+        <nav class="nav">
+            <ul data-type="navbar" class="sf-menu">
+                <li class="active"><a href="./">Home</a>
+                </li>
+                <li><a href="index-1.html">About</a>
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor</a></li>
+                        <li><a href="#">Conse ctetur</a></li>
+                        <li><a href="#">Elit sed do eiusmod</a>
+                            <ul>
+                                <li><a href="#">Lorem ipsum</a></li>
+                                <li><a href="#">Conse adipisicing</a></li>
+                                <li><a href="#">Sit amet dolore</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Incididunt ut labore</a></li>
+                        <li><a href="#">Et dolore magna</a></li>
+                        <li><a href="#">Ut enim ad minim</a></li>
                     </ul>
-                </div>
-            </div><!-- /.navbar-collapse -->
+                </li>
+                <li><a href="index-2.html">Services</a>
+                </li>
+                <li><a href="index-3.html">Gallery</a>
+                </li>
+                <li><a href="index-4.html">News</a>
+                </li>
+                <li><a href="index-5.html">Contacts</a>
+                </li>
+            </ul>
         </nav>
     </div>
 </header>

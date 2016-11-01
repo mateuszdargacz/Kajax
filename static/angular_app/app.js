@@ -1,4 +1,4 @@
-var Kajax = angular.module("Kajax", ['ngCookies'], function ($interpolateProvider) {
+var Manitou = angular.module("Manitou", ['ngCookies'], function ($interpolateProvider) {
         $interpolateProvider.startSymbol("{[{");
         $interpolateProvider.endSymbol("}]}");
 
@@ -6,10 +6,11 @@ var Kajax = angular.module("Kajax", ['ngCookies'], function ($interpolateProvide
     }
 );
 
-Kajax.run(function () {
+Manitou.run(function () {
     
 });
-Kajax.config(['$httpProvider', '$cookiesProvider', function ($httpProvider, $cookieStore) {
+
+Manitou.config(['$httpProvider', '$cookiesProvider', function ($httpProvider, $cookieStore) {
     $httpProvider.defaults.headers.common['X-CSRFToken'] = $cookieStore.csrftoken;
     console.log($cookieStore)
 }]);

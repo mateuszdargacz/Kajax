@@ -1,0 +1,36 @@
+<div ng-repeat="lifter in lifters" id="part-{[{$index}]}">
+    <section class="bg-img mobile-center">
+        <div class="container">
+            <div class="row">
+                <div class="grid_6 well2">
+                    <h3>{[{ lifter.name }]}</h3>
+                    <h5>Integertrum ante</h5>
+                    <p class="txt1">{[{ lifter.description}]}
+                </div>
+            </div>
+        </div>
+        <div class="img"><img src="{[{ lifter.primary_image }]}" alt=""></div>
+    </section>
+    <!--  Angular
+
+{#        <section class="well3">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="grid_9">#}
+{#                        <h3>Portfolio</h3>#}
+{#                    </div>#}
+{#                    <div class="grid_3 btn_wr"><a href="#" class="btn2 mg-add">All Portfolio</a></div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+-->
+    <section class="gallery bg-img2">
+        <a ng-repeat="image in lifter.images |  limitTo: 3" href="{[{image.image}]}" data-fancybox-group="{[{$parent.$index}]}" class="thumb">
+            <img src="{[{image.image}]}" alt="{[{ image.alt }]}">
+            <span class="thumb_overlay"></span>
+            <span class="thumb_overlay_cnt"></span>
+        </a>
+
+
+    </section>
+</div>

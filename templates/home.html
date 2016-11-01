@@ -1,204 +1,143 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Kajax Stolarstwo{% endblock %}
+{% block title %}Manitou Artur Jagnow{% endblock %}
 
-{% block description %}Oferujemy szeroki zakres usług stolarkich w tym schody, drzwi zewnętrzne oraz wewnętrzne, meble, kuchnie na wymiar, tarasy {% endblock %}
-{% block keywords %} schody Trójmiasto , schody Wejherowo, schody Pomorze, schody Pomorskie, Drzwi Trojmiasto, drzwi pomorze, drzwi wejherowo, meble zewnętrzne, tarasy, kuchnie, Trójmiasto stolarz,{% endblock %}
+{% block description %}Oferujemy szeroki zakres usług stolarkich w tym schody, drzwi zewnętrzne oraz wewnętrzne, meble,
+    kuchnie na wymiar, tarasy {% endblock %}
+{% block keywords %} schody Trójmiasto , schody Wejherowo, schody Pomorze, schody Pomorskie, Drzwi Trojmiasto, drzwi
+    pomorze, drzwi wejherowo, meble zewnętrzne, tarasy, kuchnie, Trójmiasto stolarz,{% endblock %}
 
 
 {% block content %}
-    <!--experiance-area-->
-    <section class="row our-company-area sectpad" id="about-us">
-        <div class="container">
-            <div class="row m0">
-                <div class="col-md-5">
-                    <div class="row m0 company-contact">
-                        <div class="row m0 question-box">
-                            <h2>Napisz do nas</h2>
-                            <form class="from-contact" id="topForm">
-                                {% csrf_token %}
-                                <input type="text" class="form-control" id="main_form_name" name="name"
-                                       placeholder="Imię i Nazwisko">
-                                <input type="email" class="form-control" id="main_form_email" name="email"
-                                       placeholder="Email">
-                                <input type="text" class="form-control" id="main_form_subject" name="subject"
-                                       placeholder="Tytuł">
-                            <textarea class="form-control" rows="6" id="main_form_message" name="message"
-                                      placeholder="Wiadomość"></textarea>
-                                <div class="row m0">
-                                    <button type="submit" class="btn btn-default button submit">
-                                        Wyślij<i class="fa fa-angle-double-right"></i>
-                                    </button>
-                                </div>
-                            </form>
-                            <div id="success" style="display: none"><p>Twoja wiadomość została pomyślnie wysłana!</p>
-                            </div>
-                            <div id="error" style="display: none"><p>Coś jest nie tak.... spróbuj wysłać maila lub
-                                skontaktuj się pod podany numer telefonu</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7 company-info">
-                    <div class="row m0 section_header">
-                        <h2>O nas</h2>
-                        <p>Jesteśmy firmą świadczącą profesjonalne usługi stolarskie, działającą
-                            na rynku już od ponad 25 lat. Oferujemy specjalistyczne doradztwo oraz
-                            wykonanie przy użyciu najwyższej klasy materiałów. Głównie
-                        </p>
-                    </div>
-                    <ul class="content-list">
-                        <li><a href="#services">Drzwi</a></li>
-                        <li><a href="#services">Schody</a></li>
-                        <li><a href="#services">Listwy przypodłogowe</a></li>
-                        <li><a href="#services">Tarasy</a></li>
-                        <li><a href="#services">Meble</a></li>
-                        <li><a href="#services">Elementy stolarki nietypowej</a></li>
-                    </ul>
-                    <div class="info-text">
-                        <h4>Nasi pracownicy</h4>
-                        <p>Nasi pracownicy są wysoko wykwalifikowanymi ludźmi,
-                            którzy wykonują swoją pracę z pasją oraz są z nami od wielu lat</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <services-d services="services"></services-d>
-    <!-- Projects -->
-    <projects-d projects="projects"></projects-d>
-    <!--work-shop-->
-
-
-    <section class="row fluid-work-area">
-        <div class="work-image">
-            <img src="{% static 'images/workshop/work.jpg' %}" alt="">
-        </div>
-        <div class="work-promo">
-            <div class="promo-content">
-                <h2>Witamy w Kajax</h2>
-                <p>Zrealizujemy każdy Twój pomysł w dowolnym rodzaju drewna, dodatkowo wzbogacając je elementami
-                    metalowymi lub też szkłem.
-                    Bardzo chętnie również zaproponujemy własne rozwiązania, które są popartę wieloletnim
-                    doświadczeniem.
-
-                </p>
-                <h3>Zadzwoń też jeśli szukasz współpracy do produkcji masowej!</h3>
-                {#                <ul class="nav">#}
-                {#                    <li>Complete Savety Analysis</li>#}
-                {#                    <li>Complete Savety Analysis</li>#}
-                {#                    <li>Certified Company Since 2005</li>#}
-                {#                    <li>Certified Company Since 2005</li>#}
-                {#                </ul>#}
-            </div>
-        </div>
-    </section>
-
-
-
-    <!--contact-->
-    <section class="row touch landing-page-contact" id="contact">
-        <div class="sectpad touch_bg">
+    <main ng-controller="mainCtrl">
+        <section class="bg-image center ins1">
             <div class="container">
-                <div class="row m0 color section_header">
-                    <h2>Skontaktuj się z nami</h2>
-                    <p>Jeśli jesteś zainteresowany naszymi usługami, chciałbyś poznać orientacyjną wycenę lub masz
-                        jakieś pytania to zadzwoń, napisz email-a lub wypełnij poniższy formularz, a gwarantujemy
-                        odpowiedź do 24 godzin</p>
-                </div>
-
-                <div class="row touch_middle">
-                    <div class="col-md-4 open_hours">
-                        <div class="row m0 touch_top">
-                            <ul class="nav">
-                                <li class="item">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <i class="fa fa-map-marker"></i>
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            {{ company_data.location }}
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            {{ company_data.email }}
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <i class="fa fa-phone"></i>
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            {{ company_data.phone }}
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-8 input_form">
-                        <form action="#" method="post" id="contactForm">
-                            {% csrf_token %}
-                            <input type="text" class="form-control" id="main_form_name" name="name"
-                                   placeholder="Imię i Nazwisko">
-                            <input type="email" class="form-control" id="main_form_email" name="email"
-                                   placeholder="Email">
-                            <input type="text" class="form-control" id="main_form_subject" name="subject"
-                                   placeholder="Tytuł">
-                            <textarea class="form-control" rows="6" id="main_form_message" name="message"
-                                      placeholder="Wiadomość"></textarea>
-                            <div class="row m0">
-                                <button type="submit" class="btn btn-default submit">Wyślij</button>
-                            </div>
-                        </form>
-                        <div id="success"><p>Twoja wiadomość została pomyślnie wysłana!</p></div>
-                        <div id="error"><p>Coś jest nie tak.... spróbuj wysłać maila lub skontaktuj się pod podany numer
-                            telefonu</p></div>
-                    </div>
-                </div>
+                <ul class="index-list">
+                    <li><img src="{% static 'images/page-1_img01.jpg' %}" alt="">
+                        <h5><a href="#part-1">Manitou 1</a></h5>
+                        <p>Aenean aucto. wisi et urnvolutpat sac turpis. Integertrum anes tibulum libe.</p>
+                    </li>
+                    <li><img src="{% static 'images/page-1_img02.jpg' %}" alt="">
+                        <h5><a href="#part-2">Manitou 2</a></h5>
+                        <p>Mauris fermeum dictum magna loreet aliquam leotlus dolo rib veifend elit.</p>
+                    </li>
+                    <li><img src="{% static 'images/page-1_img03.jpg' %}" alt="">
+                        <h5><a href="#part-3">Dźwig</a></h5>
+                        <p>Aenean aucto. wisi et urnvoatsac urpis. Integertrum antecues tibulum libe.</p>
+                    </li>
+                    <li><img src="{% static 'images/page-1_img04.jpg' %}" alt="">
+                        <h5><a href="#equip">Wyposażenie</a></h5>
+                        <p>Mauris fermeum dictuagna. Sed loreet aliquam leote llusbus eget e ntund elit.</p>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--MapBox-->
-    <section class="map">
-        <div id="mapBox" class="row m0" data-lat="54.594389" data-lon="18.163520" data-zoom="13"></div>
-    </section>
+        <lifters-d lifters="lifters"></lifters-d>
 
-    <!-- clients -->
-    <clients-d clients="clients"></clients-d>
-    <!--great-work-->
-    <section class="emergency-contact">
-        <div class="left-side">
-            <div class="content">
-                <h3>Jeśli interesuje Cię coś spoza listy naszych usług,</h3>
-                <h3>po prostu zadzwoń i zapytaj!</h3>
-                <a href="tel:{{ company_data.phone }}" class="phone"><img
-                        src="{% static 'images/great-work/phone.png' %}" alt="">
-                    {{ company_data.phone }}
-                </a>
-                <a href="email:{{ company_data.email }}" class="email"><img
-                        src="{% static 'images/great-work/email.png' %}" alt="">{{ company_data.email }}</a>
+        <section class="well center" id="equip">
+            <div class="container">
+                <h3>DODATKI DO PODNOŚNIKOW</h3>
+                <ul class="product-list row">
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-check-mark4"></div>
+                        <h5>Integertrum ante</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-brightness14"></div>
+                        <h5>Sed loreet aliquam</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-heart365"></div>
+                        <h5>Aenean aucto</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-present34"></div>
+                        <h5>Mauris ferme</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-umbrella"></div>
+                        <h5>Integertrum ante</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-star206"></div>
+                        <h5>Sed loreet aliquam</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-magnifying-glass17"></div>
+                        <h5>Aenean aucto</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                    <li class="grid_3"><a href="#">
+                        <div class="icon fl-sympletts-clock162"></div>
+                        <h5>Mauris ferme</h5>
+                        <p>Aenean aucto. wisi et urnvolutpatsac turpis. Integertrum ante eu lacues tibulum libe.</p></a>
+                    </li>
+                </ul>
+                <a href="#" class="btn2">All services</a>
             </div>
-        </div>
-        <div class="right-side">
-            <img src="{% static 'images/great-work/right-img.jpg' %}" alt="">
-        </div>
-    </section>
+        </section>
+        {#        <section class="well4 center">#}
+        {#            <div class="container">#}
+        {#                <h3>News</h3>#}
+        {#                <div class="row off1">#}
+        {#                    <article class="grid_3 post"><a href="#"><img src="{% static 'images/page-1_img13.jpg' %}" alt="">#}
+        {#                        <div class="post_cnt">#}
+        {#                            <h5>Integertrum ante</h5>#}
+        {#                            <time datetime="2015-10-03">3 Oct 2015</time>#}
+        {#                            <span class="comments">0 Comments</span>#}
+        {#                        </div>#}
+        {#                    </a></article>#}
+        {#                    <article class="grid_3 post"><a href="#"><img src="{% static 'images/page-1_img14.jpg' %}" alt="">#}
+        {#                        <div class="post_cnt">#}
+        {#                            <h5>Sed loreet aliquam</h5>#}
+        {#                            <time datetime="2015-10-03">3 Oct 2015</time>#}
+        {#                            <span class="comments">0 Comments</span>#}
+        {#                        </div>#}
+        {#                    </a></article>#}
+        {#                    <article class="grid_3 post"><a href="#"><img src="{% static 'images/page-1_img15.jpg' %}" alt="">#}
+        {#                        <div class="post_cnt">#}
+        {#                            <h5>Aenean aucto</h5>#}
+        {#                            <time datetime="2015-10-03">3 Oct 2015</time>#}
+        {#                            <span class="comments">0 Comments</span>#}
+        {#                        </div>#}
+        {#                    </a></article>#}
+        {#                    <article class="grid_3 post"><a href="#"><img src="{% static 'images/page-1_img16.jpg' %}" alt="">#}
+        {#                        <div class="post_cnt">#}
+        {#                            <h5>Mauris ferme</h5>#}
+        {#                            <time datetime="2015-10-03">3 Oct 2015</time>#}
+        {#                            <span class="comments">0 Comments</span>#}
+        {#                        </div>#}
+        {#                    </a></article>#}
+        {#                </div>#}
+        {#                <a href="#" class="btn2 off2">All News</a>#}
+        {#            </div>#}
+        {#        </section>#}
+        {#        <section data-url="images/bg2.jpg" data-mobile="true" class="well5 center parallax">#}
+        {#            <div class="container">#}
+        {#                <div class="row">#}
+        {#                    <div class="grid_4">#}
+        {#                        <p class="count">350</p>#}
+        {#                        <h5>Tweets</h5><a href="#" class="btn btn_hover">Read more</a>#}
+        {#                    </div>#}
+        {#                    <div class="grid_4">#}
+        {#                        <p class="count">500</p>#}
+        {#                        <h5>Facebook likes</h5><a href="#" class="btn btn_hover">Read more</a>#}
+        {#                    </div>#}
+        {#                    <div class="grid_4">#}
+        {#                        <p class="count">245</p>#}
+        {#                        <h5>Google +</h5><a href="#" class="btn btn_hover">Read more</a>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </section>#}
+    </main>
+
 
 {% endblock %}

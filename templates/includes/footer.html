@@ -1,93 +1,47 @@
 {% load static %}
-<footer class="row">
-    <div class="row m0 footer-top">
-        <div class="container">
-            <div class="row footer-sidebar">
-                <div class="widget about-us-widget col-sm-6 col-lg-3">
-                    <a href="index.html" class="brand_logo">
-                        <img src="{% static 'images/header/logo_small.png' %}" alt="logo image">
-                    </a>
-                    <p>
-                        Zajmujemy się usługami stolarskimi już ponad 25 lat,
-                        możesz liczyć na nasze doświadczenie!
-                    </p>
-
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="grid_6 mobile-center">
+                <div class="brand">
+                    <h1 class="brand_name"><a href="./">suspended ceilings</a></h1>
                 </div>
-                <div class="widget widget-links col-sm-6 col-lg-3">
-                    <h4 class="widget_title">Kajax</h4>
-                    <div class="widget-contact-list row m0">
-                        <ul>
-                             <li><a href="#top">Strona Główna</a></li>
-                            <li><a href="#about-us">O nas</a></li>
-                            <li><a href="#services">Usługi</a></li>
-{#                            <li><a href="#projects">Realizacje</a></li>#}
-                            <li><a href="#contact">Kontakt</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget widget-contact  col-sm-6 col-lg-3">
-                    <h4 class="widget_title">Kontakt</h4>
-                    <div class="widget-contact-list row m0">
-                        <ul>
-                            <li>
-                                <i class="fa fa-map-marker"></i>
-                                <div class="fleft location_address">
-                                    {{ company_data.location }}
-                                </div>
-
-                            </li>
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                <div class="fleft contact_no">
-                                    <a href="tel:{{ company_data.phone }}">{{ company_data.phone }}</a>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope-o"></i>
-                                <div class="fleft contact_mail">
-                                    <a href="#">{{ company_data.email }}</a>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="icon icon-WorldWide"></i>
-                                <div class="fleft service_time">
-                                    Pon - Sob: 7:00 - 17:00
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget widget4 widget-form col-sm-6 col-lg-3">
-                    <h4 class="widget_title">Napisz do nas!</h4>
-                    <div class="widget-contact-list row m0">
-                        <form class="submet-form row m0" action="#" method="post" id="footerForm">
-                        {% csrf_token %}
-                            <input type="text" class="form-control" id="footer_form_name" name="name" placeholder="Imię i Nazwisko">
-                            <input type="email" class="form-control" id="footer_form_email" name="email"
-                                   placeholder="Email">
-                            <input type="text" class="form-control" id="footer_form_subject" name="subject" placeholder="Tytuł">
-                            <textarea class="form-control" rows="6" id="footer_form_message" name="message"
-                                      placeholder="Wiadomość"></textarea>
-                            <button class="submit" type="submit">Wyślij</button>
-                        </form>
-                        <div id="success" style="display: none"><p>Twoja wiadomość została pomyślnie wysłana!</p></div>
-                        <div id="error" style="display: none"><p>Coś jest nie tak.... spróbuj wysłać maila lub skontaktuj się pod podany numer telefonu</p></div>
-                    </div>
+                <div class="copyright">Suspended ceilings © <span id="copyright-year"></span>&nbsp;&nbsp;<a
+                        href="index-6.html">Privacy Policy</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row m0 footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    Copyright &copy; <a href="https://pl.linkedin.com/in/mateusz-dargacz-758547b0" target="_blank">Mateusz
-                    Dargacz</a> {% now "Y" %}. <br class="visible-xs"> All rights reserved.
-                </div>
-                <div class="right col-sm-4">
-                    Created by: <a href="https://pl.linkedin.com/in/mateusz-dargacz-758547b0" target="_blank">Mateusz
-                    Dargacz</a>
-                </div>
+            <div class="grid_3">
+                <address>9863 - 9867 Mill Road,<br/>Cambridge, MG09 99HT</address>
+                <dl>
+                    <dt>Freephone:</dt>
+                    <dd>&nbsp;<a href="callto:#">+1 800 559 6580</a></dd>
+                </dl>
+                <dl>
+                    <dt>Fax:</dt>
+                    <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="callto:#">+1 800 559
+                        6580</a></dd>
+                </dl>
+            </div>
+            <div class="grid_3 subscribe mobile-center">
+                <form method="post" action="bat/rd-mailform.php" class="mailform">
+                    <input type="hidden" name="form-type" value="contact">
+                    <fieldset>
+                        <label>
+                            <input type="text" name="email" placeholder="Signup for mail"
+                                   data-constraints="@Email @NotEmpty">
+                        </label>
+                        <div class="mfControls">
+                            <button type="submit">ok</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <ul class="inline-list">
+                    <li><a href="#" class="fa-twitter"></a></li>
+                    <li><a href="#" class="fa-google-plus-square"></a></li>
+                    <li><a href="#" class="fa-pinterest"></a></li>
+                    <li><a href="#" class="fa-facebook-square"></a></li>
+                    <li><a href="#" class="fa-linkedin"></a></li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,19 +1,11 @@
-Kajax.controller("mainCtrl", function ($scope, $cookies, $timeout, InitiateJS, sliderFactory, ServicesFactory,
-                                       ProjectsFactory, ClientsFactory) {
+Manitou.controller("mainCtrl", function ($scope, $cookies, $timeout, sliderFactory, LifterFactory) {
     $scope.test = $cookies['csrftoken'];
     sliderFactory.then(function (data) {
         $scope.slider = data[0];
-        ServicesFactory.then(function (data) {
-            $scope.services = data;
-            ProjectsFactory.then(function (data) {
-                $scope.projects = data;
-                ClientsFactory.then(function (data) {
-                    $scope.clients = data;
-                    console.log($scope.clients);
-                    $timeout(InitiateJS.init, 2000)
-                });
-            });
+        LifterFactory.then(function (data) {
+            $scope.lifters = data;
+            if (window.loading_screen !== undefined) window.loading_screen.finish();
+            console.log($scope.lifters);
         });
-
     });
 }); 
