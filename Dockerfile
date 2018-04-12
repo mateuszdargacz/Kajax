@@ -1,15 +1,11 @@
 FROM alpine
 
-RUN apk --no-cache add python3 \
-                       build-base \
+RUN apk --no-cache add build-base \
                        python3-dev \
-                       # wget dependency
-                       openssl \
-                       # dev dependencies
-                       git \
                        bash \
-                       sudo \
-                       py3-pip
+                       py3-pip \
+                       jpeg-dev \
+                       zlib-dev
 
 
 RUN mkdir /app
