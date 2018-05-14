@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    environment:
+      - DEBUG=
+    command: gunicorn wsgi --workers 2 --reload --bind unix:///nginx/kajax.sock
+    volumes:
+      - ./app/:/app/
+      - ./nginx/:/nginx/
+      - ./data/:/app/data/
