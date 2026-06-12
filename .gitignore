@@ -6,6 +6,9 @@ local.py
 # ./manage.py collectstatic folder
 static-collected/*
 
+# Runtime data volume
+data/
+
 
 # Packages
 *.egg
