@@ -66,26 +66,26 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, '"@type": "FAQPage"')
         self.assertContains(response, '"@type": "OfferCatalog"')
-        self.assertContains(response, "elementy ekspozycji i displayów")
+        self.assertContains(response, "elementy POS i displayów")
         self.assertContains(response, '"@type": "CommunicateAction"')
 
     def test_guide_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("guide"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Jak przygotować zapytanie do stolarni")
+        self.assertContains(response, "Jak przygotować zapytanie")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Dla elementów B2B i krótkich serii")
+        self.assertContains(response, "Gdy element ma być powtarzalny")
 
     def test_short_series_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("short_series"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Kiedy opłaca się zamówić elementy drewniane")
+        self.assertContains(response, "Kiedy krótka seria elementów drewnianych ma sens")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Gdy element ma wracać w kolejnych zamówieniach")
+        self.assertContains(response, "Gdy element będzie wracał w zamówieniach")
 
     def test_advertising_events_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("advertising_events"))
@@ -94,7 +94,7 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, "Elementy drewniane dla firm reklamowych")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Kiedy drewno ma sens w reklamie i POS")
+        self.assertContains(response, "Kiedy drewno wnosi wartość do ekspozycji")
 
     def test_stairs_pricing_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("stairs_pricing"))

@@ -1,7 +1,12 @@
 {% load static %}
 {% if photo.has_image %}
     <picture class="photo-picture photo-picture-{{ variant|default:'section' }}">
-        {% if photo.has_webp %}
+        {% if photo.webp_sources %}
+            <source
+                srcset="{% for source in photo.webp_sources %}{% static source.asset_path %}?v={{ static_version }} {{ source.width }}w{% if not forloop.last %}, {% endif %}{% endfor %}"
+                sizes="{% if variant == 'hero' %}100vw{% elif variant == 'card' %}(max-width: 900px) 100vw, 33vw{% elif variant == 'aside' %}(max-width: 900px) 100vw, 28vw{% else %}(max-width: 900px) 100vw, 48vw{% endif %}"
+                type="image/webp">
+        {% elif photo.has_webp %}
             <source srcset="{% static photo.webp_asset_path %}?v={{ static_version }}" type="image/webp">
         {% endif %}
         <img class="photo-image photo-image-{{ variant|default:'section' }}" src="{% static photo.asset_path %}?v={{ static_version }}" alt="{{ alt|default:photo.label }}"{% if variant == "hero" %} fetchpriority="high"{% elif loading != "eager" %} loading="lazy"{% endif %} decoding="async">

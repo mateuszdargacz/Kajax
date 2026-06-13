@@ -80,17 +80,18 @@ Text and documents:
 
 Export rules:
 
-- Use `.jpg` for all final files unless we later add an optimized responsive image pipeline.
+- Keep `.jpg` files as the stable replacement filenames used by the content map.
+- Generate matching `.webp`, `-640.webp`, `-960.webp` and `-1600.webp` exports for every mapped JPG so templates can serve responsive images through `srcset`.
 - Keep the exact target filenames from the table below.
 - Also keep high-resolution source files separately if generated; do not overwrite the final export names with low-quality previews.
 - Final web exports should be sharp, sRGB, quality around 82-88, no watermark.
 - Avoid upscaling small generations unless the result stays crisp on edges and grain.
 
-## Implementation Placeholder Map
+## Implementation Image Map
 
-Until real files are delivered, the website renders named visual placeholders with only the target filename visible in the UI. Shot purpose, framing and replacement notes live in this document, not under images on the public pages.
+The website renders the image when the mapped file exists in `app/static/site/img`; otherwise it falls back to a filename-only placeholder. Shot purpose, framing and replacement notes live in this document, not under images on the public pages.
 
-Replace each placeholder by adding the final image with the mapped filename and then changing the placeholder renderer to a real image renderer.
+The current preview package is tracked in `docs/photo-assets-manifest.csv`. These files are suitable for layout, SEO and launch-preview work, but generated images should still be replaced by real Kajax workshop/project photos where possible. Every mapped image currently has a base WebP plus `640`, `960` and `1600` pixel responsive WebP variants in `app/static/site/img`.
 
 | Code key | Target filename | Main use | Required crop | Minimum source |
 | --- | --- | --- | --- | --- |
@@ -117,6 +118,23 @@ Replace each placeholder by adding the final image with the mapped filename and 
 ## Live Generated Image Reviews
 
 Use this section while reviewing generated files from `Downloads`. Keep the current file name, intended target filename, decision and change notes so the next generated version can improve instead of starting from scratch.
+
+### 2026-06-13 - `kajax-photo-assets-preview.zip`
+
+Decision: unpacked and added all 19 mapped JPG assets to `app/static/site/img`, generated matching WebP exports for each file, generated `-640.webp`, `-960.webp` and `-1600.webp` responsive variants, and saved the package manifest as `docs/photo-assets-manifest.csv`.
+
+What works:
+
+- The package completes the mapped launch image set, so public pages no longer need filename placeholders for the current service, guide and realization views.
+- All shipped images use the expected target filenames and web dimensions from the map.
+- Responsive WebP exports keep the homepage payload small while preserving sharp desktop images.
+
+Change in the next version:
+
+- Replace generated preview images with real workshop/project photography when available.
+- Treat `hero-workshop-production.jpg` as non-final because it contains visible "KAJAX WOOD WORKS" text on the wall and clothing.
+- Treat `boards`, `craft_checking`, `cutting_process`, `sanding_process` and `clamped_elements` as weaker preview assets because they were cropped from a generated contact sheet.
+- Keep exact filenames when replacing assets so templates, tests and SEO image references continue to work.
 
 ### 2026-06-13 - `ChatGPT Image Jun 13, 2026, 09_29_24 AM.png`
 

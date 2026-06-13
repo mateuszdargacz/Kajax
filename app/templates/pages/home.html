@@ -89,11 +89,7 @@
         <div class="cards three">
             {% for case in realization_cases %}
                 <article class="case-card" data-track-view="portfolio_view">
-                    {% if forloop.first %}
-                        {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" loading="eager" %}
-                    {% else %}
-                        {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" %}
-                    {% endif %}
+                    {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" %}
                     <div>
                         <p class="case-category">{{ case.category }}</p>
                         <h3>{{ case.title }}</h3>
