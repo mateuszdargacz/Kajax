@@ -17,6 +17,12 @@ PHOTO_PLACEHOLDERS = {
         "label": "B2B repeated wooden elements",
         "description": "Repeated components arranged in a row, stack or batch.",
     },
+    "b2b_components_detail": {
+        "key": "b2b_components_detail",
+        "filename": "b2b-repeated-wooden-elements-detail.jpg",
+        "label": "B2B repeated profile detail",
+        "description": "Repeated profiles, holes, grooves or machined parts showing production repeatability.",
+    },
     "drawing_spec": {
         "key": "drawing_spec",
         "filename": "woodwork-from-drawing-specification.jpg",
@@ -218,9 +224,9 @@ CONTENT = {
             {"title": "Detale poza katalogiem", "body": "Elementy według rysunku, inspiracji albo pomysłu architekta. Dobre tam, gdzie trzeba porozmawiać o technologii.", "url": PATHS["architects"], "cta": "Zobacz współpracę projektową"},
         ],
         "realization_cases": [
+            {"title": "Powtarzalne profile i elementy dla firm", "category": "B2B / krótkie serie", "photo": "b2b_components_detail", "alt": "Powtarzalne drewniane profile i elementy przygotowane dla firmy", "meta": ["zakres: profile i półprodukty", "skala: próbka lub seria", "logistyka: odbiór albo wysyłka"], "body": "Dobry kierunek, gdy firma potrzebuje drewnianego elementu do produktu, ekspozycji albo dalszego montażu. Najpierw ustalamy próbkę, potem można wracać z kolejnymi partiami."},
             {"title": "Schody drewniane z dopracowanym detalem", "category": "Stolarka budowlana", "photo": "stairs_project", "alt": "Schody drewniane z balustradą jako przykład realizacji stolarskiej", "meta": ["materiał: drewno", "zakres: wykonanie i dopasowanie", "typ: inwestor prywatny"], "body": "Dobry kierunek dla inwestycji, w których liczy się pomiar, stabilna konstrukcja, dopasowanie do wnętrza i staranne wykończenie widocznych detali."},
             {"title": "Drewniany detal do wnętrza lub ekspozycji", "category": "Detale / wnętrza", "photo": "precision_detail", "alt": "Precyzyjny detal drewniany do wnętrza premium", "meta": ["zakres: detal i wykończenie", "typ: projekt indywidualny", "obszar: Pomorskie"], "body": "Dobre zapytanie zaczyna się od zdjęcia, rysunku albo inspiracji. Po ocenie materiału, skali i montażu można dobrać sensowny sposób wykonania."},
-            {"title": "Drzwi, listwy i elementy stolarki", "category": "Drzwi / listwy / elementy", "photo": "doors_detail", "alt": "Drzwi drewniane jako przykład stolarki budowlanej na wymiar", "meta": ["zakres: stolarka budowlana", "typ: drzwi i wykończenie", "wycena: po zdjęciach i wymiarach"], "body": "To kierunek dla domów, lokali i inwestycji lokalnych, gdzie gotowy element nie pasuje wymiarem, materiałem albo oczekiwanym standardem wykonania."},
         ],
     },
 }
@@ -333,9 +339,9 @@ CONTENT["en"] = {
         {"title": "Unusual and demanding projects", "body": "Unusual details, project-based work and cooperation with architects, designers and contractors.", "url": PATHS["architects"], "cta": "See project cooperation"},
     ],
     "realization_cases": [
+        {"title": "Repeatable profiles and wooden components for companies", "category": "B2B / short runs", "photo": "b2b_components_detail", "alt": "Repeatable wooden profiles and components prepared for a company", "meta": ["scope: profiles and semi-finished parts", "scale: sample or batch", "logistics: pickup or shipping"], "body": "A strong fit when a company needs a wooden component for a product, display or further assembly. We can start with a sample, then move toward repeatable batches."},
         {"title": "Wooden stairs with refined details", "category": "Construction joinery", "photo": "stairs_project", "alt": "Wooden stairs with railing as an example of made-to-measure joinery", "meta": ["material: wood", "scope: production and fitting", "type: private investor"], "body": "A good fit for projects where measurement, a stable structure, interior alignment and careful finishing of visible details all matter."},
         {"title": "Wooden detail for an interior or display", "category": "Details / interiors", "photo": "precision_detail", "alt": "Precise wooden detail for a premium interior", "meta": ["scope: detail and finish", "type: individual project", "region: Pomerania"], "body": "A useful inquiry starts with a photo, drawing or reference. After reviewing material, scale and installation method, we can choose a sensible production approach."},
-        {"title": "Doors, trims and joinery elements", "category": "Doors / trims / elements", "photo": "doors_detail", "alt": "Wooden doors as an example of made-to-measure construction joinery", "meta": ["scope: construction joinery", "type: doors and finishing", "quote: based on photos and dimensions"], "body": "This direction fits homes, venues and local projects where an off-the-shelf element does not match the dimensions, material or expected execution standard."},
     ],
 }
 
@@ -438,9 +444,9 @@ _LOCALIZED_DETAILS = {
             {"title": "Sonderanfertigungen und anspruchsvolle Projekte", "body": "Ungewöhnliche Details, projektbezogene Arbeiten und Zusammenarbeit mit Architekten, Designern und Ausführenden.", "url": PATHS["architects"], "cta": "Projektzusammenarbeit ansehen"},
         ],
         "realization_cases": [
+            {"title": "Wiederholbare Profile und Holzelemente für Unternehmen", "category": "B2B / Kleinserien", "photo": "b2b_components_detail", "alt": "Wiederholbare Holzprofile und Elemente für ein Unternehmen", "meta": ["Umfang: Profile und Halbzeuge", "Skala: Muster oder Serie", "Logistik: Abholung oder Versand"], "body": "Passend, wenn ein Unternehmen ein Holzelement für Produkt, Display oder weitere Montage braucht. Wir können mit einem Muster starten und danach wiederholbare Chargen fertigen."},
             {"title": "Holztreppe mit ausgearbeitetem Detail", "category": "Bauschreinerei", "photo": "stairs_project", "alt": "Holztreppe mit Geländer als Beispiel für maßgefertigte Schreinerarbeit", "meta": ["Material: Holz", "Umfang: Fertigung und Anpassung", "Typ: privater Investor"], "body": "Passend für Projekte, bei denen Aufmaß, stabile Konstruktion, Anpassung an den Innenraum und saubere Ausführung sichtbarer Details zählen."},
             {"title": "Holzdetail für Innenraum oder Display", "category": "Sonderanfertigung / Innenraum", "photo": "precision_detail", "alt": "Präzises Holzdetail für einen hochwertigen Innenraum", "meta": ["Umfang: Detail und Oberfläche", "Typ: individuelles Projekt", "Region: Pommern"], "body": "Eine gute Anfrage beginnt mit Foto, Zeichnung oder Referenz. Nach Prüfung von Material, Umfang und Montageart wählen wir eine sinnvolle Fertigungslösung."},
-            {"title": "Türen, Leisten und Schreinerteile", "category": "Türen / Leisten / Elemente", "photo": "doors_detail", "alt": "Holztüren als Beispiel für maßgefertigte Bauschreinerei", "meta": ["Umfang: Bauschreinerei", "Typ: Türen und Ausbau", "Anfrage: nach Fotos und Maßen"], "body": "Geeignet für Häuser, Lokale und lokale Projekte, bei denen Standardteile in Maß, Material oder gewünschtem Ausführungsniveau nicht passen."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Werkstatt für Holzelemente, Bauschreinerei und Sonderprojekte", "eyebrow": "Produktions- und Bauschreinerei aus Pommern"},
@@ -490,9 +496,9 @@ _LOCALIZED_DETAILS = {
             {"title": "Special och krävande projekt", "body": "Ovanliga detaljer, projektbaserat arbete och samarbete med arkitekter, designers och entreprenörer.", "url": PATHS["architects"], "cta": "Se projektsamarbete"},
         ],
         "realization_cases": [
+            {"title": "Repeterbara profiler och träkomponenter för företag", "category": "B2B / korta serier", "photo": "b2b_components_detail", "alt": "Repeterbara träprofiler och komponenter för ett företag", "meta": ["omfattning: profiler och halvfabrikat", "skala: prov eller serie", "logistik: upphämtning eller frakt"], "body": "Passar när ett företag behöver en träkomponent till produkt, display eller vidare montage. Vi kan börja med ett prov och sedan gå mot repeterbara serier."},
             {"title": "Trätrappa med genomarbetad detalj", "category": "Byggsnickeri", "photo": "stairs_project", "alt": "Trätrappa med räcke som exempel på specialsnickeri", "meta": ["material: trä", "omfattning: tillverkning och anpassning", "typ: privat investerare"], "body": "Passar projekt där mätning, stabil konstruktion, anpassning till interiören och noggrann finish av synliga detaljer är viktigt."},
             {"title": "Trädetalj för interiör eller display", "category": "Special / interiör", "photo": "precision_detail", "alt": "Precis trädetalj för en premiuminteriör", "meta": ["omfattning: detalj och finish", "typ: individuellt projekt", "region: Pommern"], "body": "En bra förfrågan börjar med foto, ritning eller referens. Efter granskning av material, skala och montage kan vi välja rätt tillverkningssätt."},
-            {"title": "Dörrar, lister och snickeridelar", "category": "Dörrar / lister / delar", "photo": "doors_detail", "alt": "Trädörrar som exempel på måttanpassat byggsnickeri", "meta": ["omfattning: byggsnickeri", "typ: dörrar och finish", "offert: efter foton och mått"], "body": "Passar hem, lokaler och lokala projekt där standarddelar inte stämmer med mått, material eller önskad utförandenivå."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snickeriverkstad för träkomponenter, byggsnickeri och specialprojekt", "eyebrow": "Produktions- och byggsnickeri från Pommern"},
@@ -542,9 +548,9 @@ _LOCALIZED_DETAILS = {
             {"title": "Special og krævende projekter", "body": "Usædvanlige detaljer, projektbaseret arbejde og samarbejde med arkitekter, designere og entreprenører.", "url": PATHS["architects"], "cta": "Se projektsamarbejde"},
         ],
         "realization_cases": [
+            {"title": "Gentagelige profiler og trækomponenter til virksomheder", "category": "B2B / korte serier", "photo": "b2b_components_detail", "alt": "Gentagelige træprofiler og komponenter til en virksomhed", "meta": ["omfang: profiler og halvfabrikata", "skala: prøve eller serie", "logistik: afhentning eller forsendelse"], "body": "Passer når en virksomhed har brug for en trækomponent til produkt, display eller videre montage. Vi kan starte med en prøve og derefter gå mod gentagelige serier."},
             {"title": "Trætrappe med gennemarbejdet detalje", "category": "Byggesnedkeri", "photo": "stairs_project", "alt": "Trætrappe med rækværk som eksempel på specialsnedkeri", "meta": ["materiale: træ", "omfang: produktion og tilpasning", "type: privat investor"], "body": "Passer til projekter, hvor opmåling, stabil konstruktion, tilpasning til interiøret og omhyggelig finish af synlige detaljer er vigtig."},
             {"title": "Trædetalje til interiør eller display", "category": "Special / interiør", "photo": "precision_detail", "alt": "Præcis trædetalje til et premiuminteriør", "meta": ["omfang: detalje og finish", "type: individuelt projekt", "region: Pommern"], "body": "En god forespørgsel starter med foto, tegning eller reference. Efter vurdering af materiale, skala og montage kan vi vælge en fornuftig produktionsmetode."},
-            {"title": "Døre, lister og snedkerdele", "category": "Døre / lister / dele", "photo": "doors_detail", "alt": "Trædøre som eksempel på måltilpasset byggesnedkeri", "meta": ["omfang: byggesnedkeri", "type: døre og finish", "tilbud: efter fotos og mål"], "body": "Passer til boliger, lokaler og lokale projekter, hvor standarddele ikke passer til mål, materiale eller ønsket udførelsesniveau."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snedkerværksted til trækomponenter, byggesnedkeri og specialprojekter", "eyebrow": "Produktions- og byggesnedkeri fra Pommern"},
@@ -594,9 +600,9 @@ _LOCALIZED_DETAILS = {
             {"title": "Spesial og krevende prosjekter", "body": "Uvanlige detaljer, prosjektbasert arbeid og samarbeid med arkitekter, designere og entreprenører.", "url": PATHS["architects"], "cta": "Se prosjektsamarbeid"},
         ],
         "realization_cases": [
+            {"title": "Repeterbare profiler og trekomponenter for bedrifter", "category": "B2B / korte serier", "photo": "b2b_components_detail", "alt": "Repeterbare treprofiler og komponenter for en bedrift", "meta": ["omfang: profiler og halvfabrikata", "skala: prøve eller serie", "logistikk: henting eller frakt"], "body": "Passer når en bedrift trenger en trekomponent til produkt, display eller videre montering. Vi kan starte med en prøve og deretter gå mot repeterbare serier."},
             {"title": "Tretrapp med gjennomarbeidet detalj", "category": "Byggsnekkerarbeid", "photo": "stairs_project", "alt": "Tretrapp med rekkverk som eksempel på spesialtilpasset snekkerarbeid", "meta": ["materiale: tre", "omfang: produksjon og tilpasning", "type: privat investor"], "body": "Passer prosjekter der oppmåling, stabil konstruksjon, tilpasning til interiøret og nøyaktig finish på synlige detaljer er viktig."},
             {"title": "Tredetalj til interiør eller display", "category": "Spesial / interiør", "photo": "precision_detail", "alt": "Presis tredetalj til et premiuminteriør", "meta": ["omfang: detalj og finish", "type: individuelt prosjekt", "region: Pommern"], "body": "En god forespørsel starter med bilde, tegning eller referanse. Etter vurdering av materiale, skala og montering kan vi velge en fornuftig produksjonsmåte."},
-            {"title": "Dører, lister og snekkerdeler", "category": "Dører / lister / deler", "photo": "doors_detail", "alt": "Tredører som eksempel på måltilpasset byggsnekkerarbeid", "meta": ["omfang: byggsnekkerarbeid", "type: dører og finish", "tilbud: etter bilder og mål"], "body": "Passer boliger, lokaler og lokale prosjekter der standarddeler ikke stemmer med mål, materiale eller ønsket utførelsesnivå."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snekkerverksted for trekomponenter, byggsnekkerarbeid og spesialprosjekter", "eyebrow": "Produksjons- og byggsnekkerverksted fra Pommern"},

@@ -58,7 +58,11 @@ test.describe("public marketing pages", () => {
       "alt",
       "Warsztat stolarski przygotowany do produkcji elementów drewnianych i realizacji na wymiar",
     );
-    await expect(page.locator(".photo-placeholder-name").first()).toContainText("b2b-short-series-wood-components.jpg");
+    await expect(page.locator(".feature-image source")).toHaveAttribute("srcset", /b2b-short-series-wood-components\.webp/);
+    await expect(page.locator(".feature-image img")).toHaveAttribute("src", /b2b-short-series-wood-components\.jpg/);
+    await expect(page.locator(".case-card").first().locator("source")).toHaveAttribute("srcset", /b2b-repeated-wooden-elements-detail\.webp/);
+    await expect(page.locator(".case-card").first().locator("img")).toHaveAttribute("src", /b2b-repeated-wooden-elements-detail\.jpg/);
+    await expect(page.locator(".photo-placeholder-name").first()).toContainText("wooden-stairs-pomorskie.jpg");
     await expect(page.locator(".photo-placeholder small")).toHaveCount(0);
     await expectNoHorizontalOverflow(page);
   });
@@ -162,8 +166,8 @@ test.describe("public marketing pages", () => {
     const decodedBytes = resources.reduce((sum, entry) => sum + entry.decodedBodySize, 0);
 
     expect(thirdPartyResources).toEqual([]);
-    expect(staticResources.length).toBeLessThanOrEqual(3);
-    expect(decodedBytes).toBeLessThan(240000);
+    expect(staticResources.length).toBeLessThanOrEqual(5);
+    expect(decodedBytes).toBeLessThan(430000);
   });
 
   test("conversion CTAs are trackable and mobile actions stay device-specific", async ({ page }, testInfo) => {

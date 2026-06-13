@@ -141,7 +141,12 @@ Change in the next version:
 
 Intended target: `b2b-short-series-wood-components.jpg`
 
-Decision: good direction for the homepage B2B section and the B2B production page, but treat this as a preview/reference unless we accept a lower-resolution temporary asset.
+Decision: used as a temporary live B2B section and B2B production-page image under `b2b-short-series-wood-components.jpg`, with optimized WebP and JPG exports. Keep it marked as temporary because the source is below the target master size.
+
+Current web exports:
+
+- `app/static/site/img/b2b-short-series-wood-components.webp`, `1448x1086`, about `105 KB`
+- `app/static/site/img/b2b-short-series-wood-components.jpg`, `1448x1086`, about `264 KB`
 
 What works:
 
@@ -161,7 +166,12 @@ Change in the next version:
 
 Intended target: `b2b-repeated-wooden-elements-detail.jpg`, and possibly a stronger B2B production-page hero direction than the simpler block series.
 
-Decision: strongest B2B marketing direction so far, especially for buyers who need repeatable profiles, semi-products and short production runs.
+Decision: used as a temporary live portfolio/realizations B2B proof image under `b2b-repeated-wooden-elements-detail.jpg`, with optimized WebP and JPG exports. This is the strongest B2B marketing direction so far, especially for buyers who need repeatable profiles, semi-products and short production runs.
+
+Current web exports:
+
+- `app/static/site/img/b2b-repeated-wooden-elements-detail.webp`, `1448x1086`, about `129 KB`
+- `app/static/site/img/b2b-repeated-wooden-elements-detail.jpg`, `1448x1086`, about `316 KB`
 
 What works:
 

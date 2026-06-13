@@ -12,7 +12,11 @@
     <div class="container realization-list">
         {% for case in realization_cases %}
             <article class="realization" data-track-view="portfolio_view">
-                {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="section" %}
+                {% if forloop.first %}
+                    {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="section" loading="eager" %}
+                {% else %}
+                    {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="section" %}
+                {% endif %}
                 <div>
                     <p class="case-category">{{ case.category }}</p>
                     <h2>{{ case.title }}</h2>

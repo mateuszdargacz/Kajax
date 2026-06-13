@@ -9,7 +9,7 @@
             <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="service_hero_quote" data-cta-location="{{ page.key }}_hero">{{ page.primary_cta }}</a>
         </div>
         <figure class="page-hero-image">
-            {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" %}
+            {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" loading="eager" %}
         </figure>
     </div>
 </section>

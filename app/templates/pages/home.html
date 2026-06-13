@@ -54,7 +54,7 @@
             <a class="button button-primary" href="{% url 'production' %}" data-track-cta="home_b2b_production" data-cta-location="home_b2b">{{ ui.home_b2b_cta }}</a>
         </div>
         <figure class="feature-image">
-            {% include "includes/photo_placeholder.html" with photo=page.b2b_photo alt=ui.home_b2b_image_alt variant="section" %}
+            {% include "includes/photo_placeholder.html" with photo=page.b2b_photo alt=ui.home_b2b_image_alt variant="section" loading="eager" %}
         </figure>
     </div>
 </section>
@@ -89,7 +89,11 @@
         <div class="cards three">
             {% for case in realization_cases %}
                 <article class="case-card" data-track-view="portfolio_view">
-                    {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" %}
+                    {% if forloop.first %}
+                        {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" loading="eager" %}
+                    {% else %}
+                        {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" %}
+                    {% endif %}
                     <div>
                         <p class="case-category">{{ case.category }}</p>
                         <h3>{{ case.title }}</h3>
