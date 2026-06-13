@@ -1,4 +1,5 @@
 .*
+!.dockerignore
 local.py
 
 *.py[co]

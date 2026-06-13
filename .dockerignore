@@ -1,0 +1,12 @@
+**
+
+!Dockerfile
+!requirements.txt
+!app/
+!app/**
+
+app/**/__pycache__/
+app/**/*.py[cod]
+app/data/
+app/db.sqlite3
+app/staticfiles/
