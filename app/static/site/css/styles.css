@@ -1131,11 +1131,21 @@ textarea.form-control {
     .section,
     .page-hero,
     .page-title {
-        padding: 58px 0;
+        padding: 50px 0;
     }
 
     .page-title + .section {
-        padding-top: 42px;
+        padding-top: 34px;
+    }
+
+    .messages {
+        position: static;
+        width: min(100% - 28px, 420px);
+        margin: 14px auto 0;
+    }
+
+    .message {
+        box-shadow: 0 10px 24px rgba(29, 36, 33, 0.08);
     }
 
     .card,
@@ -1168,6 +1178,14 @@ textarea.form-control {
 
     .form-grid {
         grid-template-columns: 1fr;
+    }
+
+    .form-intro {
+        margin-bottom: 16px;
+    }
+
+    textarea.form-control {
+        min-height: 128px;
     }
 
     .photo-placeholder-name {
