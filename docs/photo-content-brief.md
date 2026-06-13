@@ -38,7 +38,9 @@ Use real Kajax workshop, tools, materials, people, details and finished work. Av
 
 ## Implementation Placeholder Map
 
-Until real files are delivered, the website should render named placeholders. Replace each placeholder by adding the final image with the mapped filename and then changing the placeholder renderer to a real image renderer.
+Until real files are delivered, the website renders named visual placeholders with only the target filename visible in the UI. Shot purpose, framing and replacement notes live in this document, not under images on the public pages.
+
+Replace each placeholder by adding the final image with the mapped filename and then changing the placeholder renderer to a real image renderer.
 
 | Code key | Target filename | Main use | Required crop |
 | --- | --- | --- | --- |

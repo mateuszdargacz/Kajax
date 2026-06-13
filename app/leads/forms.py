@@ -48,7 +48,7 @@ class QuoteRequestForm(forms.ModelForm):
             "consent",
         ]
         widgets = {
-            "message": forms.Textarea(attrs={"rows": 6}),
+            "message": forms.Textarea(attrs={"rows": 5}),
         }
 
     def __init__(self, *args, **kwargs):
