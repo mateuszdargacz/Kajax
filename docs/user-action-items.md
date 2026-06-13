@@ -7,7 +7,7 @@ This list tracks inputs that should stay on the user's side while development co
 ## Photos And Visual Proof
 
 - [ ] Provide real workshop and project photos using the filenames mapped in `docs/photo-content-brief.md`.
-- [ ] Prioritize `hero-workshop-production.jpg`, `b2b-short-series-wood-components.jpg`, `woodwork-from-drawing-specification.jpg`, `wood-joinery-detail-closeup.jpg`, `custom-wooden-stairs-pomorskie.jpg`, `custom-wooden-doors-detail.jpg`, and `custom-artistic-woodwork-detail.jpg`.
+- [ ] Prioritize `hero-workshop-production.jpg`, `b2b-short-series-wood-components.jpg`, `woodwork-from-drawing-specification.jpg`, `wood-joinery-detail-closeup.jpg`, `wooden-stairs-pomorskie.jpg`, `wooden-doors-joinery-detail.jpg`, and `architectural-woodwork-detail.jpg`.
 - [ ] Add 3-5 strong B2B component batch photos showing repeatable elements, not only finished one-off projects.
 - [ ] Add at least one packing/logistics photo for future Europe B2B credibility.
 - [ ] Provide 3 portfolio case sets with: finished photo, detail photo, optional process photo, material, client type, challenge and result.
@@ -33,8 +33,8 @@ This list tracks inputs that should stay on the user's side while development co
 - [ ] Confirm real production capabilities: machinery, max/min dimensions, repeatable processes, materials and finishes.
 - [ ] Confirm practical minimum order ranges for B2B short series.
 - [ ] Confirm whether B2B shipping outside Pomorskie and Poland is realistic now.
-- [ ] Confirm which product categories father wants to push first: POS/display parts, profiles/listwy, frames, semi-products, stairs, doors, custom artistic details.
-- [ ] Confirm what should be filtered out early: unrealistic deadlines, tiny one-off jobs, unclear custom work, low-budget local tasks.
+- [ ] Confirm which product categories father wants to push first: POS/display parts, profiles/listwy, frames, semi-products, stairs, doors, architectural/unusual details.
+- [ ] Confirm what should be filtered out early: unrealistic deadlines, tiny one-off jobs, unclear unusual work, low-budget local tasks.
 
 ## Local SEO And Trust
 

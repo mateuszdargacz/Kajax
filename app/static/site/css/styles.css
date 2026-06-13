@@ -79,10 +79,11 @@ a {
 }
 
 .header-inner {
+    width: min(1280px, calc(100% - 40px));
     min-height: 76px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 14px;
 }
 
 .brand {
@@ -129,7 +130,7 @@ a {
 
 .nav a {
     flex: 0 0 auto;
-    padding: 10px 10px;
+    padding: 10px 8px;
     color: var(--muted);
     text-decoration: none;
     font-size: 0.91rem;
@@ -155,6 +156,49 @@ a {
     border-radius: var(--radius);
     white-space: nowrap;
     box-shadow: 0 10px 22px rgba(29, 36, 33, 0.16);
+}
+
+.header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid rgba(217, 208, 194, 0.88);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.62);
+    white-space: nowrap;
+}
+
+.language-switcher a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    padding: 7px 6px;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 850;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+}
+
+.language-switcher a:hover,
+.language-switcher a:focus {
+    color: var(--ink);
+    background: var(--surface-warm);
+}
+
+.language-switcher a.is-active {
+    color: white;
+    background: var(--forest);
 }
 
 .mobile-action-bar {
@@ -1083,11 +1127,17 @@ textarea.form-control {
 
 @media (max-width: 1100px) {
     .brand {
-        min-width: 220px;
+        min-width: 198px;
     }
 
     .nav a {
-        padding-inline: 9px;
+        padding-inline: 7px;
+        font-size: 0.86rem;
+    }
+
+    .language-switcher a {
+        min-width: 30px;
+        padding-inline: 5px;
     }
 }
 
@@ -1102,9 +1152,14 @@ textarea.form-control {
         flex: 1;
     }
 
+    .header-actions {
+        margin-left: auto;
+    }
+
     .nav {
         order: 3;
         width: 100%;
+        flex: 0 0 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
         gap: 6px;
@@ -1220,6 +1275,17 @@ textarea.form-control {
 
     .header-phone {
         width: 100%;
+    }
+
+    .header-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .language-switcher {
+        justify-content: center;
     }
 
     .nav {

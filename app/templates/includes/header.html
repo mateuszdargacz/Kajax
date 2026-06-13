@@ -12,6 +12,17 @@
                 <a href="{{ href }}">{{ label }}</a>
             {% endfor %}
         </nav>
-        <a class="header-phone" href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ site.phone }}</a>
+        <div class="header-actions">
+            {% if alternate_urls %}
+                <nav class="language-switcher" aria-label="{{ ui.language_aria }}">
+                    {% for item in alternate_urls %}
+                        {% if item.code != "x-default" %}
+                            <a href="{{ item.url }}" hreflang="{{ item.code }}" lang="{{ item.code }}"{% if item.code == LANGUAGE_CODE %} class="is-active" aria-current="page"{% endif %}>{{ item.code|upper }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            {% endif %}
+            <a class="header-phone" href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ site.phone }}</a>
+        </div>
     </div>
 </header>

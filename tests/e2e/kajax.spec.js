@@ -1,12 +1,12 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Stolarnia dla firm, architektów i wymagających projektów z drewna" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane i krótkie serie dla firm" },
+  { path: "/", h1: "Drewno wykonane pod konkretny projekt" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm bez własnej stolarni" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Elementy drewniane dla firm reklamowych i eventowych" },
-  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i stolarka drewniana na wymiar w Pomorskiem" },
+  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i stolarka na wymiar w Pomorskiem" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: co wpływa na cenę i termin realizacji?" },
-  { path: "/dla-architektow-i-firm/", h1: "Stolarnia do nietypowych detali i projektów dla architektów" },
+  { path: "/dla-architektow-i-firm/", h1: "Stolarnia do detali, których nie ma w katalogu" },
   { path: "/realizacje/", h1: "Jakie projekty warto wysłać do naszej stolarni" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?" },
@@ -35,6 +35,7 @@ test.describe("public marketing pages", () => {
       await expect(page.locator("h1")).toContainText(publicPage.h1);
       await expect(page.getByRole("banner").getByRole("link", { name: "604 238 246" })).toBeVisible();
       await expect(page.getByRole("navigation", { name: "Główna nawigacja" })).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "PL" })).toBeVisible();
       await expect(page.locator("body")).not.toContainText("hero_workshop");
       await expect(page.locator("body")).not.toContainText("Homepage hero");
       await expect(page.locator("body")).not.toContainText("Wide workshop");
@@ -46,9 +47,11 @@ test.describe("public marketing pages", () => {
   test("home has visible conversion CTAs and photo filename-only placeholders", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Zobacz zakres prac" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij zdjęcie lub rysunek" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Sprawdź zakres" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Zobacz checklistę do wyceny" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
+    await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".photo-placeholder-name").first()).toContainText("hero-workshop-production.jpg");
     await expect(page.locator(".photo-placeholder small")).toHaveCount(0);
     await expectNoHorizontalOverflow(page);
@@ -170,7 +173,7 @@ test.describe("public marketing pages", () => {
       };
     });
 
-    await page.getByRole("link", { name: "Zobacz zakres prac" }).click();
+    await page.getByRole("link", { name: "Sprawdź zakres" }).click();
     const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
     expect(ctaEvents).toContainEqual(
       expect.objectContaining({

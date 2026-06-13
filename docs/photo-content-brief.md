@@ -4,13 +4,13 @@ Last updated: 2026-06-13
 
 ## Purpose
 
-New photos should make Kajax feel like a capable production and custom joinery workshop, not a generic local carpenter.
+New photos should make Kajax feel like a capable production and made-to-measure joinery workshop, not a generic local carpenter.
 
 The site needs visual proof for three commercial directions:
 
 1. B2B wooden components, short series and semi-products.
 2. Construction joinery: stairs, doors, trims, built-ins.
-3. Custom/artistic/premium details for architects, firms and demanding investors.
+3. Unusual/project-based/premium details for architects, firms and demanding investors.
 
 Use real Kajax workshop, tools, materials, people, details and finished work. Avoid stock photos, exaggerated luxury styling and rustic hobby aesthetics.
 
@@ -49,16 +49,16 @@ Replace each placeholder by adding the final image with the mapped filename and 
 | `b2b_components_detail` | `b2b-repeated-wooden-elements-detail.jpg` | B2B proof/detail sections | square and `4:3` |
 | `b2b_packing` | `wood-components-packed-for-shipping.jpg` | Logistics/Europe B2B note | `4:3` |
 | `drawing_spec` | `woodwork-from-drawing-specification.jpg` | Quote/process sections | `4:3` |
-| `precision_detail` | `wood-joinery-detail-closeup.jpg` | Architects/custom and trust sections | square and `4:3` |
+| `precision_detail` | `wood-joinery-detail-closeup.jpg` | Architects/details and trust sections | square and `4:3` |
 | `finished_edge_detail` | `finished-wood-edge-detail.jpg` | Detail/quality section | square |
-| `stairs_project` | `custom-wooden-stairs-pomorskie.jpg` | Construction joinery and portfolio | `4:3` |
+| `stairs_project` | `wooden-stairs-pomorskie.jpg` | Construction joinery and portfolio | `4:3` |
 | `stairs_detail` | `wooden-stairs-detail-wejherowo.jpg` | Local SEO/detail section | `4:3` |
-| `doors_detail` | `custom-wooden-doors-detail.jpg` | Construction joinery page | `4:3` |
+| `doors_detail` | `wooden-doors-joinery-detail.jpg` | Construction joinery page | `4:3` |
 | `wooden_trims` | `wooden-trims-made-to-measure.jpg` | Trims/listwy content | `4:3` |
-| `built_in_custom` | `built-in-woodwork-custom-project.jpg` | Custom/built-in portfolio | `4:3` |
-| `artistic_detail` | `custom-artistic-woodwork-detail.jpg` | Architects/custom page | `4:3` |
+| `built_in_custom` | `built-in-woodwork-project.jpg` | Built-in/project-based portfolio | `4:3` |
+| `artistic_detail` | `architectural-woodwork-detail.jpg` | Architects/details page | `4:3` |
 | `materials` | `wood-material-samples-workshop.jpg` | Materials/process section | `4:3` |
-| `boards` | `solid-wood-boards-for-custom-joinery.jpg` | Workshop/material background | `4:3` |
+| `boards` | `solid-wood-boards-for-joinery.jpg` | Workshop/material background | `4:3` |
 | `craft_checking` | `craftsman-checking-wood-detail.jpg` | Trust/process/human craft | `4:3` |
 | `cutting_process` | `wood-cutting-workshop-process.jpg` | Workshop process | `4:3` |
 | `sanding_process` | `wood-sanding-finishing-process.jpg` | Workshop process | `4:3` |
@@ -71,7 +71,7 @@ Replace each placeholder by adding the final image with the mapped filename and 
 Purpose:
 
 - First impression.
-- Must show Kajax as a serious workshop able to handle B2B/custom work.
+- Must show Kajax as a serious workshop able to handle B2B and made-to-measure work.
 
 Frame:
 
@@ -200,7 +200,7 @@ Frame:
 
 Suggested filenames:
 
-- `custom-wooden-stairs-pomorskie.jpg`
+- `wooden-stairs-pomorskie.jpg`
 - `wooden-stairs-detail-wejherowo.jpg`
 
 Alt text:
@@ -220,15 +220,15 @@ Frame:
 
 Suggested filenames:
 
-- `custom-wooden-doors-detail.jpg`
+- `wooden-doors-joinery-detail.jpg`
 - `wooden-trims-made-to-measure.jpg`
-- `built-in-woodwork-custom-project.jpg`
+- `built-in-woodwork-project.jpg`
 
 Alt text:
 
 - `Stolarka budowlana na wymiar: drzwi, listwy i elementy wykończeniowe z drewna`
 
-### 8. Custom / Artistic Piece
+### 8. Architectural Or Unusual Detail
 
 Purpose:
 
@@ -236,12 +236,12 @@ Purpose:
 
 Frame:
 
-- A more unusual detail, curved element, decorative part, custom furniture fragment, restoration or architectural detail.
+- A more unusual detail, curved element, decorative part, built-in fragment, restoration or architectural detail.
 - Include one wide context and one closeup.
 
 Suggested filename:
 
-- `custom-artistic-woodwork-detail.jpg`
+- `architectural-woodwork-detail.jpg`
 
 Alt text:
 
@@ -261,7 +261,7 @@ Frame:
 Suggested filenames:
 
 - `wood-material-samples-workshop.jpg`
-- `solid-wood-boards-for-custom-joinery.jpg`
+- `solid-wood-boards-for-joinery.jpg`
 
 Alt text:
 
@@ -390,7 +390,7 @@ Home:
 - hero workshop,
 - B2B repeated elements,
 - construction joinery,
-- custom detail,
+- architectural detail,
 - process/detail closeups.
 
 `/produkcja-elementow-drewnianych`:
@@ -410,7 +410,7 @@ Home:
 
 `/dla-architektow-i-firm`:
 
-- custom details,
+- unusual details,
 - drawings/specs,
 - premium closeups,
 - selected portfolio cases.
