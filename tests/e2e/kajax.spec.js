@@ -1,15 +1,15 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Elementy drewniane, serie i stolarka wykonywane pod projekt" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Produkcja elementów drewnianych dla firm" },
-  { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Elementy drewniane dla firm reklamowych i eventowych" },
-  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i drewniane wykończenia na wymiar" },
-  { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: co wpływa na cenę i termin realizacji?" },
-  { path: "/dla-architektow-i-firm/", h1: "Drewniane detale dla architektów, projektantów i firm" },
-  { path: "/realizacje/", h1: "Zakresy prac, które dobrze pasują do naszej stolarni" },
-  { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie, żeby szybciej dostać konkretną wycenę" },
-  { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Kiedy krótka seria elementów drewnianych ma sens?" },
+  { path: "/", h1: "Stolarnia dla firm, inwestycji i projektów spoza katalogu" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Drewniane komponenty dla firm, od próbki do małej serii" },
+  { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane elementy POS, displaye i detale eventowe" },
+  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i wykończenia z drewna na wymiar" },
+  { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
+  { path: "/dla-architektow-i-firm/", h1: "Nietypowe detale z drewna dla architektów i firm" },
+  { path: "/realizacje/", h1: "Realizacje i przykłady zleceń" },
+  { path: "/jak-przygotowac-zapytanie/", h1: "Co wysłać do stolarni, żeby szybko dostać odpowiedź?" },
+  { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Od próbki do krótkiej serii drewnianych komponentów" },
   { path: "/kontakt/", h1: "Kontakt z Kajax Stolarstwo" },
 ];
 
@@ -47,16 +47,16 @@ test.describe("public marketing pages", () => {
   test("home has visible conversion CTAs and mapped images", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "Wyślij projekt do oceny" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Sprawdź zakres" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Zobacz checklistę do wyceny" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij zdjęcie lub wzór" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Zobacz ofertę" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Zobacz, co wysłać" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production-\d+\.webp/);
     await expect(page.locator(".hero-media img")).toHaveAttribute("src", /hero-workshop-production\.jpg/);
     await expect(page.locator(".hero-media img")).toHaveAttribute(
       "alt",
-      "Warsztat stolarski przygotowany do produkcji elementów drewnianych i realizacji na wymiar",
+      "Warsztat Kajax z maszynami stolarskimi i drewnem przygotowanym do obróbki",
     );
     await expect(page.locator(".feature-image source")).toHaveAttribute("srcset", /b2b-short-series-wood-components-\d+\.webp/);
     await expect(page.locator(".feature-image img")).toHaveAttribute("src", /b2b-short-series-wood-components\.jpg/);
@@ -72,10 +72,10 @@ test.describe("public marketing pages", () => {
   test("quote guide explains input requirements and exposes schema", async ({ page }) => {
     await page.goto("/jak-przygotowac-zapytanie/");
 
-    await expect(page.locator("h1")).toContainText("Jak przygotować zapytanie");
-    await expect(page.locator("body")).toContainText("Gdy element ma być powtarzalny");
-    await expect(page.locator("body")).toContainText("Co zwykle blokuje szybką odpowiedź");
-    await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" }).first()).toBeVisible();
+    await expect(page.locator("h1")).toContainText("Co wysłać do stolarni");
+    await expect(page.locator("body")).toContainText("Dla komponentów i krótkich serii");
+    await expect(page.locator("body")).toContainText("Co zwykle blokuje wycenę");
+    await expect(page.getByRole("link", { name: "Wyślij zapytanie" }).first()).toBeVisible();
     await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /woodwork-from-drawing-specification-\d+\.webp/);
     const schema = await page.locator('script[type="application/ld+json"]').textContent();
     expect(schema).toContain('"@type": "HowTo"');
@@ -86,11 +86,11 @@ test.describe("public marketing pages", () => {
   test("short series guide qualifies B2B component leads and links back to production", async ({ page }) => {
     await page.goto("/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/");
 
-    await expect(page.locator("h1")).toContainText("Kiedy krótka seria elementów drewnianych ma sens");
-    await expect(page.locator("body")).toContainText("Gdy własna produkcja byłaby za droga albo zbyt wolna");
-    await expect(page.locator("body")).toContainText("Kiedy seria nie powinna być pierwszym krokiem");
+    await expect(page.locator("h1")).toContainText("Od próbki do krótkiej serii");
+    await expect(page.locator("body")).toContainText("Zamiast własnego warsztatu");
+    await expect(page.locator("body")).toContainText("Kiedy nie zaczynać od większej partii");
     await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /wood-components-packed-for-shipping-\d+\.webp/);
-    await expect(page.getByRole("link", { name: /Produkcja elementów drewnianych/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Komponenty drewniane dla firm/ })).toHaveAttribute(
       "href",
       "/produkcja-elementow-drewnianych/",
     );
@@ -103,15 +103,15 @@ test.describe("public marketing pages", () => {
   test("production page links to B2B guides", async ({ page }) => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
-    await expect(page.getByRole("link", { name: /Kiedy krótka seria elementów drewnianych ma sens/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Od próbki do krótkiej serii/ })).toHaveAttribute(
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
     );
-    await expect(page.getByRole("link", { name: /Elementy drewniane dla firm reklamowych/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Drewniane elementy POS i displaye/ })).toHaveAttribute(
       "href",
       "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
     );
-    await expect(page.getByRole("link", { name: /Jak przygotować zapytanie do stolarni/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Co wysłać do stolarni/ })).toHaveAttribute(
       "href",
       "/jak-przygotowac-zapytanie/",
     );
@@ -121,10 +121,10 @@ test.describe("public marketing pages", () => {
   test("advertising event guide qualifies POS and event leads", async ({ page }) => {
     await page.goto("/elementy-drewniane-dla-firm-reklamowych-i-eventowych/");
 
-    await expect(page.locator("h1")).toContainText("firm reklamowych");
-    await expect(page.locator("body")).toContainText("Kiedy drewno wnosi wartość do ekspozycji");
+    await expect(page.locator("h1")).toContainText("Drewniane elementy POS");
+    await expect(page.locator("body")).toContainText("Gdy ekspozycja ma wyglądać lepiej niż plastik");
     await expect(page.locator("body")).toContainText("Co może zablokować szybkie wdrożenie");
-    await expect(page.locator(".related-card", { hasText: "Produkcja elementów drewnianych" })).toHaveAttribute(
+    await expect(page.locator(".related-card", { hasText: "Komponenty drewniane dla firm" })).toHaveAttribute(
       "href",
       "/produkcja-elementow-drewnianych/",
     );
@@ -150,7 +150,7 @@ test.describe("public marketing pages", () => {
   test("construction page links to stairs quote guide", async ({ page }) => {
     await page.goto("/stolarka-budowlana/");
 
-    await expect(page.getByRole("link", { name: /Co wpływa na cenę i termin schodów drewnianych/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Od czego zależy cena schodów drewnianych/ })).toHaveAttribute(
       "href",
       "/schody-drewniane-co-wplywa-na-cene-i-termin/",
     );
@@ -191,7 +191,7 @@ test.describe("public marketing pages", () => {
       };
     });
 
-    await page.getByRole("link", { name: "Sprawdź zakres" }).click();
+    await page.getByRole("link", { name: "Zobacz ofertę" }).click();
     const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
     expect(ctaEvents).toContainEqual(
       expect.objectContaining({
@@ -271,25 +271,25 @@ test.describe("quote form", () => {
 
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");
-    await page.getByLabel("Jaki to rodzaj projektu?").selectOption("custom_artistic");
-    await page.getByLabel("Opisz krótko, co ma powstać").fill(
+    await page.getByLabel("Co mamy wykonać?").selectOption("custom_artistic");
+    await page.getByLabel("Napisz krótko, czego potrzebujesz").fill(
       "Potrzebujemy krótkiej serii precyzyjnych elementów drewnianych według rysunku.",
     );
     await page.getByLabel("Wyrażam zgodę na kontakt w sprawie przesłanego zapytania.").check();
 
     await page.locator("summary", { hasText: "Więcej informacji" }).click();
     await page.getByLabel("Firma").fill("E2E Manufacturing");
-    await page.getByLabel("Ilość / skala").selectOption("small_series");
+    await page.getByLabel("Liczba sztuk").selectOption("small_series");
     await page.getByLabel("Lokalizacja").fill("Gdańsk / Europa");
     await page.getByLabel("Termin").fill("Próbka w czerwcu");
-    await page.getByLabel("Zdjęcia, rysunki lub specyfikacja").setInputFiles({
+    await page.getByLabel("Zdjęcia, rysunki albo wzór").setInputFiles({
       name: "rysunek-testowy.txt",
       mimeType: "text/plain",
       buffer: Buffer.from("testowy opis rysunku"),
     });
 
     await page.getByRole("button", { name: "Wyślij zapytanie" }).click();
-    await expect(page.locator(".message")).toContainText("Dziękujemy. Zapytanie zostało zapisane");
+    await expect(page.locator(".message")).toContainText("Dziękujemy. Zapytanie zostało wysłane");
 
     const events = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eDataLayerEvents") || "[]"));
     expect(events).toEqual(expect.arrayContaining(["quote_form_start", "project_type_select", "file_upload_complete", "generate_lead"]));
@@ -303,8 +303,8 @@ test.describe("quote form", () => {
     await page.locator("summary", { hasText: "Więcej informacji" }).click();
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");
     await expect(page.getByLabel("Firma")).toBeVisible();
-    await expect(page.getByLabel("Zdjęcia, rysunki lub specyfikacja")).toBeVisible();
-    await expect(page.getByRole("link", { name: "Nie wiesz, co przygotować? Zobacz checklistę" })).toBeVisible();
+    await expect(page.getByLabel("Zdjęcia, rysunki albo wzór")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Co dopisać do zapytania" })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
 });

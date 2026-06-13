@@ -20,7 +20,7 @@ CONFIRMATION_COPY = {
         "subject": "Potwierdzenie otrzymania zapytania - Kajax",
         "greeting": "Dzień dobry,",
         "intro": "dziękujemy za przesłanie zapytania do Kajax Stolarstwo.",
-        "body": "Otrzymaliśmy opis projektu. Sprawdzimy zakres, materiał, ilość, termin oraz logistykę i wrócimy z odpowiedzią. Jeśli do dalszej wyceny zabraknie informacji, dopytamy mailowo lub telefonicznie.",
+        "body": "Otrzymaliśmy wiadomość. Przeczytamy opis, sprawdzimy materiał i sposób wykonania, a potem wrócimy z odpowiedzią. Jeśli czegoś zabraknie do wyceny, odpiszemy albo zadzwonimy.",
         "summary": "Podsumowanie",
         "inquiry_type": "Typ zapytania",
         "scale": "Skala",

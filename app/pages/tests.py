@@ -66,41 +66,41 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, '"@type": "FAQPage"')
         self.assertContains(response, '"@type": "OfferCatalog"')
-        self.assertContains(response, "elementy POS i displayów")
+        self.assertContains(response, "elementy POS, displaye i ekspozytory")
         self.assertContains(response, '"@type": "CommunicateAction"')
 
     def test_guide_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("guide"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Jak przygotować zapytanie")
+        self.assertContains(response, "Co wysłać do stolarni")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Gdy element ma być powtarzalny")
+        self.assertContains(response, "Dla komponentów i krótkich serii")
 
     def test_short_series_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("short_series"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Kiedy krótka seria elementów drewnianych ma sens")
+        self.assertContains(response, "Od próbki do krótkiej serii drewnianych komponentów")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Gdy element będzie wracał w zamówieniach")
+        self.assertContains(response, "Komponent, który będzie wracał")
 
     def test_advertising_events_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("advertising_events"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Elementy drewniane dla firm reklamowych")
+        self.assertContains(response, "Drewniane elementy POS, displaye")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
-        self.assertContains(response, "Kiedy drewno wnosi wartość do ekspozycji")
+        self.assertContains(response, "Gdy ekspozycja ma wyglądać lepiej niż plastik")
 
     def test_stairs_pricing_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("stairs_pricing"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Schody drewniane: co wpływa na cenę")
+        self.assertContains(response, "Schody drewniane: od czego zależy cena")
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
         self.assertContains(response, "Układ i wymiary schodów")
