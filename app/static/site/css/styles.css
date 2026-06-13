@@ -1101,6 +1101,12 @@ textarea.form-control {
         line-height: 1.04;
     }
 
+    .page-hero h1,
+    .page-title h1 {
+        font-size: 2.28rem;
+        line-height: 1.08;
+    }
+
     h2 {
         font-size: 2.05rem;
     }
