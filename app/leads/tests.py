@@ -35,7 +35,7 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(mail.outbox[0].reply_to, ["lead@example.com"])
         self.assertEqual(mail.outbox[0].from_email, "Kajax Stolarstwo <mail@kajax.eu>")
         self.assertEqual(mail.outbox[0].alternatives[0][1], "text/html")
-        self.assertIn("Nowy lead z formularza", mail.outbox[0].alternatives[0][0])
+        self.assertIn("Nowe zapytanie ze strony", mail.outbox[0].alternatives[0][0])
         self.assertEqual(mail.outbox[1].to, ["lead@example.com"])
         self.assertEqual(mail.outbox[1].alternatives[0][1], "text/html")
 

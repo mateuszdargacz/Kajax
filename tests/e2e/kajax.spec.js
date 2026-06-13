@@ -1,15 +1,15 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Stolarnia dla firm, inwestycji i projektów spoza katalogu" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Drewniane komponenty dla firm, od próbki do małej serii" },
-  { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane elementy POS, displaye i detale eventowe" },
-  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i wykończenia z drewna na wymiar" },
+  { path: "/", h1: "Elementy z drewna dla firm, wnętrz i inwestycji" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm bez uruchamiania własnej stolarni" },
+  { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane displaye, elementy POS i detale eventowe" },
+  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i drewniane wykończenia dopasowane do miejsca" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
-  { path: "/dla-architektow-i-firm/", h1: "Nietypowe detale z drewna dla architektów i firm" },
-  { path: "/realizacje/", h1: "Realizacje i przykłady zleceń" },
-  { path: "/jak-przygotowac-zapytanie/", h1: "Co wysłać do stolarni, żeby szybko dostać odpowiedź?" },
-  { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Od próbki do krótkiej serii drewnianych komponentów" },
+  { path: "/dla-architektow-i-firm/", h1: "Drewniane detale pod projekt, którego nie da się kupić z półki" },
+  { path: "/realizacje/", h1: "Przykłady tematów, które warto wysłać do oceny" },
+  { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać konkretną odpowiedź?" },
+  { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Krótka seria elementów drewnianych: kiedy ma sens?" },
   { path: "/kontakt/", h1: "Kontakt z Kajax Stolarstwo" },
 ];
 
@@ -47,9 +47,9 @@ test.describe("public marketing pages", () => {
   test("home has visible conversion CTAs and mapped images", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "Wyślij zdjęcie lub wzór" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij projekt do oceny" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Zobacz ofertę" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Zobacz, co wysłać" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production-\d+\.webp/);
@@ -72,9 +72,9 @@ test.describe("public marketing pages", () => {
   test("quote guide explains input requirements and exposes schema", async ({ page }) => {
     await page.goto("/jak-przygotowac-zapytanie/");
 
-    await expect(page.locator("h1")).toContainText("Co wysłać do stolarni");
-    await expect(page.locator("body")).toContainText("Dla komponentów i krótkich serii");
-    await expect(page.locator("body")).toContainText("Co zwykle blokuje wycenę");
+    await expect(page.locator("h1")).toContainText("Jak opisać zlecenie");
+    await expect(page.locator("body")).toContainText("Element drewniany albo krótka seria dla firmy");
+    await expect(page.locator("body")).toContainText("Co zwykle wydłuża odpowiedź");
     await expect(page.getByRole("link", { name: "Wyślij zapytanie" }).first()).toBeVisible();
     await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /woodwork-from-drawing-specification-\d+\.webp/);
     const schema = await page.locator('script[type="application/ld+json"]').textContent();
@@ -86,11 +86,11 @@ test.describe("public marketing pages", () => {
   test("short series guide qualifies B2B component leads and links back to production", async ({ page }) => {
     await page.goto("/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/");
 
-    await expect(page.locator("h1")).toContainText("Od próbki do krótkiej serii");
-    await expect(page.locator("body")).toContainText("Zamiast własnego warsztatu");
+    await expect(page.locator("h1")).toContainText("Krótka seria elementów drewnianych");
+    await expect(page.locator("body")).toContainText("Gdy własny warsztat się nie opłaca");
     await expect(page.locator("body")).toContainText("Kiedy nie zaczynać od większej partii");
     await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /wood-components-packed-for-shipping-\d+\.webp/);
-    await expect(page.getByRole("link", { name: /Komponenty drewniane dla firm/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Elementy drewniane dla firm/ })).toHaveAttribute(
       "href",
       "/produkcja-elementow-drewnianych/",
     );
@@ -103,15 +103,15 @@ test.describe("public marketing pages", () => {
   test("production page links to B2B guides", async ({ page }) => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
-    await expect(page.getByRole("link", { name: /Od próbki do krótkiej serii/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Kiedy krótka seria ma sens/ })).toHaveAttribute(
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
     );
-    await expect(page.getByRole("link", { name: /Drewniane elementy POS i displaye/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Drewniane displaye i elementy POS/ })).toHaveAttribute(
       "href",
       "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
     );
-    await expect(page.getByRole("link", { name: /Co wysłać do stolarni/ })).toHaveAttribute(
+    await expect(page.locator(".related-card", { hasText: "Jak opisać zlecenie" })).toHaveAttribute(
       "href",
       "/jak-przygotowac-zapytanie/",
     );
@@ -121,10 +121,10 @@ test.describe("public marketing pages", () => {
   test("advertising event guide qualifies POS and event leads", async ({ page }) => {
     await page.goto("/elementy-drewniane-dla-firm-reklamowych-i-eventowych/");
 
-    await expect(page.locator("h1")).toContainText("Drewniane elementy POS");
-    await expect(page.locator("body")).toContainText("Gdy ekspozycja ma wyglądać lepiej niż plastik");
+    await expect(page.locator("h1")).toContainText("Drewniane displaye");
+    await expect(page.locator("body")).toContainText("Gdy materiał ma budować wrażenie marki");
     await expect(page.locator("body")).toContainText("Co może zablokować szybkie wdrożenie");
-    await expect(page.locator(".related-card", { hasText: "Komponenty drewniane dla firm" })).toHaveAttribute(
+    await expect(page.locator(".related-card", { hasText: "Elementy drewniane dla firm" })).toHaveAttribute(
       "href",
       "/produkcja-elementow-drewnianych/",
     );
@@ -140,7 +140,7 @@ test.describe("public marketing pages", () => {
     await expect(page.locator("h1")).toContainText("Schody drewniane");
     await expect(page.locator("body")).toContainText("Układ i wymiary schodów");
     await expect(page.locator("body")).toContainText("Co najczęściej opóźnia wycenę schodów");
-    await expect(page.locator(".related-card", { hasText: "Stolarka budowlana" })).toHaveAttribute("href", "/stolarka-budowlana/");
+    await expect(page.locator(".related-card", { hasText: "Schody i stolarka na wymiar" })).toHaveAttribute("href", "/stolarka-budowlana/");
     const schema = await page.locator('script[type="application/ld+json"]').textContent();
     expect(schema).toContain('"@type": "HowTo"');
     expect(schema).toContain('"@type": "Article"');
@@ -272,24 +272,24 @@ test.describe("quote form", () => {
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");
     await page.getByLabel("Co mamy wykonać?").selectOption("custom_artistic");
-    await page.getByLabel("Napisz krótko, czego potrzebujesz").fill(
+    await page.getByLabel("Opisz element lub zakres prac").fill(
       "Potrzebujemy krótkiej serii precyzyjnych elementów drewnianych według rysunku.",
     );
     await page.getByLabel("Wyrażam zgodę na kontakt w sprawie przesłanego zapytania.").check();
 
-    await page.locator("summary", { hasText: "Więcej informacji" }).click();
+    await page.locator("summary", { hasText: "Mam więcej danych" }).click();
     await page.getByLabel("Firma").fill("E2E Manufacturing");
     await page.getByLabel("Liczba sztuk").selectOption("small_series");
     await page.getByLabel("Lokalizacja").fill("Gdańsk / Europa");
     await page.getByLabel("Termin").fill("Próbka w czerwcu");
-    await page.getByLabel("Zdjęcia, rysunki albo wzór").setInputFiles({
+    await page.getByLabel("Zdjęcie, rysunek albo wzór").setInputFiles({
       name: "rysunek-testowy.txt",
       mimeType: "text/plain",
       buffer: Buffer.from("testowy opis rysunku"),
     });
 
     await page.getByRole("button", { name: "Wyślij zapytanie" }).click();
-    await expect(page.locator(".message")).toContainText("Dziękujemy. Zapytanie zostało wysłane");
+    await expect(page.locator(".message")).toContainText("Dziękujemy. Zapytanie dotarło");
 
     const events = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eDataLayerEvents") || "[]"));
     expect(events).toEqual(expect.arrayContaining(["quote_form_start", "project_type_select", "file_upload_complete", "generate_lead"]));
@@ -300,11 +300,11 @@ test.describe("quote form", () => {
     await page.goto("/wycena/");
 
     await expect(page.locator(".optional-fields")).not.toHaveAttribute("open", "");
-    await page.locator("summary", { hasText: "Więcej informacji" }).click();
+    await page.locator("summary", { hasText: "Mam więcej danych" }).click();
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");
     await expect(page.getByLabel("Firma")).toBeVisible();
-    await expect(page.getByLabel("Zdjęcia, rysunki albo wzór")).toBeVisible();
-    await expect(page.getByRole("link", { name: "Co dopisać do zapytania" })).toBeVisible();
+    await expect(page.getByLabel("Zdjęcie, rysunek albo wzór")).toBeVisible();
+    await expect(page.locator(".quote-aside").getByRole("link", { name: "Jak opisać zlecenie" })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
 });
