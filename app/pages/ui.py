@@ -2,6 +2,9 @@ UI_COPY = {
     "pl": {
         "skip_link": "Przejdź do treści",
         "nav_aria": "Główna nawigacja",
+        "mobile_actions_aria": "Szybki kontakt",
+        "mobile_call": "Zadzwoń",
+        "mobile_quote": "Wycena",
         "brand_tagline": "stolarnia produkcyjno-budowlana",
         "footer_contact": "Kontakt",
         "footer_quote": "Zapytanie",
@@ -63,6 +66,9 @@ UI_COPY = {
     "en": {
         "skip_link": "Skip to content",
         "nav_aria": "Main navigation",
+        "mobile_actions_aria": "Quick contact",
+        "mobile_call": "Call",
+        "mobile_quote": "Quote",
         "brand_tagline": "production and construction joinery workshop",
         "footer_contact": "Contact",
         "footer_quote": "Quote request",
@@ -124,6 +130,9 @@ UI_COPY = {
     "de": {
         "skip_link": "Zum Inhalt springen",
         "nav_aria": "Hauptnavigation",
+        "mobile_actions_aria": "Schneller Kontakt",
+        "mobile_call": "Anrufen",
+        "mobile_quote": "Anfrage",
         "brand_tagline": "Produktions- und Bauschreinerei",
         "footer_contact": "Kontakt",
         "footer_quote": "Anfrage",
@@ -185,6 +194,9 @@ UI_COPY = {
     "sv": {
         "skip_link": "Hoppa till innehåll",
         "nav_aria": "Huvudnavigering",
+        "mobile_actions_aria": "Snabb kontakt",
+        "mobile_call": "Ring",
+        "mobile_quote": "Offert",
         "brand_tagline": "produktions- och byggsnickeri",
         "footer_contact": "Kontakt",
         "footer_quote": "Offertförfrågan",
@@ -246,6 +258,9 @@ UI_COPY = {
     "da": {
         "skip_link": "Gå til indhold",
         "nav_aria": "Hovednavigation",
+        "mobile_actions_aria": "Hurtig kontakt",
+        "mobile_call": "Ring",
+        "mobile_quote": "Tilbud",
         "brand_tagline": "produktions- og byggesnedkeri",
         "footer_contact": "Kontakt",
         "footer_quote": "Tilbudsanmodning",
@@ -307,6 +322,9 @@ UI_COPY = {
     "no": {
         "skip_link": "Gå til innhold",
         "nav_aria": "Hovednavigasjon",
+        "mobile_actions_aria": "Rask kontakt",
+        "mobile_call": "Ring",
+        "mobile_quote": "Forespørsel",
         "brand_tagline": "produksjons- og byggsnekkerverksted",
         "footer_contact": "Kontakt",
         "footer_quote": "Forespørsel",

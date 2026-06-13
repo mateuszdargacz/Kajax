@@ -157,6 +157,10 @@ a {
     box-shadow: 0 10px 22px rgba(29, 36, 33, 0.16);
 }
 
+.mobile-action-bar {
+    display: none;
+}
+
 .messages {
     position: fixed;
     right: 20px;
@@ -1053,6 +1057,10 @@ textarea.form-control {
 }
 
 @media (max-width: 640px) {
+    body:not(.page-quote) {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    }
+
     .container,
     .narrow {
         width: min(100% - 28px, 1160px);
@@ -1060,6 +1068,49 @@ textarea.form-control {
 
     .site-header {
         position: static;
+    }
+
+    .mobile-action-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(251, 250, 247, 0.96);
+        border-top: 1px solid rgba(217, 208, 194, 0.92);
+        box-shadow: 0 -14px 32px rgba(29, 36, 33, 0.14);
+        backdrop-filter: blur(14px);
+    }
+
+    .mobile-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 10px 12px;
+        border-radius: var(--radius);
+        font-weight: 900;
+        line-height: 1.1;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .mobile-action-phone {
+        background: var(--ink);
+        color: white;
+    }
+
+    .mobile-action-quote {
+        background: var(--forest);
+        color: white;
+    }
+
+    .page-quote .mobile-action-bar {
+        display: none;
     }
 
     .header-phone {

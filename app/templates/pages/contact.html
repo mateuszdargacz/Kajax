@@ -24,7 +24,7 @@
         <article class="contact-panel accent">
             <h2>{{ ui.contact_best_path }}</h2>
             <p>{{ ui.contact_best_path_body }}</p>
-            <a class="button button-primary" href="{% url 'quote' %}">{{ ui.contact_project_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="contact_quote" data-cta-location="contact_panel">{{ ui.contact_project_cta }}</a>
         </article>
     </div>
 </section>

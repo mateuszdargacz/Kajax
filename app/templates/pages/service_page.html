@@ -6,7 +6,7 @@
             <p class="eyebrow">{{ page.eyebrow }}</p>
             <h1>{{ page.h1 }}</h1>
             <p class="hero-lead">{{ page.lead }}</p>
-            <a class="button button-primary" href="{% url 'quote' %}">{{ page.primary_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="service_hero_quote" data-cta-location="{{ page.key }}_hero">{{ page.primary_cta }}</a>
         </div>
         <figure class="page-hero-image">
             {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" %}
@@ -58,7 +58,7 @@
             <p class="eyebrow">{{ ui.quote_eyebrow }}</p>
             <h2>{{ ui.quote_cta_title }}</h2>
         </div>
-        <a class="button button-light" href="{% url 'quote' %}">{{ ui.quote_cta_button }}</a>
+        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="service_quote_band" data-cta-location="{{ page.key }}_cta_band">{{ ui.quote_cta_button }}</a>
     </div>
 </section>
 {% endblock %}

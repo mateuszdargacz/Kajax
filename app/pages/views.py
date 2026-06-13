@@ -7,6 +7,7 @@ from django.utils.translation import get_language
 from django.views.generic import TemplateView
 
 from pages.content import (
+    PATHS,
     get_localized_path,
     get_audience_cards,
     get_page_content,
@@ -34,6 +35,12 @@ SITEMAP_PRIORITIES = {
     "architects": "0.8",
     "realizations": "0.7",
     "contact": "0.7",
+}
+
+SERVICE_AREAS = {
+    "production": ["Polska", "Europa", "Europa B2B"],
+    "construction": ["Pomorskie", "Gościcino", "Wejherowo", "Trójmiasto"],
+    "architects": ["Pomorskie", "Polska", "Europa"],
 }
 
 
@@ -172,17 +179,25 @@ def build_structured_data(page, canonical_url=None, language_code=None):
     }
     graph = [organization, website, webpage]
     if page["key"] in {"production", "construction", "architects"}:
-        graph.append(
-            {
-                "@id": f"{canonical_url}#service",
-                "@type": "Service",
-                "name": str(page.get("h1", page.get("title", ""))),
-                "description": str(page.get("lead", page.get("description", ""))),
-                "provider": {"@id": organization_id},
-                "areaServed": ["Pomorskie", "Polska", "Europa"],
-                "url": canonical_url,
-            }
-        )
+        service = {
+            "@id": f"{canonical_url}#service",
+            "@type": "Service",
+            "name": str(page.get("h1", page.get("title", ""))),
+            "description": str(page.get("lead", page.get("description", ""))),
+            "serviceType": str(page.get("eyebrow", page["key"])),
+            "provider": {"@id": organization_id},
+            "areaServed": SERVICE_AREAS.get(page["key"], ["Pomorskie", "Polska", "Europa"]),
+            "url": canonical_url,
+            "potentialAction": {
+                "@type": "CommunicateAction",
+                "name": "Request a quote",
+                "target": absolute_url(PATHS["quote"], language_code),
+            },
+        }
+        offer_catalog = build_offer_catalog(page)
+        if offer_catalog:
+            service["hasOfferCatalog"] = offer_catalog
+        graph.append(service)
     if page.get("faq"):
         graph.append(
             {
@@ -199,3 +214,27 @@ def build_structured_data(page, canonical_url=None, language_code=None):
             }
         )
     return {"@context": "https://schema.org", "@graph": graph}
+
+
+def build_offer_catalog(page):
+    offers = []
+    for section in page.get("sections", []):
+        for item in section.get("items", []):
+            offers.append(
+                {
+                    "@type": "Offer",
+                    "category": str(section.get("title", "")),
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": str(item),
+                        "description": str(section.get("body", "")),
+                    },
+                }
+            )
+    if not offers:
+        return None
+    return {
+        "@type": "OfferCatalog",
+        "name": str(page.get("h1", page.get("title", ""))),
+        "itemListElement": offers,
+    }

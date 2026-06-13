@@ -17,6 +17,17 @@
         });
     });
 
+    document.querySelectorAll("[data-track-cta]").forEach(function (link) {
+        link.addEventListener("click", function () {
+            pushEvent("cta_click", {
+                cta_id: link.dataset.trackCta || "",
+                cta_location: link.dataset.ctaLocation || "",
+                cta_text: (link.textContent || "").trim(),
+                link_url: link.href || link.getAttribute("href") || "",
+            });
+        });
+    });
+
     var quoteForm = document.querySelector("[data-quote-form]");
     if (quoteForm) {
         var started = false;

@@ -57,3 +57,6 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@graph"')
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, '"@type": "FAQPage"')
+        self.assertContains(response, '"@type": "OfferCatalog"')
+        self.assertContains(response, "elementy ekspozycji i displayów")
+        self.assertContains(response, '"@type": "CommunicateAction"')

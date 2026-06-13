@@ -30,7 +30,7 @@ test.describe("public marketing pages", () => {
       await expect(page.locator("h1")).toHaveCount(1);
       await expect(page.locator("h1")).toContainText(publicPage.h1);
       await expect(page.getByRole("banner").getByRole("link", { name: "604 238 246" })).toBeVisible();
-      await expect(page.getByRole("navigation")).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Główna nawigacja" })).toBeVisible();
       await expect(page.locator("body")).not.toContainText("hero_workshop");
       await expect(page.locator("body")).not.toContainText("Homepage hero");
       await expect(page.locator("body")).not.toContainText("Wide workshop");
@@ -65,6 +65,39 @@ test.describe("public marketing pages", () => {
     expect(staticResources.length).toBeLessThanOrEqual(2);
     expect(decodedBytes).toBeLessThan(90000);
   });
+
+  test("conversion CTAs are trackable and mobile actions stay device-specific", async ({ page }, testInfo) => {
+    await page.goto("/");
+    await page.evaluate(() => {
+      const originalPush = window.dataLayer.push.bind(window.dataLayer);
+      window.localStorage.setItem("e2eCtaEvents", "[]");
+      window.dataLayer.push = (...items) => {
+        const events = JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]");
+        events.push(...items.filter((item) => item.event === "cta_click"));
+        window.localStorage.setItem("e2eCtaEvents", JSON.stringify(events));
+        return originalPush(...items);
+      };
+    });
+
+    await page.getByRole("link", { name: "Zobacz zakres prac" }).click();
+    const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
+    expect(ctaEvents).toContainEqual(
+      expect.objectContaining({
+        cta_id: "home_hero_scope",
+        cta_location: "home_hero",
+      }),
+    );
+
+    const mobileBar = page.locator(".mobile-action-bar");
+    if (testInfo.project.name === "mobile") {
+      await expect(mobileBar).toBeVisible();
+      await expect(mobileBar.getByRole("link", { name: "Zadzwoń" })).toHaveAttribute("href", "tel:604238246");
+      await expect(mobileBar.getByRole("link", { name: "Wycena" })).toHaveAttribute("href", "/wycena/");
+    } else {
+      await expect(mobileBar).toBeHidden();
+    }
+    await expectNoHorizontalOverflow(page);
+  });
 });
 
 test.describe("localized pages", () => {
@@ -72,7 +105,7 @@ test.describe("localized pages", () => {
     await page.goto("/de/");
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
     await expect(page.locator("h1")).toContainText("Tischlerei für Unternehmen");
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Elementfertigung" })).toHaveAttribute(
+    await expect(page.getByRole("navigation", { name: "Hauptnavigation" }).getByRole("link", { name: "Elementfertigung" })).toHaveAttribute(
       "href",
       "/de/produkcja-elementow-drewnianych/",
     );
@@ -81,7 +114,8 @@ test.describe("localized pages", () => {
     await page.goto("/no/");
     await expect(page.locator("html")).toHaveAttribute("lang", "no");
     await expect(page.locator("h1")).toContainText("Snekkerverksted for bedrifter");
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Forespørsel", exact: true })).toHaveAttribute("href", "/no/wycena/");
+    await expect(page.getByRole("navigation", { name: "Hovednavigasjon" }).getByRole("link", { name: "Forespørsel", exact: true })).toHaveAttribute("href", "/no/wycena/");
+    await expect(page.locator(".mobile-action-bar [data-track-cta='mobile_quote']")).toHaveAttribute("href", "/no/wycena/");
     await expectNoHorizontalOverflow(page);
   });
 });
