@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 from django.conf import settings
 from django.utils.translation import get_language
 
@@ -5,17 +7,27 @@ from pages.content import get_nav_items
 from pages.ui import get_ui_copy
 
 
+@lru_cache(maxsize=1)
 def static_asset_version():
     configured = getattr(settings, "STATIC_VERSION", "")
     if configured:
         return configured
-    asset_paths = [
-        settings.BASE_DIR / "static" / "site" / "css" / "styles.css",
-        settings.BASE_DIR / "static" / "site" / "js" / "site.js",
-    ]
-    image_dir = settings.BASE_DIR / "static" / "site" / "img"
-    if image_dir.exists():
-        asset_paths.extend(path for path in image_dir.iterdir() if path.is_file())
+    asset_paths = []
+    static_dirs = [settings.BASE_DIR / "static"]
+    static_root = getattr(settings, "STATIC_ROOT", None)
+    if static_root:
+        static_dirs.append(static_root)
+
+    for static_dir in static_dirs:
+        asset_paths.extend(
+            [
+                static_dir / "site" / "css" / "styles.css",
+                static_dir / "site" / "js" / "site.js",
+            ],
+        )
+        image_dir = static_dir / "site" / "img"
+        if image_dir.exists():
+            asset_paths.extend(path for path in image_dir.iterdir() if path.is_file())
     mtimes = []
     for path in asset_paths:
         try:

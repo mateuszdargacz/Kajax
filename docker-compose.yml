@@ -23,7 +23,7 @@ services:
       GTM_ID: ${GTM_ID:-}
       GA4_MEASUREMENT_ID: ${GA4_MEASUREMENT_ID:-}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
-    command: gunicorn config.wsgi:application --workers 2 --bind unix:///nginx/kajax.sock
+    command: sh -c "python manage.py collectstatic --noinput && gunicorn config.wsgi:application --workers 2 --bind unix:///nginx/kajax.sock"
     volumes:
       - ./app/:/app/
       - ./nginx/:/nginx/

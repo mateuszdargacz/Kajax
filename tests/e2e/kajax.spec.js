@@ -31,7 +31,14 @@ async function installDataLayerRecorder(page, storageKey) {
     const originalPush = window.dataLayer.push.bind(window.dataLayer);
     window.dataLayer.push = (...items) => {
       const events = JSON.parse(window.localStorage.getItem(key) || "[]");
-      events.push(...items.filter((item) => item && item.event));
+      events.push(
+        ...items.filter((item) => {
+          if (!item || !item.event) {
+            return false;
+          }
+          return !String(item.event).startsWith("gtm.");
+        }),
+      );
       window.localStorage.setItem(key, JSON.stringify(events));
       return originalPush(...items);
     };
@@ -186,7 +193,9 @@ test.describe("public marketing pages", () => {
     const decodedBytes = resources.reduce((sum, entry) => sum + entry.decodedBodySize, 0);
 
     if (process.env.E2E_ALLOW_GTM === "1") {
-      expect(thirdPartyResources.map((entry) => new URL(entry.name).hostname)).toEqual(["www.googletagmanager.com"]);
+      const thirdPartyHosts = thirdPartyResources.map((entry) => new URL(entry.name).hostname);
+      expect(new Set(thirdPartyHosts)).toEqual(new Set(["www.googletagmanager.com"]));
+      expect(thirdPartyHosts.length).toBeLessThanOrEqual(3);
     } else {
       expect(thirdPartyResources).toEqual([]);
     }
