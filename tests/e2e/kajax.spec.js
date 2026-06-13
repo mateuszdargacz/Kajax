@@ -169,7 +169,11 @@ test.describe("public marketing pages", () => {
     const staticResources = resources.filter((entry) => entry.name.includes("/static/site/"));
     const decodedBytes = resources.reduce((sum, entry) => sum + entry.decodedBodySize, 0);
 
-    expect(thirdPartyResources).toEqual([]);
+    if (process.env.E2E_ALLOW_GTM === "1") {
+      expect(thirdPartyResources.map((entry) => new URL(entry.name).hostname)).toEqual(["www.googletagmanager.com"]);
+    } else {
+      expect(thirdPartyResources).toEqual([]);
+    }
     expect(staticResources.length).toBeLessThanOrEqual(7);
     expect(decodedBytes).toBeLessThan(430000);
   });
