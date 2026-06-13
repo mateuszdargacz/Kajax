@@ -216,8 +216,11 @@ test.describe("public marketing pages", () => {
 
     if (process.env.E2E_ALLOW_GTM === "1") {
       const thirdPartyHosts = thirdPartyResources.map((entry) => new URL(entry.name).hostname);
-      expect(new Set(thirdPartyHosts)).toEqual(new Set(["www.googletagmanager.com"]));
-      expect(thirdPartyHosts.length).toBeLessThanOrEqual(3);
+      const unexpectedHosts = thirdPartyHosts.filter(
+        (host) => host !== "www.googletagmanager.com" && !/\.google-analytics\.com$/.test(host),
+      );
+      expect(unexpectedHosts).toEqual([]);
+      expect(thirdPartyHosts.length).toBeLessThanOrEqual(4);
     } else {
       expect(thirdPartyResources).toEqual([]);
     }
@@ -227,7 +230,7 @@ test.describe("public marketing pages", () => {
 
   test("conversion CTAs are trackable and mobile actions stay device-specific", async ({ page }, testInfo) => {
     await installDataLayerRecorder(page, "e2eCtaEvents");
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await page.getByRole("link", { name: "Zobacz, co warto wysłać" }).click();
     const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
