@@ -303,7 +303,7 @@ h2,
 h3,
 p {
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
 }
 
 h1 {
