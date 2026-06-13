@@ -251,6 +251,28 @@ a {
     object-fit: cover;
 }
 
+.hero-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.photo-picture {
+    display: block;
+}
+
+.photo-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    background: #121a17;
+}
+
+.photo-image-hero {
+    object-position: center center;
+}
+
 .photo-placeholder {
     position: relative;
     display: block;

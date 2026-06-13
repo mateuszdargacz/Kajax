@@ -1,3 +1,13 @@
-<div class="photo-placeholder photo-placeholder-{{ variant|default:'section' }}" role="img" aria-label="{{ alt|default:photo.label }}">
-    <span class="photo-placeholder-name">{{ photo.filename }}</span>
-</div>
+{% load static %}
+{% if photo.has_image %}
+    <picture class="photo-picture photo-picture-{{ variant|default:'section' }}">
+        {% if photo.has_webp %}
+            <source srcset="{% static photo.webp_asset_path %}?v={{ static_version }}" type="image/webp">
+        {% endif %}
+        <img class="photo-image photo-image-{{ variant|default:'section' }}" src="{% static photo.asset_path %}?v={{ static_version }}" alt="{{ alt|default:photo.label }}"{% if variant == "hero" %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+    </picture>
+{% else %}
+    <div class="photo-placeholder photo-placeholder-{{ variant|default:'section' }}" role="img" aria-label="{{ alt|default:photo.label }}">
+        <span class="photo-placeholder-name">{{ photo.filename }}</span>
+    </div>
+{% endif %}

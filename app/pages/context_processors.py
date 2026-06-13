@@ -13,6 +13,9 @@ def static_asset_version():
         settings.BASE_DIR / "static" / "site" / "css" / "styles.css",
         settings.BASE_DIR / "static" / "site" / "js" / "site.js",
     ]
+    image_dir = settings.BASE_DIR / "static" / "site" / "img"
+    if image_dir.exists():
+        asset_paths.extend(path for path in image_dir.iterdir() if path.is_file())
     mtimes = []
     for path in asset_paths:
         try:

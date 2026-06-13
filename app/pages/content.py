@@ -1,3 +1,9 @@
+from pathlib import Path
+
+
+STATIC_IMAGE_DIR = Path(__file__).resolve().parents[1] / "static" / "site" / "img"
+
+
 PHOTO_PLACEHOLDERS = {
     "hero_workshop": {
         "key": "hero_workshop",
@@ -1754,9 +1760,9 @@ def _with_runtime_fields(page_key, page, language_code=None):
     page["path"] = PATHS[page_key]
     page["template"] = TEMPLATES[page_key]
     if "hero_photo" in page:
-        page["hero_photo"] = PHOTO_PLACEHOLDERS[page["hero_photo"]]
+        page["hero_photo"] = _resolve_photo(page["hero_photo"])
     if "b2b_photo" in page:
-        page["b2b_photo"] = PHOTO_PLACEHOLDERS[page["b2b_photo"]]
+        page["b2b_photo"] = _resolve_photo(page["b2b_photo"])
     if "related_links" in page:
         links = []
         for link in page["related_links"]:
@@ -1772,9 +1778,20 @@ def _with_case_photos(cases):
     resolved = []
     for case in cases:
         case = case.copy()
-        case["photo"] = PHOTO_PLACEHOLDERS[case["photo"]]
+        case["photo"] = _resolve_photo(case["photo"])
         resolved.append(case)
     return resolved
+
+
+def _resolve_photo(photo_key):
+    photo = PHOTO_PLACEHOLDERS[photo_key].copy()
+    image_path = STATIC_IMAGE_DIR / photo["filename"]
+    webp_filename = f"{image_path.stem}.webp"
+    photo["asset_path"] = f"site/img/{photo['filename']}"
+    photo["webp_asset_path"] = f"site/img/{webp_filename}"
+    photo["has_image"] = image_path.is_file()
+    photo["has_webp"] = (STATIC_IMAGE_DIR / webp_filename).is_file()
+    return photo
 
 
 def normalize_language(language_code):

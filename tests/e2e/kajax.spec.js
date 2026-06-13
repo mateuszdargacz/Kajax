@@ -44,7 +44,7 @@ test.describe("public marketing pages", () => {
     });
   }
 
-  test("home has visible conversion CTAs and photo filename-only placeholders", async ({ page }) => {
+  test("home has visible conversion CTAs, hero image and filename-only fallbacks", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.getByRole("link", { name: "Wyślij zdjęcie lub rysunek" })).toBeVisible();
@@ -52,7 +52,13 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Zobacz checklistę do wyceny" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
-    await expect(page.locator(".photo-placeholder-name").first()).toContainText("hero-workshop-production.jpg");
+    await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production\.webp/);
+    await expect(page.locator(".hero-media img")).toHaveAttribute("src", /hero-workshop-production\.jpg/);
+    await expect(page.locator(".hero-media img")).toHaveAttribute(
+      "alt",
+      "Warsztat stolarski przygotowany do produkcji elementów drewnianych i realizacji na wymiar",
+    );
+    await expect(page.locator(".photo-placeholder-name").first()).toContainText("b2b-short-series-wood-components.jpg");
     await expect(page.locator(".photo-placeholder small")).toHaveCount(0);
     await expectNoHorizontalOverflow(page);
   });
@@ -156,8 +162,8 @@ test.describe("public marketing pages", () => {
     const decodedBytes = resources.reduce((sum, entry) => sum + entry.decodedBodySize, 0);
 
     expect(thirdPartyResources).toEqual([]);
-    expect(staticResources.length).toBeLessThanOrEqual(2);
-    expect(decodedBytes).toBeLessThan(90000);
+    expect(staticResources.length).toBeLessThanOrEqual(3);
+    expect(decodedBytes).toBeLessThan(240000);
   });
 
   test("conversion CTAs are trackable and mobile actions stay device-specific", async ({ page }, testInfo) => {
