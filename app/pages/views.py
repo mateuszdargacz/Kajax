@@ -36,6 +36,7 @@ SITEMAP_PRIORITIES = {
     "realizations": "0.7",
     "guide": "0.8",
     "short_series": "0.8",
+    "advertising_events": "0.8",
     "contact": "0.7",
     "stairs_pricing": "0.8",
 }
@@ -216,7 +217,7 @@ def build_structured_data(page, canonical_url=None, language_code=None):
                 ],
             }
         )
-    if page["key"] in {"guide", "short_series", "stairs_pricing"}:
+    if page["key"] in {"guide", "short_series", "stairs_pricing", "advertising_events"}:
         graph.extend(build_guide_structured_data(page, canonical_url, language_code, organization_id))
     return {"@context": "https://schema.org", "@graph": graph}
 

@@ -3,6 +3,7 @@ const { test, expect } = require("@playwright/test");
 const publicPages = [
   { path: "/", h1: "Stolarnia dla firm, architektów i wymagających realizacji z drewna" },
   { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane na zamówienie dla firm" },
+  { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Elementy drewniane dla firm reklamowych i eventowych" },
   { path: "/stolarka-budowlana/", h1: "Schody, drzwi, listwy i stolarka drewniana na wymiar" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: co wpływa na cenę i termin realizacji?" },
   { path: "/dla-architektow-i-firm/", h1: "Stolarnia do trudniejszych projektów i detali drewnianych" },
@@ -89,10 +90,30 @@ test.describe("public marketing pages", () => {
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
     );
+    await expect(page.getByRole("link", { name: /Elementy drewniane dla firm reklamowych/ })).toHaveAttribute(
+      "href",
+      "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
+    );
     await expect(page.getByRole("link", { name: /Jak przygotować zapytanie do stolarni/ })).toHaveAttribute(
       "href",
       "/jak-przygotowac-zapytanie/",
     );
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("advertising event guide qualifies POS and event leads", async ({ page }) => {
+    await page.goto("/elementy-drewniane-dla-firm-reklamowych-i-eventowych/");
+
+    await expect(page.locator("h1")).toContainText("firm reklamowych");
+    await expect(page.locator("body")).toContainText("Kiedy drewno ma sens w reklamie i POS");
+    await expect(page.locator("body")).toContainText("Co może zablokować szybkie wdrożenie");
+    await expect(page.locator(".related-card", { hasText: "Produkcja elementów drewnianych" })).toHaveAttribute(
+      "href",
+      "/produkcja-elementow-drewnianych/",
+    );
+    const schema = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(schema).toContain('"@type": "HowTo"');
+    expect(schema).toContain('"@type": "Article"');
     await expectNoHorizontalOverflow(page);
   });
 
@@ -197,6 +218,12 @@ test.describe("localized pages", () => {
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
     await expect(page.locator("h1")).toContainText("Kleinserie");
     await expect(page.getByRole("link", { name: /Fertigung von Holzelementen/ })).toHaveAttribute("href", "/de/produkcja-elementow-drewnianych/");
+    await expectNoHorizontalOverflow(page);
+
+    await page.goto("/de/elementy-drewniane-dla-firm-reklamowych-i-eventowych/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "de");
+    await expect(page.locator("h1")).toContainText("Werbe- und Eventfirmen");
+    await expect(page.locator(".related-card", { hasText: "Holzelemente" })).toHaveAttribute("href", "/de/produkcja-elementow-drewnianych/");
     await expectNoHorizontalOverflow(page);
 
     await page.goto("/de/schody-drewniane-co-wplywa-na-cene-i-termin/");

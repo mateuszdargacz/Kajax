@@ -7,6 +7,11 @@ from pages.views import MarketingPageView, robots_txt, sitemap_xml
 urlpatterns = [
     path("", MarketingPageView.as_view(page_key="home"), name="home"),
     path("produkcja-elementow-drewnianych/", MarketingPageView.as_view(page_key="production"), name="production"),
+    path(
+        "elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
+        MarketingPageView.as_view(page_key="advertising_events"),
+        name="advertising_events",
+    ),
     path("stolarka-budowlana/", MarketingPageView.as_view(page_key="construction"), name="construction"),
     path(
         "schody-drewniane-co-wplywa-na-cene-i-termin/",

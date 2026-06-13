@@ -46,6 +46,7 @@ PHOTO_PLACEHOLDERS = {
 PATHS = {
     "home": "/",
     "production": "/produkcja-elementow-drewnianych/",
+    "advertising_events": "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
     "construction": "/stolarka-budowlana/",
     "stairs_pricing": "/schody-drewniane-co-wplywa-na-cene-i-termin/",
     "architects": "/dla-architektow-i-firm/",
@@ -61,6 +62,7 @@ DEFAULT_LANGUAGE = "pl"
 TEMPLATES = {
     "home": "pages/home.html",
     "production": "pages/service_page.html",
+    "advertising_events": "pages/guide.html",
     "construction": "pages/service_page.html",
     "stairs_pricing": "pages/guide.html",
     "architects": "pages/service_page.html",
@@ -71,7 +73,7 @@ TEMPLATES = {
     "contact": "pages/contact.html",
 }
 
-PAGE_ORDER = ["home", "production", "short_series", "construction", "stairs_pricing", "architects", "realizations", "guide", "quote", "contact"]
+PAGE_ORDER = ["home", "production", "short_series", "advertising_events", "construction", "stairs_pricing", "architects", "realizations", "guide", "quote", "contact"]
 
 CONTENT = {
     "pl": {
@@ -1073,6 +1075,153 @@ STAIRS_PRICING_GUIDE_PAGES = {
     },
 }
 
+ADVERTISING_EVENT_GUIDE_PAGES = {
+    "pl": {
+        "title": "Elementy drewniane dla firm reklamowych i eventowych | Kajax",
+        "description": "Drewniane elementy POS, displaye, ekspozytory, prototypy i krótkie serie dla firm reklamowych, eventowych i wystawienniczych.",
+        "eyebrow": "B2B / reklama / eventy",
+        "h1": "Elementy drewniane dla firm reklamowych i eventowych",
+        "lead": "Drewno dobrze działa tam, gdzie ekspozycja, stoisko albo element marki ma wyglądać solidniej niż typowy plastikowy nośnik. Wykonujemy prototypy, krótkie serie i powtarzalne elementy na podstawie zdjęcia, rysunku, wzoru albo specyfikacji.",
+        "primary_cta": "Zapytaj o elementy reklamowe",
+        "aside_title": "Najlepsze zapytania mają",
+        "aside_body": "Przy projektach reklamowych najważniejszy jest termin, skala i jasny opis efektu. Jeśli element ma jechać na event, trzeba od razu ocenić pakowanie i odporność w transporcie.",
+        "aside_items": ["wizualizację, szkic lub zdjęcie referencyjne", "liczbę sztuk i termin eventu", "wymiary oraz sposób użycia", "informację, co będzie widoczne dla klienta", "wymagania pakowania lub transportu"],
+        "sections": [
+            {"title": "Kiedy drewno ma sens w reklamie i POS", "body": "Drewno warto rozważyć, gdy element ma budować lepsze wrażenie marki, być powtarzalny albo działać jako detal w ekspozycji premium. Najlepiej sprawdzają się projekty, które da się opisać wymiarem, materiałem i sposobem montażu.", "items": ["ekspozytory i displaye", "podstawki, ramy i elementy ekspozycji", "detale do stoisk i scenografii", "drewniane nośniki oznaczeń", "elementy do krótkiej serii kampanijnej"]},
+            {"title": "Prototyp, próbka i krótka seria", "body": "Przy kampaniach i eventach często najlepszym początkiem jest prototyp albo pierwsza mała partia. Pozwala to sprawdzić proporcje, stabilność, wykończenie, widoczne krawędzie oraz to, czy element da się rozsądnie pakować.", "items": ["pierwszy wzór do akceptacji", "dopasowanie materiału i koloru", "test stabilności lub montażu", "krótka seria po akceptacji próbki", "możliwość powtarzania w kolejnych kampaniach"]},
+            {"title": "Co wpływa na termin i koszt", "body": "Największe znaczenie mają: ilość, wymiar, złożoność kształtu, wykończenie oraz data wydarzenia. Przy większych lub delikatnych elementach trzeba też ocenić, czy pakowanie i wysyłka są realne w założonym terminie.", "items": ["liczba sztuk i docelowy termin", "czy element jest płaski, przestrzenny czy składany", "widoczne strony i standard wykończenia", "otwory, frezy, logo lub dodatkowe detale", "pakowanie, odbiór albo wysyłka"]},
+        ],
+        "avoid_title": "Co może zablokować szybkie wdrożenie",
+        "avoid_body": "Najtrudniejsze są projekty z bardzo krótkim terminem, bez wymiarów albo z założeniami, których nie da się sprawdzić przed produkcją. Lepiej wysłać niedoskonały szkic niż tylko ogólny opis kampanii.",
+        "avoid_items": ["brak wymiarów i liczby sztuk", "termin eventu bez zapasu na próbkę", "niejasne obciążenie lub sposób montażu", "duży element bez planu transportu", "brak informacji, które powierzchnie są widoczne"],
+        "faq": [
+            ("Czy możecie pracować na wizualizacji od agencji?", "Tak. Wizualizacja, szkic lub zdjęcie referencyjne wystarczą do pierwszej rozmowy, jeśli dodasz wymiary, liczbę sztuk i termin."),
+            ("Czy robicie pojedynczy prototyp przed serią?", "Tak. Przy elementach POS i eventowych prototyp często jest najlepszym sposobem sprawdzenia proporcji, stabilności i wykończenia."),
+            ("Czy możliwa jest wysyłka elementów na event?", "Tak, jeśli element i termin mają sens logistycznie. Pakowanie, zabezpieczenie i wysyłkę ustalamy indywidualnie po poznaniu projektu."),
+        ],
+    },
+    "en": {
+        "title": "Wooden components for advertising and event companies | Kajax",
+        "description": "Wooden POS elements, displays, prototypes and short runs for advertising, event and exhibition companies.",
+        "eyebrow": "B2B / advertising / events",
+        "h1": "Wooden components for advertising and event companies",
+        "lead": "Wood works well when a display, stand or brand element should feel more solid than a typical plastic carrier. We make prototypes, short runs and repeatable components based on a photo, drawing, sample or specification.",
+        "primary_cta": "Ask about advertising components",
+        "aside_title": "The best inquiries include",
+        "aside_body": "For advertising projects, timing, scale and a clear description of the intended effect matter most. If the component is going to an event, packing and transport should be considered from the start.",
+        "aside_items": ["visual, sketch or reference photo", "quantity and event deadline", "dimensions and use case", "which surfaces will be visible", "packing or transport requirements"],
+        "sections": [
+            {"title": "When wood makes sense in advertising and POS", "body": "Wood is worth considering when the element should improve brand perception, be repeatable or work as a premium display detail. The best projects can be described by dimensions, material and assembly method.", "items": ["displays and POS elements", "bases, frames and exhibition details", "stand and scenery components", "wooden sign carriers", "short campaign production runs"]},
+            {"title": "Prototype, sample and short run", "body": "For campaigns and events, the best first step is often a prototype or a first small batch. It helps confirm proportions, stability, finish, visible edges and whether the component can be packed sensibly.", "items": ["first sample for approval", "material and colour alignment", "stability or assembly test", "short run after sample approval", "repeatability for future campaigns"]},
+            {"title": "What affects timing and cost", "body": "Quantity, size, shape complexity, finish and event date matter most. Larger or delicate components also require checking whether packing and shipping are realistic within the timeline.", "items": ["quantity and target deadline", "flat, spatial or foldable element", "visible sides and finish standard", "holes, milling, logo or extra details", "packing, pickup or shipping"]},
+        ],
+        "avoid_title": "What can block a fast launch",
+        "avoid_body": "The hardest projects are those with a very short deadline, no dimensions or assumptions that cannot be tested before production. An imperfect sketch is more useful than a general campaign description.",
+        "avoid_items": ["no dimensions or quantity", "event deadline without time for a sample", "unclear load or assembly method", "large component without transport plan", "no information about visible surfaces"],
+        "faq": [
+            ("Can you work from an agency visual?", "Yes. A visual, sketch or reference photo is enough for the first conversation if you add dimensions, quantity and deadline."),
+            ("Can you make one prototype before the run?", "Yes. For POS and event components, a prototype is often the best way to check proportions, stability and finish."),
+            ("Can components be shipped to an event?", "Yes, if the component and timing make logistical sense. Packing, protection and shipping are agreed individually after we understand the project."),
+        ],
+    },
+    "de": {
+        "title": "Holzelemente für Werbe- und Eventfirmen | Kajax",
+        "description": "Holzelemente für POS, Displays, Prototypen und Kleinserien für Werbe-, Event- und Messefirmen.",
+        "eyebrow": "B2B / Werbung / Events",
+        "h1": "Holzelemente für Werbe- und Eventfirmen",
+        "lead": "Holz funktioniert dort gut, wo ein Display, Stand oder Markenelement solider wirken soll als ein typischer Kunststoffträger. Wir fertigen Prototypen, Kleinserien und wiederholbare Elemente nach Foto, Zeichnung, Muster oder Spezifikation.",
+        "primary_cta": "Werbeelemente anfragen",
+        "aside_title": "Gute Anfragen enthalten",
+        "aside_body": "Bei Werbeprojekten zählen Termin, Umfang und eine klare Beschreibung des gewünschten Effekts. Wenn das Element zu einem Event muss, sollten Verpackung und Transport früh mitgedacht werden.",
+        "aside_items": ["Visualisierung, Skizze oder Referenzfoto", "Menge und Eventtermin", "Maße und Nutzung", "sichtbare Flächen", "Anforderungen an Verpackung oder Transport"],
+        "sections": [
+            {"title": "Wann Holz in Werbung und POS sinnvoll ist", "body": "Holz lohnt sich, wenn ein Element die Markenwirkung verbessert, wiederholbar sein soll oder als hochwertiges Displaydetail dient. Am besten sind Projekte, die sich über Maße, Material und Montageart beschreiben lassen.", "items": ["Displays und POS-Elemente", "Sockel, Rahmen und Ausstellungsteile", "Stand- und Szenografieelemente", "Holzträger für Beschriftung", "Kleinserien für Kampagnen"]},
+            {"title": "Prototyp, Muster und Kleinserie", "body": "Bei Kampagnen und Events ist ein Prototyp oder eine kleine erste Serie oft der beste Start. So lassen sich Proportionen, Stabilität, Oberfläche, sichtbare Kanten und Verpackbarkeit prüfen.", "items": ["erstes Muster zur Freigabe", "Abstimmung von Material und Farbe", "Test von Stabilität oder Montage", "Kleinserie nach Musterfreigabe", "Wiederholbarkeit für weitere Kampagnen"]},
+            {"title": "Was Termin und Kosten beeinflusst", "body": "Menge, Größe, Formkomplexität, Oberfläche und Eventdatum sind entscheidend. Bei größeren oder empfindlichen Elementen muss zusätzlich geprüft werden, ob Verpackung und Versand im Termin realistisch sind.", "items": ["Menge und Zieltermin", "flaches, räumliches oder klappbares Element", "sichtbare Seiten und Oberflächenstandard", "Bohrungen, Fräsungen, Logo oder Zusatzdetails", "Verpackung, Abholung oder Versand"]},
+        ],
+        "avoid_title": "Was eine schnelle Umsetzung blockieren kann",
+        "avoid_body": "Schwierig sind Projekte mit sehr kurzem Termin, ohne Maße oder mit Annahmen, die vor der Fertigung nicht geprüft werden können. Eine einfache Skizze ist hilfreicher als eine allgemeine Kampagnenbeschreibung.",
+        "avoid_items": ["keine Maße und keine Menge", "Eventtermin ohne Zeit für ein Muster", "unklare Belastung oder Montageart", "großes Element ohne Transportplan", "keine Angabe zu sichtbaren Flächen"],
+        "faq": [
+            ("Können Sie nach einer Agenturvisualisierung arbeiten?", "Ja. Visualisierung, Skizze oder Referenzfoto reichen für die erste Abstimmung, wenn Maße, Menge und Termin ergänzt werden."),
+            ("Fertigen Sie einen Prototyp vor der Serie?", "Ja. Bei POS- und Eventelementen ist ein Prototyp oft der beste Weg, um Proportionen, Stabilität und Oberfläche zu prüfen."),
+            ("Ist Versand zu einem Event möglich?", "Ja, wenn Element und Termin logistisch sinnvoll sind. Verpackung, Schutz und Versand werden nach Prüfung des Projekts individuell abgestimmt."),
+        ],
+    },
+    "sv": {
+        "title": "Träkomponenter för reklam- och eventföretag | Kajax",
+        "description": "Träkomponenter för POS, displayer, prototyper och korta serier för reklam-, event- och utställningsföretag.",
+        "eyebrow": "B2B / reklam / event",
+        "h1": "Träkomponenter för reklam- och eventföretag",
+        "lead": "Trä fungerar bra när en display, monter eller varumärkesdetalj ska kännas mer gedigen än en vanlig plastbärare. Vi tillverkar prototyper, korta serier och återkommande komponenter efter foto, ritning, prov eller specifikation.",
+        "primary_cta": "Fråga om reklamkomponenter",
+        "aside_title": "Bra förfrågningar innehåller",
+        "aside_body": "För reklamprojekt är tidplan, omfattning och tydlig effektbeskrivning viktigast. Om komponenten ska till ett event behöver packning och transport bedömas tidigt.",
+        "aside_items": ["visualisering, skiss eller referensfoto", "antal och eventdeadline", "mått och användning", "vilka ytor som är synliga", "krav på packning eller transport"],
+        "sections": [
+            {"title": "När trä passar i reklam och POS", "body": "Trä är värt att välja när detaljen ska stärka varumärkesintrycket, kunna upprepas eller fungera som premiumdetalj i exponering. Bäst är projekt som kan beskrivas med mått, material och montage.", "items": ["displayer och POS-element", "baser, ramar och utställningsdetaljer", "monter- och scenografidetaljer", "träbärare för skyltning", "korta serier för kampanjer"]},
+            {"title": "Prototyp, prov och kort serie", "body": "För kampanjer och event är en prototyp eller liten första serie ofta bästa starten. Den visar proportioner, stabilitet, finish, synliga kanter och om detaljen kan packas rimligt.", "items": ["första prov för godkännande", "material- och färgavstämning", "test av stabilitet eller montage", "kort serie efter godkänt prov", "upprepning i kommande kampanjer"]},
+            {"title": "Vad påverkar tid och kostnad", "body": "Antal, storlek, formens komplexitet, finish och eventdatum påverkar mest. Större eller känsliga delar kräver också kontroll av packning och frakt inom tidplanen.", "items": ["antal och måltermin", "platt, rumslig eller hopfällbar komponent", "synliga sidor och finishnivå", "hål, fräsningar, logotyp eller extra detaljer", "packning, upphämtning eller frakt"]},
+        ],
+        "avoid_title": "Vad kan stoppa snabb produktion",
+        "avoid_body": "Svårast är projekt med mycket kort tid, utan mått eller med antaganden som inte kan testas före produktion. En enkel skiss är bättre än en allmän kampanjbeskrivning.",
+        "avoid_items": ["inga mått eller antal", "eventdeadline utan tid för prov", "oklar belastning eller montering", "stor komponent utan transportplan", "ingen information om synliga ytor"],
+        "faq": [
+            ("Kan ni arbeta från en visualisering från byrån?", "Ja. Visualisering, skiss eller referensfoto räcker för första dialogen om du lägger till mått, antal och deadline."),
+            ("Kan ni göra en prototyp före serien?", "Ja. För POS- och eventkomponenter är prototyp ofta bästa sättet att testa proportioner, stabilitet och finish."),
+            ("Kan komponenter skickas till ett event?", "Ja, om komponent och tidplan är logistiskt rimliga. Packning, skydd och frakt avtalas individuellt efter att vi känner projektet."),
+        ],
+    },
+    "da": {
+        "title": "Trækomponenter til reklame- og eventfirmaer | Kajax",
+        "description": "Trækomponenter til POS, displays, prototyper og korte serier for reklame-, event- og udstillingsfirmaer.",
+        "eyebrow": "B2B / reklame / events",
+        "h1": "Trækomponenter til reklame- og eventfirmaer",
+        "lead": "Træ fungerer godt, når en display, stand eller branddetalje skal føles mere solid end en typisk plastbærer. Vi fremstiller prototyper, korte serier og gentagelige komponenter efter foto, tegning, prøve eller specifikation.",
+        "primary_cta": "Spørg om reklamekomponenter",
+        "aside_title": "Gode forespørgsler indeholder",
+        "aside_body": "For reklameprojekter er tidsplan, omfang og en tydelig beskrivelse af effekten vigtigst. Hvis komponenten skal til et event, bør pakning og transport vurderes fra starten.",
+        "aside_items": ["visualisering, skitse eller referencefoto", "antal og eventdeadline", "mål og brug", "hvilke flader der er synlige", "krav til pakning eller transport"],
+        "sections": [
+            {"title": "Hvornår træ giver mening i reklame og POS", "body": "Træ er værd at vælge, når elementet skal styrke brandindtrykket, kunne gentages eller fungere som en premiumdetalje i en udstilling. De bedste projekter kan beskrives med mål, materiale og montage.", "items": ["displays og POS-elementer", "baser, rammer og udstillingsdetaljer", "stand- og scenografidele", "træbærere til skiltning", "korte serier til kampagner"]},
+            {"title": "Prototype, prøve og kort serie", "body": "Ved kampagner og events er en prototype eller lille første serie ofte den bedste start. Den viser proportioner, stabilitet, finish, synlige kanter og om elementet kan pakkes fornuftigt.", "items": ["første prøve til godkendelse", "afstemning af materiale og farve", "test af stabilitet eller montage", "kort serie efter godkendt prøve", "gentagelse i kommende kampagner"]},
+            {"title": "Hvad påvirker tid og pris", "body": "Antal, størrelse, formens kompleksitet, finish og eventdato betyder mest. Større eller sarte dele kræver også vurdering af pakning og forsendelse inden for tidsplanen.", "items": ["antal og måltermin", "flad, rumlig eller foldbar komponent", "synlige sider og finishniveau", "huller, fræsninger, logo eller ekstra detaljer", "pakning, afhentning eller forsendelse"]},
+        ],
+        "avoid_title": "Hvad kan blokere hurtig produktion",
+        "avoid_body": "De sværeste projekter har meget kort tid, ingen mål eller antagelser, der ikke kan testes før produktion. En enkel skitse er bedre end en generel kampagnebeskrivelse.",
+        "avoid_items": ["ingen mål eller antal", "eventdeadline uden tid til prøve", "uklar belastning eller montage", "stor komponent uden transportplan", "ingen information om synlige flader"],
+        "faq": [
+            ("Kan I arbejde ud fra en visualisering fra bureauet?", "Ja. Visualisering, skitse eller referencefoto er nok til første dialog, hvis du tilføjer mål, antal og deadline."),
+            ("Kan I lave en prototype før serien?", "Ja. For POS- og eventkomponenter er en prototype ofte den bedste måde at teste proportioner, stabilitet og finish."),
+            ("Kan komponenter sendes til et event?", "Ja, hvis komponent og tidsplan giver logistisk mening. Pakning, beskyttelse og forsendelse aftales individuelt efter projektgennemgang."),
+        ],
+    },
+    "no": {
+        "title": "Trekomponenter for reklame- og eventbedrifter | Kajax",
+        "description": "Trekomponenter for POS, displayer, prototyper og korte serier for reklame-, event- og utstillingsbedrifter.",
+        "eyebrow": "B2B / reklame / event",
+        "h1": "Trekomponenter for reklame- og eventbedrifter",
+        "lead": "Tre fungerer godt når en display, stand eller merkevaredetalj skal føles mer solid enn en vanlig plastbærer. Vi lager prototyper, korte serier og repeterbare komponenter etter bilde, tegning, prøve eller spesifikasjon.",
+        "primary_cta": "Spør om reklamekomponenter",
+        "aside_title": "Gode forespørsler inneholder",
+        "aside_body": "For reklameprosjekter er tidsplan, omfang og en tydelig beskrivelse av ønsket effekt viktigst. Hvis komponenten skal til et event, bør pakking og transport vurderes fra start.",
+        "aside_items": ["visualisering, skisse eller referansebilde", "antall og eventfrist", "mål og bruk", "hvilke flater som er synlige", "krav til pakking eller transport"],
+        "sections": [
+            {"title": "Når tre passer i reklame og POS", "body": "Tre er verdt å velge når elementet skal styrke merkevareinntrykket, kunne repeteres eller fungere som en premiumdetalj i en utstilling. De beste prosjektene kan beskrives med mål, materiale og montering.", "items": ["displayer og POS-elementer", "baser, rammer og utstillingsdetaljer", "stand- og scenografideler", "trebærere for skilt", "korte serier for kampanjer"]},
+            {"title": "Prototype, prøve og kort serie", "body": "Ved kampanjer og eventer er en prototype eller liten første serie ofte beste start. Den viser proporsjoner, stabilitet, overflate, synlige kanter og om elementet kan pakkes fornuftig.", "items": ["første prøve for godkjenning", "avklaring av materiale og farge", "test av stabilitet eller montering", "kort serie etter godkjent prøve", "gjentakelse i kommende kampanjer"]},
+            {"title": "Hva påvirker tid og pris", "body": "Antall, størrelse, formens kompleksitet, overflate og eventdato betyr mest. Større eller skjøre deler krever også vurdering av pakking og frakt innenfor tidsplanen.", "items": ["antall og målfrist", "flat, romlig eller sammenleggbar komponent", "synlige sider og finishnivå", "hull, fresing, logo eller ekstra detaljer", "pakking, henting eller frakt"]},
+        ],
+        "avoid_title": "Hva kan stoppe rask produksjon",
+        "avoid_body": "De vanskeligste prosjektene har veldig kort tid, ingen mål eller antakelser som ikke kan testes før produksjon. En enkel skisse er bedre enn en generell kampanjebeskrivelse.",
+        "avoid_items": ["ingen mål eller antall", "eventfrist uten tid til prøve", "uklar belastning eller montering", "stor komponent uten transportplan", "ingen informasjon om synlige flater"],
+        "faq": [
+            ("Kan dere jobbe ut fra en visualisering fra byrået?", "Ja. Visualisering, skisse eller referansebilde er nok for første dialog hvis du legger til mål, antall og frist."),
+            ("Kan dere lage en prototype før serien?", "Ja. For POS- og eventkomponenter er en prototype ofte beste måte å teste proporsjoner, stabilitet og overflate."),
+            ("Kan komponenter sendes til et event?", "Ja, hvis komponent og tidsplan gir logistisk mening. Pakking, beskyttelse og frakt avtales individuelt etter prosjektgjennomgang."),
+        ],
+    },
+}
+
 for _code, _page in GUIDE_PAGES.items():
     CONTENT[_code]["pages"]["guide"] = _page
 
@@ -1081,6 +1230,9 @@ for _code, _page in SHORT_SERIES_GUIDE_PAGES.items():
 
 for _code, _page in STAIRS_PRICING_GUIDE_PAGES.items():
     CONTENT[_code]["pages"]["stairs_pricing"] = _page
+
+for _code, _page in ADVERTISING_EVENT_GUIDE_PAGES.items():
+    CONTENT[_code]["pages"]["advertising_events"] = _page
 
 RELATED_LINK_SECTIONS = {
     "pl": {
@@ -1357,6 +1509,241 @@ STAIRS_RELATED_LINK_SECTIONS = {
 }
 
 for _code, _pages in STAIRS_RELATED_LINK_SECTIONS.items():
+    for _page_key, _data in _pages.items():
+        CONTENT[_code]["pages"][_page_key].update(_data)
+
+ADVERTISING_RELATED_LINK_SECTIONS = {
+    "pl": {
+        "production": {
+            "related_eyebrow": "Poradniki B2B",
+            "related_title": "Jak szybciej przejść od pomysłu do wyceny",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Krótkie serie", "title": "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?", "body": "Sprawdź, kiedy warto zacząć od próbki, małej partii albo powtarzalnego procesu."},
+                {"page": "advertising_events", "eyebrow": "Reklama i eventy", "title": "Elementy drewniane dla firm reklamowych i eventowych", "body": "Jak przygotować zapytanie o displaye, elementy POS, prototypy i krótkie serie kampanijne."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Minimum informacji, które pomaga szybciej ocenić projekt B2B lub custom."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Jeśli temat dotyczy elementów dla firmy",
+            "related_links": [
+                {"page": "production", "eyebrow": "Oferta", "title": "Elementy drewniane dla firm", "body": "Zobacz zakres produkcji B2B, półproduktów i elementów według wzoru."},
+                {"page": "short_series", "eyebrow": "Krótkie serie", "title": "Kiedy krótka seria ma sens?", "body": "Poradnik dla firm, które rozważają próbkę, pierwszą partię lub stałą współpracę."},
+                {"page": "advertising_events", "eyebrow": "Reklama i eventy", "title": "Elementy drewniane dla firm reklamowych i eventowych", "body": "Osobna ścieżka dla displayów, POS i krótkich serii kampanijnych."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Przygotuj temat do rozmowy",
+            "related_links": [
+                {"page": "production", "eyebrow": "Oferta", "title": "Produkcja elementów drewnianych", "body": "Zakres prac dla firm, krótkich serii i drewnianych półproduktów."},
+                {"page": "advertising_events", "eyebrow": "Reklama i eventy", "title": "Elementy drewniane dla firm reklamowych i eventowych", "body": "Jak opisać display, prototyp lub serię na event."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Co wysłać, żeby szybciej dostać konkretną odpowiedź."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Doprecyzuj serię lub wyślij brief",
+            "related_links": [
+                {"page": "production", "eyebrow": "Oferta", "title": "Produkcja elementów drewnianych", "body": "Zakres prac dla firm, krótkich serii i drewnianych półproduktów."},
+                {"page": "short_series", "eyebrow": "Krótkie serie", "title": "Kiedy krótka seria ma sens?", "body": "Poradnik o próbce, pierwszej partii i powtarzalnym procesie."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Co wysłać, żeby szybciej dostać konkretną odpowiedź."},
+            ],
+        },
+    },
+    "en": {
+        "production": {
+            "related_eyebrow": "B2B guides",
+            "related_title": "How to move from idea to pricing faster",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Short runs", "title": "When does a short run of wooden components pay off?", "body": "See when to start with a sample, first batch or repeatable process."},
+                {"page": "advertising_events", "eyebrow": "Advertising and events", "title": "Wooden components for advertising and event companies", "body": "How to prepare a request for displays, POS elements, prototypes and campaign runs."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "The minimum input that helps assess a B2B or custom project faster."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Next step",
+            "related_title": "If the project concerns components for a company",
+            "related_links": [
+                {"page": "production", "eyebrow": "Offer", "title": "Wooden components for companies", "body": "See the scope of B2B production, semi-finished parts and sample-based components."},
+                {"page": "short_series", "eyebrow": "Short runs", "title": "When does a short run make sense?", "body": "A guide for companies considering a sample, first batch or recurring cooperation."},
+                {"page": "advertising_events", "eyebrow": "Advertising and events", "title": "Wooden components for advertising and event companies", "body": "A separate path for displays, POS and campaign short runs."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Next step",
+            "related_title": "Prepare the project for discussion",
+            "related_links": [
+                {"page": "production", "eyebrow": "Offer", "title": "Wooden component production", "body": "Scope for companies, short runs and wooden semi-finished parts."},
+                {"page": "advertising_events", "eyebrow": "Advertising and events", "title": "Wooden components for advertising and event companies", "body": "How to describe a display, prototype or event series."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "What to send to get a concrete answer faster."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Next step",
+            "related_title": "Clarify the run or send a brief",
+            "related_links": [
+                {"page": "production", "eyebrow": "Offer", "title": "Wooden component production", "body": "Scope for companies, short runs and wooden semi-finished parts."},
+                {"page": "short_series", "eyebrow": "Short runs", "title": "When does a short run make sense?", "body": "A guide to samples, first batches and a repeatable process."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "What to send to get a concrete answer faster."},
+            ],
+        },
+    },
+    "de": {
+        "production": {
+            "related_eyebrow": "B2B-Leitfäden",
+            "related_title": "Schneller von der Idee zur Anfrage",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Kleinserien", "title": "Wann lohnt sich eine Kleinserie von Holzelementen?", "body": "Wann Muster, erste Partie oder wiederholbarer Prozess sinnvoll sind."},
+                {"page": "advertising_events", "eyebrow": "Werbung und Events", "title": "Holzelemente für Werbe- und Eventfirmen", "body": "So bereiten Sie Anfragen zu Displays, POS-Elementen, Prototypen und Kampagnenserien vor."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Das Minimum an Informationen für eine schnellere Einschätzung."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Wenn es um Elemente für Unternehmen geht",
+            "related_links": [
+                {"page": "production", "eyebrow": "Angebot", "title": "Holzelemente für Unternehmen", "body": "Umfang für B2B-Fertigung, Halbzeuge und Elemente nach Muster."},
+                {"page": "short_series", "eyebrow": "Kleinserien", "title": "Wann ist eine Kleinserie sinnvoll?", "body": "Ein Leitfaden für Muster, erste Serien und wiederkehrende Zusammenarbeit."},
+                {"page": "advertising_events", "eyebrow": "Werbung und Events", "title": "Holzelemente für Werbe- und Eventfirmen", "body": "Ein eigener Weg für Displays, POS und kurze Kampagnenserien."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Projekt für die Anfrage vorbereiten",
+            "related_links": [
+                {"page": "production", "eyebrow": "Angebot", "title": "Fertigung von Holzelementen", "body": "Leistungsumfang für Firmen, Kleinserien und Holz-Halbzeuge."},
+                {"page": "advertising_events", "eyebrow": "Werbung und Events", "title": "Holzelemente für Werbe- und Eventfirmen", "body": "Wie Display, Prototyp oder Eventserie beschrieben werden sollte."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Was Sie senden sollten, um schneller eine konkrete Antwort zu bekommen."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Serie klären oder Briefing senden",
+            "related_links": [
+                {"page": "production", "eyebrow": "Angebot", "title": "Fertigung von Holzelementen", "body": "Leistungsumfang für Firmen, Kleinserien und Holz-Halbzeuge."},
+                {"page": "short_series", "eyebrow": "Kleinserien", "title": "Wann ist eine Kleinserie sinnvoll?", "body": "Ein Leitfaden zu Muster, erster Partie und wiederholbarem Prozess."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Was Sie senden sollten, um schneller eine konkrete Antwort zu bekommen."},
+            ],
+        },
+    },
+    "sv": {
+        "production": {
+            "related_eyebrow": "B2B-guider",
+            "related_title": "Snabbare från idé till offert",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korta serier", "title": "När lönar sig en kort serie träkomponenter?", "body": "När prov, första serie eller återkommande process är rätt väg."},
+                {"page": "advertising_events", "eyebrow": "Reklam och event", "title": "Träkomponenter för reklam- och eventföretag", "body": "Så förbereder du en fråga om displayer, POS, prototyper och kampanjserier."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Minsta underlag som hjälper oss bedöma projektet snabbare."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Om projektet gäller komponenter för företag",
+            "related_links": [
+                {"page": "production", "eyebrow": "Erbjudande", "title": "Träkomponenter för företag", "body": "Omfattning för B2B-produktion, halvfabrikat och komponenter efter prov."},
+                {"page": "short_series", "eyebrow": "Korta serier", "title": "När är en kort serie rimlig?", "body": "Guide för prov, första serie och återkommande samarbete."},
+                {"page": "advertising_events", "eyebrow": "Reklam och event", "title": "Träkomponenter för reklam- och eventföretag", "body": "En separat väg för displayer, POS och korta kampanjserier."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Förbered projektet för dialog",
+            "related_links": [
+                {"page": "production", "eyebrow": "Erbjudande", "title": "Produktion av träkomponenter", "body": "Omfattning för företag, korta serier och halvfabrikat i trä."},
+                {"page": "advertising_events", "eyebrow": "Reklam och event", "title": "Träkomponenter för reklam- och eventföretag", "body": "Så beskriver du en display, prototyp eller eventserie."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Vad du bör skicka för att få ett konkret svar snabbare."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Tydliggör serien eller skicka brief",
+            "related_links": [
+                {"page": "production", "eyebrow": "Erbjudande", "title": "Produktion av träkomponenter", "body": "Omfattning för företag, korta serier och halvfabrikat i trä."},
+                {"page": "short_series", "eyebrow": "Korta serier", "title": "När är en kort serie rimlig?", "body": "Guide om prov, första serie och repeterbar process."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Vad du bör skicka för att få ett konkret svar snabbare."},
+            ],
+        },
+    },
+    "da": {
+        "production": {
+            "related_eyebrow": "B2B-guides",
+            "related_title": "Hurtigere fra idé til tilbud",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Hvornår kan en kort serie trækomponenter betale sig?", "body": "Hvornår prøve, første serie eller gentagelig proces er den rigtige vej."},
+                {"page": "advertising_events", "eyebrow": "Reklame og events", "title": "Trækomponenter til reklame- og eventfirmaer", "body": "Sådan forbereder du en forespørgsel om displays, POS, prototyper og kampagneserier."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Minimumsgrundlaget der hjælper os med at vurdere projektet hurtigere."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Hvis projektet handler om komponenter til virksomheder",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Trækomponenter til virksomheder", "body": "Omfang for B2B-produktion, halvfabrikata og komponenter efter prøve."},
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Hvornår giver en kort serie mening?", "body": "Guide til prøve, første serie og løbende samarbejde."},
+                {"page": "advertising_events", "eyebrow": "Reklame og events", "title": "Trækomponenter til reklame- og eventfirmaer", "body": "En separat vej for displays, POS og korte kampagneserier."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Forbered projektet til dialog",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produktion af trækomponenter", "body": "Omfang for virksomheder, korte serier og halvfabrikata i træ."},
+                {"page": "advertising_events", "eyebrow": "Reklame og events", "title": "Trækomponenter til reklame- og eventfirmaer", "body": "Sådan beskriver du en display, prototype eller eventserie."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Hvad du bør sende for at få et konkret svar hurtigere."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Afklar serien eller send brief",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produktion af trækomponenter", "body": "Omfang for virksomheder, korte serier og halvfabrikata i træ."},
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Hvornår giver en kort serie mening?", "body": "Guide til prøve, første serie og gentagelig proces."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Hvad du bør sende for at få et konkret svar hurtigere."},
+            ],
+        },
+    },
+    "no": {
+        "production": {
+            "related_eyebrow": "B2B-guider",
+            "related_title": "Raskere fra idé til vurdering",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Når lønner en kort serie trekomponenter seg?", "body": "Når prøve, første serie eller repeterbar prosess er riktig vei."},
+                {"page": "advertising_events", "eyebrow": "Reklame og event", "title": "Trekomponenter for reklame- og eventbedrifter", "body": "Slik forbereder du en forespørsel om displayer, POS, prototyper og kampanjeserier."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Minimumsgrunnlaget som hjelper oss å vurdere prosjektet raskere."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Hvis prosjektet gjelder komponenter for bedrifter",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Trekomponenter for bedrifter", "body": "Omfang for B2B-produksjon, halvfabrikata og komponenter etter prøve."},
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Når gir en kort serie mening?", "body": "Guide for prøve, første serie og fast samarbeid."},
+                {"page": "advertising_events", "eyebrow": "Reklame og event", "title": "Trekomponenter for reklame- og eventbedrifter", "body": "En egen vei for displayer, POS og korte kampanjeserier."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Forbered prosjektet for dialog",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produksjon av trekomponenter", "body": "Omfang for bedrifter, korte serier og halvfabrikata i tre."},
+                {"page": "advertising_events", "eyebrow": "Reklame og event", "title": "Trekomponenter for reklame- og eventbedrifter", "body": "Slik beskriver du en display, prototype eller eventserie."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Hva du bør sende for å få et konkret svar raskere."},
+            ],
+        },
+        "advertising_events": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Avklar serien eller send brief",
+            "related_links": [
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produksjon av trekomponenter", "body": "Omfang for bedrifter, korte serier og halvfabrikata i tre."},
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Når gir en kort serie mening?", "body": "Guide til prøve, første parti og repeterbar prosess."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Hva du bør sende for å få et konkret svar raskere."},
+            ],
+        },
+    },
+}
+
+for _code, _pages in ADVERTISING_RELATED_LINK_SECTIONS.items():
     for _page_key, _data in _pages.items():
         CONTENT[_code]["pages"][_page_key].update(_data)
 

@@ -47,6 +47,10 @@ norwegian_urlpatterns = [
         force_language(MarketingPageView.as_view(page_key="production"), "no"),
     ),
     path(
+        "no/elementy-drewniane-dla-firm-reklamowych-i-eventowych/",
+        force_language(MarketingPageView.as_view(page_key="advertising_events"), "no"),
+    ),
+    path(
         "no/stolarka-budowlana/",
         force_language(MarketingPageView.as_view(page_key="construction"), "no"),
     ),
