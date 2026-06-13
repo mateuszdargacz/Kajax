@@ -41,10 +41,26 @@ SITEMAP_PRIORITIES = {
     "stairs_pricing": "0.8",
 }
 
+SITEMAP_LASTMOD = "2026-06-13"
+
 SERVICE_AREAS = {
     "production": ["Polska", "Europa", "Europa B2B"],
     "construction": ["Pomorskie", "Gościcino", "Wejherowo", "Trójmiasto"],
     "architects": ["Pomorskie", "Polska", "Europa"],
+}
+
+PAGE_ANALYTICS = {
+    "home": {"page_type": "landing", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
+    "production": {"page_type": "service", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
+    "short_series": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
+    "advertising_events": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
+    "construction": {"page_type": "service", "business_line": "construction_joinery", "service_area": "pomerania"},
+    "stairs_pricing": {"page_type": "guide", "business_line": "construction_joinery", "service_area": "pomerania"},
+    "architects": {"page_type": "service", "business_line": "custom_architectural_details", "service_area": "poland_europe"},
+    "realizations": {"page_type": "portfolio", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
+    "guide": {"page_type": "guide", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
+    "quote": {"page_type": "conversion", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
+    "contact": {"page_type": "contact", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
 }
 
 
@@ -100,6 +116,7 @@ def sitemap_xml(request):
                         "<url>",
                         f"<loc>{xml_escape(url)}</loc>",
                         alternates,
+                        f"<lastmod>{SITEMAP_LASTMOD}</lastmod>",
                         "<changefreq>weekly</changefreq>",
                         f"<priority>{priority}</priority>",
                         "</url>",
@@ -135,8 +152,16 @@ def build_seo_context(page, language_code):
         "canonical_url": canonical_url,
         "alternate_urls": alternate_urls(page["path"]),
         "og_locale": OG_LOCALES.get(code, code),
+        "page_analytics": build_page_analytics(page, code),
         "structured_data": json.dumps(build_structured_data(page, canonical_url, code), ensure_ascii=False),
     }
+
+
+def build_page_analytics(page, language_code):
+    analytics = PAGE_ANALYTICS.get(page["key"], PAGE_ANALYTICS["home"]).copy()
+    analytics["page_key"] = page["key"]
+    analytics["language"] = normalize_language(language_code)
+    return analytics
 
 
 def build_structured_data(page, canonical_url=None, language_code=None):
@@ -181,7 +206,7 @@ def build_structured_data(page, canonical_url=None, language_code=None):
         "about": {"@id": organization_id},
         "inLanguage": language_code,
     }
-    graph = [organization, website, webpage]
+    graph = [organization, website, webpage, build_breadcrumb_structured_data(page, canonical_url, language_code)]
     if page["key"] in {"production", "construction", "architects"}:
         service = {
             "@id": f"{canonical_url}#service",
@@ -220,6 +245,32 @@ def build_structured_data(page, canonical_url=None, language_code=None):
     if page["key"] in {"guide", "short_series", "stairs_pricing", "advertising_events"}:
         graph.extend(build_guide_structured_data(page, canonical_url, language_code, organization_id))
     return {"@context": "https://schema.org", "@graph": graph}
+
+
+def build_breadcrumb_structured_data(page, canonical_url, language_code):
+    home_url = absolute_url(PATHS["home"], language_code)
+    items = [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": settings.COMPANY_NAME,
+            "item": home_url,
+        }
+    ]
+    if page["key"] != "home":
+        items.append(
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": str(page.get("h1", page.get("title", ""))),
+                "item": canonical_url,
+            }
+        )
+    return {
+        "@id": f"{canonical_url}#breadcrumb",
+        "@type": "BreadcrumbList",
+        "itemListElement": items,
+    }
 
 
 def build_offer_catalog(page):

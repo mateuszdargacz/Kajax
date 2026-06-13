@@ -1,8 +1,8 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Elementy z drewna dla firm, wnętrz i inwestycji" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm bez uruchamiania własnej stolarni" },
+  { path: "/", h1: "Elementy drewniane dla firm i stolarka na wymiar" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm, próbki i krótkie serie" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane displaye, elementy POS i detale eventowe" },
   { path: "/stolarka-budowlana/", h1: "Schody, drzwi i drewniane wykończenia dopasowane do miejsca" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
@@ -23,6 +23,19 @@ async function expectVersionedStaticAssets(page) {
   const jsSrc = await page.locator('script[src*="site/js/site.js"]').first().getAttribute("src");
   expect(cssHref).toMatch(/\/static\/site\/css\/styles\.css\?v=\d+/);
   expect(jsSrc).toMatch(/\/static\/site\/js\/site\.js\?v=\d+/);
+}
+
+async function installDataLayerRecorder(page, storageKey) {
+  await page.addInitScript((key) => {
+    window.dataLayer = window.dataLayer || [];
+    const originalPush = window.dataLayer.push.bind(window.dataLayer);
+    window.dataLayer.push = (...items) => {
+      const events = JSON.parse(window.localStorage.getItem(key) || "[]");
+      events.push(...items.filter((item) => item && item.event));
+      window.localStorage.setItem(key, JSON.stringify(events));
+      return originalPush(...items);
+    };
+  }, storageKey);
 }
 
 test.describe("public marketing pages", () => {
@@ -47,9 +60,10 @@ test.describe("public marketing pages", () => {
   test("home has visible conversion CTAs and mapped images", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "Wyślij projekt do oceny" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Zobacz ofertę" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Zobacz, co warto wysłać" })).toHaveAttribute("href", "/jak-przygotowac-zapytanie/");
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
+    await expect(page.locator("body")).toContainText("Czego nie obiecujemy bez danych");
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production-\d+\.webp/);
@@ -103,6 +117,8 @@ test.describe("public marketing pages", () => {
   test("production page links to B2B guides", async ({ page }) => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
+    await expect(page.locator("body")).toContainText("Proces B2B: próbka, akceptacja, seria");
+    await expect(page.locator("body")).toContainText("Kiedy możemy odmówić albo poprosić o doprecyzowanie");
     await expect(page.getByRole("link", { name: /Kiedy krótka seria ma sens/ })).toHaveAttribute(
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
@@ -179,24 +195,18 @@ test.describe("public marketing pages", () => {
   });
 
   test("conversion CTAs are trackable and mobile actions stay device-specific", async ({ page }, testInfo) => {
+    await installDataLayerRecorder(page, "e2eCtaEvents");
     await page.goto("/");
-    await page.evaluate(() => {
-      const originalPush = window.dataLayer.push.bind(window.dataLayer);
-      window.localStorage.setItem("e2eCtaEvents", "[]");
-      window.dataLayer.push = (...items) => {
-        const events = JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]");
-        events.push(...items.filter((item) => item.event === "cta_click"));
-        window.localStorage.setItem("e2eCtaEvents", JSON.stringify(events));
-        return originalPush(...items);
-      };
-    });
 
-    await page.getByRole("link", { name: "Zobacz ofertę" }).click();
+    await page.getByRole("link", { name: "Zobacz, co warto wysłać" }).click();
     const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
     expect(ctaEvents).toContainEqual(
       expect.objectContaining({
-        cta_id: "home_hero_scope",
+        event: "cta_click",
+        cta_id: "home_hero_guide",
         cta_location: "home_hero",
+        business_line: "mixed",
+        intent: "guide",
       }),
     );
 
@@ -209,6 +219,25 @@ test.describe("public marketing pages", () => {
       await expect(mobileBar).toBeHidden();
     }
     await expectNoHorizontalOverflow(page);
+  });
+
+  test("contact clicks and guide interactions push non-PII analytics events", async ({ page }) => {
+    await installDataLayerRecorder(page, "e2eContactEvents");
+    await page.goto("/jak-przygotowac-zapytanie/");
+
+    await page.locator(".faq-list details").first().locator("summary").click();
+    await page.getByRole("banner").getByRole("link", { name: "604 238 246" }).dispatchEvent("click");
+    await page.getByRole("contentinfo").getByRole("link", { name: "mail@kajax.eu" }).dispatchEvent("click");
+
+    const events = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eContactEvents") || "[]"));
+    expect(events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ event: "kajax_page_view", page_key: "guide", page_type: "guide" }),
+        expect.objectContaining({ event: "faq_open", faq_id: "guide_faq_1" }),
+        expect.objectContaining({ event: "phone_click", cta_location: "header" }),
+        expect.objectContaining({ event: "email_click", cta_location: "footer" }),
+      ]),
+    );
   });
 });
 
@@ -257,17 +286,8 @@ test.describe("localized pages", () => {
 
 test.describe("quote form", () => {
   test("submits a qualified lead with optional fields and tracking events", async ({ page }) => {
+    await installDataLayerRecorder(page, "e2eDataLayerEvents");
     await page.goto("/wycena/");
-    await page.evaluate(() => {
-      const originalPush = window.dataLayer.push.bind(window.dataLayer);
-      window.localStorage.setItem("e2eDataLayerEvents", "[]");
-      window.dataLayer.push = (...items) => {
-        const events = JSON.parse(window.localStorage.getItem("e2eDataLayerEvents") || "[]");
-        events.push(...items.map((item) => item.event).filter(Boolean));
-        window.localStorage.setItem("e2eDataLayerEvents", JSON.stringify(events));
-        return originalPush(...items);
-      };
-    });
 
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");
@@ -292,7 +312,21 @@ test.describe("quote form", () => {
     await expect(page.locator(".message")).toContainText("Dziękujemy. Zapytanie dotarło");
 
     const events = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eDataLayerEvents") || "[]"));
-    expect(events).toEqual(expect.arrayContaining(["quote_form_start", "project_type_select", "file_upload_complete", "generate_lead"]));
+    expect(events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ event: "quote_form_start", field_name: "name" }),
+        expect.objectContaining({ event: "project_type_select", project_type: "custom_artistic", business_line: "custom_architectural_details" }),
+        expect.objectContaining({ event: "file_upload_complete", file_count: 1, project_type: "custom_artistic" }),
+        expect.objectContaining({ event: "quote_form_submit_attempt", project_type: "custom_artistic" }),
+        expect.objectContaining({ event: "quote_thank_you_view", project_type: "custom_artistic" }),
+        expect.objectContaining({ event: "generate_lead", lead_type: "quote_request", project_type: "custom_artistic" }),
+      ]),
+    );
+    const eventPayload = JSON.stringify(events);
+    expect(eventPayload).not.toContain("Lead E2E");
+    expect(eventPayload).not.toContain("604000000");
+    expect(eventPayload).not.toContain("rysunek-testowy.txt");
+    expect(eventPayload).not.toContain("Potrzebujemy krótkiej serii");
     await expectNoHorizontalOverflow(page);
   });
 

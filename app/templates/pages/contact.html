@@ -10,21 +10,21 @@
 
 <section class="section">
     <div class="container contact-grid">
-        <article class="contact-panel">
+        <article class="contact-panel" data-contact-panel="details">
             <h2>{{ ui.contact_data }}</h2>
             <dl>
                 <dt>{{ ui.contact_address }}</dt>
                 <dd>{{ site.address }}</dd>
                 <dt>{{ ui.contact_phone }}</dt>
-                <dd><a href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ site.phone }}</a></dd>
+                <dd><a href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="contact_details">{{ site.phone }}</a></dd>
                 <dt>{{ ui.contact_email }}</dt>
-                <dd><a href="mailto:{{ site.email }}" data-track="email_click">{{ site.email }}</a></dd>
+                <dd><a href="mailto:{{ site.email }}" data-track="email_click" data-cta-location="contact_details">{{ site.email }}</a></dd>
             </dl>
         </article>
-        <article class="contact-panel accent">
+        <article class="contact-panel accent" data-contact-panel="quote">
             <h2>{{ ui.contact_best_path }}</h2>
             <p>{{ ui.contact_best_path_body }}</p>
-            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="contact_quote" data-cta-location="contact_panel">{{ ui.contact_project_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="contact_quote" data-cta-location="contact_panel" data-cta-intent="quote">{{ ui.contact_project_cta }}</a>
         </article>
     </div>
 </section>

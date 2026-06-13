@@ -42,7 +42,12 @@
         </script>
     {% endif %}
 </head>
-<body{% if page.key %} class="page-{{ page.key }}"{% endif %}>
+<body{% if page.key %} class="page-{{ page.key }}"{% endif %}
+    data-page-key="{{ page_analytics.page_key|default:page.key }}"
+    data-page-type="{{ page_analytics.page_type|default:'' }}"
+    data-business-line="{{ page_analytics.business_line|default:'' }}"
+    data-service-area="{{ page_analytics.service_area|default:'' }}"
+    data-language="{{ page_analytics.language|default:LANGUAGE_CODE }}">
 {% if site.gtm_id %}
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% endif %}
@@ -60,8 +65,8 @@
 </main>
 {% include "includes/footer.html" %}
 <nav class="mobile-action-bar" aria-label="{{ ui.mobile_actions_aria }}">
-    <a class="mobile-action mobile-action-phone" href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ ui.mobile_call }}</a>
-    <a class="mobile-action mobile-action-quote" href="{% url 'quote' %}" data-track-cta="mobile_quote" data-cta-location="mobile_action_bar">{{ ui.mobile_quote }}</a>
+    <a class="mobile-action mobile-action-phone" href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="mobile_action_bar">{{ ui.mobile_call }}</a>
+    <a class="mobile-action mobile-action-quote" href="{% url 'quote' %}" data-track-cta="mobile_quote" data-cta-location="mobile_action_bar" data-cta-intent="quote">{{ ui.mobile_quote }}</a>
 </nav>
 <script src="{% static 'site/js/site.js' %}?v={{ static_version }}" defer></script>
 </body>

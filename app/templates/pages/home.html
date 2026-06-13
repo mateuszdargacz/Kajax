@@ -9,8 +9,8 @@
         <h1>{{ page.h1 }}</h1>
         <p class="hero-lead">{{ page.lead }}</p>
         <div class="hero-actions">
-            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="home_hero_quote" data-cta-location="home_hero">{{ page.primary_cta }}</a>
-            <a class="button button-secondary" href="#zakres" data-track-cta="home_hero_scope" data-cta-location="home_hero">{{ page.secondary_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="home_hero_quote" data-cta-location="home_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
+            <a class="button button-secondary" href="{% url 'guide' %}" data-track-cta="home_hero_guide" data-cta-location="home_hero" data-cta-intent="guide">{{ page.secondary_cta }}</a>
         </div>
         <ul class="trust-list" aria-label="{{ ui.trust_aria }}">
             <li>{{ ui.trust_region }}</li>
@@ -32,7 +32,7 @@
                 <article class="card">
                     <h3>{{ card.title }}</h3>
                     <p>{{ card.body }}</p>
-                    <a class="text-link" href="{{ card.url }}" data-track-cta="home_offer_path" data-cta-location="home_paths">{{ card.cta }}</a>
+                    <a class="text-link" href="{{ card.url }}" data-track-cta="home_offer_path" data-cta-location="home_paths" data-cta-intent="service_navigation">{{ card.cta }}</a>
                 </article>
             {% endfor %}
         </div>
@@ -51,7 +51,7 @@
                 <li>{{ ui.home_b2b_item_coop }}</li>
                 <li>{{ ui.home_b2b_item_shipping }}</li>
             </ul>
-            <a class="button button-primary" href="{% url 'production' %}" data-track-cta="home_b2b_production" data-cta-location="home_b2b">{{ ui.home_b2b_cta }}</a>
+            <a class="button button-primary" href="{% url 'production' %}" data-track-cta="home_b2b_production" data-cta-location="home_b2b" data-cta-intent="service_navigation">{{ ui.home_b2b_cta }}</a>
         </div>
         <figure class="feature-image">
             {% include "includes/photo_placeholder.html" with photo=page.b2b_photo alt=ui.home_b2b_image_alt variant="section" loading="eager" %}
@@ -75,10 +75,34 @@
             {% endfor %}
         </div>
         <div class="section-action">
-            <a class="button button-secondary" href="{% url 'guide' %}" data-track-cta="home_process_guide" data-cta-location="home_process">{{ ui.process_guide_cta }}</a>
+            <a class="button button-secondary" href="{% url 'guide' %}" data-track-cta="home_process_guide" data-cta-location="home_process" data-cta-intent="guide">{{ ui.process_guide_cta }}</a>
         </div>
     </div>
 </section>
+
+{% if page.qualification_sections %}
+<section class="section muted">
+    <div class="container service-sections">
+        <div class="section-heading">
+            <p class="eyebrow">{{ page.qualification_eyebrow }}</p>
+            <h2>{{ page.qualification_title }}</h2>
+        </div>
+        {% for section in page.qualification_sections %}
+            <article class="service-block">
+                <div>
+                    <h3>{{ section.title }}</h3>
+                    <p>{{ section.body }}</p>
+                </div>
+                <ul class="check-list">
+                    {% for item in section.items %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 
 <section class="section muted">
     <div class="container">
@@ -88,7 +112,10 @@
         </div>
         <div class="cards three">
             {% for case in realization_cases %}
-                <article class="case-card" data-track-view="portfolio_view">
+                <article class="case-card"
+                    data-track-view="portfolio_view"
+                    data-case-id="home_case_{{ forloop.counter }}"
+                    data-case-type="{{ case.category }}">
                     {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="card" %}
                     <div>
                         <p class="case-category">{{ case.category }}</p>
@@ -99,7 +126,7 @@
             {% endfor %}
         </div>
         <div class="section-action">
-            <a class="button button-secondary" href="{% url 'realizations' %}" data-track-cta="home_portfolio" data-cta-location="home_portfolio">{{ ui.portfolio_cta }}</a>
+            <a class="button button-secondary" href="{% url 'realizations' %}" data-track-cta="home_portfolio" data-cta-location="home_portfolio" data-cta-intent="portfolio">{{ ui.portfolio_cta }}</a>
         </div>
     </div>
 </section>
@@ -110,7 +137,7 @@
             <p class="eyebrow">{{ ui.cta_eyebrow }}</p>
             <h2>{{ ui.cta_title }}</h2>
         </div>
-        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="global_quote_band" data-cta-location="home_cta_band">{{ ui.cta_button }}</a>
+        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="global_quote_band" data-cta-location="home_cta_band" data-cta-intent="quote">{{ ui.cta_button }}</a>
     </div>
 </section>
 {% endblock %}

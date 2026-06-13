@@ -6,7 +6,7 @@
             <p class="eyebrow">{{ page.eyebrow }}</p>
             <h1>{{ page.h1 }}</h1>
             <p class="hero-lead">{{ page.lead }}</p>
-            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="service_hero_quote" data-cta-location="{{ page.key }}_hero">{{ page.primary_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
         </div>
         <figure class="page-hero-image">
             {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" loading="eager" %}
@@ -41,7 +41,7 @@
         </div>
         <div class="related-grid">
             {% for link in page.related_links %}
-                <a class="related-card" href="{{ link.url }}" data-track-cta="related_{{ page.key }}_{{ forloop.counter }}" data-cta-location="{{ page.key }}_related">
+                <a class="related-card" href="{{ link.url }}" data-track-cta="related_{{ page.key }}_{{ forloop.counter }}" data-cta-location="{{ page.key }}_related" data-cta-intent="guide">
                     <span class="eyebrow">{{ link.eyebrow }}</span>
                     <strong>{{ link.title }}</strong>
                     <p>{{ link.body }}</p>
@@ -77,7 +77,7 @@
             <p class="eyebrow">{{ ui.quote_eyebrow }}</p>
             <h2>{{ ui.quote_cta_title }}</h2>
         </div>
-        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="service_quote_band" data-cta-location="{{ page.key }}_cta_band">{{ ui.quote_cta_button }}</a>
+        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_quote_band" data-cta-location="{{ page.key }}_cta_band" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
     </div>
 </section>
 {% endblock %}

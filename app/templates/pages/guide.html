@@ -6,7 +6,7 @@
         <h1>{{ page.h1 }}</h1>
         <p>{{ page.lead }}</p>
         <div class="hero-actions">
-            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="guide_hero_quote" data-cta-location="guide_hero">{{ page.primary_cta }}</a>
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="guide_hero_quote" data-cta-location="guide_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
         </div>
     </div>
 </section>
@@ -15,7 +15,7 @@
     <div class="container guide-grid">
         <div class="guide-sections">
             {% for section in page.sections %}
-                <article class="service-block guide-block">
+                <article class="service-block guide-block" data-guide-section="{{ page.key }}_section_{{ forloop.counter }}">
                     <div>
                         <h2>{{ section.title }}</h2>
                         <p>{{ section.body }}</p>
@@ -67,7 +67,7 @@
         </div>
         <div class="related-grid">
             {% for link in page.related_links %}
-                <a class="related-card" href="{{ link.url }}" data-track-cta="related_{{ page.key }}_{{ forloop.counter }}" data-cta-location="{{ page.key }}_related">
+                <a class="related-card" href="{{ link.url }}" data-track-cta="related_{{ page.key }}_{{ forloop.counter }}" data-cta-location="{{ page.key }}_related" data-cta-intent="guide">
                     <span class="eyebrow">{{ link.eyebrow }}</span>
                     <strong>{{ link.title }}</strong>
                     <p>{{ link.body }}</p>
@@ -103,7 +103,7 @@
             <p class="eyebrow">{{ ui.cta_eyebrow }}</p>
             <h2>{{ ui.cta_title }}</h2>
         </div>
-        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="guide_quote_band" data-cta-location="guide_cta_band">{{ ui.cta_button }}</a>
+        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="guide_quote_band" data-cta-location="guide_cta_band" data-cta-intent="quote">{{ ui.cta_button }}</a>
     </div>
 </section>
 {% endblock %}

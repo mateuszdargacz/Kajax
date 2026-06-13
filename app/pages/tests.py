@@ -37,6 +37,7 @@ class PublicPagesTests(TestCase):
         self.assertContains(sitemap, "https://kajax.eu/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/")
         self.assertContains(sitemap, "https://kajax.eu/elementy-drewniane-dla-firm-reklamowych-i-eventowych/")
         self.assertContains(sitemap, "https://kajax.eu/schody-drewniane-co-wplywa-na-cene-i-termin/")
+        self.assertContains(sitemap, "<lastmod>2026-06-13</lastmod>")
 
     def test_localized_page_keeps_language_in_links_and_meta(self):
         response = self.client.get("/de/")
@@ -66,8 +67,11 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, '"@type": "FAQPage"')
         self.assertContains(response, '"@type": "OfferCatalog"')
+        self.assertContains(response, '"@type": "BreadcrumbList"')
         self.assertContains(response, "elementy POS, displaye i ekspozytory")
         self.assertContains(response, '"@type": "CommunicateAction"')
+        self.assertContains(response, 'data-page-key="production"')
+        self.assertContains(response, 'data-business-line="b2b_wooden_components"')
 
     def test_guide_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("guide"))

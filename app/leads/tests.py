@@ -42,6 +42,14 @@ class QuoteRequestTests(TestCase):
         quote = QuoteRequest.objects.get()
         self.assertEqual(quote.email, "lead@example.com")
         self.assertEqual(quote.inquiry_type, QuoteRequest.InquiryType.B2B_COMPONENTS)
+        self.assertEqual(
+            self.client.session["quote_success_event"],
+            {
+                "lead_type": "quote_request",
+                "project_type": QuoteRequest.InquiryType.B2B_COMPONENTS,
+                "business_line": "b2b_wooden_components",
+            },
+        )
 
     def test_quote_form_accepts_phone_without_email(self):
         response = self.client.post(

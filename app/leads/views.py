@@ -12,6 +12,14 @@ from pages.content import get_page_content
 from pages.views import build_seo_context
 
 
+INQUIRY_BUSINESS_LINES = {
+    "b2b_components": "b2b_wooden_components",
+    "construction_joinery": "construction_joinery",
+    "custom_artistic": "custom_architectural_details",
+    "other": "mixed",
+}
+
+
 class QuoteRequestView(FormView):
     form_class = QuoteRequestForm
     template_name = "pages/quote.html"
@@ -28,6 +36,7 @@ class QuoteRequestView(FormView):
         page = get_page_content("quote", language)
         context["page"] = page
         context.update(build_seo_context(page, language))
+        context["quote_success_event"] = self.request.session.pop("quote_success_event", None)
         return context
 
     def form_valid(self, form):
@@ -45,5 +54,10 @@ class QuoteRequestView(FormView):
             )
 
         send_quote_emails(quote_request)
+        self.request.session["quote_success_event"] = {
+            "lead_type": "quote_request",
+            "project_type": quote_request.inquiry_type,
+            "business_line": INQUIRY_BUSINESS_LINES.get(quote_request.inquiry_type, "mixed"),
+        }
         messages.success(self.request, get_form_copy(quote_request.language)["success_message"])
         return redirect(self.get_success_url())

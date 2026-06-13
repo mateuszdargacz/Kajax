@@ -7,14 +7,14 @@
         <div>
             <h2>{{ ui.footer_contact }}</h2>
             <p>{{ site.address }}</p>
-            <p><a href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ site.phone }}</a></p>
-            <p><a href="mailto:{{ site.email }}" data-track="email_click">{{ site.email }}</a></p>
+            <p><a href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="footer">{{ site.phone }}</a></p>
+            <p><a href="mailto:{{ site.email }}" data-track="email_click" data-cta-location="footer">{{ site.email }}</a></p>
         </div>
         <div>
             <h2>{{ ui.footer_quote }}</h2>
             <p>{{ ui.footer_quote_body }}</p>
-            <a class="text-link" href="{% url 'quote' %}" data-track-cta="footer_quote" data-cta-location="footer">{{ ui.footer_quote_link }}</a>
-            <p><a class="text-link" href="{% url 'guide' %}" data-track-cta="footer_guide" data-cta-location="footer">{{ ui.footer_guide_link }}</a></p>
+            <a class="text-link" href="{% url 'quote' %}" data-track-cta="footer_quote" data-cta-location="footer" data-cta-intent="quote">{{ ui.footer_quote_link }}</a>
+            <p><a class="text-link" href="{% url 'guide' %}" data-track-cta="footer_guide" data-cta-location="footer" data-cta-intent="guide">{{ ui.footer_guide_link }}</a></p>
         </div>
     </div>
 </footer>

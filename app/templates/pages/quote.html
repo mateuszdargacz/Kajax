@@ -10,7 +10,14 @@
 
 <section class="section">
     <div class="container quote-grid">
-        <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form>
+        {% if quote_success_event %}
+            <div hidden
+                data-quote-success
+                data-lead-type="{{ quote_success_event.lead_type }}"
+                data-project-type="{{ quote_success_event.project_type }}"
+                data-business-line="{{ quote_success_event.business_line }}"></div>
+        {% endif %}
+        <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form{% if form.errors %} data-has-errors="true"{% endif %}>
             {% csrf_token %}
             <p class="form-intro">{{ ui.quote_quick_hint }}</p>
             {% if form.non_field_errors %}
@@ -40,7 +47,7 @@
                     {% endfor %}
                 </div>
             </details>
-            <button class="button button-primary" type="submit">{{ ui.quote_submit }}</button>
+            <button class="button button-primary" type="submit" data-submit-intent="quote">{{ ui.quote_submit }}</button>
         </form>
         <aside class="quote-aside">
             <h2>{{ ui.quote_aside_title }}</h2>
@@ -52,7 +59,7 @@
                 <li>{{ ui.quote_aside_timing }}</li>
             </ul>
             <p>{{ ui.quote_aside_note }}</p>
-            <a class="text-link light-link" href="{% url 'guide' %}" data-track-cta="quote_guide" data-cta-location="quote_aside">{{ ui.quote_guide_link }}</a>
+            <a class="text-link light-link" href="{% url 'guide' %}" data-track-cta="quote_guide" data-cta-location="quote_aside" data-cta-intent="guide">{{ ui.quote_guide_link }}</a>
         </aside>
     </div>
 </section>
