@@ -1,0 +1,15 @@
+{{ notification.title }}
+
+{{ notification.fields.name }}: {{ quote.name }}
+{{ notification.fields.email }}: {{ quote.email|default:"-" }}
+{{ notification.fields.phone }}: {{ quote.phone|default:"-" }}
+{{ notification.fields.company }}: {{ quote.company|default:"-" }}
+{{ notification.fields.inquiry_type }}: {{ display.inquiry_type }}
+{{ notification.fields.scale }}: {{ display.scale }}
+{{ notification.fields.location }}: {{ quote.location|default:"-" }}
+{{ notification.fields.expected_timing }}: {{ quote.expected_timing|default:"-" }}
+
+{{ notification.fields.message }}:
+{{ quote.message }}
+
+{{ notification.saved_note }}

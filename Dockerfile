@@ -1,17 +1,25 @@
-FROM alpine
+FROM python:3.13-slim
 
-RUN apk --no-cache add build-base \
-                       python3-dev \
-                       bash \
-                       py3-pip \
-                       jpeg-dev \
-                       zlib-dev
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
 
-
-RUN mkdir /app
-
-ADD app /app
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        gettext \
+        libjpeg-dev \
+        zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-RUN pip3 install -r requirements.txt
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --upgrade pip \
+    && pip install -r /tmp/requirements.txt
+
+COPY app /app
+
+RUN mkdir -p /app/data/public/static /app/data/public/media /nginx
+
+CMD ["gunicorn", "config.wsgi:application", "--workers", "2", "--bind", "unix:///nginx/kajax.sock"]

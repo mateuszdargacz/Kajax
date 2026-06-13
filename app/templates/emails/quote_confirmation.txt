@@ -1,0 +1,12 @@
+{{ confirmation.greeting }}
+
+{{ confirmation.intro }}
+
+{{ confirmation.body }}
+
+{{ confirmation.summary }}:
+- {{ confirmation.inquiry_type }}: {{ display.inquiry_type }}
+- {{ confirmation.scale }}: {{ display.scale }}
+- {{ confirmation.location }}: {{ quote.location|default:"-" }}
+
+{{ confirmation.closing }}

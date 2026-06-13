@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-title">
+    <div class="container narrow">
+        <p class="eyebrow">{{ ui.contact_eyebrow }}</p>
+        <h1>{{ page.h1 }}</h1>
+        <p>{{ page.lead }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container contact-grid">
+        <article class="contact-panel">
+            <h2>{{ ui.contact_data }}</h2>
+            <dl>
+                <dt>{{ ui.contact_address }}</dt>
+                <dd>{{ site.address }}</dd>
+                <dt>{{ ui.contact_phone }}</dt>
+                <dd><a href="tel:{{ site.phone_uri }}" data-track="phone_click">{{ site.phone }}</a></dd>
+                <dt>{{ ui.contact_email }}</dt>
+                <dd><a href="mailto:{{ site.email }}" data-track="email_click">{{ site.email }}</a></dd>
+            </dl>
+        </article>
+        <article class="contact-panel accent">
+            <h2>{{ ui.contact_best_path }}</h2>
+            <p>{{ ui.contact_best_path_body }}</p>
+            <a class="button button-primary" href="{% url 'quote' %}">{{ ui.contact_project_cta }}</a>
+        </article>
+    </div>
+</section>
+{% endblock %}

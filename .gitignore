@@ -8,6 +8,14 @@ static-collected/*
 
 # Runtime data volume
 data/
+app/data/
+
+# Python/runtime
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+.env
 
 
 # Packages

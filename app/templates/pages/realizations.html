@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-title">
+    <div class="container narrow">
+        <p class="eyebrow">{{ ui.realizations_eyebrow }}</p>
+        <h1>{{ page.h1 }}</h1>
+        <p>{{ page.lead }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container realization-list">
+        {% for case in realization_cases %}
+            <article class="realization" data-track-view="portfolio_view">
+                {% include "includes/photo_placeholder.html" with photo=case.photo alt=case.alt variant="section" %}
+                <div>
+                    <p class="case-category">{{ case.category }}</p>
+                    <h2>{{ case.title }}</h2>
+                    <p>{{ case.body }}</p>
+                    <ul class="meta-list">
+                        {% for item in case.meta %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a class="text-link" href="{% url 'quote' %}">{{ ui.realizations_similar_cta }}</a>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-title">
+    <div class="container narrow">
+        <p class="eyebrow">{{ ui.quote_eyebrow }}</p>
+        <h1>{{ page.h1 }}</h1>
+        <p>{{ page.lead }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container quote-grid">
+        <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form>
+            {% csrf_token %}
+            <p class="form-intro">{{ ui.quote_quick_hint }}</p>
+            {% if form.non_field_errors %}
+                <div class="form-errors">{{ form.non_field_errors }}</div>
+            {% endif %}
+            <div class="form-grid">
+                {% for field in form.primary_bound_fields %}
+                    <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            <details class="optional-fields"{% if form.has_optional_errors %} open{% endif %}>
+                <summary>{{ ui.quote_more_summary }}</summary>
+                <p>{{ ui.quote_more_hint }}</p>
+                <div class="form-grid">
+                    {% for field in form.optional_bound_fields %}
+                        <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                            {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </details>
+            <button class="button button-primary" type="submit">{{ ui.quote_submit }}</button>
+        </form>
+        <aside class="quote-aside">
+            <h2>{{ ui.quote_aside_title }}</h2>
+            <ul class="check-list">
+                <li>{{ ui.quote_aside_photo }}</li>
+                <li>{{ ui.quote_aside_dimensions }}</li>
+                <li>{{ ui.quote_aside_quantity }}</li>
+                <li>{{ ui.quote_aside_material }}</li>
+                <li>{{ ui.quote_aside_timing }}</li>
+            </ul>
+            <p>{{ ui.quote_aside_note }}</p>
+        </aside>
+    </div>
+</section>
+{% endblock %}
