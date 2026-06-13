@@ -114,6 +114,70 @@ Replace each placeholder by adding the final image with the mapped filename and 
 | `sanding_process` | `wood-sanding-finishing-process.jpg` | Workshop process | `4:3` | `2400x1800` |
 | `clamped_elements` | `wood-elements-clamped-for-assembly.jpg` | Production/process | `4:3` | `2400x1800` |
 
+## Live Generated Image Reviews
+
+Use this section while reviewing generated files from `Downloads`. Keep the current file name, intended target filename, decision and change notes so the next generated version can improve instead of starting from scratch.
+
+### 2026-06-13 - `ChatGPT Image Jun 13, 2026, 09_29_24 AM.png`
+
+Intended target: `hero-workshop-production.jpg`
+
+Decision: used as the first live homepage hero asset, with optimized WebP and JPG exports.
+
+What works:
+
+- Strong workshop context: machinery, benches, wood stock and a worker are visible immediately.
+- Good wide composition for the homepage hero; the dark overlay keeps the headline readable.
+- Feels closer to a production-capable joinery workshop than to a small hobby carpenter.
+
+Change in the next version:
+
+- Generate a larger master file, ideally `3200x1800`; the current source is `1672x941`.
+- Remove readable English branding from the wall and clothing. Use no text, or only subtle Kajax branding added intentionally later.
+- Keep the human presence secondary; the workshop and production capability should remain the main subject.
+- Leave a calmer left-side text area with fewer high-contrast details behind the headline.
+
+### 2026-06-13 - `b2b_components_series.png`
+
+Intended target: `b2b-short-series-wood-components.jpg`
+
+Decision: good direction for the homepage B2B section and the B2B production page, but treat this as a preview/reference unless we accept a lower-resolution temporary asset.
+
+What works:
+
+- Repeatability is instantly clear: many similar wooden parts are arranged in rows.
+- The old workbench and caliper make the scene feel practical and workshop-based, not showroom-like.
+- The 4:3 crop fits the current section image slots well.
+
+Change in the next version:
+
+- Generate at least `2400x1800`; the current file is `1448x1086`.
+- Make the components a little more technical and less like plain rounded blocks: add one repeated routed profile, small holes, grooves or a template-driven shape.
+- Reduce the cut-off board in the bottom-right corner or remove it; it distracts from the repeated batch.
+- Keep at least 20 pieces visible, but make the front row sharper and the background slightly calmer.
+- Avoid making every edge look too perfect or CGI-like; add believable small workshop variation while keeping the series consistent.
+
+### 2026-06-13 - `b2b_components_detail.png`
+
+Intended target: `b2b-repeated-wooden-elements-detail.jpg`, and possibly a stronger B2B production-page hero direction than the simpler block series.
+
+Decision: strongest B2B marketing direction so far, especially for buyers who need repeatable profiles, semi-products and short production runs.
+
+What works:
+
+- Immediately communicates larger B2B capability: stacked profiles, repeated machining, active workshop and machinery in the background.
+- The foreground elements have useful detail: holes, grooves and profile shapes make the work look more technical.
+- Human presence supports scale and process without turning the image into a posed portrait.
+- The scene better supports the business direction toward semi-products and repeatable orders for companies.
+
+Change in the next version:
+
+- Generate a larger master: ideally `2400x2400` for the detail asset, plus a `2400x1800` crop for standard page sections. The current file is `1448x1086`.
+- Create a closer square variant focused on the front stacks so it can work as `b2b-repeated-wooden-elements-detail.jpg`.
+- Keep the worker and machine in the background, but make sure the machined profiles remain the sharpest and most important visual subject.
+- Reduce the bright window area slightly so the wood profiles and workshop depth carry the composition.
+- Avoid fake screens, fake labels or readable UI on machinery; any visible text should be absent or non-readable.
+
 ## AI Generation Asset Briefs
 
 Each asset below is written so an image-generation agent can produce a usable website image without guessing the business context.
