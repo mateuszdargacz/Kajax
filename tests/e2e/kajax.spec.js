@@ -4,6 +4,7 @@ const publicPages = [
   { path: "/", h1: "Stolarnia dla firm, architektów i wymagających realizacji z drewna" },
   { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane na zamówienie dla firm" },
   { path: "/stolarka-budowlana/", h1: "Schody, drzwi, listwy i stolarka drewniana na wymiar" },
+  { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: co wpływa na cenę i termin realizacji?" },
   { path: "/dla-architektow-i-firm/", h1: "Stolarnia do trudniejszych projektów i detali drewnianych" },
   { path: "/realizacje/", h1: "Realizacje i kierunki prac, które dobrze pasują do naszej stolarni" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź" },
@@ -95,6 +96,29 @@ test.describe("public marketing pages", () => {
     await expectNoHorizontalOverflow(page);
   });
 
+  test("stairs pricing guide qualifies construction joinery leads", async ({ page }) => {
+    await page.goto("/schody-drewniane-co-wplywa-na-cene-i-termin/");
+
+    await expect(page.locator("h1")).toContainText("Schody drewniane");
+    await expect(page.locator("body")).toContainText("Układ i wymiary schodów");
+    await expect(page.locator("body")).toContainText("Co najczęściej opóźnia wycenę schodów");
+    await expect(page.locator(".related-card", { hasText: "Stolarka budowlana" })).toHaveAttribute("href", "/stolarka-budowlana/");
+    const schema = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(schema).toContain('"@type": "HowTo"');
+    expect(schema).toContain('"@type": "Article"');
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("construction page links to stairs quote guide", async ({ page }) => {
+    await page.goto("/stolarka-budowlana/");
+
+    await expect(page.getByRole("link", { name: /Co wpływa na cenę i termin schodów drewnianych/ })).toHaveAttribute(
+      "href",
+      "/schody-drewniane-co-wplywa-na-cene-i-termin/",
+    );
+    await expectNoHorizontalOverflow(page);
+  });
+
   test("home keeps the frontend payload lean", async ({ page }) => {
     await page.goto("/");
     const resources = await page.evaluate(() =>
@@ -173,6 +197,12 @@ test.describe("localized pages", () => {
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
     await expect(page.locator("h1")).toContainText("Kleinserie");
     await expect(page.getByRole("link", { name: /Fertigung von Holzelementen/ })).toHaveAttribute("href", "/de/produkcja-elementow-drewnianych/");
+    await expectNoHorizontalOverflow(page);
+
+    await page.goto("/de/schody-drewniane-co-wplywa-na-cene-i-termin/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "de");
+    await expect(page.locator("h1")).toContainText("Holztreppen");
+    await expect(page.locator(".related-card", { hasText: "Bauschreinerei" })).toHaveAttribute("href", "/de/stolarka-budowlana/");
     await expectNoHorizontalOverflow(page);
   });
 });

@@ -8,6 +8,7 @@ class PublicPagesTests(TestCase):
             "home",
             "production",
             "construction",
+            "stairs_pricing",
             "architects",
             "realizations",
             "guide",
@@ -33,6 +34,7 @@ class PublicPagesTests(TestCase):
         self.assertContains(sitemap, "https://kajax.eu/de/produkcja-elementow-drewnianych/")
         self.assertContains(sitemap, "https://kajax.eu/jak-przygotowac-zapytanie/")
         self.assertContains(sitemap, "https://kajax.eu/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/")
+        self.assertContains(sitemap, "https://kajax.eu/schody-drewniane-co-wplywa-na-cene-i-termin/")
 
     def test_localized_page_keeps_language_in_links_and_meta(self):
         response = self.client.get("/de/")
@@ -82,3 +84,12 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "Article"')
         self.assertContains(response, '"@type": "HowTo"')
         self.assertContains(response, "Gdy element ma wracać w kolejnych zamówieniach")
+
+    def test_stairs_pricing_page_uses_article_and_howto_schema(self):
+        response = self.client.get(reverse("stairs_pricing"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Schody drewniane: co wpływa na cenę")
+        self.assertContains(response, '"@type": "Article"')
+        self.assertContains(response, '"@type": "HowTo"')
+        self.assertContains(response, "Układ i wymiary schodów")

@@ -47,6 +47,7 @@ PATHS = {
     "home": "/",
     "production": "/produkcja-elementow-drewnianych/",
     "construction": "/stolarka-budowlana/",
+    "stairs_pricing": "/schody-drewniane-co-wplywa-na-cene-i-termin/",
     "architects": "/dla-architektow-i-firm/",
     "realizations": "/realizacje/",
     "guide": "/jak-przygotowac-zapytanie/",
@@ -61,6 +62,7 @@ TEMPLATES = {
     "home": "pages/home.html",
     "production": "pages/service_page.html",
     "construction": "pages/service_page.html",
+    "stairs_pricing": "pages/guide.html",
     "architects": "pages/service_page.html",
     "realizations": "pages/realizations.html",
     "guide": "pages/guide.html",
@@ -69,7 +71,7 @@ TEMPLATES = {
     "contact": "pages/contact.html",
 }
 
-PAGE_ORDER = ["home", "production", "short_series", "construction", "architects", "realizations", "guide", "quote", "contact"]
+PAGE_ORDER = ["home", "production", "short_series", "construction", "stairs_pricing", "architects", "realizations", "guide", "quote", "contact"]
 
 CONTENT = {
     "pl": {
@@ -924,11 +926,161 @@ SHORT_SERIES_GUIDE_PAGES = {
     },
 }
 
+STAIRS_PRICING_GUIDE_PAGES = {
+    "pl": {
+        "title": "Schody drewniane: co wpływa na cenę i termin? | Kajax",
+        "description": "Poradnik dla inwestorów z Pomorskiego: co wpływa na cenę i termin schodów drewnianych, jakie zdjęcia i wymiary przygotować do wyceny.",
+        "eyebrow": "Stolarka budowlana / schody",
+        "h1": "Schody drewniane: co wpływa na cenę i termin realizacji?",
+        "lead": "Na cenę schodów wpływa nie tylko liczba stopni. Ważny jest układ, miejsce montażu, materiał, wykończenie, etap inwestycji i to, czy można wykonać dokładny pomiar. Im szybciej znamy te dane, tym szybciej można ocenić realny zakres prac.",
+        "primary_cta": "Zapytaj o schody",
+        "aside_title": "Do pierwszej rozmowy przygotuj",
+        "aside_body": "Nie musisz mieć pełnego projektu. Na start wystarczą zdjęcia miejsca, orientacyjne wymiary i informacja, na jakim etapie jest budowa albo remont.",
+        "aside_items": ["miejscowość inwestycji", "zdjęcia otworu lub istniejących schodów", "wysokość kondygnacji i szerokość miejsca", "preferowany materiał lub kolor", "oczekiwany termin montażu"],
+        "sections": [
+            {"title": "Układ i wymiary schodów", "body": "Proste schody zwykle wycenia się łatwiej niż zabiegowe, z podestem albo z nietypowym biegiem. Znaczenie ma liczba stopni, szerokość, wysokość kondygnacji i to, ile miejsca jest na konstrukcję.", "items": ["schody proste, zabiegowe lub z podestem", "liczba stopni i wysokość kondygnacji", "szerokość biegu", "miejsce na policzki, konstrukcję i balustradę", "zdjęcia obecnego stanu"]},
+            {"title": "Materiał, konstrukcja i wykończenie", "body": "Cena zmienia się wraz z gatunkiem drewna, grubością elementów, sposobem konstrukcji oraz wykończeniem. Inaczej planuje się same stopnie na konstrukcji metalowej, a inaczej pełne schody drewniane z balustradą.", "items": ["gatunek drewna i klasa materiału", "stopnie, podstopnice, policzki lub okładziny", "balustrada i detale widoczne", "olej, lakier, bejca lub kolor", "odporność na intensywne użytkowanie"]},
+            {"title": "Etap inwestycji i montaż", "body": "Termin zależy od gotowości miejsca, możliwości pomiaru, dostępności materiału i kolejności prac na budowie. Najlepiej zgłosić temat zanim wykończenia zamkną dostęp do miejsc pomiarowych.", "items": ["czy są gotowe posadzki i ściany", "czy można wykonać pomiar", "czy schody mają pasować do innych elementów wnętrza", "termin wejścia innych ekip", "lokalizacja w Pomorskiem i dojazd"]},
+        ],
+        "avoid_title": "Co najczęściej opóźnia wycenę schodów",
+        "avoid_body": "Najwięcej czasu tracimy, gdy trzeba zgadywać wymiary, etap budowy albo oczekiwany standard. Nawet proste zdjęcia z telefonu pomagają szybciej powiedzieć, czy temat jest do dalszej rozmowy.",
+        "avoid_items": ["brak zdjęć miejsca montażu", "brak wysokości kondygnacji lub szerokości biegu", "niejasny zakres: same stopnie czy całe schody", "brak informacji o terminie i miejscowości", "oczekiwanie ceny bez ustalenia materiału"],
+        "faq": [
+            ("Czy do pierwszej wyceny wystarczą zdjęcia?", "Tak, zdjęcia wystarczą do wstępnej rozmowy, jeśli dodasz miejscowość, orientacyjne wymiary i informację, czy chodzi o nowe schody, okładzinę czy wymianę istniejących."),
+            ("Kiedy najlepiej zgłosić schody do wyceny?", "Najlepiej zanim inwestycja wejdzie w końcowe wykończenia. Wtedy łatwiej zaplanować pomiar, konstrukcję i kolejność montażu."),
+            ("Czy realizujecie schody poza okolicą Gościcina?", "Dla schodów i stolarki budowlanej priorytetem jest Pomorskie, okolice Wejherowa i Trójmiasta. Dalsze lokalizacje wymagają indywidualnej oceny."),
+        ],
+    },
+    "en": {
+        "title": "Wooden stairs: what affects price and lead time? | Kajax",
+        "description": "Guide for investors: what affects the price and lead time of wooden stairs, and which photos and measurements help with the first quote.",
+        "eyebrow": "Construction joinery / stairs",
+        "h1": "Wooden stairs: what affects price and lead time?",
+        "lead": "The price of wooden stairs is not determined only by the number of steps. Layout, installation site, material, finish, construction stage and the possibility of accurate measurement all matter. The earlier these details are clear, the faster the scope can be assessed.",
+        "primary_cta": "Ask about stairs",
+        "aside_title": "Prepare for the first conversation",
+        "aside_body": "You do not need a complete design. Photos of the place, approximate dimensions and the current stage of the build or renovation are enough to start.",
+        "aside_items": ["project location", "photos of the opening or existing stairs", "floor-to-floor height and available width", "preferred material or colour", "expected installation timing"],
+        "sections": [
+            {"title": "Stair layout and dimensions", "body": "Straight stairs are usually easier to assess than winding stairs, stairs with a landing or unusual runs. The number of steps, width, floor-to-floor height and available structural space all matter.", "items": ["straight, winding or landing stairs", "number of steps and floor-to-floor height", "run width", "space for stringers, structure and railing", "photos of the current state"]},
+            {"title": "Material, structure and finish", "body": "Price changes with wood species, element thickness, structure and finish. Treads on a metal structure are planned differently from full wooden stairs with railing.", "items": ["wood species and material grade", "treads, risers, stringers or cladding", "railing and visible details", "oil, varnish, stain or colour", "resistance to intensive use"]},
+            {"title": "Project stage and installation", "body": "Timing depends on site readiness, measurement access, material availability and the sequence of works on site. It is best to raise the topic before final finishes block measurement points.", "items": ["whether floors and walls are ready", "whether precise measurement is possible", "whether stairs must match other interior elements", "timing of other trades", "location and access"]},
+        ],
+        "avoid_title": "What most often slows down stair pricing",
+        "avoid_body": "Most delays come from missing dimensions, unclear building stage or unclear expected standard. Even simple phone photos help us say faster whether the topic is worth a detailed discussion.",
+        "avoid_items": ["no photos of the installation area", "no floor-to-floor height or run width", "unclear scope: treads only or full stairs", "no timing or location", "expecting a price before material is defined"],
+        "faq": [
+            ("Are photos enough for the first quote?", "Yes, photos are enough for an initial conversation if you add location, approximate dimensions and whether you need new stairs, cladding or replacement of existing stairs."),
+            ("When should I ask for stair pricing?", "Ideally before the project reaches final finishing. It is easier to plan measurement, structure and installation sequence then."),
+            ("Do you install stairs outside the Gościcino area?", "For stairs and construction joinery, the priority is Pomerania, the Wejherowo area and the Tricity region. More distant locations are assessed individually."),
+        ],
+    },
+    "de": {
+        "title": "Holztreppen: was beeinflusst Preis und Termin? | Kajax",
+        "description": "Leitfaden für Investoren: was Preis und Termin von Holztreppen beeinflusst und welche Fotos und Maße bei der ersten Anfrage helfen.",
+        "eyebrow": "Bauschreinerei / Treppen",
+        "h1": "Holztreppen: was beeinflusst Preis und Ausführungszeit?",
+        "lead": "Der Preis einer Holztreppe hängt nicht nur von der Anzahl der Stufen ab. Entscheidend sind Grundriss, Einbauort, Material, Oberfläche, Bauphase und die Möglichkeit eines genauen Aufmaßes. Je früher diese Informationen klar sind, desto schneller lässt sich der Umfang einschätzen.",
+        "primary_cta": "Treppen anfragen",
+        "aside_title": "Für das erste Gespräch vorbereiten",
+        "aside_body": "Ein vollständiger Entwurf ist nicht nötig. Fotos des Ortes, ungefähre Maße und die aktuelle Bau- oder Renovierungsphase reichen für den Start.",
+        "aside_items": ["Projektort", "Fotos der Öffnung oder vorhandenen Treppe", "Geschosshöhe und verfügbare Breite", "gewünschtes Material oder Farbe", "gewünschter Montagetermin"],
+        "sections": [
+            {"title": "Treppenform und Maße", "body": "Gerade Treppen lassen sich meist leichter einschätzen als gewendelte Treppen, Treppen mit Podest oder ungewöhnliche Läufe. Relevant sind Stufenzahl, Breite, Geschosshöhe und Platz für die Konstruktion.", "items": ["gerade, gewendelte Treppe oder Treppe mit Podest", "Stufenzahl und Geschosshöhe", "Laufbreite", "Platz für Wangen, Konstruktion und Geländer", "Fotos des aktuellen Zustands"]},
+            {"title": "Material, Konstruktion und Oberfläche", "body": "Der Preis verändert sich je nach Holzart, Elementstärke, Konstruktion und Oberfläche. Einzelne Stufen auf Metallkonstruktion werden anders geplant als eine vollständige Holztreppe mit Geländer.", "items": ["Holzart und Materialklasse", "Stufen, Setzstufen, Wangen oder Verkleidungen", "Geländer und sichtbare Details", "Öl, Lack, Beize oder Farbton", "Beständigkeit bei intensiver Nutzung"]},
+            {"title": "Bauphase und Montage", "body": "Der Termin hängt von der Bereitschaft des Ortes, Zugang zum Aufmaß, Materialverfügbarkeit und Reihenfolge der Arbeiten ab. Am besten wird das Thema gemeldet, bevor Endarbeiten Messpunkte verdecken.", "items": ["ob Böden und Wände fertig sind", "ob ein genaues Aufmaß möglich ist", "ob die Treppe zu anderen Innenelementen passen muss", "Termine anderer Gewerke", "Standort und Anfahrt"]},
+        ],
+        "avoid_title": "Was die Treppenanfrage meist verlangsamt",
+        "avoid_body": "Die meiste Zeit geht verloren, wenn Maße, Bauphase oder erwarteter Standard fehlen. Selbst einfache Handyfotos helfen schneller einzuschätzen, ob das Thema weiter besprochen werden sollte.",
+        "avoid_items": ["keine Fotos des Montageorts", "keine Geschosshöhe oder Laufbreite", "unklarer Umfang: nur Stufen oder ganze Treppe", "kein Termin und kein Standort", "Preisfrage ohne festgelegtes Material"],
+        "faq": [
+            ("Reichen Fotos für die erste Anfrage?", "Ja, Fotos reichen für das erste Gespräch, wenn Standort, ungefähre Maße und der Umfang ergänzt werden: neue Treppe, Verkleidung oder Austausch einer bestehenden Treppe."),
+            ("Wann sollte eine Treppe angefragt werden?", "Am besten bevor das Projekt in die Endausführung geht. Dann lassen sich Aufmaß, Konstruktion und Montagereihenfolge leichter planen."),
+            ("Montieren Sie Treppen außerhalb von Gościcino?", "Für Treppen und Bauschreinerei liegt der Schwerpunkt auf Pommern, Umgebung Wejherowo und Dreistadt. Weitere Orte werden individuell geprüft."),
+        ],
+    },
+    "sv": {
+        "title": "Trätrappor: vad påverkar pris och leveranstid? | Kajax",
+        "description": "Guide för investerare: vad som påverkar pris och tidplan för trätrappor, och vilka foton och mått som hjälper inför offert.",
+        "eyebrow": "Byggsnickeri / trappor",
+        "h1": "Trätrappor: vad påverkar pris och leveranstid?",
+        "lead": "Priset på en trätrappa beror inte bara på antalet steg. Planlösning, montageplats, material, finish, byggskede och möjlighet till noggrann mätning spelar stor roll. Ju tidigare detta är tydligt, desto snabbare kan omfattningen bedömas.",
+        "primary_cta": "Fråga om trappor",
+        "aside_title": "Förbered inför första dialogen",
+        "aside_body": "Du behöver inte ha komplett projektering. Foton av platsen, ungefärliga mått och information om bygg- eller renoveringsskede räcker för start.",
+        "aside_items": ["projektplats", "foton av öppning eller befintlig trappa", "våningshöjd och tillgänglig bredd", "önskat material eller färg", "önskad tid för montage"],
+        "sections": [
+            {"title": "Trappans form och mått", "body": "Raka trappor är oftast enklare att bedöma än svängda trappor, trappor med vilplan eller ovanliga lösningar. Antal steg, bredd, våningshöjd och plats för konstruktion är viktigt.", "items": ["rak trappa, svängd trappa eller trappa med vilplan", "antal steg och våningshöjd", "trapploppets bredd", "plats för vangstycken, konstruktion och räcke", "foton av nuvarande skick"]},
+            {"title": "Material, konstruktion och finish", "body": "Priset påverkas av träslag, dimensioner, konstruktion och ytbehandling. Steg på metallkonstruktion planeras annorlunda än en komplett trätrappa med räcke.", "items": ["träslag och materialklass", "steg, sättsteg, vangstycken eller beklädnad", "räcke och synliga detaljer", "olja, lack, bets eller färg", "tålighet vid intensiv användning"]},
+            {"title": "Byggskede och montage", "body": "Tidplanen beror på platsens beredskap, möjlighet till mätning, materialtillgång och ordning mellan olika arbeten. Det är bäst att ta upp trappan innan slutfinish stänger mätpunkter.", "items": ["om golv och väggar är klara", "om exakt mätning är möjlig", "om trappan ska matcha andra inredningsdetaljer", "tidplan för andra yrkesgrupper", "plats och tillgänglighet"]},
+        ],
+        "avoid_title": "Vad som oftast bromsar offert på trappa",
+        "avoid_body": "Mest tid går förlorad när mått, byggskede eller förväntad nivå saknas. Även enkla mobilbilder hjälper oss snabbare avgöra om projektet är värt en mer detaljerad dialog.",
+        "avoid_items": ["inga foton av montageplatsen", "ingen våningshöjd eller bredd", "oklar omfattning: bara steg eller hel trappa", "ingen tidplan eller plats", "prisfråga utan valt material"],
+        "faq": [
+            ("Räcker foton för första offerten?", "Ja, foton räcker för första dialogen om du lägger till plats, ungefärliga mått och om det gäller ny trappa, beklädnad eller byte av befintlig trappa."),
+            ("När bör man fråga om pris på trappa?", "Helst innan projektet går in i slutfinish. Då är det lättare att planera mätning, konstruktion och montageordning."),
+            ("Monterar ni trappor utanför Gościcino?", "För trappor och byggsnickeri prioriteras Pommern, Wejherowo-området och Tricity. Andra platser bedöms individuellt."),
+        ],
+    },
+    "da": {
+        "title": "Trætrapper: hvad påvirker pris og leveringstid? | Kajax",
+        "description": "Guide for investorer: hvad der påvirker pris og tidsplan for trætrapper, og hvilke fotos og mål der hjælper før tilbud.",
+        "eyebrow": "Byggesnedkeri / trapper",
+        "h1": "Trætrapper: hvad påvirker pris og leveringstid?",
+        "lead": "Prisen på en trætrappe afhænger ikke kun af antallet af trin. Udformning, montagested, materiale, finish, byggefase og mulighed for præcis opmåling betyder meget. Jo tidligere disse oplysninger er klare, desto hurtigere kan omfanget vurderes.",
+        "primary_cta": "Spørg om trapper",
+        "aside_title": "Forbered til første dialog",
+        "aside_body": "Du behøver ikke komplet projektering. Fotos af stedet, omtrentlige mål og information om bygge- eller renoveringsfase er nok til at starte.",
+        "aside_items": ["projektets placering", "fotos af åbning eller eksisterende trappe", "etagehøjde og tilgængelig bredde", "ønsket materiale eller farve", "ønsket tidspunkt for montage"],
+        "sections": [
+            {"title": "Trappens form og mål", "body": "Lige trapper er normalt lettere at vurdere end drejede trapper, trapper med repos eller usædvanlige løsninger. Antal trin, bredde, etagehøjde og plads til konstruktion er vigtigt.", "items": ["lige trappe, drejet trappe eller trappe med repos", "antal trin og etagehøjde", "trappeløbets bredde", "plads til vanger, konstruktion og gelænder", "fotos af nuværende tilstand"]},
+            {"title": "Materiale, konstruktion og finish", "body": "Prisen påvirkes af træsort, dimensioner, konstruktion og overfladebehandling. Trin på metalkonstruktion planlægges anderledes end en komplet trætrappe med gelænder.", "items": ["træsort og materialeklasse", "trin, stødtrin, vanger eller beklædning", "gelænder og synlige detaljer", "olie, lak, bejdse eller farve", "modstand ved intensiv brug"]},
+            {"title": "Byggefase og montage", "body": "Tidsplanen afhænger af stedets klarhed, adgang til opmåling, materialetilgængelighed og rækkefølgen mellem fag. Det er bedst at tage trappen op, før slutfinish lukker for målepunkter.", "items": ["om gulve og vægge er klar", "om præcis opmåling er mulig", "om trappen skal passe til andre interiørdele", "tidsplan for andre fag", "placering og adgang"]},
+        ],
+        "avoid_title": "Hvad der oftest forsinker tilbud på trapper",
+        "avoid_body": "Mest tid går tabt, når mål, byggefase eller forventet standard mangler. Selv enkle mobilfotos hjælper os hurtigere med at vurdere, om projektet bør drøftes mere detaljeret.",
+        "avoid_items": ["ingen fotos af montagestedet", "ingen etagehøjde eller bredde", "uklart omfang: kun trin eller hel trappe", "ingen tidsplan eller placering", "prisforespørgsel uden valgt materiale"],
+        "faq": [
+            ("Er fotos nok til første tilbud?", "Ja, fotos er nok til første dialog, hvis du tilføjer placering, omtrentlige mål og om det gælder ny trappe, beklædning eller udskiftning af eksisterende trappe."),
+            ("Hvornår bør man spørge om pris på trappe?", "Helst før projektet går ind i slutfinish. Så er det lettere at planlægge opmåling, konstruktion og montagerækkefølge."),
+            ("Monterer I trapper uden for Gościcino?", "For trapper og byggesnedkeri prioriteres Pommern, Wejherowo-området og Tricity. Andre placeringer vurderes individuelt."),
+        ],
+    },
+    "no": {
+        "title": "Tretrapper: hva påvirker pris og leveringstid? | Kajax",
+        "description": "Guide for investorer: hva som påvirker pris og tidsplan for tretrapper, og hvilke bilder og mål som hjelper før vurdering.",
+        "eyebrow": "Byggsnekkerarbeid / trapper",
+        "h1": "Tretrapper: hva påvirker pris og leveringstid?",
+        "lead": "Prisen på en tretrapp bestemmes ikke bare av antall trinn. Utforming, monteringssted, materiale, overflate, byggefase og mulighet for nøyaktig oppmåling betyr mye. Jo tidligere dette er klart, desto raskere kan omfanget vurderes.",
+        "primary_cta": "Spør om trapper",
+        "aside_title": "Forbered til første dialog",
+        "aside_body": "Du trenger ikke komplett prosjektering. Bilder av stedet, omtrentlige mål og informasjon om bygge- eller renoveringsfase er nok til å starte.",
+        "aside_items": ["prosjektsted", "bilder av åpning eller eksisterende trapp", "etasjehøyde og tilgjengelig bredde", "ønsket materiale eller farge", "ønsket tidspunkt for montering"],
+        "sections": [
+            {"title": "Trappens form og mål", "body": "Rette trapper er vanligvis lettere å vurdere enn svingtrapper, trapper med repos eller uvanlige løsninger. Antall trinn, bredde, etasjehøyde og plass til konstruksjon er viktig.", "items": ["rett trapp, svingtrapp eller trapp med repos", "antall trinn og etasjehøyde", "trappeløpets bredde", "plass til vanger, konstruksjon og rekkverk", "bilder av nåværende tilstand"]},
+            {"title": "Materiale, konstruksjon og overflate", "body": "Prisen påvirkes av treslag, dimensjoner, konstruksjon og overflatebehandling. Trinn på metallkonstruksjon planlegges annerledes enn en komplett tretrapp med rekkverk.", "items": ["treslag og materialklasse", "trinn, opptrinn, vanger eller kledning", "rekkverk og synlige detaljer", "olje, lakk, beis eller farge", "motstand ved intensiv bruk"]},
+            {"title": "Byggefase og montering", "body": "Tidsplanen avhenger av hvor klart stedet er, tilgang til oppmåling, materialtilgang og rekkefølgen mellom fag. Det er best å ta opp trappen før sluttfinish stenger målepunkter.", "items": ["om gulv og vegger er klare", "om presis oppmåling er mulig", "om trappen skal passe til andre interiørdeler", "tidsplan for andre fag", "plassering og tilgang"]},
+        ],
+        "avoid_title": "Hva som oftest forsinker vurdering av trapper",
+        "avoid_body": "Mest tid går tapt når mål, byggefase eller forventet standard mangler. Selv enkle mobilbilder hjelper oss raskere å vurdere om prosjektet bør diskuteres mer detaljert.",
+        "avoid_items": ["ingen bilder av monteringsstedet", "ingen etasjehøyde eller bredde", "uklart omfang: bare trinn eller hel trapp", "ingen tidsplan eller plassering", "prisforespørsel uten valgt materiale"],
+        "faq": [
+            ("Er bilder nok for første vurdering?", "Ja, bilder er nok for første dialog hvis du legger til sted, omtrentlige mål og om det gjelder ny trapp, kledning eller utskifting av eksisterende trapp."),
+            ("Når bør man spørre om pris på trapp?", "Helst før prosjektet går inn i sluttfinish. Da er det lettere å planlegge oppmåling, konstruksjon og monteringsrekkefølge."),
+            ("Monterer dere trapper utenfor Gościcino?", "For trapper og byggsnekkerarbeid prioriteres Pommern, Wejherowo-området og Tricity. Andre steder vurderes individuelt."),
+        ],
+    },
+}
+
 for _code, _page in GUIDE_PAGES.items():
     CONTENT[_code]["pages"]["guide"] = _page
 
 for _code, _page in SHORT_SERIES_GUIDE_PAGES.items():
     CONTENT[_code]["pages"]["short_series"] = _page
+
+for _code, _page in STAIRS_PRICING_GUIDE_PAGES.items():
+    CONTENT[_code]["pages"]["stairs_pricing"] = _page
 
 RELATED_LINK_SECTIONS = {
     "pl": {
@@ -1090,6 +1242,121 @@ RELATED_LINK_SECTIONS = {
 }
 
 for _code, _pages in RELATED_LINK_SECTIONS.items():
+    for _page_key, _data in _pages.items():
+        CONTENT[_code]["pages"][_page_key].update(_data)
+
+STAIRS_RELATED_LINK_SECTIONS = {
+    "pl": {
+        "construction": {
+            "related_eyebrow": "Poradniki stolarki budowlanej",
+            "related_title": "Jak przygotować temat schodów i elementów montowanych",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Schody", "title": "Co wpływa na cenę i termin schodów drewnianych?", "body": "Najważniejsze dane do pierwszej rozmowy o schodach, pomiarze i montażu."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Checklista informacji, które przyspieszają odpowiedź przed wyceną."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Przygotuj zapytanie do wyceny",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Oferta", "title": "Stolarka budowlana", "body": "Schody, drzwi, listwy i elementy drewniane na wymiar dla inwestycji lokalnych."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Co wysłać, żeby szybciej dostać konkretną odpowiedź."},
+            ],
+        },
+    },
+    "en": {
+        "construction": {
+            "related_eyebrow": "Construction joinery guides",
+            "related_title": "How to prepare stairs and installed joinery topics",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Stairs", "title": "What affects the price and lead time of wooden stairs?", "body": "Key details for the first conversation about stairs, measurement and installation."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "A checklist of information that speeds up the first response."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Next step",
+            "related_title": "Prepare the quote inquiry",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Offer", "title": "Construction joinery", "body": "Stairs, doors, trims and wooden elements made to measure for local projects."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "What to send to get a concrete answer faster."},
+            ],
+        },
+    },
+    "de": {
+        "construction": {
+            "related_eyebrow": "Leitfäden zur Bauschreinerei",
+            "related_title": "Treppen und montierte Holzarbeiten vorbereiten",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Treppen", "title": "Was beeinflusst Preis und Termin von Holztreppen?", "body": "Wichtige Angaben für die erste Abstimmung zu Treppe, Aufmaß und Montage."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Checkliste mit Informationen, die eine erste Antwort beschleunigen."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Anfrage für die Preisfindung vorbereiten",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Angebot", "title": "Bauschreinerei", "body": "Treppen, Türen, Leisten und Holzelemente nach Maß für lokale Projekte."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Was Sie senden sollten, um schneller eine konkrete Antwort zu bekommen."},
+            ],
+        },
+    },
+    "sv": {
+        "construction": {
+            "related_eyebrow": "Guider för byggsnickeri",
+            "related_title": "Så förbereder du trappor och monterat snickeri",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Trappor", "title": "Vad påverkar pris och leveranstid för trätrappor?", "body": "Viktiga uppgifter inför första dialogen om trappa, mätning och montage."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Checklista med information som snabbar upp första svaret."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Förbered underlaget för offert",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Erbjudande", "title": "Byggsnickeri", "body": "Trappor, dörrar, lister och måttanpassade träelement för lokala projekt."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Vad du bör skicka för att få ett konkret svar snabbare."},
+            ],
+        },
+    },
+    "da": {
+        "construction": {
+            "related_eyebrow": "Guides til byggesnedkeri",
+            "related_title": "Sådan forbereder du trapper og monteret snedkeri",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Trapper", "title": "Hvad påvirker pris og leveringstid for trætrapper?", "body": "Vigtige oplysninger før første dialog om trappe, opmåling og montage."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Checkliste med information, der gør første svar hurtigere."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Forbered materialet til tilbud",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Tilbud", "title": "Byggesnedkeri", "body": "Trapper, døre, lister og måltilpassede træelementer til lokale projekter."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Hvad du bør sende for at få et konkret svar hurtigere."},
+            ],
+        },
+    },
+    "no": {
+        "construction": {
+            "related_eyebrow": "Guider for byggsnekkerarbeid",
+            "related_title": "Slik forbereder du trapper og montert snekkerarbeid",
+            "related_links": [
+                {"page": "stairs_pricing", "eyebrow": "Trapper", "title": "Hva påvirker pris og leveringstid for tretrapper?", "body": "Viktig informasjon før første dialog om trapp, oppmåling og montering."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Sjekkliste med informasjon som gjør første svar raskere."},
+            ],
+        },
+        "stairs_pricing": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Forbered grunnlaget for vurdering",
+            "related_links": [
+                {"page": "construction", "eyebrow": "Tilbud", "title": "Byggsnekkerarbeid", "body": "Trapper, dører, lister og måltilpassede treelementer for lokale prosjekter."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Hva du bør sende for å få et konkret svar raskere."},
+            ],
+        },
+    },
+}
+
+for _code, _pages in STAIRS_RELATED_LINK_SECTIONS.items():
     for _page_key, _data in _pages.items():
         CONTENT[_code]["pages"][_page_key].update(_data)
 

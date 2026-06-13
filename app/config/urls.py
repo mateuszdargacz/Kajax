@@ -51,6 +51,10 @@ norwegian_urlpatterns = [
         force_language(MarketingPageView.as_view(page_key="construction"), "no"),
     ),
     path(
+        "no/schody-drewniane-co-wplywa-na-cene-i-termin/",
+        force_language(MarketingPageView.as_view(page_key="stairs_pricing"), "no"),
+    ),
+    path(
         "no/dla-architektow-i-firm/",
         force_language(MarketingPageView.as_view(page_key="architects"), "no"),
     ),

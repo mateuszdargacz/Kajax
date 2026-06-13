@@ -215,7 +215,7 @@ Pierwsze artykuły/poradniki:
 
 1. `Jak przygotować zapytanie do stolarni produkcyjnej?` - wdrożone jako `/jak-przygotowac-zapytanie/`
 2. `Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?` - wdrożone jako `/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/`
-3. `Schody drewniane: co wpływa na cenę i termin?`
+3. `Schody drewniane: co wpływa na cenę i termin?` - wdrożone jako `/schody-drewniane-co-wplywa-na-cene-i-termin/`
 4. `Elementy drewniane dla firm reklamowych i eventowych`
 5. `Stolarka na wymiar dla architekta: jak skrócić wycenę?`
 

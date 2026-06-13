@@ -8,6 +8,11 @@ urlpatterns = [
     path("", MarketingPageView.as_view(page_key="home"), name="home"),
     path("produkcja-elementow-drewnianych/", MarketingPageView.as_view(page_key="production"), name="production"),
     path("stolarka-budowlana/", MarketingPageView.as_view(page_key="construction"), name="construction"),
+    path(
+        "schody-drewniane-co-wplywa-na-cene-i-termin/",
+        MarketingPageView.as_view(page_key="stairs_pricing"),
+        name="stairs_pricing",
+    ),
     path("dla-architektow-i-firm/", MarketingPageView.as_view(page_key="architects"), name="architects"),
     path("realizacje/", MarketingPageView.as_view(page_key="realizations"), name="realizations"),
     path("jak-przygotowac-zapytanie/", MarketingPageView.as_view(page_key="guide"), name="guide"),
