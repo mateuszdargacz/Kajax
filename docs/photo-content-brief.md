@@ -188,6 +188,54 @@ Change in the next version:
 - Reduce the bright window area slightly so the wood profiles and workshop depth carry the composition.
 - Avoid fake screens, fake labels or readable UI on machinery; any visible text should be absent or non-readable.
 
+### 2026-06-13 - `b2b_packing_1.png` and `b2b_packing_2.png`
+
+Intended target: `wood-components-packed-for-shipping.jpg`
+
+Decision: used `b2b_packing_2.png` as a temporary live packing/logistics image under `wood-components-packed-for-shipping.jpg`, with optimized WebP and JPG exports. It is shown in the short-series guide aside. `b2b_packing_1.png` was not used because the fake label and readable English branding pull attention away from the practical logistics message.
+
+Current web exports:
+
+- `app/static/site/img/wood-components-packed-for-shipping.webp`, `1448x1086`, about `139 KB`
+- `app/static/site/img/wood-components-packed-for-shipping.jpg`, `1448x1086`, about `340 KB`
+
+What works:
+
+- Version 2 communicates practical B2B logistics better: protected wooden profiles inside a crate, with foam and straps visible.
+- The image supports the short-series argument that repeatable elements can be packed, protected and handed over or shipped when logistics make sense.
+- It avoids courier labels and fake brand text.
+
+Change in the next version:
+
+- Generate at least `2400x1800`; the current file is `1448x1086`.
+- Keep the crate and protection visible, but darken or calm the busy workshop background slightly.
+- Add a little more separation between finished components and packing material so the viewer reads "protected parts" immediately.
+- Avoid readable labels, brand marks, fake handling icons or fake shipping documents.
+
+### 2026-06-13 - `ChatGPT Image Jun 13, 2026, 11_31_57 AM.png`
+
+Intended target: `woodwork-from-drawing-specification.jpg`
+
+Decision: renamed and used as a temporary live drawing/specification image under `woodwork-from-drawing-specification.jpg`, with optimized WebP and JPG exports. It is shown in the quote-preparation guide aside.
+
+Current web exports:
+
+- `app/static/site/img/woodwork-from-drawing-specification.webp`, `1448x1086`, about `88 KB`
+- `app/static/site/img/woodwork-from-drawing-specification.jpg`, `1448x1086`, about `228 KB`
+
+What works:
+
+- Strongly supports the "send a drawing, photo or specification" conversion path.
+- The caliper, wooden sample and marked-up drawing make the quoting process feel concrete and technical.
+- Human presence feels natural and does not dominate the frame.
+
+Change in the next version:
+
+- Generate at least `2400x1800`; the current file is `1448x1086`.
+- Keep technical drawings abstract enough to avoid fake readable project data.
+- Move the person's face further out of frame or keep it cropped; the hand, drawing and sample should remain the subject.
+- Keep the sample piece and caliper visible, because they make the workflow easy to understand.
+
 ## AI Generation Asset Briefs
 
 Each asset below is written so an image-generation agent can produce a usable website image without guessing the business context.

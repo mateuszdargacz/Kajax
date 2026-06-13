@@ -792,6 +792,22 @@ h3 {
     box-shadow: var(--shadow);
 }
 
+.guide-aside .photo-picture,
+.guide-aside .photo-placeholder {
+    width: 100%;
+    margin: 0 0 22px;
+    overflow: hidden;
+    border-radius: calc(var(--radius) - 2px);
+    box-shadow: none;
+}
+
+.guide-aside .photo-image,
+.guide-aside .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+}
+
 .guide-aside h2 {
     font-size: 2rem;
 }

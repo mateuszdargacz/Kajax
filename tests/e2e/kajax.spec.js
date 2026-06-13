@@ -74,6 +74,7 @@ test.describe("public marketing pages", () => {
     await expect(page.locator("body")).toContainText("Dla elementów B2B i krótkich serii");
     await expect(page.locator("body")).toContainText("Co najczęściej spowalnia wycenę");
     await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" }).first()).toBeVisible();
+    await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /woodwork-from-drawing-specification\.webp/);
     const schema = await page.locator('script[type="application/ld+json"]').textContent();
     expect(schema).toContain('"@type": "HowTo"');
     expect(schema).toContain('"@type": "Article"');
@@ -86,6 +87,7 @@ test.describe("public marketing pages", () => {
     await expect(page.locator("h1")).toContainText("Kiedy opłaca się zamówić elementy drewniane");
     await expect(page.locator("body")).toContainText("Gdy własna produkcja byłaby za droga albo zbyt wolna");
     await expect(page.locator("body")).toContainText("Kiedy seria może nie być dobrym pierwszym krokiem");
+    await expect(page.locator(".guide-aside source")).toHaveAttribute("srcset", /wood-components-packed-for-shipping\.webp/);
     await expect(page.getByRole("link", { name: /Produkcja elementów drewnianych/ })).toHaveAttribute(
       "href",
       "/produkcja-elementow-drewnianych/",

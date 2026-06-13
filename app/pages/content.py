@@ -23,6 +23,12 @@ PHOTO_PLACEHOLDERS = {
         "label": "B2B repeated profile detail",
         "description": "Repeated profiles, holes, grooves or machined parts showing production repeatability.",
     },
+    "b2b_packing": {
+        "key": "b2b_packing",
+        "filename": "wood-components-packed-for-shipping.jpg",
+        "label": "Packed wooden components",
+        "description": "Wooden components protected for pickup or shipping after B2B production.",
+    },
     "drawing_spec": {
         "key": "drawing_spec",
         "filename": "woodwork-from-drawing-specification.jpg",
@@ -1234,10 +1240,33 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
     },
 }
 
+_DRAWING_SPEC_ALTS = {
+    "pl": "Rysunek techniczny, suwmiarka i próbka drewna używane do oceny projektu",
+    "en": "Technical drawing, caliper and wood sample used to assess a project",
+    "de": "Technische Zeichnung, Messschieber und Holzprobe zur Projektprüfung",
+    "sv": "Teknisk ritning, skjutmått och träprov för projektbedömning",
+    "da": "Teknisk tegning, skydelære og træprøve til projektvurdering",
+    "no": "Teknisk tegning, skyvelære og treprøve til prosjektvurdering",
+}
+
+_B2B_PACKING_ALTS = {
+    "pl": "Drewniane elementy zabezpieczone w skrzyni do odbioru lub wysyłki",
+    "en": "Wooden components protected in a crate for pickup or shipping",
+    "de": "Holzelemente in einer Kiste für Abholung oder Versand geschützt",
+    "sv": "Träkomponenter skyddade i en låda för upphämtning eller frakt",
+    "da": "Trækomponenter beskyttet i en kasse til afhentning eller forsendelse",
+    "no": "Trekomponenter beskyttet i en kasse for henting eller frakt",
+}
+
+
 for _code, _page in GUIDE_PAGES.items():
+    _page["aside_photo"] = "drawing_spec"
+    _page["aside_photo_alt"] = _DRAWING_SPEC_ALTS[_code]
     CONTENT[_code]["pages"]["guide"] = _page
 
 for _code, _page in SHORT_SERIES_GUIDE_PAGES.items():
+    _page["aside_photo"] = "b2b_packing"
+    _page["aside_photo_alt"] = _B2B_PACKING_ALTS[_code]
     CONTENT[_code]["pages"]["short_series"] = _page
 
 for _code, _page in STAIRS_PRICING_GUIDE_PAGES.items():
@@ -1769,6 +1798,8 @@ def _with_runtime_fields(page_key, page, language_code=None):
         page["hero_photo"] = _resolve_photo(page["hero_photo"])
     if "b2b_photo" in page:
         page["b2b_photo"] = _resolve_photo(page["b2b_photo"])
+    if "aside_photo" in page:
+        page["aside_photo"] = _resolve_photo(page["aside_photo"])
     if "related_links" in page:
         links = []
         for link in page["related_links"]:
