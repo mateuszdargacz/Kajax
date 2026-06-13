@@ -763,6 +763,40 @@ h3 {
     font-weight: 780;
 }
 
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.related-card {
+    display: grid;
+    gap: 10px;
+    min-height: 190px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    box-shadow: var(--shadow-soft);
+}
+
+.related-card:hover,
+.related-card:focus {
+    border-color: rgba(23, 98, 79, 0.38);
+    transform: translateY(-1px);
+}
+
+.related-card strong {
+    font-size: 1.35rem;
+    line-height: 1.18;
+}
+
+.related-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
 .service-block {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(280px, 0.62fr);
@@ -1087,6 +1121,7 @@ textarea.form-control {
     .split,
     .page-hero-grid,
     .guide-grid,
+    .related-grid,
     .quote-grid,
     .contact-grid,
     .footer-grid {

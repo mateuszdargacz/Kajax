@@ -50,6 +50,7 @@ PATHS = {
     "architects": "/dla-architektow-i-firm/",
     "realizations": "/realizacje/",
     "guide": "/jak-przygotowac-zapytanie/",
+    "short_series": "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
     "quote": "/wycena/",
     "contact": "/kontakt/",
 }
@@ -63,11 +64,12 @@ TEMPLATES = {
     "architects": "pages/service_page.html",
     "realizations": "pages/realizations.html",
     "guide": "pages/guide.html",
+    "short_series": "pages/guide.html",
     "quote": "pages/quote.html",
     "contact": "pages/contact.html",
 }
 
-PAGE_ORDER = ["home", "production", "construction", "architects", "realizations", "guide", "quote", "contact"]
+PAGE_ORDER = ["home", "production", "short_series", "construction", "architects", "realizations", "guide", "quote", "contact"]
 
 CONTENT = {
     "pl": {
@@ -775,11 +777,324 @@ GUIDE_PAGES = {
     },
 }
 
+SHORT_SERIES_GUIDE_PAGES = {
+    "pl": {
+        "title": "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii? | Kajax",
+        "description": "Poradnik B2B: kiedy krótka seria drewnianych elementów ma sens, kiedy zacząć od prototypu i jakie dane wysłać do wyceny.",
+        "eyebrow": "B2B / krótkie serie",
+        "h1": "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?",
+        "lead": "Krótka seria ma sens wtedy, gdy firma potrzebuje powtarzalnych elementów, ale nie chce budować własnego zaplecza stolarskiego. Najczęściej zaczyna się od próbki, wzoru albo małej partii, a dopiero po dopasowaniu procesu przechodzi do regularnych zamówień.",
+        "primary_cta": "Zapytaj o krótką serię",
+        "aside_title": "Krótka seria ma sens, gdy",
+        "aside_body": "Najlepsze zapytania B2B dotyczą elementów, które można jasno opisać, powtórzyć i sensownie zapakować albo przekazać do dalszego montażu.",
+        "aside_items": ["element będzie zamawiany ponownie", "liczy się powtarzalność wymiaru", "masz wzór, zdjęcie lub rysunek", "potrzebujesz próbki przed większą partią", "własna produkcja byłaby nieopłacalna"],
+        "sections": [
+            {"title": "Gdy element ma wracać w kolejnych zamówieniach", "body": "Największą wartość krótka seria daje wtedy, gdy po pierwszej partii można powtórzyć ten sam element bez zaczynania od zera. Wtedy opłaca się dopracować wzór, tolerancje, wykończenie i sposób pakowania.", "items": ["listwy, profile i ramy", "drewniane półprodukty do dalszego montażu", "elementy POS, ekspozycji i displayów", "detale do mebli lub wnętrz", "części wykonywane według stałego wzoru"]},
+            {"title": "Gdy własna produkcja byłaby za droga albo zbyt wolna", "body": "Dla wielu firm problemem nie jest sama obróbka drewna, tylko czas, miejsce, sprzęt i ludzie potrzebni do małej, niestandardowej partii. Zewnętrzna stolarnia pozwala sprawdzić produkt bez rozbudowywania własnego warsztatu.", "items": ["brak własnej stolarni", "zbyt mała skala na produkcję przemysłową", "potrzeba elastycznej partii próbnej", "krótki termin wdrożenia", "projekt wymaga rozmowy o detalu"]},
+            {"title": "Gdy warto zacząć od próbki lub prototypu", "body": "Próbka zmniejsza ryzyko, jeśli element ma być później powtarzany. Pozwala ocenić materiał, krawędzie, frezy, otwory, kolor i tolerancje zanim zamówienie wejdzie w większą partię.", "items": ["nowy element bez historii produkcji", "ważny detal widoczny dla klienta końcowego", "niepewny materiał lub wykończenie", "planowana większa seria po testach", "potrzeba sprawdzenia pakowania i wysyłki"]},
+        ],
+        "avoid_title": "Kiedy seria może nie być dobrym pierwszym krokiem",
+        "avoid_body": "Nie każde zlecenie trzeba od razu planować jako serię. Jeśli projekt jest jednorazowy, bardzo zmienny albo nie ma jeszcze wymiarów, lepiej zacząć od doprecyzowania zakresu.",
+        "avoid_items": ["brak wymiaru, wzoru i skali", "projekt zmienia się po każdej rozmowie", "jednorazowy detal wymaga długiego przygotowania", "nie wiadomo, do czego element ma służyć", "termin jest krótszy niż realne przygotowanie próbki"],
+        "faq": [
+            ("Jaka ilość to krótka seria?", "Nie ma jednej granicy. Czasem jest to kilka sztuk testowych, czasem kilkadziesiąt lub więcej. Ważniejsze od liczby jest to, czy element da się powtarzać według stałych założeń."),
+            ("Czy można zacząć od jednej próbki?", "Tak. Przy elementach B2B próbka często jest najlepszym początkiem, bo pozwala ustalić koszt, technologię i standard wykonania przed większą partią."),
+            ("Czy możliwe jest pakowanie i wysyłka?", "Tak, jeśli element i skala mają sens logistycznie. Pakowanie, zabezpieczenie i wysyłkę ustalamy po poznaniu wymiarów, materiału i liczby sztuk."),
+        ],
+    },
+    "en": {
+        "title": "When does it pay to order wooden components in a short run? | Kajax",
+        "description": "B2B guide: when a short run of wooden components makes sense, when to start with a prototype and what to send for pricing.",
+        "eyebrow": "B2B / short runs",
+        "h1": "When does it pay to order wooden components in a short run?",
+        "lead": "A short run makes sense when a company needs repeatable wooden parts but does not want to build its own joinery setup. The practical route is usually a sample, reference part or first small batch, followed by recurring orders once the process is aligned.",
+        "primary_cta": "Ask about a short run",
+        "aside_title": "A short run makes sense when",
+        "aside_body": "The strongest B2B inquiries concern components that can be described clearly, repeated and sensibly packed or passed on for further assembly.",
+        "aside_items": ["the component will be ordered again", "dimension repeatability matters", "you have a sample, photo or drawing", "you need a sample before a larger batch", "in-house production would not pay off"],
+        "sections": [
+            {"title": "When the component will come back in future orders", "body": "A short run is most valuable when the first batch can lead to repeat production without starting from zero every time. Then it is worth refining the reference, tolerances, finish and packing method.", "items": ["trims, profiles and frames", "wooden semi-finished parts for further assembly", "POS, display and exhibition components", "details for furniture or interiors", "parts made to a stable reference"]},
+            {"title": "When in-house production would be too costly or too slow", "body": "For many companies, the problem is not only woodworking itself but also the space, tools, time and people needed for a small non-standard batch. An external workshop lets you test a product without expanding your own production setup.", "items": ["no in-house joinery", "too small for industrial production", "need for a flexible trial batch", "short implementation timeline", "the project needs detail discussion"]},
+            {"title": "When it is better to start with a sample or prototype", "body": "A sample lowers risk when the component is meant to be repeated later. It helps confirm material, edges, milling, holes, colour and tolerances before moving into a larger batch.", "items": ["new component with no production history", "visible detail important to the end customer", "uncertain material or finish", "larger run planned after testing", "packing and shipping need to be checked"]},
+        ],
+        "avoid_title": "When a series may not be the right first step",
+        "avoid_body": "Not every job should be planned as a run immediately. If the project is one-off, changing heavily or still lacks dimensions, it is better to clarify the scope first.",
+        "avoid_items": ["no dimensions, reference or scale", "the design changes after every conversation", "a one-off detail needs long preparation", "the use of the component is unclear", "the deadline is shorter than realistic sample preparation"],
+        "faq": [
+            ("What quantity counts as a short run?", "There is no fixed threshold. Sometimes it is a few test pieces, sometimes dozens or more. More important than the number is whether the component can be repeated to stable assumptions."),
+            ("Can we start with one sample?", "Yes. For B2B components, a sample is often the best start because it helps confirm cost, process and execution standard before a larger batch."),
+            ("Can packing and shipping be handled?", "Yes, if the component and scale make logistical sense. Packing, protection and shipping are agreed after we know the dimensions, material and quantity."),
+        ],
+    },
+    "de": {
+        "title": "Wann lohnt sich eine Kleinserie von Holzelementen? | Kajax",
+        "description": "B2B-Leitfaden: wann eine Kleinserie von Holzelementen sinnvoll ist, wann ein Prototyp hilft und welche Daten für eine Anfrage wichtig sind.",
+        "eyebrow": "B2B / Kleinserien",
+        "h1": "Wann lohnt sich eine Kleinserie von Holzelementen?",
+        "lead": "Eine Kleinserie ist sinnvoll, wenn ein Unternehmen wiederholbare Holzelemente braucht, aber keine eigene Tischlerei aufbauen möchte. Praktisch beginnt man oft mit einem Muster, Referenzteil oder einer kleinen ersten Serie und geht nach Prozessabstimmung zu wiederkehrenden Bestellungen über.",
+        "primary_cta": "Kleinserie anfragen",
+        "aside_title": "Eine Kleinserie passt, wenn",
+        "aside_body": "Die besten B2B-Anfragen betreffen Elemente, die sich klar beschreiben, wiederholen und sinnvoll verpacken oder weiterverarbeiten lassen.",
+        "aside_items": ["das Element wieder bestellt wird", "Maßwiederholbarkeit wichtig ist", "Muster, Foto oder Zeichnung vorhanden sind", "vor der größeren Serie ein Muster nötig ist", "eigene Fertigung sich nicht lohnt"],
+        "sections": [
+            {"title": "Wenn das Element in weiteren Bestellungen wiederkommt", "body": "Der größte Wert einer Kleinserie entsteht, wenn die erste Partie später wiederholt werden kann, ohne jedes Mal neu zu beginnen. Dann lohnt es sich, Referenz, Toleranzen, Oberfläche und Verpackung sauber festzulegen.", "items": ["Leisten, Profile und Rahmen", "Holz-Halbzeuge zur Weiterverarbeitung", "POS-, Display- und Ausstellungselemente", "Details für Möbel oder Innenräume", "Teile nach stabilem Muster"]},
+            {"title": "Wenn eigene Fertigung zu teuer oder zu langsam wäre", "body": "Für viele Firmen liegt das Problem nicht nur in der Holzbearbeitung, sondern in Platz, Werkzeug, Zeit und Personal für eine kleine Sonderpartie. Eine externe Werkstatt ermöglicht Produkttests ohne Ausbau eigener Fertigung.", "items": ["keine eigene Tischlerei", "zu kleine Menge für Industrieproduktion", "flexible Testserie nötig", "kurze Einführungszeit", "Projekt braucht Detailabstimmung"]},
+            {"title": "Wenn ein Muster oder Prototyp sinnvoller ist", "body": "Ein Muster senkt das Risiko, wenn das Element später wiederholt werden soll. Es hilft, Material, Kanten, Fräsungen, Bohrungen, Farbe und Toleranzen vor einer größeren Partie zu bestätigen.", "items": ["neues Element ohne Fertigungshistorie", "sichtbares Detail für Endkunden", "unklares Material oder Oberfläche", "größere Serie nach Test geplant", "Verpackung und Versand müssen geprüft werden"]},
+        ],
+        "avoid_title": "Wann eine Serie nicht der beste erste Schritt ist",
+        "avoid_body": "Nicht jedes Projekt sollte sofort als Serie geplant werden. Wenn es ein Einzelstück ist, stark wechselt oder noch keine Maße hat, sollte zuerst der Umfang geklärt werden.",
+        "avoid_items": ["keine Maße, kein Muster und keine Größenordnung", "das Design ändert sich nach jedem Gespräch", "ein Einzelteil braucht lange Vorbereitung", "die Nutzung des Elements ist unklar", "der Termin ist kürzer als realistische Mustervorbereitung"],
+        "faq": [
+            ("Welche Menge gilt als Kleinserie?", "Es gibt keine feste Grenze. Manchmal sind es wenige Testteile, manchmal einige Dutzend oder mehr. Wichtiger ist, ob das Element nach festen Annahmen wiederholt werden kann."),
+            ("Können wir mit einem Muster beginnen?", "Ja. Bei B2B-Elementen ist ein Muster oft der beste Start, um Kosten, Technologie und Ausführungsstandard vor einer größeren Serie zu bestätigen."),
+            ("Sind Verpackung und Versand möglich?", "Ja, wenn Element und Umfang logistisch sinnvoll sind. Verpackung, Schutz und Versand werden nach Klärung von Maßen, Material und Menge abgestimmt."),
+        ],
+    },
+    "sv": {
+        "title": "När lönar det sig att beställa träkomponenter i kort serie? | Kajax",
+        "description": "B2B-guide: när en kort serie träkomponenter är rimlig, när en prototyp är bäst och vilket underlag som behövs för offert.",
+        "eyebrow": "B2B / korta serier",
+        "h1": "När lönar det sig att beställa träkomponenter i kort serie?",
+        "lead": "En kort serie är vettig när ett företag behöver återkommande träkomponenter men inte vill bygga egen snickerikapacitet. Ofta börjar man med ett prov, en referensdel eller en liten första serie och går vidare till återkommande beställningar när processen fungerar.",
+        "primary_cta": "Fråga om kort serie",
+        "aside_title": "En kort serie passar när",
+        "aside_body": "De bästa B2B-förfrågningarna gäller komponenter som kan beskrivas tydligt, upprepas och packas eller lämnas vidare för montage på ett rimligt sätt.",
+        "aside_items": ["komponenten ska beställas igen", "måttupprepning är viktig", "du har prov, foto eller ritning", "du behöver prov före större serie", "egen produktion inte lönar sig"],
+        "sections": [
+            {"title": "När komponenten återkommer i nya beställningar", "body": "En kort serie ger störst värde när den första omgången kan upprepas utan att starta om varje gång. Då är det värt att justera referens, toleranser, finish och packning.", "items": ["lister, profiler och ramar", "halvfabrikat i trä för vidare montage", "POS-, display- och utställningskomponenter", "detaljer för möbler eller interiörer", "delar efter stabil referens"]},
+            {"title": "När egen produktion vore för dyr eller långsam", "body": "För många företag handlar utmaningen inte bara om träbearbetning utan om plats, verktyg, tid och personal för en liten specialserie. En extern verkstad låter er testa en produkt utan att bygga egen produktion.", "items": ["ingen egen snickeriverkstad", "för liten skala för industriell produktion", "behov av flexibel testserie", "kort införandetid", "projektet kräver detaljdialog"]},
+            {"title": "När ett prov eller en prototyp är bättre först", "body": "Ett prov minskar risken när komponenten ska upprepas senare. Det hjälper till att bekräfta material, kanter, fräsningar, hål, färg och toleranser före en större serie.", "items": ["ny komponent utan produktionshistorik", "synlig detalj viktig för slutkund", "osäkert material eller finish", "större serie planerad efter test", "packning och frakt behöver kontrolleras"]},
+        ],
+        "avoid_title": "När en serie kanske inte är rätt första steg",
+        "avoid_body": "Alla uppdrag ska inte planeras som serie direkt. Om projektet är en engångsdetalj, ändras mycket eller saknar mått är det bättre att först tydliggöra omfattningen.",
+        "avoid_items": ["inga mått, ingen referens och ingen skala", "designen ändras efter varje samtal", "en engångsdetalj kräver lång förberedelse", "komponentens användning är oklar", "tidsfristen är kortare än realistisk provframtagning"],
+        "faq": [
+            ("Vilken mängd räknas som kort serie?", "Det finns ingen fast gräns. Ibland är det några testdelar, ibland tiotals eller fler. Viktigare än antalet är om komponenten kan upprepas enligt stabila antaganden."),
+            ("Kan vi börja med ett prov?", "Ja. För B2B-komponenter är ett prov ofta bästa starten eftersom det bekräftar kostnad, process och utförandenivå före en större serie."),
+            ("Kan ni hantera packning och frakt?", "Ja, om komponent och omfattning är logistiskt rimliga. Packning, skydd och frakt avtalas efter att vi känner mått, material och antal."),
+        ],
+    },
+    "da": {
+        "title": "Hvornår kan det betale sig at bestille trækomponenter i kort serie? | Kajax",
+        "description": "B2B-guide: hvornår en kort serie trækomponenter giver mening, hvornår en prototype er bedst, og hvilket materiale der skal bruges til tilbud.",
+        "eyebrow": "B2B / korte serier",
+        "h1": "Hvornår kan det betale sig at bestille trækomponenter i kort serie?",
+        "lead": "En kort serie giver mening, når en virksomhed har brug for gentagelige trækomponenter, men ikke vil opbygge egen snedkerkapacitet. Ofte starter man med en prøve, referencedel eller lille første serie og går videre til løbende bestillinger, når processen er afstemt.",
+        "primary_cta": "Spørg om kort serie",
+        "aside_title": "En kort serie passer når",
+        "aside_body": "De stærkeste B2B-forespørgsler handler om komponenter, der kan beskrives tydeligt, gentages og pakkes eller sendes videre til montage på en fornuftig måde.",
+        "aside_items": ["komponenten skal bestilles igen", "gentagelige mål er vigtige", "du har prøve, foto eller tegning", "du skal bruge en prøve før større serie", "egen produktion ikke kan betale sig"],
+        "sections": [
+            {"title": "Når komponenten vender tilbage i nye bestillinger", "body": "En kort serie giver størst værdi, når den første batch kan gentages uden at starte forfra hver gang. Så kan det betale sig at afstemme reference, tolerancer, finish og pakning.", "items": ["lister, profiler og rammer", "halvfabrikata i træ til videre montage", "POS-, display- og udstillingselementer", "detaljer til møbler eller interiører", "dele efter fast reference"]},
+            {"title": "Når egen produktion er for dyr eller langsom", "body": "For mange virksomheder handler udfordringen ikke kun om træbearbejdning, men om plads, værktøj, tid og medarbejdere til en lille specialserie. Et eksternt værksted gør det muligt at teste et produkt uden at opbygge egen produktion.", "items": ["ingen egen snedkerproduktion", "for lille skala til industriproduktion", "behov for fleksibel testserie", "kort implementeringstid", "projektet kræver dialog om detaljer"]},
+            {"title": "Når en prøve eller prototype er bedst først", "body": "En prøve mindsker risikoen, hvis komponenten senere skal gentages. Den hjælper med at bekræfte materiale, kanter, fræsninger, huller, farve og tolerancer før en større serie.", "items": ["ny komponent uden produktionshistorik", "synlig detalje vigtig for slutkunden", "usikkert materiale eller finish", "større serie planlagt efter test", "pakning og forsendelse skal kontrolleres"]},
+        ],
+        "avoid_title": "Når en serie måske ikke er det rigtige første skridt",
+        "avoid_body": "Ikke alle opgaver skal planlægges som serie med det samme. Hvis projektet er en engangsdetalje, ændrer sig meget eller mangler mål, bør omfanget først præciseres.",
+        "avoid_items": ["ingen mål, reference eller skala", "designet ændrer sig efter hver samtale", "en engangsdetalje kræver lang forberedelse", "komponentens brug er uklar", "tidsfristen er kortere end realistisk prøveforberedelse"],
+        "faq": [
+            ("Hvilket antal regnes som en kort serie?", "Der findes ingen fast grænse. Nogle gange er det få testdele, andre gange flere dusin eller mere. Vigtigere end antallet er, om komponenten kan gentages efter faste forudsætninger."),
+            ("Kan vi starte med én prøve?", "Ja. For B2B-komponenter er en prøve ofte den bedste start, fordi den bekræfter pris, proces og udførelsesniveau før en større serie."),
+            ("Kan pakning og forsendelse håndteres?", "Ja, hvis komponent og omfang giver logistisk mening. Pakning, beskyttelse og forsendelse aftales, når vi kender mål, materiale og antal."),
+        ],
+    },
+    "no": {
+        "title": "Når lønner det seg å bestille trekomponenter i kort serie? | Kajax",
+        "description": "B2B-guide: når en kort serie trekomponenter gir mening, når en prototype er best og hva som bør sendes for vurdering.",
+        "eyebrow": "B2B / korte serier",
+        "h1": "Når lønner det seg å bestille trekomponenter i kort serie?",
+        "lead": "En kort serie gir mening når en bedrift trenger repeterbare trekomponenter, men ikke vil bygge egen snekkerkapasitet. Ofte starter man med en prøve, referansedel eller liten første serie og går videre til faste bestillinger når prosessen fungerer.",
+        "primary_cta": "Spør om kort serie",
+        "aside_title": "En kort serie passer når",
+        "aside_body": "De beste B2B-forespørslene gjelder komponenter som kan beskrives tydelig, repeteres og pakkes eller sendes videre til montering på en fornuftig måte.",
+        "aside_items": ["komponenten skal bestilles igjen", "repeterbare mål er viktige", "du har prøve, bilde eller tegning", "du trenger prøve før større serie", "egen produksjon ikke lønner seg"],
+        "sections": [
+            {"title": "Når komponenten kommer tilbake i nye bestillinger", "body": "En kort serie gir størst verdi når første parti kan repeteres uten å starte på nytt hver gang. Da lønner det seg å avklare referanse, toleranser, overflate og pakking.", "items": ["lister, profiler og rammer", "halvfabrikata i tre for videre montering", "POS-, display- og utstillingselementer", "detaljer til møbler eller interiør", "deler etter stabil referanse"]},
+            {"title": "Når egen produksjon ville vært for dyr eller treg", "body": "For mange bedrifter handler utfordringen ikke bare om trebearbeiding, men om plass, verktøy, tid og folk til en liten spesialserie. Et eksternt verksted gjør det mulig å teste et produkt uten å bygge egen produksjon.", "items": ["ingen egen snekkerproduksjon", "for liten skala for industriproduksjon", "behov for fleksibel testserie", "kort innføringstid", "prosjektet krever dialog om detaljer"]},
+            {"title": "Når en prøve eller prototype er best først", "body": "En prøve reduserer risiko når komponenten senere skal repeteres. Den hjelper med å bekrefte materiale, kanter, fresing, hull, farge og toleranser før en større serie.", "items": ["ny komponent uten produksjonshistorikk", "synlig detalj viktig for sluttkunden", "usikkert materiale eller overflate", "større serie planlagt etter test", "pakking og frakt må kontrolleres"]},
+        ],
+        "avoid_title": "Når en serie kanskje ikke er riktig første steg",
+        "avoid_body": "Ikke alle oppdrag bør planlegges som serie med en gang. Hvis prosjektet er en engangsdetalj, endrer seg mye eller mangler mål, bør omfanget først avklares.",
+        "avoid_items": ["ingen mål, referanse eller skala", "designet endres etter hver samtale", "en engangsdetalj krever lang forberedelse", "bruken av komponenten er uklar", "fristen er kortere enn realistisk prøveforberedelse"],
+        "faq": [
+            ("Hvilket antall regnes som kort serie?", "Det finnes ingen fast grense. Noen ganger er det få testdeler, andre ganger flere titalls eller mer. Viktigere enn antallet er om komponenten kan repeteres etter stabile forutsetninger."),
+            ("Kan vi starte med én prøve?", "Ja. For B2B-komponenter er en prøve ofte beste start fordi den bekrefter pris, prosess og utførelsesnivå før en større serie."),
+            ("Kan pakking og frakt håndteres?", "Ja, hvis komponent og omfang gir logistisk mening. Pakking, beskyttelse og frakt avtales når vi kjenner mål, materiale og antall."),
+        ],
+    },
+}
+
 for _code, _page in GUIDE_PAGES.items():
     CONTENT[_code]["pages"]["guide"] = _page
 
+for _code, _page in SHORT_SERIES_GUIDE_PAGES.items():
+    CONTENT[_code]["pages"]["short_series"] = _page
 
-def _with_runtime_fields(page_key, page):
+RELATED_LINK_SECTIONS = {
+    "pl": {
+        "production": {
+            "related_eyebrow": "Poradniki B2B",
+            "related_title": "Jak szybciej przejść od pomysłu do wyceny",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Krótkie serie", "title": "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?", "body": "Sprawdź, kiedy warto zacząć od próbki, małej partii albo powtarzalnego procesu."},
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Minimum informacji, które pomaga szybciej ocenić projekt B2B lub custom."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Jeśli temat dotyczy elementów dla firmy",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "Kiedy krótka seria ma sens?", "body": "Poradnik dla firm, które rozważają próbkę, pierwszą partię lub stałą współpracę."},
+                {"page": "production", "eyebrow": "Oferta", "title": "Elementy drewniane dla firm", "body": "Zobacz zakres produkcji B2B, półproduktów i elementów według wzoru."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Dalszy krok",
+            "related_title": "Przygotuj temat do rozmowy",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Wycena", "title": "Jak przygotować zapytanie do stolarni", "body": "Co wysłać, żeby szybciej dostać konkretną odpowiedź."},
+                {"page": "production", "eyebrow": "Oferta", "title": "Produkcja elementów drewnianych", "body": "Zakres prac dla firm, krótkich serii i drewnianych półproduktów."},
+            ],
+        },
+    },
+    "en": {
+        "production": {
+            "related_eyebrow": "B2B guides",
+            "related_title": "How to move from idea to pricing faster",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Short runs", "title": "When does a short run of wooden components pay off?", "body": "See when to start with a sample, first batch or repeatable process."},
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "The minimum input that helps assess a B2B or custom project faster."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Next step",
+            "related_title": "If the project concerns components for a company",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "When does a short run make sense?", "body": "A guide for companies considering a sample, first batch or recurring cooperation."},
+                {"page": "production", "eyebrow": "Offer", "title": "Wooden components for companies", "body": "See the scope of B2B production, semi-finished parts and sample-based components."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Next step",
+            "related_title": "Prepare the project for discussion",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Quote", "title": "How to prepare a joinery inquiry", "body": "What to send to get a concrete answer faster."},
+                {"page": "production", "eyebrow": "Offer", "title": "Wooden component production", "body": "Scope for companies, short runs and wooden semi-finished parts."},
+            ],
+        },
+    },
+    "de": {
+        "production": {
+            "related_eyebrow": "B2B-Leitfäden",
+            "related_title": "Schneller von der Idee zur Anfrage",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Kleinserien", "title": "Wann lohnt sich eine Kleinserie von Holzelementen?", "body": "Wann Muster, erste Partie oder wiederholbarer Prozess sinnvoll sind."},
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Das Minimum an Informationen für eine schnellere Einschätzung."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Wenn es um Elemente für Unternehmen geht",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "Wann ist eine Kleinserie sinnvoll?", "body": "Ein Leitfaden für Muster, erste Serien und wiederkehrende Zusammenarbeit."},
+                {"page": "production", "eyebrow": "Angebot", "title": "Holzelemente für Unternehmen", "body": "Umfang für B2B-Fertigung, Halbzeuge und Elemente nach Muster."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Nächster Schritt",
+            "related_title": "Projekt für die Anfrage vorbereiten",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Anfrage", "title": "Tischlerei-Anfrage vorbereiten", "body": "Was Sie senden sollten, um schneller eine konkrete Antwort zu bekommen."},
+                {"page": "production", "eyebrow": "Angebot", "title": "Fertigung von Holzelementen", "body": "Leistungsumfang für Firmen, Kleinserien und Holz-Halbzeuge."},
+            ],
+        },
+    },
+    "sv": {
+        "production": {
+            "related_eyebrow": "B2B-guider",
+            "related_title": "Snabbare från idé till offert",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korta serier", "title": "När lönar sig en kort serie träkomponenter?", "body": "När prov, första serie eller återkommande process är rätt väg."},
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Minsta underlag som hjälper oss bedöma projektet snabbare."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Om projektet gäller komponenter för företag",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "När är en kort serie rimlig?", "body": "Guide för prov, första serie och återkommande samarbete."},
+                {"page": "production", "eyebrow": "Erbjudande", "title": "Träkomponenter för företag", "body": "Omfattning för B2B-produktion, halvfabrikat och komponenter efter prov."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Nästa steg",
+            "related_title": "Förbered projektet för dialog",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Offert", "title": "Så förbereder du en snickeriförfrågan", "body": "Vad du bör skicka för att få ett konkret svar snabbare."},
+                {"page": "production", "eyebrow": "Erbjudande", "title": "Produktion av träkomponenter", "body": "Omfattning för företag, korta serier och halvfabrikat i trä."},
+            ],
+        },
+    },
+    "da": {
+        "production": {
+            "related_eyebrow": "B2B-guides",
+            "related_title": "Hurtigere fra idé til tilbud",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Hvornår kan en kort serie trækomponenter betale sig?", "body": "Hvornår prøve, første serie eller gentagelig proces er den rigtige vej."},
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Minimumsgrundlaget der hjælper os med at vurdere projektet hurtigere."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Hvis projektet handler om komponenter til virksomheder",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "Hvornår giver en kort serie mening?", "body": "Guide til prøve, første serie og løbende samarbejde."},
+                {"page": "production", "eyebrow": "Tilbud", "title": "Trækomponenter til virksomheder", "body": "Omfang for B2B-produktion, halvfabrikata og komponenter efter prøve."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Næste skridt",
+            "related_title": "Forbered projektet til dialog",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Tilbud", "title": "Sådan forbereder du en snedkerforespørgsel", "body": "Hvad du bør sende for at få et konkret svar hurtigere."},
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produktion af trækomponenter", "body": "Omfang for virksomheder, korte serier og halvfabrikata i træ."},
+            ],
+        },
+    },
+    "no": {
+        "production": {
+            "related_eyebrow": "B2B-guider",
+            "related_title": "Raskere fra idé til vurdering",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "Korte serier", "title": "Når lønner en kort serie trekomponenter seg?", "body": "Når prøve, første serie eller repeterbar prosess er riktig vei."},
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Minimumsgrunnlaget som hjelper oss å vurdere prosjektet raskere."},
+            ],
+        },
+        "guide": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Hvis prosjektet gjelder komponenter for bedrifter",
+            "related_links": [
+                {"page": "short_series", "eyebrow": "B2B", "title": "Når gir en kort serie mening?", "body": "Guide for prøve, første serie og fast samarbeid."},
+                {"page": "production", "eyebrow": "Tilbud", "title": "Trekomponenter for bedrifter", "body": "Omfang for B2B-produksjon, halvfabrikata og komponenter etter prøve."},
+            ],
+        },
+        "short_series": {
+            "related_eyebrow": "Neste steg",
+            "related_title": "Forbered prosjektet for dialog",
+            "related_links": [
+                {"page": "guide", "eyebrow": "Forespørsel", "title": "Slik forbereder du en snekkerforespørsel", "body": "Hva du bør sende for å få et konkret svar raskere."},
+                {"page": "production", "eyebrow": "Tilbud", "title": "Produksjon av trekomponenter", "body": "Omfang for bedrifter, korte serier og halvfabrikata i tre."},
+            ],
+        },
+    },
+}
+
+for _code, _pages in RELATED_LINK_SECTIONS.items():
+    for _page_key, _data in _pages.items():
+        CONTENT[_code]["pages"][_page_key].update(_data)
+
+
+def _with_runtime_fields(page_key, page, language_code=None):
     page = page.copy()
     page["key"] = page_key
     page["path"] = PATHS[page_key]
@@ -788,6 +1103,14 @@ def _with_runtime_fields(page_key, page):
         page["hero_photo"] = PHOTO_PLACEHOLDERS[page["hero_photo"]]
     if "b2b_photo" in page:
         page["b2b_photo"] = PHOTO_PLACEHOLDERS[page["b2b_photo"]]
+    if "related_links" in page:
+        links = []
+        for link in page["related_links"]:
+            link = link.copy()
+            if "page" in link:
+                link["url"] = get_localized_path(PATHS[link["page"]], language_code)
+            links.append(link)
+        page["related_links"] = links
     return page
 
 
@@ -818,7 +1141,7 @@ def get_content(language_code):
 
 def get_page_content(page_key, language_code):
     content = get_content(language_code)
-    return _with_runtime_fields(page_key, content["pages"][page_key])
+    return _with_runtime_fields(page_key, content["pages"][page_key], language_code)
 
 
 def get_nav_items(language_code):

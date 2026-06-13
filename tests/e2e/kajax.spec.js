@@ -7,6 +7,7 @@ const publicPages = [
   { path: "/dla-architektow-i-firm/", h1: "Stolarnia do trudniejszych projektów i detali drewnianych" },
   { path: "/realizacje/", h1: "Realizacje i kierunki prac, które dobrze pasują do naszej stolarni" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź" },
+  { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?" },
   { path: "/kontakt/", h1: "Kontakt" },
 ];
 
@@ -61,6 +62,36 @@ test.describe("public marketing pages", () => {
     const schema = await page.locator('script[type="application/ld+json"]').textContent();
     expect(schema).toContain('"@type": "HowTo"');
     expect(schema).toContain('"@type": "Article"');
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("short series guide qualifies B2B component leads and links back to production", async ({ page }) => {
+    await page.goto("/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/");
+
+    await expect(page.locator("h1")).toContainText("Kiedy opłaca się zamówić elementy drewniane");
+    await expect(page.locator("body")).toContainText("Gdy własna produkcja byłaby za droga albo zbyt wolna");
+    await expect(page.locator("body")).toContainText("Kiedy seria może nie być dobrym pierwszym krokiem");
+    await expect(page.getByRole("link", { name: /Produkcja elementów drewnianych/ })).toHaveAttribute(
+      "href",
+      "/produkcja-elementow-drewnianych/",
+    );
+    const schema = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(schema).toContain('"@type": "HowTo"');
+    expect(schema).toContain('"@type": "Article"');
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("production page links to B2B guides", async ({ page }) => {
+    await page.goto("/produkcja-elementow-drewnianych/");
+
+    await expect(page.getByRole("link", { name: /Kiedy opłaca się zamówić elementy drewniane/ })).toHaveAttribute(
+      "href",
+      "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
+    );
+    await expect(page.getByRole("link", { name: /Jak przygotować zapytanie do stolarni/ })).toHaveAttribute(
+      "href",
+      "/jak-przygotowac-zapytanie/",
+    );
     await expectNoHorizontalOverflow(page);
   });
 
@@ -136,6 +167,12 @@ test.describe("localized pages", () => {
     await page.goto("/de/jak-przygotowac-zapytanie/");
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
     await expect(page.locator("h1")).toContainText("Tischlerei-Anfrage");
+    await expectNoHorizontalOverflow(page);
+
+    await page.goto("/de/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "de");
+    await expect(page.locator("h1")).toContainText("Kleinserie");
+    await expect(page.getByRole("link", { name: /Fertigung von Holzelementen/ })).toHaveAttribute("href", "/de/produkcja-elementow-drewnianych/");
     await expectNoHorizontalOverflow(page);
   });
 });

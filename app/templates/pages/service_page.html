@@ -33,6 +33,26 @@
     </div>
 </section>
 
+{% if page.related_links %}
+<section class="section related-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">{{ page.related_eyebrow }}</p>
+            <h2>{{ page.related_title }}</h2>
+        </div>
+        <div class="related-grid">
+            {% for link in page.related_links %}
+                <a class="related-card" href="{{ link.url }}" data-track-cta="related_{{ page.key }}_{{ forloop.counter }}" data-cta-location="{{ page.key }}_related">
+                    <span class="eyebrow">{{ link.eyebrow }}</span>
+                    <strong>{{ link.title }}</strong>
+                    <p>{{ link.body }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
 {% if page.faq %}
 <section class="section muted">
     <div class="container">
