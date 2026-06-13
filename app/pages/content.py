@@ -49,6 +49,7 @@ PATHS = {
     "construction": "/stolarka-budowlana/",
     "architects": "/dla-architektow-i-firm/",
     "realizations": "/realizacje/",
+    "guide": "/jak-przygotowac-zapytanie/",
     "quote": "/wycena/",
     "contact": "/kontakt/",
 }
@@ -61,11 +62,12 @@ TEMPLATES = {
     "construction": "pages/service_page.html",
     "architects": "pages/service_page.html",
     "realizations": "pages/realizations.html",
+    "guide": "pages/guide.html",
     "quote": "pages/quote.html",
     "contact": "pages/contact.html",
 }
 
-PAGE_ORDER = ["home", "production", "construction", "architects", "realizations", "quote", "contact"]
+PAGE_ORDER = ["home", "production", "construction", "architects", "realizations", "guide", "quote", "contact"]
 
 CONTENT = {
     "pl": {
@@ -624,6 +626,157 @@ def _localized_variant(code):
 
 for _code in ("de", "sv", "da", "no"):
     CONTENT[_code] = _localized_variant(_code)
+
+
+GUIDE_PAGES = {
+    "pl": {
+        "title": "Jak przygotować zapytanie do stolarni produkcyjnej? | Kajax",
+        "description": "Checklista do wyceny elementów drewnianych, krótkich serii, schodów, drzwi i projektów custom. Co wysłać, żeby szybciej dostać konkretną odpowiedź.",
+        "eyebrow": "Poradnik do wyceny",
+        "h1": "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź",
+        "lead": "Nie musisz mieć pełnej dokumentacji. Najważniejsze jest pokazanie, co ma powstać, w jakiej ilości, z jakiego materiału i w jakim terminie. Dobre zapytanie pozwala szybciej ocenić, czy temat pasuje do warsztatu.",
+        "primary_cta": "Wyślij projekt do wyceny",
+        "aside_title": "Minimum, które wystarczy na start",
+        "aside_body": "Jeśli nie masz rysunku technicznego, wyślij zdjęcie, szkic albo przykład podobnego elementu. W pierwszej rozmowie doprecyzujemy resztę.",
+        "aside_items": ["zdjęcie, szkic lub rysunek", "orientacyjne wymiary", "liczba sztuk lub skala", "materiał i wykończenie, jeśli są znane", "termin oraz lokalizacja"],
+        "sections": [
+            {"title": "Dla elementów B2B i krótkich serii", "body": "Przy powtarzalnych elementach najważniejsza jest powtarzalność i jasny punkt odniesienia. Najlepiej działa wzór, zdjęcie, rysunek albo prototyp.", "items": ["docelowa liczba sztuk i pierwsza partia", "czy element ma być gotowy, czy do dalszego montażu", "tolerancje, frezy, otwory i widoczne krawędzie", "czy potrzebne będzie pakowanie lub wysyłka", "czy w grę wchodzi stała współpraca"]},
+            {"title": "Dla schodów, drzwi i stolarki budowlanej", "body": "Przy pracach montowanych lokalnie liczy się miejsce inwestycji, etap budowy i dokładny pomiar. Zdjęcia bardzo pomagają ocenić zakres przed wizytą.", "items": ["miejscowość inwestycji", "zdjęcia miejsca montażu", "rzuty, pomiary lub orientacyjne wymiary", "oczekiwany termin", "informacja, czy projekt jest w trakcie budowy czy remontu"]},
+            {"title": "Dla architektów i projektów custom", "body": "Przy nietypowych detalach dobrze opisać efekt końcowy, ograniczenia montażowe i to, co jest najważniejsze: wygląd, trwałość, powtarzalność albo budżet.", "items": ["rysunek, inspiracja lub wizualizacja", "materiał i kolorystyka", "miejsce montażu lub sposób użycia", "widoczne detale i oczekiwany standard", "elementy, które mogą być uproszczone technologicznie"]},
+        ],
+        "avoid_title": "Co najczęściej spowalnia wycenę",
+        "avoid_body": "Najwięcej czasu zabiera odgadywanie skali i oczekiwań. Lepiej wysłać prosty opis z niedoskonałym zdjęciem niż ogólne pytanie bez konkretów.",
+        "avoid_items": ["brak wymiarów lub choćby skali", "brak informacji o ilości", "same inspiracje bez wskazania, co ma być wykonane", "niejasny termin", "brak telefonu albo emaila do doprecyzowania"],
+        "faq": [
+            ("Czy muszę mieć rysunek techniczny?", "Nie. Rysunek pomaga, ale na start wystarczy zdjęcie, szkic albo opis. Przy wycenie technicznej i tak doprecyzujemy wymiary oraz materiał."),
+            ("Czy mogę wysłać tylko zdjęcie podobnego elementu?", "Tak. Zdjęcie jest dobrym początkiem, jeśli dodasz orientacyjne wymiary, ilość i informację, do czego element ma służyć."),
+            ("Czy zapytanie B2B może dotyczyć Europy?", "Tak, jeśli element, skala i logistyka mają sens. Pakowanie i wysyłka są zawsze ustalane indywidualnie."),
+        ],
+    },
+    "en": {
+        "title": "How to prepare a joinery inquiry? | Kajax",
+        "description": "A practical checklist for pricing wooden components, short runs, stairs, doors and custom woodwork. What to send so the workshop can reply faster.",
+        "eyebrow": "Quote guide",
+        "h1": "How to prepare a joinery inquiry so you get a concrete answer faster",
+        "lead": "You do not need complete documentation. The key is to show what should be made, in what quantity, from which material and within what timing. A clear inquiry helps us assess whether the project fits the workshop.",
+        "primary_cta": "Send project for a quote",
+        "aside_title": "Minimum that is enough to start",
+        "aside_body": "If you do not have a technical drawing, send a photo, sketch or a similar reference. We can clarify the remaining details in conversation.",
+        "aside_items": ["photo, sketch or drawing", "approximate dimensions", "quantity or scale", "material and finish if known", "timing and location"],
+        "sections": [
+            {"title": "For B2B components and short runs", "body": "For repeatable components, the most important points are repeatability and a clear reference. A sample, photo, drawing or prototype works best.", "items": ["target quantity and first batch", "finished part or part for further assembly", "tolerances, milling, holes and visible edges", "whether packing or shipping may be needed", "whether recurring cooperation is possible"]},
+            {"title": "For stairs, doors and construction joinery", "body": "For locally installed joinery, the project location, building stage and measurement matter. Photos help assess the scope before a site visit.", "items": ["project location", "photos of the installation area", "plans, measurements or approximate dimensions", "expected timing", "whether it is a new build or renovation"]},
+            {"title": "For architects and custom projects", "body": "For unusual details, describe the intended final effect, installation constraints and what matters most: appearance, durability, repeatability or budget.", "items": ["drawing, reference or visualization", "material and colour direction", "installation place or use case", "visible details and expected standard", "elements that may be simplified technically"]},
+        ],
+        "avoid_title": "What usually slows down pricing",
+        "avoid_body": "Most time is lost guessing the scale and expectations. A simple description with an imperfect photo is more useful than a general question without specifics.",
+        "avoid_items": ["no dimensions or scale", "no quantity", "references without saying what should be made", "unclear timing", "no phone or email for clarification"],
+        "faq": [
+            ("Do I need a technical drawing?", "No. A drawing helps, but a photo, sketch or description is enough to start. Technical details can be clarified before pricing."),
+            ("Can I send only a photo of a similar element?", "Yes. A photo is a good start if you add approximate dimensions, quantity and what the part will be used for."),
+            ("Can a B2B inquiry be Europe-wide?", "Yes, if the component, scale and logistics make sense. Packing and shipping are always agreed individually."),
+        ],
+    },
+    "de": {
+        "title": "Wie bereitet man eine Tischlerei-Anfrage vor? | Kajax",
+        "description": "Praktische Checkliste für Holzelemente, Kleinserien, Treppen, Türen und Sonderanfertigungen. Welche Informationen eine schnellere Einschätzung ermöglichen.",
+        "eyebrow": "Anfrage-Leitfaden",
+        "h1": "Wie Sie eine Tischlerei-Anfrage vorbereiten, damit schneller eine konkrete Antwort möglich ist",
+        "lead": "Sie brauchen keine vollständige Dokumentation. Wichtig ist, zu zeigen, was entstehen soll, in welcher Menge, aus welchem Material und in welchem Zeitraum. Eine klare Anfrage hilft zu prüfen, ob das Projekt zur Werkstatt passt.",
+        "primary_cta": "Projekt zur Anfrage senden",
+        "aside_title": "Das Minimum für den Start",
+        "aside_body": "Wenn keine technische Zeichnung vorhanden ist, senden Sie ein Foto, eine Skizze oder ein ähnliches Beispiel. Die restlichen Details klären wir im Gespräch.",
+        "aside_items": ["Foto, Skizze oder Zeichnung", "ungefähre Maße", "Menge oder Umfang", "Material und Oberfläche, falls bekannt", "Termin und Standort"],
+        "sections": [
+            {"title": "Für B2B-Elemente und Kleinserien", "body": "Bei wiederholbaren Elementen zählen Wiederholbarkeit und ein klarer Bezugspunkt. Am besten funktionieren Muster, Foto, Zeichnung oder Prototyp.", "items": ["Zielmenge und erste Serie", "fertiges Element oder Teil zur weiteren Montage", "Toleranzen, Fräsungen, Bohrungen und sichtbare Kanten", "ob Verpackung oder Versand nötig sein kann", "ob regelmäßige Zusammenarbeit denkbar ist"]},
+            {"title": "Für Treppen, Türen und Bauschreinerei", "body": "Bei lokal montierten Arbeiten zählen Projektort, Bauphase und Aufmaß. Fotos helfen, den Umfang vor einem Termin besser einzuschätzen.", "items": ["Projektort", "Fotos des Montagebereichs", "Pläne, Maße oder ungefähre Abmessungen", "gewünschter Termin", "Neubau oder Renovierung"]},
+            {"title": "Für Architekten und Sonderprojekte", "body": "Bei ungewöhnlichen Details beschreiben Sie den gewünschten Endeffekt, Montagegrenzen und was am wichtigsten ist: Optik, Haltbarkeit, Wiederholbarkeit oder Budget.", "items": ["Zeichnung, Referenz oder Visualisierung", "Material und Farbrichtung", "Montageort oder Nutzung", "sichtbare Details und erwarteter Standard", "Elemente, die technisch vereinfacht werden können"]},
+        ],
+        "avoid_title": "Was eine Anfrage meist verlangsamt",
+        "avoid_body": "Am meisten Zeit kostet das Erraten von Umfang und Erwartungen. Eine einfache Beschreibung mit einem unperfekten Foto ist hilfreicher als eine allgemeine Frage ohne Details.",
+        "avoid_items": ["keine Maße oder Größenordnung", "keine Mengenangabe", "nur Inspiration ohne Angabe, was gefertigt werden soll", "unklarer Termin", "keine Telefon- oder E-Mail-Angabe"],
+        "faq": [
+            ("Brauche ich eine technische Zeichnung?", "Nein. Eine Zeichnung hilft, aber Foto, Skizze oder Beschreibung reichen für den Start. Technische Details klären wir vor der Preisfindung."),
+            ("Kann ich nur ein Foto eines ähnlichen Elements senden?", "Ja. Ein Foto ist ein guter Anfang, wenn Sie ungefähre Maße, Menge und Verwendung ergänzen."),
+            ("Kann eine B2B-Anfrage europaweit sein?", "Ja, wenn Element, Umfang und Logistik sinnvoll sind. Verpackung und Versand werden individuell abgestimmt."),
+        ],
+    },
+    "sv": {
+        "title": "Hur förbereder man en förfrågan till ett snickeri? | Kajax",
+        "description": "Praktisk checklista för träkomponenter, korta serier, trappor, dörrar och specialsnickeri. Vad du bör skicka för snabbare bedömning.",
+        "eyebrow": "Offertguide",
+        "h1": "Så förbereder du en snickeriförfrågan och får ett konkret svar snabbare",
+        "lead": "Du behöver inte komplett dokumentation. Det viktiga är att visa vad som ska tillverkas, i vilken mängd, av vilket material och inom vilken tid. En tydlig förfrågan hjälper oss bedöma om projektet passar verkstaden.",
+        "primary_cta": "Skicka projekt för offert",
+        "aside_title": "Minsta underlag för start",
+        "aside_body": "Om du inte har en teknisk ritning kan du skicka ett foto, en skiss eller en liknande referens. Resten kan vi reda ut i dialog.",
+        "aside_items": ["foto, skiss eller ritning", "ungefärliga mått", "antal eller omfattning", "material och finish om känt", "tidplan och plats"],
+        "sections": [
+            {"title": "För B2B-komponenter och korta serier", "body": "För återkommande komponenter är upprepbarhet och tydlig referens viktigast. Prov, foto, ritning eller prototyp fungerar bäst.", "items": ["målvolym och första serie", "färdig detalj eller del för vidare montage", "toleranser, fräsningar, hål och synliga kanter", "om packning eller frakt kan behövas", "om återkommande samarbete är möjligt"]},
+            {"title": "För trappor, dörrar och byggsnickeri", "body": "För lokalt monterat snickeri är projektplats, byggskede och mätning viktiga. Foton hjälper oss bedöma omfattningen före ett platsbesök.", "items": ["projektplats", "foton av monteringsplatsen", "planer, mått eller ungefärliga dimensioner", "önskad tidplan", "nybyggnation eller renovering"]},
+            {"title": "För arkitekter och specialprojekt", "body": "Vid ovanliga detaljer bör du beskriva slutresultat, monteringsbegränsningar och vad som är viktigast: utseende, hållbarhet, upprepbarhet eller budget.", "items": ["ritning, referens eller visualisering", "material och färgriktning", "monteringsplats eller användning", "synliga detaljer och förväntad standard", "delar som kan förenklas tekniskt"]},
+        ],
+        "avoid_title": "Vad som oftast bromsar offerten",
+        "avoid_body": "Mest tid går åt till att gissa omfattning och förväntningar. En enkel beskrivning med ett ofullkomligt foto är bättre än en allmän fråga utan detaljer.",
+        "avoid_items": ["inga mått eller skala", "inget antal", "referenser utan att säga vad som ska tillverkas", "oklar tidplan", "ingen telefon eller e-post för följdfrågor"],
+        "faq": [
+            ("Behöver jag en teknisk ritning?", "Nej. Ritning hjälper, men foto, skiss eller beskrivning räcker för start. Tekniska detaljer klargörs före prissättning."),
+            ("Kan jag bara skicka ett foto av en liknande detalj?", "Ja. Foto är en bra start om du lägger till ungefärliga mått, antal och användning."),
+            ("Kan en B2B-förfrågan gälla Europa?", "Ja, om komponent, omfattning och logistik är rimliga. Packning och frakt avtalas individuellt."),
+        ],
+    },
+    "da": {
+        "title": "Hvordan forbereder man en forespørgsel til et snedkeri? | Kajax",
+        "description": "Praktisk checkliste til trækomponenter, korte serier, trapper, døre og specialsnedkeri. Hvad du bør sende for hurtigere vurdering.",
+        "eyebrow": "Tilbudsguide",
+        "h1": "Sådan forbereder du en snedkerforespørgsel og får et konkret svar hurtigere",
+        "lead": "Du behøver ikke komplet dokumentation. Det vigtigste er at vise, hvad der skal fremstilles, i hvilket antal, af hvilket materiale og inden for hvilken tidsplan. En tydelig forespørgsel hjælper os med at vurdere, om projektet passer til værkstedet.",
+        "primary_cta": "Send projekt til tilbud",
+        "aside_title": "Minimum til at starte",
+        "aside_body": "Hvis du ikke har en teknisk tegning, kan du sende foto, skitse eller lignende reference. Resten kan vi afklare i dialog.",
+        "aside_items": ["foto, skitse eller tegning", "omtrentlige mål", "antal eller omfang", "materiale og finish hvis kendt", "tidsplan og placering"],
+        "sections": [
+            {"title": "Til B2B-komponenter og korte serier", "body": "For gentagelige komponenter er gentagelighed og en klar reference vigtigst. Prøve, foto, tegning eller prototype fungerer bedst.", "items": ["målantal og første serie", "færdig del eller del til videre montage", "tolerancer, fræsninger, huller og synlige kanter", "om pakning eller forsendelse kan være nødvendig", "om løbende samarbejde er relevant"]},
+            {"title": "Til trapper, døre og byggesnedkeri", "body": "For lokalt monteret snedkeri er projektsted, byggefase og opmåling vigtige. Fotos hjælper med at vurdere omfanget før et besøg.", "items": ["projektets placering", "fotos af montagestedet", "planer, mål eller omtrentlige dimensioner", "ønsket tidsplan", "nybyggeri eller renovering"]},
+            {"title": "Til arkitekter og specialprojekter", "body": "Ved usædvanlige detaljer bør du beskrive slutresultat, montagebegrænsninger og hvad der er vigtigst: udtryk, holdbarhed, gentagelighed eller budget.", "items": ["tegning, reference eller visualisering", "materiale og farveretning", "montagested eller brug", "synlige detaljer og forventet standard", "dele der kan forenkles teknisk"]},
+        ],
+        "avoid_title": "Hvad der oftest forsinker tilbuddet",
+        "avoid_body": "Mest tid går med at gætte omfang og forventninger. En enkel beskrivelse med et uperfekt foto er bedre end et generelt spørgsmål uden detaljer.",
+        "avoid_items": ["ingen mål eller skala", "intet antal", "referencer uden at sige hvad der skal fremstilles", "uklar tidsplan", "ingen telefon eller e-mail til afklaring"],
+        "faq": [
+            ("Behøver jeg en teknisk tegning?", "Nej. Tegning hjælper, men foto, skitse eller beskrivelse er nok til start. Tekniske detaljer afklares før prissætning."),
+            ("Kan jeg kun sende et foto af en lignende del?", "Ja. Foto er en god start, hvis du tilføjer omtrentlige mål, antal og brug."),
+            ("Kan en B2B-forespørgsel dække Europa?", "Ja, hvis komponent, omfang og logistik giver mening. Pakning og forsendelse aftales individuelt."),
+        ],
+    },
+    "no": {
+        "title": "Hvordan forberede en forespørsel til et snekkerverksted? | Kajax",
+        "description": "Praktisk sjekkliste for trekomponenter, korte serier, trapper, dører og spesialarbeid. Hva du bør sende for raskere vurdering.",
+        "eyebrow": "Forespørselsguide",
+        "h1": "Slik forbereder du en snekkerforespørsel og får et konkret svar raskere",
+        "lead": "Du trenger ikke komplett dokumentasjon. Det viktigste er å vise hva som skal lages, i hvilket antall, av hvilket materiale og innen hvilken tid. En tydelig forespørsel hjelper oss å vurdere om prosjektet passer verkstedet.",
+        "primary_cta": "Send prosjekt til vurdering",
+        "aside_title": "Minimum for å starte",
+        "aside_body": "Hvis du ikke har teknisk tegning, kan du sende bilde, skisse eller lignende referanse. Resten kan vi avklare i dialog.",
+        "aside_items": ["bilde, skisse eller tegning", "omtrentlige mål", "antall eller omfang", "materiale og overflate hvis kjent", "tidsplan og sted"],
+        "sections": [
+            {"title": "For B2B-komponenter og korte serier", "body": "For repeterbare komponenter er repeterbarhet og tydelig referanse viktigst. Prøve, bilde, tegning eller prototype fungerer best.", "items": ["målantall og første serie", "ferdig del eller del for videre montering", "toleranser, fresing, hull og synlige kanter", "om pakking eller frakt kan være nødvendig", "om fast samarbeid er aktuelt"]},
+            {"title": "For trapper, dører og byggsnekkerarbeid", "body": "For lokalt montert arbeid er prosjektsted, byggefase og oppmåling viktig. Bilder hjelper oss å vurdere omfanget før et besøk.", "items": ["prosjektsted", "bilder av monteringsstedet", "planer, mål eller omtrentlige dimensjoner", "ønsket tidsplan", "nybygg eller renovering"]},
+            {"title": "For arkitekter og spesialprosjekter", "body": "Ved uvanlige detaljer bør du beskrive sluttresultat, monteringsbegrensninger og hva som er viktigst: uttrykk, holdbarhet, repeterbarhet eller budsjett.", "items": ["tegning, referanse eller visualisering", "materiale og fargeretning", "monteringssted eller bruk", "synlige detaljer og forventet standard", "deler som kan forenkles teknisk"]},
+        ],
+        "avoid_title": "Hva som oftest forsinker vurderingen",
+        "avoid_body": "Mest tid går med til å gjette omfang og forventninger. En enkel beskrivelse med et uperfekt bilde er bedre enn et generelt spørsmål uten detaljer.",
+        "avoid_items": ["ingen mål eller skala", "intet antall", "referanser uten å si hva som skal lages", "uklar tidsplan", "ingen telefon eller e-post for avklaring"],
+        "faq": [
+            ("Trenger jeg teknisk tegning?", "Nei. Tegning hjelper, men bilde, skisse eller beskrivelse er nok for start. Tekniske detaljer avklares før pris."),
+            ("Kan jeg bare sende bilde av en lignende del?", "Ja. Bilde er en god start hvis du legger til omtrentlige mål, antall og bruksområde."),
+            ("Kan en B2B-forespørsel gjelde Europa?", "Ja, hvis komponent, omfang og logistikk gir mening. Pakking og frakt avtales individuelt."),
+        ],
+    },
+}
+
+for _code, _page in GUIDE_PAGES.items():
+    CONTENT[_code]["pages"]["guide"] = _page
 
 
 def _with_runtime_fields(page_key, page):

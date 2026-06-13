@@ -58,6 +58,10 @@ norwegian_urlpatterns = [
         "no/realizacje/",
         force_language(MarketingPageView.as_view(page_key="realizations"), "no"),
     ),
+    path(
+        "no/jak-przygotowac-zapytanie/",
+        force_language(MarketingPageView.as_view(page_key="guide"), "no"),
+    ),
     path("no/wycena/", force_language(QuoteRequestView.as_view(), "no")),
     path(
         "no/kontakt/",

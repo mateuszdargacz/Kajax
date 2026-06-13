@@ -34,6 +34,7 @@ SITEMAP_PRIORITIES = {
     "construction": "0.8",
     "architects": "0.8",
     "realizations": "0.7",
+    "guide": "0.8",
     "contact": "0.7",
 }
 
@@ -213,6 +214,8 @@ def build_structured_data(page, canonical_url=None, language_code=None):
                 ],
             }
         )
+    if page["key"] == "guide":
+        graph.extend(build_guide_structured_data(page, canonical_url, language_code, organization_id))
     return {"@context": "https://schema.org", "@graph": graph}
 
 
@@ -238,3 +241,34 @@ def build_offer_catalog(page):
         "name": str(page.get("h1", page.get("title", ""))),
         "itemListElement": offers,
     }
+
+
+def build_guide_structured_data(page, canonical_url, language_code, organization_id):
+    article_id = f"{canonical_url}#article"
+    howto_id = f"{canonical_url}#howto"
+    article = {
+        "@id": article_id,
+        "@type": "Article",
+        "headline": str(page.get("h1", page.get("title", ""))),
+        "description": str(page.get("description", "")),
+        "author": {"@id": organization_id},
+        "publisher": {"@id": organization_id},
+        "mainEntityOfPage": canonical_url,
+        "inLanguage": normalize_language(language_code),
+    }
+    howto = {
+        "@id": howto_id,
+        "@type": "HowTo",
+        "name": str(page.get("h1", page.get("title", ""))),
+        "description": str(page.get("lead", page.get("description", ""))),
+        "inLanguage": normalize_language(language_code),
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": str(section.get("title", "")),
+                "text": " ".join([str(section.get("body", "")), " ".join(str(item) for item in section.get("items", []))]).strip(),
+            }
+            for section in page.get("sections", [])
+        ],
+    }
+    return [article, howto]

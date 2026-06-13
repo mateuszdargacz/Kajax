@@ -10,6 +10,7 @@ urlpatterns = [
     path("stolarka-budowlana/", MarketingPageView.as_view(page_key="construction"), name="construction"),
     path("dla-architektow-i-firm/", MarketingPageView.as_view(page_key="architects"), name="architects"),
     path("realizacje/", MarketingPageView.as_view(page_key="realizations"), name="realizations"),
+    path("jak-przygotowac-zapytanie/", MarketingPageView.as_view(page_key="guide"), name="guide"),
     path("wycena/", QuoteRequestView.as_view(), name="quote"),
     path("kontakt/", MarketingPageView.as_view(page_key="contact"), name="contact"),
     path("robots.txt", robots_txt, name="robots_txt"),

@@ -6,6 +6,7 @@ const publicPages = [
   { path: "/stolarka-budowlana/", h1: "Schody, drzwi, listwy i stolarka drewniana na wymiar" },
   { path: "/dla-architektow-i-firm/", h1: "Stolarnia do trudniejszych projektów i detali drewnianych" },
   { path: "/realizacje/", h1: "Realizacje i kierunki prac, które dobrze pasują do naszej stolarni" },
+  { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź" },
   { path: "/kontakt/", h1: "Kontakt" },
 ];
 
@@ -44,8 +45,22 @@ test.describe("public marketing pages", () => {
 
     await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Zobacz zakres prac" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Zobacz checklistę do wyceny" })).toBeVisible();
     await expect(page.locator(".photo-placeholder-name").first()).toContainText("hero-workshop-production.jpg");
     await expect(page.locator(".photo-placeholder small")).toHaveCount(0);
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("quote guide explains input requirements and exposes schema", async ({ page }) => {
+    await page.goto("/jak-przygotowac-zapytanie/");
+
+    await expect(page.locator("h1")).toContainText("Jak przygotować zapytanie do stolarni");
+    await expect(page.locator("body")).toContainText("Dla elementów B2B i krótkich serii");
+    await expect(page.locator("body")).toContainText("Co najczęściej spowalnia wycenę");
+    await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" }).first()).toBeVisible();
+    const schema = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(schema).toContain('"@type": "HowTo"');
+    expect(schema).toContain('"@type": "Article"');
     await expectNoHorizontalOverflow(page);
   });
 
@@ -117,6 +132,11 @@ test.describe("localized pages", () => {
     await expect(page.getByRole("navigation", { name: "Hovednavigasjon" }).getByRole("link", { name: "Forespørsel", exact: true })).toHaveAttribute("href", "/no/wycena/");
     await expect(page.locator(".mobile-action-bar [data-track-cta='mobile_quote']")).toHaveAttribute("href", "/no/wycena/");
     await expectNoHorizontalOverflow(page);
+
+    await page.goto("/de/jak-przygotowac-zapytanie/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "de");
+    await expect(page.locator("h1")).toContainText("Tischlerei-Anfrage");
+    await expectNoHorizontalOverflow(page);
   });
 });
 
@@ -169,6 +189,7 @@ test.describe("quote form", () => {
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");
     await expect(page.getByLabel("Firma")).toBeVisible();
     await expect(page.getByLabel("Zdjęcia, rysunki lub specyfikacja")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Nie wiesz, co przygotować? Zobacz checklistę" })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
 });

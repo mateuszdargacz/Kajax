@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-title">
+    <div class="container narrow">
+        <p class="eyebrow">{{ page.eyebrow }}</p>
+        <h1>{{ page.h1 }}</h1>
+        <p>{{ page.lead }}</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="guide_hero_quote" data-cta-location="guide_hero">{{ page.primary_cta }}</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container guide-grid">
+        <div class="guide-sections">
+            {% for section in page.sections %}
+                <article class="service-block guide-block">
+                    <div>
+                        <p class="eyebrow">{{ ui.service_section_eyebrow }} {{ forloop.counter }}</p>
+                        <h2>{{ section.title }}</h2>
+                        <p>{{ section.body }}</p>
+                    </div>
+                    <ul class="check-list">
+                        {% for item in section.items %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </div>
+        <aside class="guide-aside">
+            <h2>{{ page.aside_title }}</h2>
+            <p>{{ page.aside_body }}</p>
+            <ul class="check-list">
+                {% for item in page.aside_items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+</section>
+
+<section class="section muted">
+    <div class="container guide-grid">
+        <div class="section-heading">
+            <p class="eyebrow">{{ ui.guide_slowdown_eyebrow }}</p>
+            <h2>{{ page.avoid_title }}</h2>
+            <p>{{ page.avoid_body }}</p>
+        </div>
+        <ul class="avoid-list">
+            {% for item in page.avoid_items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% if page.faq %}
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">{{ ui.faq_eyebrow }}</p>
+            <h2>{{ ui.faq_title }}</h2>
+        </div>
+        <div class="faq-list">
+            {% for question, answer in page.faq %}
+                <details>
+                    <summary>{{ question }}</summary>
+                    <p>{{ answer }}</p>
+                </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="cta-band">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">{{ ui.cta_eyebrow }}</p>
+            <h2>{{ ui.cta_title }}</h2>
+        </div>
+        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="guide_quote_band" data-cta-location="guide_cta_band">{{ ui.cta_button }}</a>
+    </div>
+</section>
+{% endblock %}

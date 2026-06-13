@@ -512,6 +512,10 @@ h3 {
     text-underline-offset: 4px;
 }
 
+.light-link {
+    color: #ffd09d;
+}
+
 .split-section {
     background:
         linear-gradient(90deg, #16211e, #1f2c27 58%, #f5efe5 58%, #f5efe5);
@@ -698,6 +702,65 @@ h3 {
 .service-sections {
     display: grid;
     gap: 20px;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
+    gap: 36px;
+    align-items: start;
+}
+
+.guide-sections {
+    display: grid;
+    gap: 20px;
+}
+
+.guide-aside {
+    position: sticky;
+    top: 100px;
+    padding: 28px;
+    background: var(--ink);
+    color: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.guide-aside h2 {
+    font-size: 2rem;
+}
+
+.guide-aside p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.guide-aside .check-list li {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.guide-aside .check-list li::before {
+    border-color: var(--amber);
+}
+
+.guide-block {
+    grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.62fr);
+}
+
+.avoid-list {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.avoid-list li {
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-weight: 780;
 }
 
 .service-block {
@@ -1023,6 +1086,7 @@ textarea.form-control {
     .process-grid,
     .split,
     .page-hero-grid,
+    .guide-grid,
     .quote-grid,
     .contact-grid,
     .footer-grid {
@@ -1047,12 +1111,18 @@ textarea.form-control {
     }
 
     .service-block,
+    .guide-block,
     .realization {
         grid-template-columns: 1fr;
     }
 
-    .quote-aside {
+    .quote-aside,
+    .guide-aside {
         position: static;
+    }
+
+    .guide-aside {
+        order: -1;
     }
 }
 
@@ -1202,6 +1272,7 @@ textarea.form-control {
     .card,
     .quote-form,
     .quote-aside,
+    .guide-aside,
     .contact-panel {
         padding: 22px;
     }
