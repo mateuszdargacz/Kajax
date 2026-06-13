@@ -29,12 +29,62 @@ Use real Kajax workshop, tools, materials, people, details and finished work. Av
 
 ## Required Ratios
 
-- Hero desktop: `16:9` or wider, at least `2400x1350`.
-- Hero mobile: vertical crop, `4:5` or `3:4`, at least `1200x1600`.
-- Section images: `4:3`, at least `1600x1200`.
-- Portfolio cards: `3:2` or `4:3`.
-- Detail closeups: square and `4:3`.
-- Open Graph/social image: `1200x630`.
+- Hero desktop master: `16:9`, minimum `3200x1800`, export at least `2400x1350`.
+- Hero mobile crop: `4:5`, minimum `1600x2000`; keep subject readable after vertical crop.
+- Standard section image: `4:3`, minimum `2400x1800`, export at least `1600x1200`.
+- Portfolio card image: `3:2` or `4:3`, minimum `2400px` on the long edge.
+- Detail closeup: square `1:1`, minimum `2000x2000`; optional `4:3` crop at `2400x1800`.
+- Open Graph/social: `1200x630`, generated from hero or strongest workshop/B2B image.
+
+## Generation Style Guide
+
+Use this as the global instruction for any AI image generation agent.
+
+Positive style:
+
+- photorealistic documentary product photography,
+- real European joinery workshop in Poland,
+- modern but not sterile,
+- natural oak/ash/pine/walnut wood tones,
+- visible workbench, clamps, templates, calipers, sanding tools, safe machinery, dust extraction,
+- clean composition with believable dust, grain and small workshop traces,
+- soft daylight or large softbox light,
+- neutral warm color grade,
+- premium craft and B2B reliability, not rustic hobby craft.
+
+Negative style:
+
+- no stock-photo smiles,
+- no luxury mansion showroom,
+- no fake glossy CGI look,
+- no impossible geometry,
+- no unsafe machine operation,
+- no unreadable warped text on labels, drawings or signs,
+- no visible brand names from other companies,
+- no random decorative props,
+- no chaotic clutter,
+- no dark underexposed workshop corner,
+- no exaggerated orange/brown filter,
+- no cartoon/illustration/vector style.
+
+Human presence:
+
+- Hands are useful when they show scale, measuring, checking or finishing.
+- Faces are optional and should not dominate.
+- Avoid posed portraits for core conversion images.
+
+Text and documents:
+
+- Drawings/specifications may be visible, but they should not contain real client data.
+- If generated, any written text should be abstract linework, dimensions and symbols rather than readable fake words.
+
+Export rules:
+
+- Use `.jpg` for all final files unless we later add an optimized responsive image pipeline.
+- Keep the exact target filenames from the table below.
+- Also keep high-resolution source files separately if generated; do not overwrite the final export names with low-quality previews.
+- Final web exports should be sharp, sRGB, quality around 82-88, no watermark.
+- Avoid upscaling small generations unless the result stays crisp on edges and grain.
 
 ## Implementation Placeholder Map
 
@@ -42,270 +92,666 @@ Until real files are delivered, the website renders named visual placeholders wi
 
 Replace each placeholder by adding the final image with the mapped filename and then changing the placeholder renderer to a real image renderer.
 
-| Code key | Target filename | Main use | Required crop |
-| --- | --- | --- | --- |
-| `hero_workshop` | `hero-workshop-production.jpg` | Homepage hero | desktop `16:9`, mobile `4:5` |
-| `b2b_components_series` | `b2b-short-series-wood-components.jpg` | B2B landing, homepage B2B section | `4:3` and detail crop |
-| `b2b_components_detail` | `b2b-repeated-wooden-elements-detail.jpg` | B2B proof/detail sections | square and `4:3` |
-| `b2b_packing` | `wood-components-packed-for-shipping.jpg` | Logistics/Europe B2B note | `4:3` |
-| `drawing_spec` | `woodwork-from-drawing-specification.jpg` | Quote/process sections | `4:3` |
-| `precision_detail` | `wood-joinery-detail-closeup.jpg` | Architects/details and trust sections | square and `4:3` |
-| `finished_edge_detail` | `finished-wood-edge-detail.jpg` | Detail/quality section | square |
-| `stairs_project` | `wooden-stairs-pomorskie.jpg` | Construction joinery and portfolio | `4:3` |
-| `stairs_detail` | `wooden-stairs-detail-wejherowo.jpg` | Local SEO/detail section | `4:3` |
-| `doors_detail` | `wooden-doors-joinery-detail.jpg` | Construction joinery page | `4:3` |
-| `wooden_trims` | `wooden-trims-made-to-measure.jpg` | Trims/listwy content | `4:3` |
-| `built_in_custom` | `built-in-woodwork-project.jpg` | Built-in/project-based portfolio | `4:3` |
-| `artistic_detail` | `architectural-woodwork-detail.jpg` | Architects/details page | `4:3` |
-| `materials` | `wood-material-samples-workshop.jpg` | Materials/process section | `4:3` |
-| `boards` | `solid-wood-boards-for-joinery.jpg` | Workshop/material background | `4:3` |
-| `craft_checking` | `craftsman-checking-wood-detail.jpg` | Trust/process/human craft | `4:3` |
-| `cutting_process` | `wood-cutting-workshop-process.jpg` | Workshop process | `4:3` |
-| `sanding_process` | `wood-sanding-finishing-process.jpg` | Workshop process | `4:3` |
-| `clamped_elements` | `wood-elements-clamped-for-assembly.jpg` | Production/process | `4:3` |
+| Code key | Target filename | Main use | Required crop | Minimum source |
+| --- | --- | --- | --- | --- |
+| `hero_workshop` | `hero-workshop-production.jpg` | Homepage hero | `16:9`, text-safe | `3200x1800` |
+| `b2b_components_series` | `b2b-short-series-wood-components.jpg` | B2B landing, homepage B2B section | `4:3` | `2400x1800` |
+| `b2b_components_detail` | `b2b-repeated-wooden-elements-detail.jpg` | B2B proof/detail sections | `1:1` and `4:3` | `2400x2400` |
+| `b2b_packing` | `wood-components-packed-for-shipping.jpg` | Logistics/Europe B2B note | `4:3` | `2400x1800` |
+| `drawing_spec` | `woodwork-from-drawing-specification.jpg` | Quote/process sections | `4:3` | `2400x1800` |
+| `precision_detail` | `wood-joinery-detail-closeup.jpg` | Architects/details and trust sections | `1:1` | `2400x2400` |
+| `finished_edge_detail` | `finished-wood-edge-detail.jpg` | Detail/quality section | `1:1` | `2400x2400` |
+| `stairs_project` | `wooden-stairs-pomorskie.jpg` | Construction joinery and portfolio | `4:3` | `2400x1800` |
+| `stairs_detail` | `wooden-stairs-detail-wejherowo.jpg` | Local SEO/detail section | `4:3` | `2400x1800` |
+| `doors_detail` | `wooden-doors-joinery-detail.jpg` | Construction joinery page | `4:3` | `2400x1800` |
+| `wooden_trims` | `wooden-trims-made-to-measure.jpg` | Trims/listwy content | `4:3` | `2400x1800` |
+| `built_in_project` | `built-in-woodwork-project.jpg` | Built-in/project-based portfolio | `4:3` | `2400x1800` |
+| `artistic_detail` | `architectural-woodwork-detail.jpg` | Architects/details page | `4:3` | `2400x1800` |
+| `materials` | `wood-material-samples-workshop.jpg` | Materials/process section | `4:3` | `2400x1800` |
+| `boards` | `solid-wood-boards-for-joinery.jpg` | Workshop/material background | `4:3` | `2400x1800` |
+| `craft_checking` | `craftsman-checking-wood-detail.jpg` | Trust/process/human craft | `4:3` | `2400x1800` |
+| `cutting_process` | `wood-cutting-workshop-process.jpg` | Workshop process | `4:3` | `2400x1800` |
+| `sanding_process` | `wood-sanding-finishing-process.jpg` | Workshop process | `4:3` | `2400x1800` |
+| `clamped_elements` | `wood-elements-clamped-for-assembly.jpg` | Production/process | `4:3` | `2400x1800` |
 
-## Priority Shot List
+## AI Generation Asset Briefs
 
-### 1. Homepage Hero: Production-Capable Workshop
+Each asset below is written so an image-generation agent can produce a usable website image without guessing the business context.
 
-Purpose:
+### `hero-workshop-production.jpg`
 
-- First impression.
-- Must show Kajax as a serious workshop able to handle B2B and made-to-measure work.
+Purpose: first impression on the homepage. It must immediately say: serious workshop, production capability, wood craft, not a generic carpenter.
 
-Frame:
+Required output:
 
-- Horizontal wide shot of the workshop with wood, machines or workbench visible.
-- One person may be working, but the person should not dominate the frame.
-- Leave calm negative space on the left or right for headline text.
+- Main file: `hero-workshop-production.jpg`
+- Ratio: `16:9`
+- Minimum source: `3200x1800`
+- Web export: `2400x1350`
+- Optional mobile crop: `hero-workshop-production-mobile.jpg`, `4:5`, `1600x2000`
+- Optional OG crop: `hero-workshop-production-og.jpg`, `1200x630`
 
-Avoid:
+Composition:
 
-- dark messy corner,
-- random machine closeup with no context,
-- staged smile-to-camera portrait.
+- Wide workshop interior with real workbench, machines, clamps, stacks of wood and partly finished components.
+- Leave 40-45% calm negative space on the left side for hero text.
+- Main visual weight should sit middle-right.
+- One person may work in the background, but the workshop and capability should dominate.
+- Camera height around chest level, natural perspective, no extreme wide-angle distortion.
 
-Suggested filename:
+Prompt:
 
-- `hero-workshop-production.jpg`
+```text
+Photorealistic documentary photo of a serious European joinery workshop in Poland, prepared for small batch wooden component production, workbench, clamps, dust extraction, saw or planer in background, stacks of oak and pine boards, several finished wooden parts on the bench, warm natural daylight from side windows, clean but real workshop, premium craft, B2B reliability, calm empty space on the left for website headline, subject weight on the right, 35mm lens, realistic color, sharp wood grain, no logos
+```
+
+Negative prompt:
+
+```text
+stock photo, smiling posed carpenter, luxury mansion, rustic hobby shed, messy chaos, dark underexposed corner, fake CGI render, cartoon, watermark, readable brand logos, unsafe machine use, distorted machines, warped wood geometry, excessive orange filter
+```
+
+Quality checks:
+
+- Text overlay must be readable over the darkened left side.
+- The workshop should look capable enough for B2B, not only one-off furniture repair.
+- No fake readable signage.
 
 Alt text:
 
 - `Warsztat stolarski Kajax w Gościcinie przygotowany do produkcji elementów drewnianych`
 
-### 2. B2B Series: Repeated Wooden Elements
+### `b2b-short-series-wood-components.jpg`
 
-Purpose:
+Purpose: strongest proof for B2B wooden components and small repeatable batches.
 
-- Main proof for `/produkcja-elementow-drewnianych`.
-- This is the most important business direction.
+Required output:
 
-Frame:
+- Main file: `b2b-short-series-wood-components.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+- Optional crop: `b2b-short-series-wood-components-square.jpg`, `2000x2000`
 
-- Repeated elements arranged in a clean row, stack or batch.
-- Show repeatability: same shape, same finish, multiple pieces.
-- Include ruler/caliper/template if it helps show precision.
+Composition:
 
-Examples:
+- 20-40 repeated wooden components arranged in rows or grouped batches.
+- Show repeatability: same shape, same material, same finish.
+- Include a template, caliper or ruler only if it looks natural.
+- Use a workshop table, not a showroom table.
+- Keep background quiet and slightly darker than the parts.
 
-- listwy,
-- ramki,
-- frezowane elementy,
-- podstawki,
-- półprodukty,
-- elementy POS/display,
-- small parts before packing.
+Prompt:
 
-Suggested filenames:
+```text
+Photorealistic product-documentary photo of a short production run of identical wooden components arranged in clean rows on a joinery workshop bench, oak or beech pieces with precise edges and repeated shape, small-batch B2B production, caliper and simple template nearby, warm side light, realistic workshop background softly out of focus, sharp repeatability, premium but practical, no logos
+```
 
-- `b2b-short-series-wood-components.jpg`
-- `b2b-repeated-wooden-elements-detail.jpg`
+Negative prompt:
+
+```text
+single unique artwork, random scattered pieces, plastic objects, glossy CGI, showroom luxury, dirty unusable bench, labels with text, hands covering the components, unsafe tools, cartoon, watermark
+```
+
+Quality checks:
+
+- Viewer must understand "we can repeat this element".
+- At least 12 components should be clearly visible.
+- Edges must look straight and believable.
 
 Alt text:
 
 - `Krótka seria powtarzalnych elementów drewnianych wykonanych na zamówienie dla firmy`
 
-### 3. B2B Packing / Dispatch
+### `b2b-repeated-wooden-elements-detail.jpg`
 
-Purpose:
+Purpose: close proof of repeatability and finish for B2B buyers.
 
-- Support Europe-wide B2B positioning while keeping shipping "do ustalenia".
+Required output:
 
-Frame:
+- Main file: `b2b-repeated-wooden-elements-detail.jpg`
+- Ratio: `1:1`
+- Minimum source: `2400x2400`
+- Optional `4:3` crop: `2400x1800`
 
-- Finished wooden components grouped, protected, boxed or prepared for transport.
-- Show practical packaging: cardboard, foam, labels, grouped parts.
-- Do not overpromise industrial logistics.
+Composition:
 
-Suggested filename:
+- Close view of several identical milled wooden parts stacked or aligned.
+- Focus on edges, holes, profiles, repeated milling or finish.
+- Depth of field may be shallow, but at least the front 3-5 pieces must be sharp.
 
-- `wood-components-packed-for-shipping.jpg`
+Prompt:
+
+```text
+Photorealistic closeup of repeated milled wooden parts for B2B production, identical oak components stacked and aligned, precise edges, visible grain, small holes or routing details, workshop bench surface, soft directional light, shallow depth of field with front pieces sharp, premium technical craftsmanship, no logos, no readable text
+```
+
+Negative prompt:
+
+```text
+random scraps, rough broken edges, toy-like pieces, fake plastic wood, excessive blur, unreadable fake labels, CGI, watermark, impossible geometry
+```
+
+Alt text:
+
+- `Powtarzalne drewniane elementy pokazujące precyzję wykonania i wykończenia`
+
+### `wood-components-packed-for-shipping.jpg`
+
+Purpose: support the message that B2B work can be packed and shipped when logistics make sense.
+
+Required output:
+
+- Main file: `wood-components-packed-for-shipping.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Finished wooden components grouped and protected in cardboard, paper, foam or dividers.
+- Show practical packing, not huge industrial logistics.
+- Include 1-2 open boxes and a small stack of packed elements.
+- Avoid courier brand logos and fake shipping labels.
+
+Prompt:
+
+```text
+Photorealistic photo of small-batch wooden components prepared for pickup or shipping in a joinery workshop, identical wooden parts protected with cardboard dividers and kraft paper, open box on workbench, several finished parts visible, practical B2B packaging, warm workshop light, clean composition, no courier logos, no readable labels
+```
+
+Negative prompt:
+
+```text
+Amazon warehouse, industrial conveyor, branded shipping labels, messy packaging waste, damaged wood, luxury gift packaging, fake text, CGI, watermark
+```
 
 Alt text:
 
 - `Elementy drewniane przygotowane do odbioru lub wysyłki po uzgodnieniu logistyki`
 
-### 4. Working From Drawing / Specification
+### `woodwork-from-drawing-specification.jpg`
 
-Purpose:
+Purpose: make the "send a drawing, photo or specification" CTA feel concrete and trustworthy.
 
-- Make "send a drawing/spec/photo" believable.
+Required output:
 
-Frame:
+- Main file: `woodwork-from-drawing-specification.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- Printed drawing, sketch, dimensions or template on workbench.
-- Wood sample or part next to it.
-- Hands can point to detail, but text/dimensions should not expose private client data.
+Composition:
 
-Suggested filename:
+- Printed technical drawing or sketch on a workbench, next to a wooden part or sample.
+- Include pencil, caliper or ruler.
+- Hands may point at a detail.
+- Any text on paper should be abstract or blurred enough not to look fake.
 
-- `woodwork-from-drawing-specification.jpg`
+Prompt:
+
+```text
+Photorealistic workshop photo of a wooden component being planned from a drawing, printed technical sketch with simple dimension lines on a workbench, caliper, pencil, oak sample and partially finished wooden part next to it, craftsman's hand pointing at one detail, warm natural light, practical joinery workshop, no readable client data, no logos
+```
+
+Negative prompt:
+
+```text
+fake readable text, blueprint full of gibberish words, computer screen UI, office desk, stock business meeting, plastic ruler only, messy papers, CGI, watermark
+```
 
 Alt text:
 
 - `Przygotowanie elementu drewnianego na podstawie rysunku lub specyfikacji`
 
-### 5. Precision Detail Closeups
+### `wood-joinery-detail-closeup.jpg`
 
-Purpose:
+Purpose: premium trust image for architects, demanding buyers and details sections.
 
-- Build trust with architects and premium buyers.
+Required output:
 
-Frame:
+- Main file: `wood-joinery-detail-closeup.jpg`
+- Ratio: `1:1`
+- Minimum source: `2400x2400`
+- Optional `4:3` crop: `2400x1800`
 
-- Closeups of joints, edges, finish, grain, corners, stairs detail, door detail or trim profile.
-- Sharp focus on the actual joinery.
-- Use shallow depth of field only if the detail stays readable.
+Composition:
 
-Suggested filenames:
+- Macro or close product shot of a clean joint, edge, profile, corner or fitted wooden detail.
+- Grain and finish must be sharp.
+- Keep detail readable: do not blur the entire subject.
 
-- `wood-joinery-detail-closeup.jpg`
-- `finished-wood-edge-detail.jpg`
+Prompt:
+
+```text
+Photorealistic macro closeup of premium wood joinery detail, clean fitted joint and finished edge, visible natural grain, smooth oil or matte lacquer finish, precise corner, warm side light, dark neutral workshop background, shallow depth of field but main joint fully sharp, architectural woodwork quality, no logos
+```
+
+Negative prompt:
+
+```text
+rough unfinished scrap, glue stains, plastic-looking wood, excessive blur, impossible joint, CGI, cartoon, watermark, over-saturated orange wood
+```
 
 Alt text:
 
 - `Detal stolarski pokazujący dokładne spasowanie i wykończenie drewna`
 
-### 6. Construction Joinery: Stairs
+### `finished-wood-edge-detail.jpg`
 
-Purpose:
+Purpose: show finish quality, edge work and material sensitivity.
 
-- Key service proof for local/private premium leads.
+Required output:
 
-Frame:
+- Main file: `finished-wood-edge-detail.jpg`
+- Ratio: `1:1`
+- Minimum source: `2400x2400`
 
-- Finished stairs in real interior.
-- Capture both whole form and close detail of treads/handrail/stringer.
-- Keep verticals straight; avoid wide-angle distortion if possible.
+Composition:
 
-Suggested filenames:
+- Close view of a finished edge, rounded profile, chamfer, stair tread edge, door edge or trim edge.
+- Include light grazing the surface so finish quality is visible.
+- One hand may hold the piece only if it adds scale.
 
-- `wooden-stairs-pomorskie.jpg`
-- `wooden-stairs-detail-wejherowo.jpg`
+Prompt:
+
+```text
+Photorealistic square closeup of a finished wooden edge profile, precise chamfer or rounded edge, smooth tactile surface, natural oak grain, warm grazing light showing finish quality, workshop background softly blurred, premium joinery detail, realistic texture, no logos
+```
+
+Negative prompt:
+
+```text
+splinters, chipped edge, fake plastic material, overprocessed shine, heavy blur, CGI, watermark, unreadable text
+```
+
+Alt text:
+
+- `Wykończona krawędź drewnianego elementu pokazująca jakość obróbki`
+
+### `wooden-stairs-pomorskie.jpg`
+
+Purpose: local construction joinery proof for stairs.
+
+Required output:
+
+- Main file: `wooden-stairs-pomorskie.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+- Optional vertical crop: `1600x2000`
+
+Composition:
+
+- Finished wooden stairs in a real modern interior.
+- Show whole stair form, treads, railing or side detail.
+- Keep vertical lines straight.
+- Interior should feel lived-in or architectural, not a luxury catalog render.
+
+Prompt:
+
+```text
+Photorealistic interior photo of made-to-measure wooden stairs in a modern Polish home, natural oak treads, clean railing detail, precise fitting to walls and floor, warm daylight, realistic interior, vertical lines straight, premium but practical construction joinery, no people posing, no logos
+```
+
+Negative prompt:
+
+```text
+luxury mansion showroom, impossible floating stairs, warped perspective, glossy CGI render, unsafe railing, cluttered room, fake brand signage, cartoon, watermark
+```
 
 Alt text:
 
 - `Schody drewniane wykonane na wymiar przez Kajax Stolarstwo`
 
-### 7. Construction Joinery: Doors, Trims, Built-Ins
+### `wooden-stairs-detail-wejherowo.jpg`
 
-Purpose:
+Purpose: close proof for stairs quality and local SEO support.
 
-- Support `/stolarka-budowlana`.
+Required output:
 
-Frame:
+- Main file: `wooden-stairs-detail-wejherowo.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- Doors in context, trim/profile detail, built-in furniture or fitted wooden element.
-- Show clean installation and finish.
+Composition:
 
-Suggested filenames:
+- Detail of tread, nosing, railing connection, stringer or wall fit.
+- Show precise fit and finish.
+- Keep enough context to recognize it is a stair detail.
 
-- `wooden-doors-joinery-detail.jpg`
-- `wooden-trims-made-to-measure.jpg`
-- `built-in-woodwork-project.jpg`
+Prompt:
+
+```text
+Photorealistic close detail of wooden stairs, oak tread edge and railing or wall connection, precise fitting, smooth matte finish, natural light, modern interior context softly visible, high-quality construction joinery, sharp grain and clean lines, no logos
+```
+
+Negative prompt:
+
+```text
+damaged stairs, loose railing, impossible geometry, heavy blur, CGI, luxury showroom render, cartoon, watermark
+```
 
 Alt text:
 
-- `Stolarka budowlana na wymiar: drzwi, listwy i elementy wykończeniowe z drewna`
+- `Detal schodów drewnianych pokazujący dopasowanie stopni i wykończenie`
 
-### 8. Architectural Or Unusual Detail
+### `wooden-doors-joinery-detail.jpg`
 
-Purpose:
+Purpose: support doors and construction joinery service.
 
-- Separate Kajax from commodity carpentry.
+Required output:
 
-Frame:
+- Main file: `wooden-doors-joinery-detail.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- A more unusual detail, curved element, decorative part, built-in fragment, restoration or architectural detail.
-- Include one wide context and one closeup.
+Composition:
 
-Suggested filename:
+- Wooden door, frame, casing or threshold detail in context.
+- Show clean fit between door/frame/wall/floor.
+- Avoid old damaged doors unless the goal is restoration.
 
-- `architectural-woodwork-detail.jpg`
+Prompt:
+
+```text
+Photorealistic photo of made-to-measure wooden door and frame detail in a real interior, clean casing, threshold and trim fitting, natural wood grain, matte finish, warm daylight, precise construction joinery, modern but realistic Polish interior, no logos, no people posing
+```
+
+Negative prompt:
+
+```text
+damaged old door, fake luxury palace door, warped perspective, plastic veneer look, CGI, messy hallway, readable brand labels, watermark
+```
+
+Alt text:
+
+- `Drzwi drewniane i opaski wykonane na wymiar jako element stolarki budowlanej`
+
+### `wooden-trims-made-to-measure.jpg`
+
+Purpose: show listwy, profiles, thresholds and small construction elements.
+
+Required output:
+
+- Main file: `wooden-trims-made-to-measure.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Several wooden trims/profiles arranged on a bench or installed along a wall/floor.
+- Show profile shapes and finish.
+- Good if it includes repeated profiles for both B2B and construction contexts.
+
+Prompt:
+
+```text
+Photorealistic photo of made-to-measure wooden trims and profiles, several oak or pine mouldings arranged cleanly on a workshop bench, visible profile shapes, precise milling, natural grain, warm side light, practical joinery workshop, no logos, no labels
+```
+
+Negative prompt:
+
+```text
+plastic strips, random scrap wood, messy pile, fake text labels, CGI, over-saturated orange color, watermark
+```
+
+Alt text:
+
+- `Listwy i profile drewniane wykonane na wymiar`
+
+### `built-in-woodwork-project.jpg`
+
+Purpose: show project-based built-ins and fitted elements without making the site feel like only furniture.
+
+Required output:
+
+- Main file: `built-in-woodwork-project.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Fitted wooden element in an interior: built-in panel, bench, niche, display, wall detail or functional built-in.
+- Show fit to architecture and careful detail.
+- Avoid generic kitchen cabinet imagery.
+
+Prompt:
+
+```text
+Photorealistic interior photo of a project-based wooden built-in detail, fitted oak panel or display element integrated with architecture, clean lines, precise joints, warm natural light, premium but practical interior woodwork, realistic Polish commercial or residential interior, no logos, no people posing
+```
+
+Negative prompt:
+
+```text
+generic kitchen catalog, luxury palace, IKEA-style flatpack, fake CGI, warped lines, clutter, brand logos, watermark
+```
+
+Alt text:
+
+- `Zabudowa i drewniany element wnętrza wykonany według projektu`
+
+### `architectural-woodwork-detail.jpg`
+
+Purpose: make architects and demanding clients believe Kajax can handle unusual details.
+
+Required output:
+
+- Main file: `architectural-woodwork-detail.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+- Optional square crop: `2000x2000`
+
+Composition:
+
+- Unusual but believable wooden detail: curved element, routed profile, decorative screen, restored detail, display detail or complex joinery part.
+- Should feel special without becoming fantasy craft.
+- Include enough context to understand scale.
+
+Prompt:
+
+```text
+Photorealistic photo of an unusual architectural woodwork detail made in a joinery workshop, curved or precisely routed oak element, complex profile, clean finish, part of an interior or display project, hands or template may show scale, warm natural light, premium craftsmanship, realistic and buildable, no logos
+```
+
+Negative prompt:
+
+```text
+fantasy sculpture, ornamental palace carving, impossible shape, toy-like object, glossy CGI, messy clutter, unreadable fake text, watermark
+```
 
 Alt text:
 
 - `Nietypowy detal drewniany wykonany na zamówienie według projektu`
 
-### 9. Material Library
+### `wood-material-samples-workshop.jpg`
 
-Purpose:
+Purpose: support material knowledge and add visual warmth.
 
-- Give visual richness and support trust in material knowledge.
+Required output:
 
-Frame:
+- Main file: `wood-material-samples-workshop.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- Wood boards, samples, veneers, finishes, profiles or offcuts organized cleanly.
-- Good for backgrounds and section dividers.
+Composition:
 
-Suggested filenames:
+- Samples of wood species, finishes, profiles or offcuts arranged cleanly.
+- Include labels only if abstract/unreadable.
+- Use as a calm supporting image, not hero.
 
-- `wood-material-samples-workshop.jpg`
-- `solid-wood-boards-for-joinery.jpg`
+Prompt:
+
+```text
+Photorealistic photo of wood material samples in a joinery workshop, oak, ash, pine and walnut boards or small samples arranged on a bench, visible grain and finish variations, simple profiles and offcuts, warm daylight, clean practical composition, no readable labels, no logos
+```
+
+Negative prompt:
+
+```text
+flooring showroom, plastic samples, messy scraps, fake readable labels, oversaturated colors, CGI, watermark
+```
 
 Alt text:
 
 - `Próbki drewna i materiały wykorzystywane w stolarni Kajax`
 
-### 10. Human Craft Without Portrait Cliche
+### `solid-wood-boards-for-joinery.jpg`
 
-Purpose:
+Purpose: background/material proof for workshop and process sections.
 
-- Show expertise and family-business character without making it feel small or informal.
+Required output:
 
-Frame:
+- Main file: `solid-wood-boards-for-joinery.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- Hands measuring, fitting, sanding, checking a detail or assembling.
-- Avoid posed portrait. Show competence in action.
+Composition:
 
-Suggested filename:
+- Stack of solid boards in a workshop, clean enough to look professional.
+- Boards should show real grain, thickness and usable material.
+- Works as a quiet background image.
 
-- `craftsman-checking-wood-detail.jpg`
+Prompt:
+
+```text
+Photorealistic photo of solid wood boards stacked in a professional joinery workshop, oak and pine boards with visible grain and thickness, clean organized material storage, warm side light, tools softly visible in background, practical and credible, no labels, no logos
+```
+
+Negative prompt:
+
+```text
+random firewood pile, outdoor lumber yard, dirty chaotic storage, fake plastic wood, CGI, watermark, readable brand marks
+```
+
+Alt text:
+
+- `Deski z litego drewna przygotowane do prac stolarskich`
+
+### `craftsman-checking-wood-detail.jpg`
+
+Purpose: add human craft and trust without turning the site into a personal portrait page.
+
+Required output:
+
+- Main file: `craftsman-checking-wood-detail.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Hands checking a wooden part with caliper, square, template or by fitting it to another element.
+- Face should be absent or secondary.
+- The action must communicate care, precision and judgement.
+
+Prompt:
+
+```text
+Photorealistic documentary photo of a craftsman checking a wooden detail in a joinery workshop, hands using caliper or square on a finished oak component, focused technical inspection, workbench with tools, warm natural light, face not prominent, premium craft and precision, no logos, no readable text
+```
+
+Negative prompt:
+
+```text
+posed portrait looking at camera, thumbs up, unsafe machine use, fake text, messy clutter, plastic wood, CGI, watermark
+```
 
 Alt text:
 
 - `Stolarz sprawdza detal drewniany podczas pracy w warsztacie`
 
-### 11. Workshop Process: Machine And Bench
+### `wood-cutting-workshop-process.jpg`
 
-Purpose:
+Purpose: show process capability and machinery for production work.
 
-- Show capability and process for B2B and architects.
+Required output:
 
-Frame:
+- Main file: `wood-cutting-workshop-process.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
 
-- One machine/process per photo: cutting, sanding, routing, clamping, assembly, finishing.
-- Keep the subject clear and safe.
+Composition:
 
-Suggested filenames:
+- Safe cutting/preparation scene in workshop.
+- Machine can be visible, but avoid dangerous close contact with blade.
+- Prefer prepared part, guide, jig or machine table over action danger.
 
-- `wood-cutting-workshop-process.jpg`
-- `wood-sanding-finishing-process.jpg`
-- `wood-elements-clamped-for-assembly.jpg`
+Prompt:
+
+```text
+Photorealistic workshop process photo of wooden components being prepared for cutting, saw table or planer setup with safety guards, wooden boards aligned with a guide or jig, craftsman's hands positioned safely away from blade, dust extraction visible, serious joinery production, warm workshop light, no logos
+```
+
+Negative prompt:
+
+```text
+unsafe hands near blade, flying debris, sparks, metal factory, dramatic danger scene, CGI, watermark, unreadable labels, messy chaos
+```
 
 Alt text:
 
-- `Proces przygotowania elementów drewnianych w stolarni produkcyjnej`
+- `Przygotowanie drewna do cięcia w stolarni produkcyjnej`
+
+### `wood-sanding-finishing-process.jpg`
+
+Purpose: show finishing quality and manual care.
+
+Required output:
+
+- Main file: `wood-sanding-finishing-process.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Sanding or finishing of a wooden element on a bench.
+- Show dust extraction or clean working method if possible.
+- Hands can be visible.
+
+Prompt:
+
+```text
+Photorealistic workshop photo of sanding and finishing a wooden component, craftsman's hands using sanding block or orbital sander on oak part, smooth matte finish, dust extraction hose visible, warm natural light, clean workbench, precise manual finishing, no logos, no readable text
+```
+
+Negative prompt:
+
+```text
+excessive dust cloud, unsafe maskless industrial mess, glossy fake finish, CGI, cartoon, watermark, random tools covering the subject
+```
+
+Alt text:
+
+- `Szlifowanie i wykańczanie elementu drewnianego w warsztacie`
+
+### `wood-elements-clamped-for-assembly.jpg`
+
+Purpose: show assembly, glue-up and repeatable workshop process.
+
+Required output:
+
+- Main file: `wood-elements-clamped-for-assembly.jpg`
+- Ratio: `4:3`
+- Minimum source: `2400x1800`
+
+Composition:
+
+- Wooden elements clamped on a workbench during assembly.
+- Clamps should look functional and properly placed.
+- Show repeatable parts or one precise assembly.
+
+Prompt:
+
+```text
+Photorealistic photo of wooden elements clamped for assembly in a joinery workshop, several clamps holding oak parts on a workbench, precise alignment, glue-up or dry fit, repeated components nearby, warm side light, practical production process, no logos, no readable labels
+```
+
+Negative prompt:
+
+```text
+random clamp chaos, glue mess everywhere, impossible floating parts, plastic wood, CGI, watermark, unsafe setup
+```
+
+Alt text:
+
+- `Elementy drewniane zaciśnięte do montażu w warsztacie stolarskim`
 
 ### 12. Portfolio Case Sets
 
@@ -325,7 +771,27 @@ Suggested per-case filenames:
 
 - `case-[short-name]-finished.jpg`
 - `case-[short-name]-detail-1.jpg`
+- `case-[short-name]-detail-2.jpg`
 - `case-[short-name]-process.jpg`
+
+Required output:
+
+- Finished shot: `4:3`, minimum `2400x1800`.
+- Detail shots: square `1:1`, minimum `2000x2000`, or `4:3` at `2400x1800`.
+- Process shot: `4:3`, minimum `2400x1800`.
+- Optional before/during shot: `4:3`, minimum `1600x1200`.
+
+Case prompt template:
+
+```text
+Photorealistic case-study photo set for a Polish joinery workshop, [PROJECT TYPE], made-to-measure wooden element, [WOOD SPECIES] wood, precise fit and finish, real interior or workshop context, warm natural light, practical premium craftsmanship, show finished result plus close detail and process, no logos, no readable private data
+```
+
+Case negative prompt:
+
+```text
+generic furniture catalog, luxury showroom render, fake CGI, warped perspective, cluttered room, unreadable fake labels, watermark, impossible construction
+```
 
 Alt text template:
 
@@ -341,7 +807,7 @@ The site can launch well with:
 - 2 drawing/specification photos,
 - 4 precision detail photos,
 - 3 construction joinery photos,
-- 2 custom/artistic photos,
+- 2 architectural/unusual detail photos,
 - 2 material/process photos,
 - 3 portfolio case sets with at least 3 photos each.
 
@@ -355,7 +821,7 @@ For stronger SEO, Ads and future content:
 - 5 process photos,
 - 8-12 detail closeups,
 - 5 construction joinery projects,
-- 3-5 custom/artistic projects,
+- 3-5 architectural/unusual detail projects,
 - 2 photos of packaging/dispatch,
 - 1 simple owner/workshop portrait for trust sections.
 
