@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
 from leads.copy import get_form_copy
@@ -25,7 +25,12 @@ def _send_company_notification(quote_request, recipients):
         "emails/quote_notification.txt",
         {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display},
     )
-    _send(subject, body, recipients)
+    html_body = render_to_string(
+        "emails/quote_notification.html",
+        {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display},
+    )
+    reply_to = [quote_request.email] if quote_request.email else None
+    _send(subject, body, recipients, html_body=html_body, reply_to=reply_to)
 
 
 def _send_requester_confirmation(quote_request):
@@ -36,19 +41,26 @@ def _send_requester_confirmation(quote_request):
         "emails/quote_confirmation.txt",
         {"quote": quote_request, "confirmation": copy, "display": get_quote_display(quote_request, quote_request.language)},
     )
+    html_body = render_to_string(
+        "emails/quote_confirmation.html",
+        {"quote": quote_request, "confirmation": copy, "display": get_quote_display(quote_request, quote_request.language)},
+    )
     subject = copy["subject"]
-    _send(subject, body, [quote_request.email])
+    _send(subject, body, [quote_request.email], html_body=html_body)
 
 
-def _send(subject, body, recipients):
+def _send(subject, body, recipients, html_body=None, reply_to=None):
     try:
-        send_mail(
+        email = EmailMultiAlternatives(
             subject=subject,
-            message=body,
+            body=body,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=recipients,
-            fail_silently=False,
+            to=recipients,
+            reply_to=reply_to,
         )
+        if html_body:
+            email.attach_alternative(html_body, "text/html")
+        email.send(fail_silently=False)
     except Exception:
         if settings.LEAD_EMAIL_FAIL_SILENTLY:
             logger.exception("Failed to send quote email.")

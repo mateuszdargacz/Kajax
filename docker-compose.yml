@@ -11,15 +11,15 @@ services:
       DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-https://kajax.eu,https://www.kajax.eu}
       DJANGO_SITE_URL: ${DJANGO_SITE_URL:-https://kajax.eu}
       SQLITE_PATH: ${SQLITE_PATH:-/app/data/kajax.db}
-      KAJAX_CONTACT_EMAIL: ${KAJAX_CONTACT_EMAIL:-kajax-stolarstwo@o2.pl}
-      KAJAX_LEAD_RECIPIENTS: ${KAJAX_LEAD_RECIPIENTS:-kajax-stolarstwo@o2.pl}
+      KAJAX_CONTACT_EMAIL: ${KAJAX_CONTACT_EMAIL:-mail@kajax.eu}
+      KAJAX_LEAD_RECIPIENTS: ${KAJAX_LEAD_RECIPIENTS:-mail@kajax.eu}
       EMAIL_HOST: ${EMAIL_HOST:-}
       EMAIL_PORT: ${EMAIL_PORT:-587}
       EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
       EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
       EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
       EMAIL_USE_SSL: ${EMAIL_USE_SSL:-false}
-      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-Kajax <noreply@kajax.eu>}
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-Kajax Stolarstwo <mail@kajax.eu>}
       GTM_ID: ${GTM_ID:-}
       GA4_MEASUREMENT_ID: ${GA4_MEASUREMENT_ID:-}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}

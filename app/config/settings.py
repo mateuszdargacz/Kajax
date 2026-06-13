@@ -118,7 +118,7 @@ MEDIA_ROOT = DATA_DIR / "public" / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CONTACT_EMAIL = os.environ.get("KAJAX_CONTACT_EMAIL", "kajax-stolarstwo@o2.pl")
+CONTACT_EMAIL = os.environ.get("KAJAX_CONTACT_EMAIL", "mail@kajax.eu")
 CONTACT_PHONE = os.environ.get("KAJAX_CONTACT_PHONE", "604 238 246")
 CONTACT_PHONE_URI = "".join(char for char in CONTACT_PHONE if char.isdigit() or char == "+")
 CONTACT_ADDRESS = os.environ.get("KAJAX_CONTACT_ADDRESS", "84-241 Gościcino, ul. Zielona 17")
@@ -136,7 +136,7 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = env_bool("EMAIL_USE_TLS", default=True)
 EMAIL_USE_SSL = env_bool("EMAIL_USE_SSL", default=False)
-DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Kajax <noreply@kajax.eu>")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Kajax Stolarstwo <mail@kajax.eu>")
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 LEAD_EMAIL_FAIL_SILENTLY = env_bool("LEAD_EMAIL_FAIL_SILENTLY", default=True)
 

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ quote.language|default:'pl' }}">
+<body style="margin:0;background:#f5f0e8;color:#12201c;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f0e8;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border:1px solid #e3d8ca;border-radius:10px;overflow:hidden;">
+          <tr>
+            <td style="background:#0f2a23;color:#ffffff;padding:26px 28px;">
+              <div style="font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.08em;color:#d6a25f;font-weight:700;">Kajax Stolarstwo</div>
+              <h1 style="margin:8px 0 0;font-size:26px;line-height:1.18;font-weight:800;">{{ confirmation.subject }}</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:26px 28px 8px;">
+              <p style="margin:0 0 14px;font-size:16px;line-height:1.6;">{{ confirmation.greeting }}</p>
+              <p style="margin:0 0 14px;font-size:16px;line-height:1.6;">{{ confirmation.intro }}</p>
+              <p style="margin:0 0 22px;font-size:16px;line-height:1.6;">{{ confirmation.body }}</p>
+              <div style="border-left:4px solid #d6a25f;background:#fbf8f3;padding:16px 18px;border-radius:8px;">
+                <div style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#8a6130;font-weight:800;margin-bottom:12px;">{{ confirmation.summary }}</div>
+                <p style="margin:0 0 8px;font-size:15px;line-height:1.5;"><strong>{{ confirmation.inquiry_type }}:</strong> {{ display.inquiry_type }}</p>
+                <p style="margin:0 0 8px;font-size:15px;line-height:1.5;"><strong>{{ confirmation.scale }}:</strong> {{ display.scale }}</p>
+                <p style="margin:0;font-size:15px;line-height:1.5;"><strong>{{ confirmation.location }}:</strong> {{ quote.location|default:"-" }}</p>
+              </div>
+              <p style="margin:22px 0 0;font-size:16px;line-height:1.6;white-space:pre-line;">{{ confirmation.closing }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 28px 26px;">
+              <p style="margin:0;font-size:13px;line-height:1.5;color:#5f625b;">Kajax Stolarstwo, Gościcino | mail@kajax.eu | 604 238 246</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

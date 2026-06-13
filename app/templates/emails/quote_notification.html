@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl">
+<body style="margin:0;background:#f5f0e8;color:#12201c;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f0e8;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:680px;background:#ffffff;border:1px solid #e3d8ca;border-radius:10px;overflow:hidden;">
+          <tr>
+            <td style="background:#0f2a23;color:#ffffff;padding:26px 28px;">
+              <div style="font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.08em;color:#d6a25f;font-weight:700;">Kajax Stolarstwo</div>
+              <h1 style="margin:8px 0 0;font-size:28px;line-height:1.15;font-weight:800;">{{ notification.title }}</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:26px 28px 8px;">
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.55;">Nowy lead z formularza. Najważniejsze dane są poniżej, a pełny opis projektu znajduje się w ostatniej sekcji.</p>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:separate;border-spacing:0 8px;">
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.name }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;font-weight:700;">{{ quote.name }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.phone }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ quote.phone|default:"-" }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.email }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ quote.email|default:"-" }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.company }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ quote.company|default:"-" }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.inquiry_type }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ display.inquiry_type }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.scale }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ display.scale }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.location }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ quote.location|default:"-" }}</td>
+                </tr>
+                <tr>
+                  <td style="width:34%;padding:10px 12px;background:#f7f3ed;border-radius:7px 0 0 7px;font-size:13px;color:#5f625b;font-weight:700;">{{ notification.fields.expected_timing }}</td>
+                  <td style="padding:10px 12px;background:#f7f3ed;border-radius:0 7px 7px 0;font-size:15px;">{{ quote.expected_timing|default:"-" }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:12px 28px 28px;">
+              <div style="border-left:4px solid #d6a25f;background:#fbf8f3;padding:16px 18px;border-radius:8px;">
+                <div style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#8a6130;font-weight:800;margin-bottom:8px;">{{ notification.fields.message }}</div>
+                <div style="font-size:16px;line-height:1.6;white-space:normal;">{{ quote.message|linebreaksbr }}</div>
+              </div>
+              <p style="margin:18px 0 0;font-size:13px;line-height:1.5;color:#5f625b;">{{ notification.saved_note }}</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
