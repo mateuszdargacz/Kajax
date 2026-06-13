@@ -1,13 +1,13 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Stolarnia dla firm, architektów i wymagających realizacji z drewna" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane na zamówienie dla firm" },
+  { path: "/", h1: "Stolarnia dla firm, architektów i wymagających projektów z drewna" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane i krótkie serie dla firm" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Elementy drewniane dla firm reklamowych i eventowych" },
-  { path: "/stolarka-budowlana/", h1: "Schody, drzwi, listwy i stolarka drewniana na wymiar" },
+  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i stolarka drewniana na wymiar w Pomorskiem" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: co wpływa na cenę i termin realizacji?" },
-  { path: "/dla-architektow-i-firm/", h1: "Stolarnia do trudniejszych projektów i detali drewnianych" },
-  { path: "/realizacje/", h1: "Realizacje i kierunki prac, które dobrze pasują do naszej stolarni" },
+  { path: "/dla-architektow-i-firm/", h1: "Stolarnia do nietypowych detali i projektów dla architektów" },
+  { path: "/realizacje/", h1: "Jakie projekty warto wysłać do naszej stolarni" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak przygotować zapytanie do stolarni, żeby szybciej dostać konkretną odpowiedź" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Kiedy opłaca się zamówić elementy drewniane w krótkiej serii?" },
   { path: "/kontakt/", h1: "Kontakt" },
