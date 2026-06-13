@@ -16,9 +16,13 @@ Największa szansa biznesowa nie jest w większej liczbie przypadkowych zapytań
 
 ### Technical Blocker
 
-`https://kajax.eu` zwraca obecnie Cloudflare `502 Bad Gateway`.
+`https://kajax.eu` działa na nowym stacku Django 6/Python 3.13. Podstawowe strony, sitemap, canonical/hreflang, lead form i schema są wdrożone.
 
-Wniosek: nie uruchamiać reklam, dopóki nie będzie działającej strony lub tymczasowego landingu. Google Ads będzie tracił budżet, a część kampanii może dostać problemy z destination availability.
+Wniosek: techniczny blocker 502 jest zamknięty. Reklam nadal nie uruchamiać, dopóki nie będzie realnych zdjęć, trackingów konwersji, SMTP i potwierdzonego zakresu usług/produkcji.
+
+### Competitor And Trend Research
+
+Szczegółowa analiza konkurencji SEO, kierunków marketingowych i trendów AI/Search jest zapisana w `docs/seo-competitor-marketing-research-2026.md`.
 
 ### Public Business Footprint
 
