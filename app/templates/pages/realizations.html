@@ -29,6 +29,28 @@
                             <li>{{ item }}</li>
                         {% endfor %}
                     </ul>
+                    {% if case.problem or case.scope or case.result %}
+                        <dl class="case-study-facts">
+                            {% if case.problem %}
+                                <div>
+                                    <dt>Problem</dt>
+                                    <dd>{{ case.problem }}</dd>
+                                </div>
+                            {% endif %}
+                            {% if case.scope %}
+                                <div>
+                                    <dt>Zakres</dt>
+                                    <dd>{{ case.scope }}</dd>
+                                </div>
+                            {% endif %}
+                            {% if case.result %}
+                                <div>
+                                    <dt>Efekt</dt>
+                                    <dd>{{ case.result }}</dd>
+                                </div>
+                            {% endif %}
+                        </dl>
+                    {% endif %}
                     <a class="text-link" href="{% url 'quote' %}" data-track-cta="realization_similar_quote" data-cta-location="realizations_case" data-cta-intent="quote">{{ ui.realizations_similar_cta }}</a>
                 </div>
             </article>

@@ -55,6 +55,30 @@ norwegian_urlpatterns = [
         force_language(MarketingPageView.as_view(page_key="construction"), "no"),
     ),
     path(
+        "no/stolarka-budowlana-goscicino/",
+        force_language(MarketingPageView.as_view(page_key="local_goscicino"), "no"),
+    ),
+    path(
+        "no/stolarka-budowlana-wejherowo/",
+        force_language(MarketingPageView.as_view(page_key="local_wejherowo"), "no"),
+    ),
+    path(
+        "no/stolarka-budowlana-gdynia/",
+        force_language(MarketingPageView.as_view(page_key="local_gdynia"), "no"),
+    ),
+    path(
+        "no/stolarka-budowlana-gdansk/",
+        force_language(MarketingPageView.as_view(page_key="local_gdansk"), "no"),
+    ),
+    path(
+        "no/stolarka-budowlana-trojmiasto/",
+        force_language(MarketingPageView.as_view(page_key="local_trojmiasto"), "no"),
+    ),
+    path(
+        "no/stolarka-budowlana-pomorskie/",
+        force_language(MarketingPageView.as_view(page_key="local_pomorskie"), "no"),
+    ),
+    path(
         "no/schody-drewniane-co-wplywa-na-cene-i-termin/",
         force_language(MarketingPageView.as_view(page_key="stairs_pricing"), "no"),
     ),

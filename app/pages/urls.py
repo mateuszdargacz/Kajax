@@ -13,6 +13,12 @@ urlpatterns = [
         name="advertising_events",
     ),
     path("stolarka-budowlana/", MarketingPageView.as_view(page_key="construction"), name="construction"),
+    path("stolarka-budowlana-goscicino/", MarketingPageView.as_view(page_key="local_goscicino"), name="local_goscicino"),
+    path("stolarka-budowlana-wejherowo/", MarketingPageView.as_view(page_key="local_wejherowo"), name="local_wejherowo"),
+    path("stolarka-budowlana-gdynia/", MarketingPageView.as_view(page_key="local_gdynia"), name="local_gdynia"),
+    path("stolarka-budowlana-gdansk/", MarketingPageView.as_view(page_key="local_gdansk"), name="local_gdansk"),
+    path("stolarka-budowlana-trojmiasto/", MarketingPageView.as_view(page_key="local_trojmiasto"), name="local_trojmiasto"),
+    path("stolarka-budowlana-pomorskie/", MarketingPageView.as_view(page_key="local_pomorskie"), name="local_pomorskie"),
     path(
         "schody-drewniane-co-wplywa-na-cene-i-termin/",
         MarketingPageView.as_view(page_key="stairs_pricing"),

@@ -9,6 +9,12 @@ class PublicPagesTests(TestCase):
             "production",
             "advertising_events",
             "construction",
+            "local_goscicino",
+            "local_wejherowo",
+            "local_gdynia",
+            "local_gdansk",
+            "local_trojmiasto",
+            "local_pomorskie",
             "stairs_pricing",
             "architects",
             "realizations",
@@ -37,7 +43,9 @@ class PublicPagesTests(TestCase):
         self.assertContains(sitemap, "https://kajax.eu/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/")
         self.assertContains(sitemap, "https://kajax.eu/elementy-drewniane-dla-firm-reklamowych-i-eventowych/")
         self.assertContains(sitemap, "https://kajax.eu/schody-drewniane-co-wplywa-na-cene-i-termin/")
-        self.assertContains(sitemap, "<lastmod>2026-06-13</lastmod>")
+        self.assertContains(sitemap, "https://kajax.eu/stolarka-budowlana-wejherowo/")
+        self.assertContains(sitemap, "https://kajax.eu/stolarka-budowlana-trojmiasto/")
+        self.assertContains(sitemap, "<lastmod>2026-06-14</lastmod>")
 
     def test_localized_page_keeps_language_in_links_and_meta(self):
         response = self.client.get("/de/")
@@ -72,6 +80,37 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "CommunicateAction"')
         self.assertContains(response, 'data-page-key="production"')
         self.assertContains(response, 'data-business-line="b2b_wooden_components"')
+        self.assertContains(response, 'property="og:image"')
+        self.assertContains(response, "og-b2b-components.jpg")
+
+    def test_home_uses_shorter_meta_and_b2b_proof_strip(self):
+        response = self.client.get(reverse("home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Kajax Stolarstwo | Elementy drewniane B2B i stolarka na wymiar")
+        self.assertContains(response, "Stolarnia z Gościcina: elementy drewniane dla firm")
+        self.assertContains(response, "Produkcja dla firm")
+        self.assertContains(response, "Elementy POS")
+        self.assertContains(response, "og-home-workshop.jpg")
+
+    def test_local_landing_page_has_service_schema_and_local_copy(self):
+        response = self.client.get(reverse("local_wejherowo"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Stolarka budowlana Wejherowo")
+        self.assertContains(response, "Schody, drzwi i listwy")
+        self.assertContains(response, '"@type": "Service"')
+        self.assertContains(response, 'data-page-type="local_service"')
+        self.assertContains(response, "og-construction-joinery.jpg")
+
+    def test_realizations_include_case_study_facts(self):
+        response = self.client.get(reverse("realizations"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Krótka seria drewnianych elementów dla firmy")
+        self.assertContains(response, "<dt>Problem</dt>")
+        self.assertContains(response, "<dt>Zakres</dt>")
+        self.assertContains(response, "<dt>Efekt</dt>")
 
     def test_guide_page_uses_article_and_howto_schema(self):
         response = self.client.get(reverse("guide"))

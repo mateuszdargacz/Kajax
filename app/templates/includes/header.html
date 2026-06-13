@@ -7,14 +7,14 @@
                 <small>{{ ui.brand_tagline }}</small>
             </span>
         </a>
-        <nav class="nav" aria-label="{{ ui.nav_aria }}">
+        <nav class="nav desktop-nav" aria-label="{{ ui.nav_aria }}">
             {% for key, label, href in nav_items %}
                 <a href="{{ href }}">{{ label }}</a>
             {% endfor %}
         </nav>
         <div class="header-actions">
             {% if alternate_urls %}
-                <nav class="language-switcher" aria-label="{{ ui.language_aria }}">
+                <nav class="language-switcher language-switcher-desktop" aria-label="{{ ui.language_aria }}">
                     {% for item in alternate_urls %}
                         {% if item.code != "x-default" %}
                             <a href="{{ item.url }}" hreflang="{{ item.code }}" lang="{{ item.code }}"{% if item.code == LANGUAGE_CODE %} class="is-active" aria-current="page"{% endif %}>{{ item.code|upper }}</a>
@@ -24,5 +24,24 @@
             {% endif %}
             <a class="header-phone" href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="header">{{ site.phone }}</a>
         </div>
+        <details class="mobile-menu">
+            <summary aria-label="{{ ui.menu_label }}">{{ ui.menu_label }}</summary>
+            <div class="mobile-menu-panel">
+                {% if alternate_urls %}
+                    <nav class="language-switcher language-switcher-mobile" aria-label="{{ ui.language_aria }}">
+                        {% for item in alternate_urls %}
+                            {% if item.code != "x-default" %}
+                                <a href="{{ item.url }}" hreflang="{{ item.code }}" lang="{{ item.code }}"{% if item.code == LANGUAGE_CODE %} class="is-active" aria-current="page"{% endif %}>{{ item.code|upper }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </nav>
+                {% endif %}
+                <nav class="nav mobile-nav" aria-label="{{ ui.nav_aria }}">
+                    {% for key, label, href in nav_items %}
+                        <a href="{{ href }}">{{ label }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </details>
     </div>
 </header>

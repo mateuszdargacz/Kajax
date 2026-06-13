@@ -10,6 +10,7 @@ from pages.content import (
     PATHS,
     get_localized_path,
     get_audience_cards,
+    get_home_realization_cases,
     get_page_content,
     get_process_steps,
     get_realization_cases,
@@ -32,6 +33,12 @@ SITEMAP_PRIORITIES = {
     "production": "0.9",
     "quote": "0.9",
     "construction": "0.8",
+    "local_goscicino": "0.7",
+    "local_wejherowo": "0.7",
+    "local_gdynia": "0.7",
+    "local_gdansk": "0.7",
+    "local_trojmiasto": "0.7",
+    "local_pomorskie": "0.7",
     "architects": "0.8",
     "realizations": "0.7",
     "guide": "0.8",
@@ -41,11 +48,17 @@ SITEMAP_PRIORITIES = {
     "stairs_pricing": "0.8",
 }
 
-SITEMAP_LASTMOD = "2026-06-13"
+SITEMAP_LASTMOD = "2026-06-14"
 
 SERVICE_AREAS = {
     "production": ["Polska", "Europa", "Europa B2B"],
     "construction": ["Pomorskie", "Gościcino", "Wejherowo", "Trójmiasto"],
+    "local_goscicino": ["Gościcino", "Wejherowo", "Pomorskie"],
+    "local_wejherowo": ["Wejherowo", "Reda", "Rumia", "Pomorskie"],
+    "local_gdynia": ["Gdynia", "Trójmiasto", "Pomorskie"],
+    "local_gdansk": ["Gdańsk", "Trójmiasto", "Pomorskie"],
+    "local_trojmiasto": ["Gdańsk", "Gdynia", "Sopot", "Trójmiasto"],
+    "local_pomorskie": ["Pomorskie", "Gościcino", "Wejherowo", "Trójmiasto"],
     "architects": ["Pomorskie", "Polska", "Europa"],
 }
 
@@ -55,6 +68,12 @@ PAGE_ANALYTICS = {
     "short_series": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
     "advertising_events": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
     "construction": {"page_type": "service", "business_line": "construction_joinery", "service_area": "pomerania"},
+    "local_goscicino": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "goscicino"},
+    "local_wejherowo": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "wejherowo"},
+    "local_gdynia": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "gdynia"},
+    "local_gdansk": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "gdansk"},
+    "local_trojmiasto": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "trojmiasto"},
+    "local_pomorskie": {"page_type": "local_service", "business_line": "construction_joinery", "service_area": "pomerania"},
     "stairs_pricing": {"page_type": "guide", "business_line": "construction_joinery", "service_area": "pomerania"},
     "architects": {"page_type": "service", "business_line": "custom_architectural_details", "service_area": "poland_europe"},
     "realizations": {"page_type": "portfolio", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
@@ -80,6 +99,7 @@ class MarketingPageView(TemplateView):
                 "page": page,
                 "audience_cards": get_audience_cards(language),
                 "process_steps": get_process_steps(language),
+                "home_realization_cases": get_home_realization_cases(language),
                 "realization_cases": get_realization_cases(language),
                 **build_seo_context(page, language),
             }
@@ -148,13 +168,22 @@ def alternate_urls(path):
 def build_seo_context(page, language_code):
     code = normalize_language(language_code)
     canonical_url = absolute_url(page["path"], code)
+    og_image_url = build_og_image_url(page)
     return {
         "canonical_url": canonical_url,
         "alternate_urls": alternate_urls(page["path"]),
         "og_locale": OG_LOCALES.get(code, code),
+        "og_image_url": og_image_url,
         "page_analytics": build_page_analytics(page, code),
-        "structured_data": json.dumps(build_structured_data(page, canonical_url, code), ensure_ascii=False),
+        "structured_data": json.dumps(build_structured_data(page, canonical_url, code, og_image_url), ensure_ascii=False),
     }
+
+
+def build_og_image_url(page):
+    image = page.get("og_image")
+    if not image:
+        return ""
+    return f"{settings.SITE_URL}{settings.STATIC_URL}site/img/{image}"
 
 
 def build_page_analytics(page, language_code):
@@ -164,7 +193,7 @@ def build_page_analytics(page, language_code):
     return analytics
 
 
-def build_structured_data(page, canonical_url=None, language_code=None):
+def build_structured_data(page, canonical_url=None, language_code=None, image_url=""):
     canonical_url = canonical_url or absolute_url(page["path"], language_code or settings.LANGUAGE_CODE)
     language_code = normalize_language(language_code)
     organization_id = f"{settings.SITE_URL}/#organization"
@@ -206,8 +235,10 @@ def build_structured_data(page, canonical_url=None, language_code=None):
         "about": {"@id": organization_id},
         "inLanguage": language_code,
     }
+    if image_url:
+        webpage["image"] = image_url
     graph = [organization, website, webpage, build_breadcrumb_structured_data(page, canonical_url, language_code)]
-    if page["key"] in {"production", "construction", "architects"}:
+    if page["key"] in {"production", "construction", "architects"} or page["key"].startswith("local_"):
         service = {
             "@id": f"{canonical_url}#service",
             "@type": "Service",
@@ -243,7 +274,7 @@ def build_structured_data(page, canonical_url=None, language_code=None):
             }
         )
     if page["key"] in {"guide", "short_series", "stairs_pricing", "advertising_events"}:
-        graph.extend(build_guide_structured_data(page, canonical_url, language_code, organization_id))
+        graph.extend(build_guide_structured_data(page, canonical_url, language_code, organization_id, image_url))
     return {"@context": "https://schema.org", "@graph": graph}
 
 
@@ -297,7 +328,7 @@ def build_offer_catalog(page):
     }
 
 
-def build_guide_structured_data(page, canonical_url, language_code, organization_id):
+def build_guide_structured_data(page, canonical_url, language_code, organization_id, image_url=""):
     article_id = f"{canonical_url}#article"
     howto_id = f"{canonical_url}#howto"
     article = {
@@ -310,6 +341,8 @@ def build_guide_structured_data(page, canonical_url, language_code, organization
         "mainEntityOfPage": canonical_url,
         "inLanguage": normalize_language(language_code),
     }
+    if image_url:
+        article["image"] = image_url
     howto = {
         "@id": howto_id,
         "@type": "HowTo",

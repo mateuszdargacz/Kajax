@@ -12,6 +12,16 @@
             <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="home_hero_quote" data-cta-location="home_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
             <a class="button button-secondary" href="{% url 'guide' %}" data-track-cta="home_hero_guide" data-cta-location="home_hero" data-cta-intent="guide">{{ page.secondary_cta }}</a>
         </div>
+        {% if page.hero_proofs %}
+            <div class="hero-proof-grid" aria-label="{{ ui.trust_aria }}">
+                {% for proof in page.hero_proofs %}
+                    <div class="hero-proof">
+                        <strong>{{ proof.title }}</strong>
+                        <span>{{ proof.body }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <ul class="trust-list" aria-label="{{ ui.trust_aria }}">
             <li>{{ ui.trust_region }}</li>
             <li>{{ ui.trust_series }}</li>
@@ -111,7 +121,7 @@
             <h2>{{ ui.portfolio_title }}</h2>
         </div>
         <div class="cards three">
-            {% for case in realization_cases %}
+            {% for case in home_realization_cases %}
                 <article class="case-card"
                     data-track-view="portfolio_view"
                     data-case-id="home_case_{{ forloop.counter }}"

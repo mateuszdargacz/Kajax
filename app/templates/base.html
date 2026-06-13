@@ -17,9 +17,16 @@
     <meta property="og:description" content="{{ page.description }}">
     {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
     {% if og_locale %}<meta property="og:locale" content="{{ og_locale }}">{% endif %}
-    <meta name="twitter:card" content="summary">
+    {% if og_image_url %}
+        <meta property="og:image" content="{{ og_image_url }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="{{ page.hero_alt|default:page.h1|default:site.name }}">
+    {% endif %}
+    <meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
     <meta name="twitter:title" content="{{ page.title }}">
     <meta name="twitter:description" content="{{ page.description }}">
+    {% if og_image_url %}<meta name="twitter:image" content="{{ og_image_url }}">{% endif %}
     <meta name="theme-color" content="#f6f1e8">
     <link rel="stylesheet" href="{% static 'site/css/styles.css' %}?v={{ static_version }}">
     {% if structured_data %}<script type="application/ld+json">{{ structured_data|safe }}</script>{% endif %}

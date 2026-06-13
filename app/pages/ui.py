@@ -416,6 +416,47 @@ UI_COPY = {
 }
 
 
+_MENU_LABELS = {
+    "pl": "Menu",
+    "en": "Menu",
+    "de": "Menü",
+    "sv": "Meny",
+    "da": "Menu",
+    "no": "Meny",
+}
+
+_QUOTE_FILE_PROMPTS = {
+    "pl": {
+        "quote_file_prompt_strong": "Masz zdjęcie, rysunek albo wzór?",
+        "quote_file_prompt": "Dodaj plik w sekcji „Mam więcej danych” albo opisz, co możesz dosłać później.",
+    },
+    "en": {
+        "quote_file_prompt_strong": "Do you have a photo, drawing or sample?",
+        "quote_file_prompt": "Add a file under “More information” or describe what you can send later.",
+    },
+    "de": {
+        "quote_file_prompt_strong": "Haben Sie ein Foto, eine Zeichnung oder ein Muster?",
+        "quote_file_prompt": "Fügen Sie die Datei unter „Weitere Informationen” hinzu oder beschreiben Sie, was Sie später senden können.",
+    },
+    "sv": {
+        "quote_file_prompt_strong": "Har du ett foto, en ritning eller ett prov?",
+        "quote_file_prompt": "Lägg till filen under ”Mer information” eller beskriv vad du kan skicka senare.",
+    },
+    "da": {
+        "quote_file_prompt_strong": "Har du foto, tegning eller prøve?",
+        "quote_file_prompt": "Tilføj filen under “Mere information” eller beskriv, hvad du kan sende senere.",
+    },
+    "no": {
+        "quote_file_prompt_strong": "Har du bilde, tegning eller prøve?",
+        "quote_file_prompt": "Legg til filen under «Mer informasjon» eller beskriv hva du kan sende senere.",
+    },
+}
+
+for _code, _copy in UI_COPY.items():
+    _copy.setdefault("menu_label", _MENU_LABELS.get(_code, "Menu"))
+    _copy.update(_QUOTE_FILE_PROMPTS.get(_code, _QUOTE_FILE_PROMPTS["en"]))
+
+
 def get_ui_copy(language_code):
     normalized = (language_code or "pl").split("-")[0]
     return UI_COPY.get(normalized, UI_COPY["pl"])

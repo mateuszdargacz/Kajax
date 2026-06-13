@@ -1869,6 +1869,280 @@ for _code, _pages in ADVERTISING_RELATED_LINK_SECTIONS.items():
         CONTENT[_code]["pages"][_page_key].update(_data)
 
 
+LOCAL_LANDING_PAGES = {
+    "local_goscicino": {
+        "path": "/stolarka-budowlana-goscicino/",
+        "city": "Gościcino",
+        "nearby": "okolice Gościcina i Wejherowa",
+    },
+    "local_wejherowo": {
+        "path": "/stolarka-budowlana-wejherowo/",
+        "city": "Wejherowo",
+        "nearby": "Wejherowo, Reda, Rumia i okolice",
+    },
+    "local_gdynia": {
+        "path": "/stolarka-budowlana-gdynia/",
+        "city": "Gdynia",
+        "nearby": "Gdynia i północne Trójmiasto",
+    },
+    "local_gdansk": {
+        "path": "/stolarka-budowlana-gdansk/",
+        "city": "Gdańsk",
+        "nearby": "Gdańsk i okolice Trójmiasta",
+    },
+    "local_trojmiasto": {
+        "path": "/stolarka-budowlana-trojmiasto/",
+        "city": "Trójmiasto",
+        "nearby": "Gdańsk, Gdynia, Sopot i okolice",
+    },
+    "local_pomorskie": {
+        "path": "/stolarka-budowlana-pomorskie/",
+        "city": "Pomorskie",
+        "nearby": "Pomorskie, Gościcino, Wejherowo i Trójmiasto",
+    },
+}
+
+PATHS.update({key: data["path"] for key, data in LOCAL_LANDING_PAGES.items()})
+TEMPLATES.update({key: "pages/service_page.html" for key in LOCAL_LANDING_PAGES})
+PAGE_ORDER[PAGE_ORDER.index("stairs_pricing"):PAGE_ORDER.index("stairs_pricing")] = list(LOCAL_LANDING_PAGES)
+
+HOME_HERO_PROOFS_PL = [
+    {"title": "Produkcja dla firm", "body": "półprodukty, profile, listwy i detale do dalszego montażu"},
+    {"title": "Próbki i krótkie serie", "body": "najpierw sprawdzamy element, potem można wracać z partiami"},
+    {"title": "Elementy POS i ekspozycje", "body": "drewniane części do stoisk, displayów i projektów marek"},
+    {"title": "Stolarka w Pomorskiem", "body": "schody, drzwi, listwy i zabudowy dopasowane do miejsca"},
+]
+
+HOME_HERO_PROOFS_EN = [
+    {"title": "B2B production", "body": "semi-finished parts, profiles, trims and wooden details"},
+    {"title": "Samples and short runs", "body": "start with a sample, then move toward repeatable batches"},
+    {"title": "POS and display work", "body": "wooden parts for stands, displays, events and brand projects"},
+    {"title": "Local joinery", "body": "stairs, doors, trims and fitted elements in Pomerania"},
+]
+
+CONTENT["pl"]["pages"]["home"].update(
+    {
+        "title": "Kajax Stolarstwo | Elementy drewniane B2B i stolarka na wymiar",
+        "description": "Stolarnia z Gościcina: elementy drewniane dla firm, krótkie serie, schody, drzwi, listwy i detale pod projekt. Pomorskie i zlecenia B2B.",
+        "hero_proofs": HOME_HERO_PROOFS_PL,
+        "og_image": "og-home-workshop.jpg",
+    }
+)
+
+for _code, _content in CONTENT.items():
+    _home = _content["pages"].get("home")
+    if _home is not None:
+        _home.setdefault("hero_proofs", HOME_HERO_PROOFS_EN)
+        _home.setdefault("og_image", "og-home-workshop.jpg")
+    for _page_key, _image in {
+        "production": "og-b2b-components.jpg",
+        "short_series": "og-b2b-components.jpg",
+        "advertising_events": "og-b2b-components.jpg",
+        "construction": "og-construction-joinery.jpg",
+        "stairs_pricing": "og-construction-joinery.jpg",
+        "architects": "og-architectural-detail.jpg",
+        "realizations": "og-realizations-cases.jpg",
+        "guide": "og-quote-drawing.jpg",
+        "quote": "og-quote-drawing.jpg",
+        "contact": "og-home-workshop.jpg",
+    }.items():
+        if _page_key in _content["pages"]:
+            _content["pages"][_page_key].setdefault("og_image", _image)
+
+
+def _local_page_pl(city, nearby):
+    return {
+        "title": f"Stolarka budowlana {city} | Schody, drzwi i listwy | Kajax",
+        "description": f"Schody drewniane, drzwi, listwy, progi i zabudowy na wymiar dla lokalizacji {city}. Stolarnia Kajax z Gościcina, obsługa: {nearby}.",
+        "hero_photo": "stairs_detail",
+        "hero_alt": f"Detal schodów i stolarki drewnianej dla lokalizacji {city}",
+        "eyebrow": "Stolarka lokalna",
+        "h1": f"Stolarka budowlana {city}: schody, drzwi i listwy na wymiar",
+        "lead": f"Kajax to stolarnia z Gościcina. Przy zleceniach w lokalizacji {city} i okolicy najważniejsze są zdjęcia miejsca, orientacyjne wymiary, etap prac i termin. Wykonujemy schody, drzwi, listwy, opaski, progi, parapety i nietypowe elementy wykończeniowe dopasowane do wnętrza.",
+        "primary_cta": "Wyślij zdjęcia miejsca do oceny",
+        "og_image": "og-construction-joinery.jpg",
+        "sections": [
+            {
+                "title": "Zakres lokalnych prac stolarskich",
+                "body": "Najlepiej działamy przy zleceniach, w których od początku znamy miejsce montażu, materiał, wymiary i realny termin prac.",
+                "items": ["schody drewniane i detale schodów", "drzwi, opaski, progi i parapety", "listwy oraz profile wykonywane na wymiar", "zabudowy i nietypowe elementy wykończeniowe"],
+            },
+            {
+                "title": "Co wysłać przed rozmową",
+                "body": "Do pierwszej oceny wystarczą zdjęcia z telefonu i kilka konkretów. Jeśli zakres pasuje do warsztatu, dopytamy o pomiar, materiał i montaż.",
+                "items": ["zdjęcia miejsca montażu", "orientacyjne wymiary albo rzut", "informacja, czy to budowa, remont czy wymiana", "miejscowość, termin i oczekiwany standard wykończenia"],
+            },
+        ],
+        "related_eyebrow": "Powiązane tematy",
+        "related_title": "Przygotuj zapytanie albo sprawdź główny zakres",
+        "related_links": [
+            {"page": "construction", "eyebrow": "Stolarka", "title": "Schody i stolarka budowlana", "body": "Główny zakres prac montowanych w Pomorskiem."},
+            {"page": "stairs_pricing", "eyebrow": "Poradnik", "title": "Co wpływa na cenę schodów?", "body": "Dane potrzebne przed rozmową o schodach, pomiarze i terminie."},
+            {"page": "guide", "eyebrow": "Wycena", "title": "Jak opisać zlecenie?", "body": "Zdjęcia, wymiary i informacje, które przyspieszają odpowiedź."},
+        ],
+        "faq": [
+            (f"Czy realizujecie stolarkę w lokalizacji {city}?", f"Tak, jeśli zakres i termin mają sens logistycznie. Priorytetem jest {nearby}."),
+            ("Czy wystarczą zdjęcia z telefonu?", "Tak. Do pierwszej oceny zwykle wystarczą zdjęcia miejsca, orientacyjne wymiary i krótki opis oczekiwanego efektu."),
+        ],
+    }
+
+
+def _local_page_en(city, nearby):
+    return {
+        "title": f"Construction joinery {city} | Stairs, doors and trims | Kajax",
+        "description": f"Made-to-measure wooden stairs, doors, trims and finishing details for {city}. Kajax workshop in Gościcino, serving {nearby}.",
+        "hero_photo": "stairs_detail",
+        "hero_alt": f"Wooden stair and joinery detail for {city}",
+        "eyebrow": "Local construction joinery",
+        "h1": f"Construction joinery in {city}: stairs, doors and trims made to measure",
+        "lead": f"Kajax is a joinery workshop in Gościcino. For local work in {city}, the useful start is a photo of the place, approximate dimensions, project stage and timing. We make stairs, doors, trims, thresholds and unusual finishing elements fitted to the interior.",
+        "primary_cta": "Send photos for assessment",
+        "og_image": "og-construction-joinery.jpg",
+        "sections": [
+            {
+                "title": "Local joinery scope",
+                "body": "We work best when the location, measurements, material and realistic timing are clear from the beginning.",
+                "items": ["wooden stairs and stair details", "doors, casings, thresholds and window boards", "trims and profiles made to measure", "built-ins and unusual finishing elements"],
+            },
+            {
+                "title": "What to send before the first call",
+                "body": "Phone photos and a few specifics are enough for the first assessment. If the scope fits, we will ask about measurement, material and installation.",
+                "items": ["photos of the installation area", "approximate dimensions or a simple plan", "new build, renovation or replacement", "city, timing and expected finish standard"],
+            },
+        ],
+        "related_eyebrow": "Related topics",
+        "related_title": "Prepare the inquiry or check the main scope",
+        "related_links": [
+            {"page": "construction", "eyebrow": "Joinery", "title": "Construction joinery", "body": "Main scope of installed joinery work in Pomerania."},
+            {"page": "stairs_pricing", "eyebrow": "Guide", "title": "What affects stair pricing?", "body": "Information needed before discussing stairs, measurement and timing."},
+            {"page": "guide", "eyebrow": "Quote", "title": "How to describe an inquiry?", "body": "Photos, dimensions and notes that speed up the first answer."},
+        ],
+        "faq": [
+            (f"Do you handle joinery in {city}?", f"Yes, if the scope and timing make logistical sense. The priority area is {nearby}."),
+            ("Are phone photos enough?", "Yes. For the first assessment, photos of the place, approximate dimensions and a short description are usually enough."),
+        ],
+    }
+
+
+for _page_key, _data in LOCAL_LANDING_PAGES.items():
+    CONTENT["pl"]["pages"][_page_key] = _local_page_pl(_data["city"], _data["nearby"])
+
+for _code, _content in CONTENT.items():
+    if _code == "pl":
+        continue
+    for _page_key, _data in LOCAL_LANDING_PAGES.items():
+        _content["pages"][_page_key] = _local_page_en(_data["city"], _data["nearby"])
+
+CONTENT["pl"]["pages"]["construction"].update(
+    {
+        "related_eyebrow": "Lokalnie w Pomorskiem",
+        "related_title": "Poradnik i strony lokalne dla schodów, drzwi i listew",
+        "related_links": [
+            {
+                "page": "stairs_pricing",
+                "eyebrow": "Schody",
+                "title": "Od czego zależy cena schodów drewnianych?",
+                "body": "Dane, które warto ustalić przed rozmową o pomiarze, materiale i terminie.",
+            },
+            {"page": "local_goscicino", "eyebrow": "Gościcino", "title": "Stolarka budowlana Gościcino", "body": "Schody, drzwi, listwy i detale najbliżej warsztatu."},
+            {"page": "local_wejherowo", "eyebrow": "Wejherowo", "title": "Stolarka budowlana Wejherowo", "body": "Lokalne realizacje i zapytania z okolic Wejherowa."},
+            {"page": "local_trojmiasto", "eyebrow": "Trójmiasto", "title": "Stolarka budowlana Trójmiasto", "body": "Gdańsk, Gdynia, Sopot i okolice przy sensownym zakresie."},
+        ],
+    }
+)
+
+CONTENT["pl"]["realization_cases"] = [
+    {
+        "title": "Krótka seria drewnianych elementów dla firmy",
+        "category": "Produkcja B2B",
+        "photo": "b2b_components_detail",
+        "alt": "Ułożone w stosy drewniane profile przygotowane jako seria dla firmy",
+        "meta": ["półprodukty", "próbka przed serią", "odbiór lub wysyłka"],
+        "problem": "Firma potrzebuje powtarzalnego elementu z drewna, ale nie chce uruchamiać własnego zaplecza stolarskiego dla krótkiej partii.",
+        "scope": "Wzór lub rysunek, dopracowanie krawędzi, materiału, tolerancji i standardu kolejnych partii.",
+        "result": "Po akceptacji próbki można wracać z kolejnymi zamówieniami bez tłumaczenia detalu od zera.",
+        "body": "Dobry kierunek dla profili, półproduktów, elementów POS i części do dalszego montażu.",
+    },
+    {
+        "title": "Elementy POS i detale do ekspozycji",
+        "category": "Reklama i eventy",
+        "photo": "b2b_components_series",
+        "alt": "Krótka seria powtarzalnych drewnianych elementów na stole warsztatowym",
+        "meta": ["display", "kampania lub event", "krótki termin po akceptacji"],
+        "problem": "Agencja albo producent potrzebuje drewnianego elementu, który wygląda solidniej niż standardowy nośnik z tworzywa.",
+        "scope": "Ocena wizualizacji, wymiarów, widocznych stron, wykończenia i pakowania na transport.",
+        "result": "Drewniany detal może podnieść odbiór marki, a jednocześnie zostać wykonany w krótkiej, kontrolowanej serii.",
+        "body": "Najlepiej działa przy jasnym briefie: ilość, termin, miejsce użycia i wymagany efekt wizualny.",
+    },
+    {
+        "title": "Pakowanie powtarzalnych elementów",
+        "category": "Logistyka B2B",
+        "photo": "b2b_packing",
+        "alt": "Elementy drewniane zabezpieczone do odbioru lub wysyłki",
+        "meta": ["zabezpieczenie elementów", "odbiór", "wysyłka po ocenie gabarytu"],
+        "problem": "Przy B2B liczy się nie tylko wykonanie, ale też to, czy element da się bezpiecznie odebrać albo wysłać.",
+        "scope": "Ocena wymiaru, podatności na uszkodzenia, sposobu pakowania i liczby sztuk w partii.",
+        "result": "Logistykę ustala się dopiero po poznaniu elementu, ale można ją uwzględnić już na etapie próbki.",
+        "body": "Ważne przy projektach spoza Pomorza i przy powtarzalnych partiach dla firm.",
+    },
+    {
+        "title": "Schody drewniane w Pomorskiem",
+        "category": "Stolarka budowlana",
+        "photo": "stairs_project",
+        "alt": "Drewniane schody z balustradą w jasnym wnętrzu",
+        "meta": ["pomiar na miejscu", "drewno lite lub klejone", "Gościcino, Wejherowo, Trójmiasto"],
+        "problem": "Gotowe rozwiązanie nie pasuje wymiarem, konstrukcją albo standardem wykończenia do konkretnego wnętrza.",
+        "scope": "Zdjęcia miejsca, pomiar, materiał, układ stopni, balustrada, termin montażu i etap inwestycji.",
+        "result": "Schody są projektowane pod miejsce, a nie dopasowywane na siłę po zakupie gotowego elementu.",
+        "body": "Najlepszy start to zdjęcia miejsca, orientacyjne wymiary i informacja, czy to nowa budowa czy remont.",
+    },
+    {
+        "title": "Drzwi, opaski i progi na wymiar",
+        "category": "Drzwi i wykończenia",
+        "photo": "doors_detail",
+        "alt": "Detal drewnianych drzwi i opaski wykonanej na wymiar",
+        "meta": ["dopasowanie do otworu", "widoczne krawędzie", "wykończenie wnętrza"],
+        "problem": "Standardowe drzwi, opaska albo próg nie pasują do wymiaru, materiału lub charakteru wnętrza.",
+        "scope": "Ocena otworu, ściany, podłogi, oczekiwanego materiału i sposobu wykończenia.",
+        "result": "Element wygląda jak część wnętrza, a nie przypadkowa dokładka po montażu.",
+        "body": "Dobry temat dla domów, lokali i inwestycji, gdzie detal jest widoczny codziennie.",
+    },
+    {
+        "title": "Listwy, profile i małe elementy montowane",
+        "category": "Profile i listwy",
+        "photo": "wooden_trims",
+        "alt": "Listwy i profile drewniane wykonane na wymiar",
+        "meta": ["profil pod wymiar", "krótka seria", "montaż lokalny lub odbiór"],
+        "problem": "Potrzebny jest profil, którego nie da się kupić w sensownym wymiarze, materiale albo kolorze.",
+        "scope": "Wzór, przekrój, długości, ilość, materiał, frez i oczekiwany standard powierzchni.",
+        "result": "Profil może wracać w kolejnych zamówieniach albo zostać dopasowany do jednego konkretnego wnętrza.",
+        "body": "Łączy lokalną stolarkę budowlaną z produkcją powtarzalnych elementów dla firm.",
+    },
+    {
+        "title": "Detal drewniany według rysunku lub wizualizacji",
+        "category": "Projekty specjalne",
+        "photo": "precision_detail",
+        "alt": "Zbliżenie na starannie wykonane połączenie drewnianych elementów",
+        "meta": ["rysunek lub inspiracja", "dobór technologii", "widoczny detal"],
+        "problem": "Projekt wymaga drewnianego detalu, którego nie ma w katalogu albo który musi pasować do konkretnego miejsca.",
+        "scope": "Rozmowa o efekcie, materiale, widocznych stronach, montażu, próbce i ograniczeniach technologii.",
+        "result": "Detal zachowuje charakter projektu, ale jest przemyślany pod realne wykonanie w warsztacie.",
+        "body": "Dla architektów, projektantów, lokali, ekspozycji i marek, które potrzebują niestandardowego elementu.",
+    },
+    {
+        "title": "Zabudowa albo element wnętrza pod projekt",
+        "category": "Wnętrza i zabudowy",
+        "photo": "built_in_project",
+        "alt": "Drewniany element wnętrza wykonany według projektu",
+        "meta": ["dopasowanie do architektury", "materiał i kolor", "montaż na miejscu"],
+        "problem": "We wnętrzu potrzebny jest element dopasowany do miejsca, nie kolejny gotowy moduł.",
+        "scope": "Zdjęcia miejsca, wymiary, oczekiwany efekt, materiał, sposób montażu i termin.",
+        "result": "Drewniany element pracuje z architekturą i wygląda jak zaplanowana część projektu.",
+        "body": "Dobre przy lokalach, wnętrzach prywatnych i projektach, gdzie drewno jest widocznym elementem jakości.",
+    },
+]
+
+
 def _with_runtime_fields(page_key, page, language_code=None):
     page = page.copy()
     page["key"] = page_key
@@ -1965,6 +2239,15 @@ def get_audience_cards(language_code):
 
 def get_realization_cases(language_code):
     return _with_case_photos(get_content(language_code)["realization_cases"])
+
+
+def get_home_realization_cases(language_code):
+    cases = get_content(language_code)["realization_cases"]
+    if normalize_language(language_code) == "pl" and len(cases) >= 7:
+        cases = [cases[0], cases[3], cases[6]]
+    else:
+        cases = cases[:3]
+    return _with_case_photos(cases)
 
 
 def iter_sitemap_pages(language_code):

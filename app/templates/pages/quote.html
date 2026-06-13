@@ -20,6 +20,7 @@
         <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form{% if form.errors %} data-has-errors="true"{% endif %}>
             {% csrf_token %}
             <p class="form-intro">{{ ui.quote_quick_hint }}</p>
+            <p class="file-prompt"><strong>{{ ui.quote_file_prompt_strong }}</strong> {{ ui.quote_file_prompt }}</p>
             {% if form.non_field_errors %}
                 <div class="form-errors">{{ form.non_field_errors }}</div>
             {% endif %}

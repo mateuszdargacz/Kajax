@@ -5,6 +5,8 @@ const publicPages = [
   { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm, próbki i krótkie serie" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane displaye, elementy POS i detale eventowe" },
   { path: "/stolarka-budowlana/", h1: "Schody, drzwi i drewniane wykończenia dopasowane do miejsca" },
+  { path: "/stolarka-budowlana-wejherowo/", h1: "Stolarka budowlana Wejherowo" },
+  { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
   { path: "/dla-architektow-i-firm/", h1: "Drewniane detale pod projekt, którego nie da się kupić z półki" },
   { path: "/realizacje/", h1: "Przykłady tematów, które warto wysłać do oceny" },
@@ -47,15 +49,21 @@ async function installDataLayerRecorder(page, storageKey) {
 
 test.describe("public marketing pages", () => {
   for (const publicPage of publicPages) {
-    test(`${publicPage.path} renders cleanly`, async ({ page }) => {
+    test(`${publicPage.path} renders cleanly`, async ({ page }, testInfo) => {
       const response = await page.goto(publicPage.path);
       expect(response.status()).toBe(200);
 
       await expect(page.locator("h1")).toHaveCount(1);
       await expect(page.locator("h1")).toContainText(publicPage.h1);
       await expect(page.getByRole("banner").getByRole("link", { name: "604 238 246" })).toBeVisible();
-      await expect(page.getByRole("navigation", { name: "Główna nawigacja" })).toBeVisible();
-      await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "PL" })).toBeVisible();
+      if (testInfo.project.name === "mobile") {
+        await expect(page.getByRole("banner").getByText("Menu")).toBeVisible();
+      } else {
+        await expect(page.getByRole("navigation", { name: "Główna nawigacja" })).toBeVisible();
+        await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "PL" })).toBeVisible();
+      }
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/static\/site\/img\/og-.+\.jpg$/);
+      await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", /\/static\/site\/img\/og-.+\.jpg$/);
       await expect(page.locator("body")).not.toContainText("hero_workshop");
       await expect(page.locator("body")).not.toContainText("Homepage hero");
       await expect(page.locator("body")).not.toContainText("Wide workshop");
@@ -70,9 +78,11 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Zobacz, co warto wysłać" })).toHaveAttribute("href", "/jak-przygotowac-zapytanie/");
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
+    await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
+    await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
     await expect(page.locator("body")).toContainText("Czego nie obiecujemy bez danych");
-    await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "EN" })).toHaveAttribute("href", "https://kajax.eu/en/");
-    await expect(page.getByRole("navigation", { name: "Wybór języka" }).getByRole("link", { name: "DE" })).toHaveAttribute("href", "https://kajax.eu/de/");
+    await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
+    await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production-\d+\.webp/);
     await expect(page.locator(".hero-media img")).toHaveAttribute("src", /hero-workshop-production\.jpg/);
     await expect(page.locator(".hero-media img")).toHaveAttribute(
@@ -177,6 +187,18 @@ test.describe("public marketing pages", () => {
       "href",
       "/schody-drewniane-co-wplywa-na-cene-i-termin/",
     );
+    await expect(page.getByRole("link", { name: /Stolarka budowlana Wejherowo/ })).toHaveAttribute("href", "/stolarka-budowlana-wejherowo/");
+    await expect(page.getByRole("link", { name: /Stolarka budowlana Trójmiasto/ })).toHaveAttribute("href", "/stolarka-budowlana-trojmiasto/");
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("realizations page reads like case studies", async ({ page }) => {
+    await page.goto("/realizacje/");
+
+    await expect(page.locator(".realization")).toHaveCount(8);
+    await expect(page.locator(".case-study-facts").first()).toContainText("Problem");
+    await expect(page.locator(".case-study-facts").first()).toContainText("Zakres");
+    await expect(page.locator(".case-study-facts").first()).toContainText("Efekt");
     await expectNoHorizontalOverflow(page);
   });
 
@@ -255,7 +277,8 @@ test.describe("localized pages", () => {
     await page.goto("/de/");
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
     await expect(page.locator("h1")).toContainText("Tischlerei für Unternehmen");
-    await expect(page.getByRole("navigation", { name: "Hauptnavigation" }).getByRole("link", { name: "Elementfertigung" })).toHaveAttribute(
+    await expect(page.locator('a[href="/de/produkcja-elementow-drewnianych/"]').first()).toHaveText("Elementfertigung");
+    await expect(page.locator('a[href="/de/produkcja-elementow-drewnianych/"]').first()).toHaveAttribute(
       "href",
       "/de/produkcja-elementow-drewnianych/",
     );
@@ -264,7 +287,7 @@ test.describe("localized pages", () => {
     await page.goto("/no/");
     await expect(page.locator("html")).toHaveAttribute("lang", "no");
     await expect(page.locator("h1")).toContainText("Snekkerverksted for bedrifter");
-    await expect(page.getByRole("navigation", { name: "Hovednavigasjon" }).getByRole("link", { name: "Forespørsel", exact: true })).toHaveAttribute("href", "/no/wycena/");
+    await expect(page.locator('a[href="/no/wycena/"]').first()).toHaveText("Forespørsel");
     await expect(page.locator(".mobile-action-bar [data-track-cta='mobile_quote']")).toHaveAttribute("href", "/no/wycena/");
     await expectNoHorizontalOverflow(page);
 
@@ -342,6 +365,7 @@ test.describe("quote form", () => {
   test("keeps the quick form compact but exposes optional fields on demand", async ({ page }) => {
     await page.goto("/wycena/");
 
+    await expect(page.locator(".file-prompt")).toContainText("Masz zdjęcie, rysunek albo wzór?");
     await expect(page.locator(".optional-fields")).not.toHaveAttribute("open", "");
     await page.locator("summary", { hasText: "Mam więcej danych" }).click();
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");

@@ -201,6 +201,18 @@ a {
     background: var(--forest);
 }
 
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu summary {
+    list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+    display: none;
+}
+
 .mobile-action-bar {
     display: none;
 }
@@ -485,6 +497,37 @@ h3 {
     border-radius: var(--radius);
     color: rgba(255, 255, 255, 0.92);
     font-weight: 760;
+}
+
+.hero-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 1030px;
+    margin-top: 28px;
+}
+
+.hero-proof {
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: var(--radius);
+    color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+.hero-proof strong {
+    display: block;
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.16;
+}
+
+.hero-proof span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.86rem;
+    line-height: 1.28;
 }
 
 .section {
@@ -964,6 +1007,34 @@ details p {
     font-size: 0.9rem;
 }
 
+.case-study-facts {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0 24px;
+}
+
+.case-study-facts div {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(245, 239, 229, 0.72);
+    border: 1px solid rgba(217, 208, 194, 0.8);
+    border-radius: var(--radius);
+}
+
+.case-study-facts dt {
+    color: var(--clay);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.case-study-facts dd {
+    margin: 0;
+    color: var(--muted);
+}
+
 .quote-grid,
 .contact-grid {
     display: grid;
@@ -994,6 +1065,19 @@ details p {
     margin: 0 0 22px;
     color: var(--muted);
     font-size: 1.02rem;
+}
+
+.file-prompt {
+    margin: -6px 0 22px;
+    padding: 13px 15px;
+    background: #f2eadf;
+    border: 1px solid rgba(217, 208, 194, 0.9);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+}
+
+.file-prompt strong {
+    color: var(--ink);
 }
 
 .form-grid {
@@ -1209,6 +1293,11 @@ textarea.form-control {
         border: 1px solid rgba(217, 208, 194, 0.72);
     }
 
+    .hero-proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 760px;
+    }
+
     .three,
     .process-grid,
     .split,
@@ -1265,7 +1354,7 @@ textarea.form-control {
     }
 
     .site-header {
-        position: static;
+        position: sticky;
     }
 
     .mobile-action-bar {
@@ -1311,39 +1400,117 @@ textarea.form-control {
         display: none;
     }
 
-    .header-phone {
-        width: 100%;
+    .header-inner {
+        width: min(100% - 18px, 1280px);
+        min-height: 62px;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 8px 0;
     }
 
-    .header-actions {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
+    .brand {
+        flex: 1 1 auto;
+        min-width: 0;
         gap: 8px;
     }
 
-    .language-switcher {
-        justify-content: center;
+    .brand-mark {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
     }
 
-    .nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .brand strong {
+        font-size: 0.86rem;
     }
 
-    .nav a {
-        min-height: 40px;
+    .brand small {
+        font-size: 0.68rem;
+    }
+
+    .desktop-nav,
+    .language-switcher-desktop {
+        display: none;
+    }
+
+    .header-actions {
+        width: auto;
+        margin-left: 0;
+        display: flex;
+        flex: 0 0 auto;
+    }
+
+    .header-phone {
+        width: auto;
+        min-height: 38px;
+        padding: 8px 10px;
+        font-size: 0.86rem;
+        box-shadow: none;
+    }
+
+    .mobile-menu {
+        position: relative;
+        display: block;
+        flex: 0 0 auto;
+    }
+
+    .mobile-menu summary {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 8px 9px;
-        text-align: center;
+        min-height: 38px;
+        padding: 8px 11px;
+        background: var(--surface);
+        border: 1px solid rgba(217, 208, 194, 0.92);
+        border-radius: var(--radius);
+        color: var(--ink);
+        font-weight: 900;
+        cursor: pointer;
+    }
+
+    .mobile-menu-panel {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: min(328px, calc(100vw - 24px));
+        padding: 10px;
+        background: rgba(251, 250, 247, 0.98);
+        border: 1px solid rgba(217, 208, 194, 0.95);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+
+    .language-switcher-mobile {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        margin-bottom: 8px;
+    }
+
+    .mobile-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .mobile-nav a {
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px 10px;
+        background: white;
+        border: 1px solid rgba(217, 208, 194, 0.72);
+        border-radius: 6px;
+        text-align: left;
+        text-decoration: none;
         white-space: normal;
     }
 
     .hero,
     .photo-placeholder-hero {
-        min-height: 660px;
+        min-height: 680px;
     }
 
     .hero-content {
@@ -1385,7 +1552,22 @@ textarea.form-control {
     }
 
     .trust-list {
-        margin-top: 26px;
+        display: none;
+    }
+
+    .hero-proof-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 22px;
+    }
+
+    .hero-proof {
+        padding: 9px 10px;
+    }
+
+    .hero-proof span {
+        margin-top: 3px;
+        font-size: 0.82rem;
     }
 
     .section,
@@ -1443,6 +1625,16 @@ textarea.form-control {
 
     .form-intro {
         margin-bottom: 16px;
+    }
+
+    .file-prompt {
+        margin-top: -4px;
+        padding: 12px;
+    }
+
+    .case-study-facts div {
+        grid-template-columns: 1fr;
+        gap: 4px;
     }
 
     textarea.form-control {
