@@ -2229,8 +2229,8 @@ def get_realization_cases(language_code):
 
 def get_home_realization_cases(language_code):
     cases = get_content(language_code)["realization_cases"]
-    if normalize_language(language_code) == "pl" and len(cases) >= 7:
-        cases = [cases[0], cases[3], cases[6]]
+    if normalize_language(language_code) == "pl" and len(cases) >= 8:
+        cases = [cases[0], cases[3], cases[7]]
     else:
         cases = cases[:3]
     return _with_case_photos(cases)

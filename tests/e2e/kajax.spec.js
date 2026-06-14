@@ -95,7 +95,8 @@ test.describe("public marketing pages", () => {
     await expect(page.locator(".case-card").first().locator("source")).toHaveAttribute("srcset", /b2b-repeated-wooden-elements-detail-\d+\.webp/);
     await expect(page.locator(".case-card").first().locator("img")).toHaveAttribute("src", /b2b-repeated-wooden-elements-detail\.jpg/);
     await expect(page.locator(".case-card").nth(1).locator("source")).toHaveAttribute("srcset", /wooden-stairs-pomorskie-\d+\.webp/);
-    await expect(page.locator(".case-card").nth(2).locator("source")).toHaveAttribute("srcset", /wood-joinery-detail-closeup-\d+\.webp/);
+    await expect(page.locator(".case-card").nth(2)).toContainText("Zabudowa albo element wnętrza pod projekt");
+    await expect(page.locator(".case-card").nth(2).locator("source")).toHaveAttribute("srcset", /built-in-woodwork-project-\d+\.webp/);
     await expect(page.locator(".photo-placeholder-name")).toHaveCount(0);
     await expect(page.locator(".photo-placeholder small")).toHaveCount(0);
     await expectNoHorizontalOverflow(page);
