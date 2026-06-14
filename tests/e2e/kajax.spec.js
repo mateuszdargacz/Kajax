@@ -9,8 +9,8 @@ const publicPages = [
   { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
   { path: "/dla-architektow-i-firm/", h1: "Drewniane detale pod projekt, którego nie da się kupić z półki" },
-  { path: "/realizacje/", h1: "Drewno w serii, na wymiar i pod konkretny projekt" },
-  { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać konkretną odpowiedź?" },
+  { path: "/realizacje/", h1: "Drewno w serii, na wymiar i pod projekt" },
+  { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać rzeczową odpowiedź?" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Krótka seria elementów drewnianych: kiedy ma sens?" },
   { path: "/kontakt/", h1: "Kontakt z Kajax Stolarstwo" },
 ];
@@ -80,7 +80,7 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
     await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
-    await expect(page.locator("body")).toContainText("czy zacząć od próbki, partii testowej, pomiaru czy konkretnej wyceny");
+    await expect(page.locator("body")).toContainText("czy zacząć od próbki, partii testowej, pomiaru czy od razu od wyceny");
     await expect(page.locator("body")).not.toContainText("Czego nie obiecujemy bez danych");
     await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
@@ -137,7 +137,7 @@ test.describe("public marketing pages", () => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
     await expect(page.locator("body")).toContainText("Proces B2B: próbka, akceptacja, seria");
-    await expect(page.locator("body")).toContainText("Gdzie szczególnie pilnujemy ryzyka");
+    await expect(page.locator("body")).toContainText("Co ustalamy przed powtarzalną serią");
     await expect(page.getByRole("link", { name: /Kiedy krótka seria ma sens/ })).toHaveAttribute(
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
