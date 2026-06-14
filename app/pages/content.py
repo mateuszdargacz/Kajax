@@ -172,7 +172,7 @@ CONTENT = {
                 "hero_alt": "Warsztat Kajax z maszynami stolarskimi i drewnem przygotowanym do obróbki",
                 "eyebrow": "Stolarnia w Gościcinie",
                 "h1": "Elementy drewniane dla firm i stolarka na wymiar",
-                "lead": "Wyślij wzór, rysunek albo zdjęcie. Sprawdzimy, czy temat pasuje do warsztatu: elementy B2B, krótkie serie, schody, drzwi, listwy lub nietypowe detale z drewna. Do pierwszej odpowiedzi wystarczy kilka konkretów: wymiar, materiał, ilość, termin oraz informacja o odbiorze albo wysyłce.",
+                "lead": "Robimy drewniane elementy, które trzeba dopasować do produkcji, wnętrza albo montażu: krótkie serie dla firm, półprodukty, listwy, drzwi, schody i zabudowy. Najszybciej ruszamy, gdy dostajemy zdjęcie, rysunek, wzór albo wymiary. Wtedy widać, czy zacząć od próbki, partii testowej, pomiaru czy konkretnej wyceny.",
                 "primary_cta": "Wyślij projekt do wyceny",
                 "secondary_cta": "Zobacz, co warto wysłać",
             },
@@ -183,28 +183,28 @@ CONTENT = {
                 "hero_alt": "Seria jednakowych drewnianych elementów ułożona na stole warsztatowym",
                 "eyebrow": "Produkcja dla firm",
                 "h1": "Elementy drewniane dla firm, próbki i krótkie serie",
-                "lead": "Dla firm, które mają konkretny element do wykonania: profil, listwę, detal POS, część do produktu, półprodukt albo serię według wzoru. Możemy zacząć od jednej próbki, małej partii lub sprawdzenia istniejącego elementu, a dopiero potem rozmawiać o powtarzalnych zamówieniach.",
+                "lead": "Dla firm, które potrzebują drewnianego elementu bez budowania własnego zaplecza stolarskiego: profilu, listwy, części do produktu, detalu POS, półproduktu albo krótkiej serii. Zaczynamy od wzoru, rysunku, próbki lub małej partii, a dopiero po ustaleniu standardu przechodzimy do powtarzalnych zamówień.",
                 "primary_cta": "Wyślij specyfikację do oceny",
                 "sections": [
                     {
-                        "title": "Przykłady tematów, które pasują do B2B",
-                        "body": "Najlepszy fit to element, który ma jasny kształt, wymiar i zastosowanie. Nie produkujemy katalogowych mebli z internetu. Wyceniamy konkret: wzór, rysunek, serię, detal albo element do dalszego montażu.",
-                        "items": ["profile, listwy, ramy i półprodukty", "elementy POS, displaye i ekspozytory", "drewniane detale do produktów lub mebli", "próbki, partie testowe i krótkie serie"],
+                        "title": "Co opłaca się zlecić na zewnątrz",
+                        "body": "Najlepiej pasują elementy, które mają wracać w kolejnych zamówieniach albo blokują firmie czas ludzi, miejsce i narzędzia. Wtedy stolarnia może przejąć konkretny fragment pracy: powtarzalny detal, partię testową, listwy, profile, elementy POS albo części do dalszego montażu.",
+                        "items": ["profile, listwy, ramy i półprodukty", "elementy POS, displaye i ekspozytory", "drewniane części do produktów, mebli i lokali", "próbki, partie testowe i krótkie serie"],
                     },
                     {
                         "title": "Proces B2B: próbka, akceptacja, seria",
-                        "body": "Przy powtarzalnych częściach próbka nie jest formalnością. Pozwala zobaczyć materiał, krawędzie, kolor, otwory, frezy i tolerancje przed większym zamówieniem.",
+                        "body": "Przy powtarzalnych częściach próbka oszczędza pieniądze po obu stronach. Pozwala sprawdzić materiał, krawędzie, kolor, otwory, frezy, tolerancje i pakowanie zanim wejdzie większa partia.",
                         "items": ["jedna próbka albo pierwsza mała partia", "akceptacja wymiaru, krawędzi i wykończenia", "ustalony standard wykonania dla kolejnych partii", "pakowanie pod odbiór albo wysyłkę"],
                     },
                     {
-                        "title": "Dane do wyceny",
-                        "body": "Im mniej zgadywania, tym szybciej można powiedzieć, czy temat ma sens. Przy większej lub powtarzalnej partii od razu pytamy też o tolerancje, pakowanie i sposób odbioru.",
+                        "title": "Co przyspiesza decyzję",
+                        "body": "Nie trzeba mieć pełnej dokumentacji technicznej, ale potrzebujemy punktu odniesienia. Zdjęcie, stary element, szkic albo rysunek pozwala szybko ustalić, czy zaczynamy od próbki, czy można przejść prosto do wyceny partii.",
                         "items": ["zdjęcie, rysunek, specyfikacja lub fizyczna próbka", "wymiary, tolerancje, frezy, otwory i widoczne krawędzie", "materiał, kolor i standard wykończenia", "liczba sztuk, termin, pakowanie, odbiór albo wysyłka"],
                     },
                     {
-                        "title": "Kiedy możemy odmówić albo poprosić o doprecyzowanie",
-                        "body": "Nie każdy element da się rozsądnie wykonać w małej stolarni albo bez próbki. Jeśli brakuje danych, najpierw wracamy z pytaniami zamiast udawać, że da się rzetelnie wycenić wszystko od razu.",
-                        "items": ["brak wymiarów lub materiału", "zbyt krótki termin przy nieznanym detalu", "element trudny do bezpiecznej wysyłki", "oczekiwana powtarzalność bez wzoru lub testu"],
+                        "title": "Gdzie szczególnie pilnujemy ryzyka",
+                        "body": "W seriach dla firm największe koszty robią poprawki po fakcie: zły wymiar, nieustalone wykończenie, zbyt słabe pakowanie albo detal trudny do powtarzania. Dlatego wolimy dopytać wcześniej niż produkować coś, co potem nie pasuje do montażu, ekspozycji albo transportu.",
+                        "items": ["powtarzalność bez wzoru lub testu", "krótki termin przy nieznanym detalu", "element trudny do bezpiecznej wysyłki", "brak decyzji o materiale, kolorze lub standardzie"],
                     },
                 ],
                 "faq": [
@@ -220,7 +220,7 @@ CONTENT = {
                 "hero_alt": "Drewniane schody z balustradą w jasnym wnętrzu",
                 "eyebrow": "Schody, drzwi, listwy, zabudowy",
                 "h1": "Schody, drzwi i drewniane wykończenia dopasowane do miejsca",
-                "lead": "W domach, lokalach i inwestycjach gotowy element często nie pasuje wymiarem, materiałem albo standardem. Wykonujemy schody, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Pracujemy głównie w Pomorskiem: Gościcino, Wejherowo, Trójmiasto i okolice.",
+                "lead": "W domach, lokalach i inwestycjach gotowy element często nie pasuje wymiarem, materiałem albo standardem wykończenia. Wykonujemy schody, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Przy montażu pracujemy głównie w Pomorskiem: Gościcino, Wejherowo, Trójmiasto i okolice.",
                 "primary_cta": "Opisz zakres prac",
                 "sections": [
                     {
@@ -246,7 +246,7 @@ CONTENT = {
                 "hero_alt": "Precyzyjny detal stolarski wykonany z drewna",
                 "eyebrow": "Nietypowe detale i projekty specjalne",
                 "h1": "Drewniane detale pod projekt, którego nie da się kupić z półki",
-                "lead": "Dla architektów, projektantów, wykonawców i firm, które potrzebują elementu dopasowanego do konkretnego wnętrza, lokalu, ekspozycji albo produktu. Pracujemy od rysunku, wizualizacji, zdjęcia inspiracyjnego lub starego elementu do odtworzenia.",
+                "lead": "Dla architektów, projektantów, wykonawców i firm, które potrzebują drewnianego elementu dopasowanego do konkretnego miejsca, lokalu, ekspozycji albo produktu. Możemy zacząć od rysunku, wizualizacji, zdjęcia inspiracyjnego lub starego elementu do odtworzenia.",
                 "primary_cta": "Wyślij detal do konsultacji",
                 "sections": [
                     {
@@ -269,7 +269,7 @@ CONTENT = {
                 "title": "Realizacje i przykłady projektów stolarskich | Kajax",
                 "description": "Przykłady tematów dla Kajax: elementy drewniane dla firm, stolarka na wymiar w Pomorskiem i nietypowe detale pod projekt.",
                 "h1": "Przykłady tematów, które warto wysłać do oceny",
-                "lead": "To nie jest katalog gotowych produktów, tylko kierunki pracy: elementy dla firm, stolarka montowana w Pomorskiem i detale projektowe. Jeśli masz podobny problem, pokaż zdjęcie, rysunek albo wzór.",
+                "lead": "To nie jest katalog gotowych produktów. To przykłady problemów, z którymi warto przyjść do stolarni: powtarzalne elementy dla firm, stolarka montowana w Pomorskiem, serie dla lokali i detale projektowe. Jeśli temat jest podobny, pokaż zdjęcie, rysunek albo wzór.",
             },
             "quote": {
                 "title": "Wyślij zapytanie | Kajax Stolarstwo",
@@ -285,15 +285,15 @@ CONTENT = {
             },
         },
         "process_steps": [
-            ("Pokazujesz element albo miejsce", "Wystarczy zdjęcie, rysunek, wzór, szkic lub opis tego, do czego element ma służyć."),
+            ("Pokazujesz element albo miejsce", "Wystarczy zdjęcie, rysunek, wzór, szkic lub opis tego, do czego element będzie używany."),
             ("Dopytujemy o konkrety", "Materiał, wymiar, ilość, termin, montaż, odbiór, pakowanie albo wysyłka."),
-            ("Ustalamy sensowny pierwszy krok", "Próbka, mała partia, pomiar na miejscu, rozmowa techniczna albo wycena."),
-            ("Wracamy z jasną odpowiedzią", "Piszemy, czy możemy wejść w temat, czego jeszcze brakuje i co proponujemy dalej."),
+            ("Wybieramy pierwszy krok", "Próbka, mała partia, pomiar na miejscu, rozmowa techniczna albo wycena."),
+            ("Wracamy z konkretną odpowiedzią", "Piszemy, czy możemy wejść w temat, czego brakuje i co warto zrobić dalej."),
         ],
         "audience_cards": [
-            {"title": "Elementy i półprodukty dla firm", "body": "Profile, listwy, elementy POS, detale do produktów i krótkie serie wykonywane według wzoru.", "url": PATHS["production"], "cta": "Elementy dla firm"},
+            {"title": "Elementy i półprodukty dla firm", "body": "Profile, listwy, elementy POS, części do produktów i krótkie serie według wzoru.", "url": PATHS["production"], "cta": "Elementy dla firm"},
             {"title": "Schody, drzwi i zabudowy", "body": "Stolarka do domów, lokali i inwestycji w Pomorskiem, gdy element musi pasować do miejsca.", "url": PATHS["construction"], "cta": "Schody i stolarka"},
-            {"title": "Detale z drewna pod projekt", "body": "Elementy do wnętrz, ekspozycji i produktów, których nie da się sensownie kupić z katalogu.", "url": PATHS["architects"], "cta": "Projekty specjalne"},
+            {"title": "Zabudowy i detale pod projekt", "body": "Drewniane elementy do wnętrz, ekspozycji i lokali, których nie da się kupić z katalogu.", "url": PATHS["architects"], "cta": "Projekty specjalne"},
         ],
         "realization_cases": [
             {"title": "Elementy drewniane dla firm", "category": "Produkcja B2B", "photo": "b2b_components_detail", "alt": "Ułożone w stosy drewniane profile przygotowane jako seria dla firmy", "meta": ["wzór, próbka lub rysunek", "krótka seria po akceptacji", "pakowanie, odbiór albo wysyłka"], "body": "Dla firm, które potrzebują profili, ekspozytorów, elementów POS albo części do dalszego montażu bez uruchamiania własnej stolarni."},
@@ -2044,10 +2044,10 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "b2b_components_detail",
         "alt": "Ułożone w stosy drewniane profile przygotowane jako seria dla firmy",
         "meta": ["półprodukty", "próbka przed serią", "odbiór lub wysyłka"],
-        "problem": "Firma potrzebuje powtarzalnego elementu z drewna, ale nie chce uruchamiać własnego zaplecza stolarskiego dla krótkiej partii.",
-        "scope": "Wzór lub rysunek, dopracowanie krawędzi, materiału, tolerancji i standardu kolejnych partii.",
-        "result": "Po akceptacji próbki można wracać z kolejnymi zamówieniami bez tłumaczenia detalu od zera.",
-        "body": "Dobry kierunek dla profili, półproduktów, elementów POS i części do dalszego montażu.",
+        "problem": "Firma ma element, który powtarza się w produkcie, ekspozycji albo montażu, ale własna strefa stolarska byłaby za droga jak na skalę zamówienia.",
+        "scope": "Praca od wzoru lub rysunku: dobór materiału, ustalenie wymiarów, frezów, krawędzi, tolerancji i standardu kolejnych partii.",
+        "result": "Po akceptacji próbki firma może zamawiać kolejne partie bez wyjaśniania tego samego detalu od początku.",
+        "body": "Dobry kierunek dla profili, półproduktów, elementów POS i części, które później trafiają do dalszego montażu.",
     },
     {
         "title": "Elementy POS i detale do ekspozycji",
@@ -2055,10 +2055,21 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "b2b_components_series",
         "alt": "Krótka seria powtarzalnych drewnianych elementów na stole warsztatowym",
         "meta": ["display", "kampania lub event", "krótki termin po akceptacji"],
-        "problem": "Agencja albo producent potrzebuje drewnianego elementu, który wygląda solidniej niż standardowy nośnik z tworzywa.",
-        "scope": "Ocena wizualizacji, wymiarów, widocznych stron, wykończenia i pakowania na transport.",
-        "result": "Drewniany detal może podnieść odbiór marki, a jednocześnie zostać wykonany w krótkiej, kontrolowanej serii.",
-        "body": "Najlepiej działa przy jasnym briefie: ilość, termin, miejsce użycia i wymagany efekt wizualny.",
+        "problem": "Agencja lub producent potrzebuje drewnianego elementu do ekspozycji, ale termin kampanii nie zostawia miejsca na długie poprawki i przypadkowe prototypowanie.",
+        "scope": "Sprawdzenie wizualizacji, wymiarów, widocznych stron, wykończenia, stabilności elementu i pakowania na transport.",
+        "result": "Po ustaleniu próbki można wykonać krótką serię, która wygląda spójnie na stoisku, w sklepie albo na evencie.",
+        "body": "Najlepiej działa przy jasnym briefie: ilość, termin, miejsce użycia, sposób ekspozycji i oczekiwany efekt wizualny.",
+    },
+    {
+        "title": "Serie drzwi i elementów do hoteli lub lokali",
+        "category": "B2B / inwestycje",
+        "photo": "doors_detail",
+        "alt": "Detal drewnianych drzwi przygotowanych do większej inwestycji",
+        "meta": ["drzwi do hoteli i lokali", "powtarzalny standard", "partia według wzoru"],
+        "problem": "W hotelu, pensjonacie, biurze albo lokalu nie chodzi o jedne drzwi. Wykonawca potrzebuje powtarzalnego standardu: tych samych wymiarów, koloru, opasek, progów i jakości wykończenia w wielu pomieszczeniach.",
+        "scope": "Ustalenie wzoru drzwi lub zestawu elementów, materiału, wykończenia, okuć, ilości, tolerancji montażowych oraz sposobu oznaczenia i pakowania partii.",
+        "result": "Po akceptacji wzoru można wykonać serię w jednym standardzie, a montażysta lub wykonawca dostaje elementy opisane i przygotowane pod konkretną inwestycję.",
+        "body": "Kierunek dla firm wykańczających hotele, pensjonaty, biura, lokale usługowe i większe remonty, gdzie liczy się powtarzalność zamiast jednorazowej sztuki.",
     },
     {
         "title": "Pakowanie powtarzalnych elementów",
@@ -2066,10 +2077,10 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "b2b_packing",
         "alt": "Elementy drewniane zabezpieczone do odbioru lub wysyłki",
         "meta": ["zabezpieczenie elementów", "odbiór", "wysyłka po ocenie gabarytu"],
-        "problem": "Przy B2B liczy się nie tylko wykonanie, ale też to, czy element da się bezpiecznie odebrać albo wysłać.",
-        "scope": "Ocena wymiaru, podatności na uszkodzenia, sposobu pakowania i liczby sztuk w partii.",
-        "result": "Logistykę ustala się dopiero po poznaniu elementu, ale można ją uwzględnić już na etapie próbki.",
-        "body": "Ważne przy projektach spoza Pomorza i przy powtarzalnych partiach dla firm.",
+        "problem": "Element może być dobrze wykonany, ale straci wartość, jeśli obije się w transporcie albo trafi do klienta bez sensownego oznaczenia partii.",
+        "scope": "Ocena wymiaru, podatności na uszkodzenia, liczby sztuk, sposobu przekładania elementów i zabezpieczenia widocznych krawędzi.",
+        "result": "Pakowanie można zaplanować już przy próbce, żeby późniejsze partie były łatwiejsze do odbioru, wysyłki i kontroli po dostawie.",
+        "body": "Ważne przy projektach spoza Pomorza i przy powtarzalnych partiach dla firm, wykonawców oraz ekip montażowych.",
     },
     {
         "title": "Schody drewniane w Pomorskiem",
@@ -2077,7 +2088,7 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "stairs_project",
         "alt": "Drewniane schody z balustradą w jasnym wnętrzu",
         "meta": ["pomiar na miejscu", "drewno lite lub klejone", "Gościcino, Wejherowo, Trójmiasto"],
-        "problem": "Gotowe rozwiązanie nie pasuje wymiarem, konstrukcją albo standardem wykończenia do konkretnego wnętrza.",
+        "problem": "Na budowie rzadko wszystko zgadza się z katalogiem: otwór, wysokości, ściany i oczekiwany efekt potrafią wymusić rozwiązanie pod konkretne miejsce.",
         "scope": "Zdjęcia miejsca, pomiar, materiał, układ stopni, balustrada, termin montażu i etap inwestycji.",
         "result": "Schody są projektowane pod miejsce, a nie dopasowywane na siłę po zakupie gotowego elementu.",
         "body": "Najlepszy start to zdjęcia miejsca, orientacyjne wymiary i informacja, czy to nowa budowa czy remont.",
@@ -2088,10 +2099,10 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "doors_detail",
         "alt": "Detal drewnianych drzwi i opaski wykonanej na wymiar",
         "meta": ["dopasowanie do otworu", "widoczne krawędzie", "wykończenie wnętrza"],
-        "problem": "Standardowe drzwi, opaska albo próg nie pasują do wymiaru, materiału lub charakteru wnętrza.",
-        "scope": "Ocena otworu, ściany, podłogi, oczekiwanego materiału i sposobu wykończenia.",
-        "result": "Element wygląda jak część wnętrza, a nie przypadkowa dokładka po montażu.",
-        "body": "Dobry temat dla domów, lokali i inwestycji, gdzie detal jest widoczny codziennie.",
+        "problem": "Drzwi, opaska albo próg są codziennie dotykane i oglądane z bliska. Jeśli nie pasują wymiarem lub materiałem, całe wykończenie wygląda słabiej.",
+        "scope": "Ocena otworu, ściany, podłogi, oczekiwanego materiału, sposobu wykończenia i ewentualnej powtarzalności w kolejnych pomieszczeniach.",
+        "result": "Element wygląda jak część wnętrza, a nie przypadkowa dokładka po montażu. Przy większym zakresie można trzymać jeden standard dla wielu otworów.",
+        "body": "Dobry temat dla domów, lokali, biur i inwestycji, gdzie drzwi oraz wykończenia muszą pasować do reszty wnętrza.",
     },
     {
         "title": "Listwy, profile i małe elementy montowane",
@@ -2099,10 +2110,10 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "wooden_trims",
         "alt": "Listwy i profile drewniane wykonane na wymiar",
         "meta": ["profil pod wymiar", "krótka seria", "montaż lokalny lub odbiór"],
-        "problem": "Potrzebny jest profil, którego nie da się kupić w sensownym wymiarze, materiale albo kolorze.",
-        "scope": "Wzór, przekrój, długości, ilość, materiał, frez i oczekiwany standard powierzchni.",
-        "result": "Profil może wracać w kolejnych zamówieniach albo zostać dopasowany do jednego konkretnego wnętrza.",
-        "body": "Łączy lokalną stolarkę budowlaną z produkcją powtarzalnych elementów dla firm.",
+        "problem": "Wykonawca albo inwestor potrzebuje profilu, którego nie ma w dobrym wymiarze, gatunku drewna, kolorze albo długości. Kupowanie zamiennika kończy się kompromisem na widocznej krawędzi.",
+        "scope": "Wzór, przekrój, długości, liczba sztuk, materiał, frez, kolor i oczekiwany standard powierzchni.",
+        "result": "Profil może zostać dopasowany do jednej inwestycji albo wracać w kolejnych zamówieniach jako powtarzalny element.",
+        "body": "Łączy lokalną stolarkę budowlaną z produkcją powtarzalnych listew, profili i małych elementów dla firm.",
     },
     {
         "title": "Detal drewniany według rysunku lub wizualizacji",
@@ -2110,10 +2121,10 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "precision_detail",
         "alt": "Zbliżenie na starannie wykonane połączenie drewnianych elementów",
         "meta": ["rysunek lub inspiracja", "dobór technologii", "widoczny detal"],
-        "problem": "Projekt wymaga drewnianego detalu, którego nie ma w katalogu albo który musi pasować do konkretnego miejsca.",
-        "scope": "Rozmowa o efekcie, materiale, widocznych stronach, montażu, próbce i ograniczeniach technologii.",
-        "result": "Detal zachowuje charakter projektu, ale jest przemyślany pod realne wykonanie w warsztacie.",
-        "body": "Dla architektów, projektantów, lokali, ekspozycji i marek, które potrzebują niestandardowego elementu.",
+        "problem": "Projekt wygląda dobrze na wizualizacji, ale potrzebuje elementu, który da się realnie wykonać, zamontować i wykończyć bez psucia założonego efektu.",
+        "scope": "Rozmowa o efekcie, materiale, widocznych stronach, montażu, próbce, ograniczeniach technologii i budżecie wykonania.",
+        "result": "Detal zachowuje charakter projektu, ale jest przemyślany pod warsztat, montaż i użytkowanie.",
+        "body": "Dla architektów, projektantów, lokali, ekspozycji i marek, które potrzebują niestandardowego elementu z drewna.",
     },
     {
         "title": "Zabudowa albo element wnętrza pod projekt",
@@ -2121,9 +2132,9 @@ CONTENT["pl"]["realization_cases"] = [
         "photo": "built_in_project",
         "alt": "Drewniany element wnętrza wykonany według projektu",
         "meta": ["dopasowanie do architektury", "materiał i kolor", "montaż na miejscu"],
-        "problem": "We wnętrzu potrzebny jest element dopasowany do miejsca, nie kolejny gotowy moduł.",
-        "scope": "Zdjęcia miejsca, wymiary, oczekiwany efekt, materiał, sposób montażu i termin.",
-        "result": "Drewniany element pracuje z architekturą i wygląda jak zaplanowana część projektu.",
+        "problem": "W lokalu, biurze albo domu gotowy moduł często nie pasuje do ściany, instalacji, proporcji albo materiałów wybranych przez projektanta.",
+        "scope": "Zdjęcia miejsca, wymiary, oczekiwany efekt, materiał, kolor, widoczne strony, sposób montażu i termin.",
+        "result": "Drewniany element wygląda jak zaplanowana część wnętrza, a nie mebel dobrany po fakcie.",
         "body": "Dobre przy lokalach, wnętrzach prywatnych i projektach, gdzie drewno jest widocznym elementem jakości.",
     },
 ]
@@ -2229,8 +2240,8 @@ def get_realization_cases(language_code):
 
 def get_home_realization_cases(language_code):
     cases = get_content(language_code)["realization_cases"]
-    if normalize_language(language_code) == "pl" and len(cases) >= 8:
-        cases = [cases[0], cases[3], cases[7]]
+    if normalize_language(language_code) == "pl" and len(cases) >= 9:
+        cases = [cases[0], cases[4], cases[8]]
     else:
         cases = cases[:3]
     return _with_case_photos(cases)

@@ -999,6 +999,74 @@ The site can launch well with:
 
 Minimum total: about 25-30 usable photos.
 
+## Next Photos To Produce For B2B Push
+
+These are the next priority shots to support the direction toward repeatable B2B work, hotel/local fit-out contractors and larger batches. Keep them realistic: no luxury showroom CGI, no readable fake logos, no impossible joinery, no text on walls, no branded uniforms unless it is real Kajax branding.
+
+### Hotel / Local Door Series
+
+Target use:
+
+- `/realizacje` case: `Serie drzwi i elementów do hoteli lub lokali`
+- future B2B landing pages for hotel doors, doors for guesthouses, office/local fit-out and repeatable interior joinery
+- social previews and ads aimed at contractors, developers, hotel owners and fit-out companies
+
+Files to create:
+
+| Planned filename | Size | Crop | What it should show |
+| --- | --- | --- | --- |
+| `hotel-door-series-workshop.jpg` | `2400x1800` | 4:3 | Several matching wooden doors or door leaves arranged in a workshop before delivery; repeated standard, clean rows, visible wood grain, no fake labels. |
+| `hotel-door-series-detail.jpg` | `2400x2400` | 1:1 | Close detail of edge, frame/opaska, hinge side or threshold; should communicate repeatability and finish quality. |
+| `hotel-door-series-packed.jpg` | `2400x1800` | 4:3 | Door leaves, opaski or trims protected with spacers/cardboard/foam, ready for pickup or delivery; show logistics without clutter. |
+| `hotel-door-installed-corridor.jpg` | `2400x1800` | 4:3 | Corridor or local interior with several matching wooden doors installed; calm practical investment look, not a luxury render. |
+| `hotel-door-numbered-batch.jpg` | `2400x1800` | 4:3 | Batch of similar door parts subtly organized by room/opening; use plain removable tags with no readable private data. |
+
+Preferred framing:
+
+- horizontal 4:3 for case pages and service pages,
+- one square detail for cards/social crops,
+- camera at human height, straight vertical lines,
+- show 4-8 repeated elements where possible,
+- leave some calm negative space, but the product must remain clear.
+
+Prompt direction for generated placeholder:
+
+```text
+Photorealistic Polish joinery workshop, repeatable wooden door series for hotel or commercial interior fit-out, several matching wooden doors and frames prepared as one batch, precise edges, natural oak or ash finish, practical workshop lighting, organized parts ready for contractor pickup, no logos, no readable text, no fake branding, no luxury showroom render
+```
+
+Negative prompt:
+
+```text
+warped doors, impossible hinges, unreadable fake labels, hotel logo, showroom CGI, glossy render, messy workshop, people blocking the product, distorted perspective
+```
+
+### Repeatable Trim / Profile Batch For Contractors
+
+Files to create:
+
+| Planned filename | Size | Crop | What it should show |
+| --- | --- | --- | --- |
+| `contractor-trim-profile-batch.jpg` | `2400x1800` | 4:3 | Long repeated wooden trims/profiles prepared for one investment or contractor order; clear profile shape and quantity. |
+| `contractor-trim-profile-detail.jpg` | `2400x2400` | 1:1 | Close-up of the profile cross-section, clean sanding, edge, grain and consistent finish. |
+| `contractor-trim-profiles-packed.jpg` | `2400x1800` | 4:3 | Bundles of trims prepared for pickup/shipping, protected and grouped by length or room. |
+
+Use these for:
+
+- B2B production page,
+- realization case for profiles/listwy,
+- future SEO around `listwy drewniane na wymiar dla wykonawcy`, `profile drewniane na zamówienie`, `krótkie serie listew`.
+
+### B2B Proof Shots To Prioritize
+
+When you send the next photo pack, prioritize these real or generated images in this order:
+
+1. `hotel-door-series-workshop.jpg` - strongest new B2B proof for hotel/local door batches.
+2. `hotel-door-installed-corridor.jpg` - makes the hotel/local use case obvious for customers.
+3. `hotel-door-series-packed.jpg` - proves logistics and contractor readiness.
+4. `contractor-trim-profile-batch.jpg` - supports repeatable contractor orders.
+5. `contractor-trim-profile-detail.jpg` - supports quality/detail closeups for cards and ads.
+
 ## Nice-To-Have Photo Set
 
 For stronger SEO, Ads and future content:

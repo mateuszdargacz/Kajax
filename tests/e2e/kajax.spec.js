@@ -80,7 +80,7 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
     await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
-    await expect(page.locator("body")).toContainText("Do pierwszej odpowiedzi wystarczy kilka konkretów");
+    await expect(page.locator("body")).toContainText("czy zacząć od próbki, partii testowej, pomiaru czy konkretnej wyceny");
     await expect(page.locator("body")).not.toContainText("Czego nie obiecujemy bez danych");
     await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
@@ -137,7 +137,7 @@ test.describe("public marketing pages", () => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
     await expect(page.locator("body")).toContainText("Proces B2B: próbka, akceptacja, seria");
-    await expect(page.locator("body")).toContainText("Kiedy możemy odmówić albo poprosić o doprecyzowanie");
+    await expect(page.locator("body")).toContainText("Gdzie szczególnie pilnujemy ryzyka");
     await expect(page.getByRole("link", { name: /Kiedy krótka seria ma sens/ })).toHaveAttribute(
       "href",
       "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/",
@@ -197,7 +197,9 @@ test.describe("public marketing pages", () => {
   test("realizations page reads like case studies", async ({ page }) => {
     await page.goto("/realizacje/");
 
-    await expect(page.locator(".realization")).toHaveCount(8);
+    await expect(page.locator(".realization")).toHaveCount(9);
+    await expect(page.locator("body")).toContainText("Serie drzwi i elementów do hoteli lub lokali");
+    await expect(page.locator("body")).toContainText("drzwi do hoteli i lokali");
     await expect(page.locator(".case-study-facts").first()).toContainText("Problem");
     await expect(page.locator(".case-study-facts").first()).toContainText("Zakres");
     await expect(page.locator(".case-study-facts").first()).toContainText("Efekt");
