@@ -297,9 +297,9 @@ CONTENT = {
             },
             "realizations": {
                 "title": "Realizacje i przykłady projektów stolarskich | Kajax",
-                "description": "Przykłady tematów dla Kajax: elementy drewniane dla firm, stolarka na wymiar w Pomorskiem i nietypowe detale pod projekt.",
-                "h1": "Przykłady tematów, które warto wysłać do oceny",
-                "lead": "To nie jest katalog gotowych produktów. To przykłady problemów, z którymi warto przyjść do stolarni: powtarzalne elementy dla firm, stolarka montowana w Pomorskiem, serie dla lokali i detale projektowe. Jeśli temat jest podobny, pokaż zdjęcie, rysunek albo wzór.",
+                "description": "Serie elementów dla firm, drzwi do lokali, schody, listwy i detale pod projekt. Zobacz, przy jakich zleceniach Kajax może pomóc.",
+                "h1": "Drewno w serii, na wymiar i pod konkretny projekt",
+                "lead": "Od powtarzalnych profili dla firmy po drzwi do lokalu, schody i detale do wnętrz. Poniżej pokazujemy zlecenia, w których liczy się dokładny wymiar, powtarzalność, wykończenie i sprawna logistyka.",
             },
             "quote": {
                 "title": "Wyślij zapytanie | Kajax Stolarstwo",

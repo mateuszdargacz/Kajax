@@ -9,7 +9,7 @@ const publicPages = [
   { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
   { path: "/dla-architektow-i-firm/", h1: "Drewniane detale pod projekt, którego nie da się kupić z półki" },
-  { path: "/realizacje/", h1: "Przykłady tematów, które warto wysłać do oceny" },
+  { path: "/realizacje/", h1: "Drewno w serii, na wymiar i pod konkretny projekt" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać konkretną odpowiedź?" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Krótka seria elementów drewnianych: kiedy ma sens?" },
   { path: "/kontakt/", h1: "Kontakt z Kajax Stolarstwo" },
@@ -198,6 +198,8 @@ test.describe("public marketing pages", () => {
     await page.goto("/realizacje/");
 
     await expect(page.locator(".realization")).toHaveCount(9);
+    await expect(page.locator("body")).toContainText("Od powtarzalnych profili dla firmy po drzwi do lokalu");
+    await expect(page.locator("body")).not.toContainText("To nie jest katalog gotowych produktów");
     await expect(page.locator("body")).toContainText("Serie drzwi i elementów do hoteli lub lokali");
     await expect(page.locator("body")).toContainText("drzwi do hoteli i lokali");
     await expect(
