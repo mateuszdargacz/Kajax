@@ -80,7 +80,8 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
     await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
-    await expect(page.locator("body")).toContainText("Czego nie obiecujemy bez danych");
+    await expect(page.locator("body")).toContainText("Do pierwszej odpowiedzi wystarczy kilka konkretów");
+    await expect(page.locator("body")).not.toContainText("Czego nie obiecujemy bez danych");
     await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
     await expect(page.locator(".hero-media source")).toHaveAttribute("srcset", /hero-workshop-production-\d+\.webp/);

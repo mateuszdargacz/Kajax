@@ -172,23 +172,9 @@ CONTENT = {
                 "hero_alt": "Warsztat Kajax z maszynami stolarskimi i drewnem przygotowanym do obróbki",
                 "eyebrow": "Stolarnia w Gościcinie",
                 "h1": "Elementy drewniane dla firm i stolarka na wymiar",
-                "lead": "Wyślij wzór, rysunek albo zdjęcie. Kajax oceni, czy temat pasuje do warsztatu: elementy B2B, krótkie serie, schody, drzwi, listwy i nietypowe detale z drewna. Nie wyceniamy z powietrza. Najpierw sprawdzamy materiał, wymiary, ilość, termin i logistykę.",
+                "lead": "Wyślij wzór, rysunek albo zdjęcie. Sprawdzimy, czy temat pasuje do warsztatu: elementy B2B, krótkie serie, schody, drzwi, listwy lub nietypowe detale z drewna. Do pierwszej odpowiedzi wystarczy kilka konkretów: wymiar, materiał, ilość, termin oraz informacja o odbiorze albo wysyłce.",
                 "primary_cta": "Wyślij projekt do wyceny",
                 "secondary_cta": "Zobacz, co warto wysłać",
-                "qualification_eyebrow": "Kwalifikacja tematu",
-                "qualification_title": "Nie każdy temat warto od razu wyceniać",
-                "qualification_sections": [
-                    {
-                        "title": "Co musi być jasne przed sensowną wyceną",
-                        "body": "Przy zleceniach z drewna cena zależy od konkretu, nie od samej nazwy elementu. Dlatego zanim podamy kierunek, sprawdzamy punkt odniesienia, skalę i ograniczenia techniczne.",
-                        "items": ["wzór, zdjęcie, rysunek albo specyfikacja", "wymiary, materiał i oczekiwane wykończenie", "liczba sztuk: próbka, krótka seria albo stałe zamówienia", "termin, montaż, odbiór, pakowanie albo wysyłka"],
-                    },
-                    {
-                        "title": "Czego nie obiecujemy bez danych",
-                        "body": "Nie składamy szybkich obietnic, jeśli brakuje wymiarów, materiału, ilości albo informacji o użyciu elementu. To filtruje przypadkowe zapytania i pomaga szybciej obsłużyć projekty, które naprawdę da się wykonać.",
-                        "items": ["ceny bez wymiarów i zakresu", "terminu bez skali i materiału", "powtarzalności serii bez próbki lub wzoru", "wysyłki gabarytu bez sprawdzenia pakowania"],
-                    },
-                ],
             },
             "production": {
                 "title": "Elementy drewniane dla firm i krótkie serie | Kajax",

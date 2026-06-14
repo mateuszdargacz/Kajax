@@ -132,6 +132,23 @@ The current Open Graph images are generated preview crops from the launch assets
 
 Use this section while reviewing generated files from `Downloads`. Keep the current file name, intended target filename, decision and change notes so the next generated version can improve instead of starting from scratch.
 
+### 2026-06-14 - `kajax-photo-assets-v2.zip`
+
+Decision: replaced all live mapped website images with the v2 package from `Downloads`. This includes all 19 root JPG assets, matching responsive WebP exports and the six `1200x630` Open Graph/social preview images. `docs/photo-assets-manifest.csv` now reflects the v2 manifest.
+
+What works:
+
+- Hero no longer contains readable fake wall/shirt branding.
+- B2B component imagery is more technical and better aligned with repeatable profiles, holes, grooves and semi-products.
+- The package ships ready responsive WebP variants, so templates can keep using the existing `srcset` map without code changes.
+- The social preview images are now based on the v2 visual direction.
+
+Change in the next version:
+
+- These are still AI/layout preview assets, not real Kajax photos.
+- Replace the most important images first with real workshop and project photography under the same filenames.
+- Keep the same responsive export names and `1200x630` OG crop names when final photos arrive.
+
 ### 2026-06-14 - Open Graph preview images
 
 Decision: generated and deployed six `1200x630` JPG social preview images in `app/static/site/img` and wired them to page metadata.
