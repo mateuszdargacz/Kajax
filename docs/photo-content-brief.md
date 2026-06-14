@@ -115,9 +115,38 @@ The current preview package is tracked in `docs/photo-assets-manifest.csv`. Thes
 | `sanding_process` | `wood-sanding-finishing-process.jpg` | Workshop process | `4:3` | `2400x1800` |
 | `clamped_elements` | `wood-elements-clamped-for-assembly.jpg` | Production/process | `4:3` | `2400x1800` |
 
+## Social Preview Image Map
+
+The current Open Graph images are generated preview crops from the launch assets. They are live and tracked so every important page has a non-generic `og:image` and `twitter:image`, but they should be replaced with real-photo crops once final workshop/project photography is available.
+
+| Target filename | Main use | Required crop | Replacement direction |
+| --- | --- | --- | --- |
+| `og-home-workshop.jpg` | Home and contact | `1200x630` | Real workshop hero with machines, wood stock and production capability. |
+| `og-b2b-components.jpg` | B2B production, short series, advertising/event guide | `1200x630` | Repeatable wooden elements, profiles, semi-products or POS/display parts. |
+| `og-construction-joinery.jpg` | Construction joinery, stairs guide and local landing pages | `1200x630` | Strong stairs/doors/trims photo with visible fitting quality. |
+| `og-architectural-detail.jpg` | Architects and project details | `1200x630` | Unusual but realistic architectural wood detail with premium finish. |
+| `og-quote-drawing.jpg` | Quote form and inquiry guide | `1200x630` | Drawing/specification plus wood sample or component on a workbench. |
+| `og-realizations-cases.jpg` | Realizations/case studies | `1200x630` | Best real case-study image or clean collage without text. |
+
 ## Live Generated Image Reviews
 
 Use this section while reviewing generated files from `Downloads`. Keep the current file name, intended target filename, decision and change notes so the next generated version can improve instead of starting from scratch.
+
+### 2026-06-14 - Open Graph preview images
+
+Decision: generated and deployed six `1200x630` JPG social preview images in `app/static/site/img` and wired them to page metadata.
+
+What works:
+
+- Every important marketing page now has a non-generic social preview image.
+- The images are lightweight enough for current launch use.
+- The filenames are stable and can be replaced directly when real crops are ready.
+
+Change in the next version:
+
+- Replace each OG preview with a real workshop, production, construction joinery or case-study crop.
+- Avoid text baked into the image; social platforms already render title and description.
+- Keep the exact filenames and `1200x630` crop.
 
 ### 2026-06-13 - `kajax-photo-assets-preview.zip`
 
