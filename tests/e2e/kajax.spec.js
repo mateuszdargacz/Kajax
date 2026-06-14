@@ -200,6 +200,12 @@ test.describe("public marketing pages", () => {
     await expect(page.locator(".realization")).toHaveCount(9);
     await expect(page.locator("body")).toContainText("Serie drzwi i elementów do hoteli lub lokali");
     await expect(page.locator("body")).toContainText("drzwi do hoteli i lokali");
+    await expect(
+      page.locator(".realization", { hasText: "Serie drzwi i elementów do hoteli lub lokali" }).locator("source").first()
+    ).toHaveAttribute("srcset", /hotel-door-series-workshop-\d+\.webp/);
+    await expect(
+      page.locator(".realization", { hasText: "Listwy, profile i małe elementy montowane" }).locator("source").first()
+    ).toHaveAttribute("srcset", /contractor-trim-profile-batch-\d+\.webp/);
     await expect(page.locator(".case-study-facts").first()).toContainText("Problem");
     await expect(page.locator(".case-study-facts").first()).toContainText("Zakres");
     await expect(page.locator(".case-study-facts").first()).toContainText("Efekt");

@@ -132,6 +132,34 @@ The current Open Graph images are generated preview crops from the launch assets
 
 Use this section while reviewing generated files from `Downloads`. Keep the current file name, intended target filename, decision and change notes so the next generated version can improve instead of starting from scratch.
 
+### 2026-06-14 - hotel doors and contractor profiles from `Downloads`
+
+Decision: imported five new 4:3 images from `Downloads`, exported JPG plus responsive WebP `640` and `960` variants, and mapped the strongest ones into the public case studies.
+
+Imported files:
+
+| Source in Downloads | Target filename | Decision |
+| --- | --- | --- |
+| `ChatGPT Image Jun 14, 2026, 12_06_09 PM.png` | `hotel-door-installed-corridor.jpg` | Saved for hotel/local fit-out landing pages and possible future OG crop. It clearly shows many matching wooden doors already installed. |
+| `ChatGPT Image Jun 14, 2026, 12_06_17 PM.png` | `hotel-door-series-workshop.jpg` | Used on `/realizacje/` for `Serie drzwi i elementów do hoteli lub lokali`. Strongest B2B proof: batch, workshop, repeatability, contractor context. |
+| `ChatGPT Image Jun 14, 2026, 12_06_23 PM.png` | `hotel-door-series-packed.jpg` | Used on `/realizacje/` for the packing/logistics case. Good signal for prepared pickup/delivery and batch handling. |
+| `ChatGPT Image Jun 14, 2026, 12_06_28 PM.png` | `contractor-trim-profile-batch.jpg` | Used on `/realizacje/` for listwy/profile. Clear quantity, repeated profile shape and workshop context. |
+| `ChatGPT Image Jun 14, 2026, 12_06_32 PM.png` | `contractor-trim-profile-detail.jpg` | Saved for future profile/detail sections and ads. Strong cross-section close-up, but too narrow to be the main case image. |
+
+What works:
+
+- The hotel door series finally looks like a real repeatable B2B/investment offer, not a single private-customer door job.
+- The packed doors image communicates logistics and contractor readiness better than generic component packaging.
+- The profile batch image is a better business proof for repeatable trims than the previous decorative trim preview.
+- No readable fake logos, no fake private client data and no public-facing placeholder text.
+
+Change in the next version:
+
+- If real Kajax photos become available, replace these generated previews under the same filenames.
+- Add one square or detail crop for `hotel-door-series-detail.jpg`; the current set has no close door-edge/frame detail dedicated to the hotel series.
+- Add a real workshop photo with labels/room numbers only if the tags are generic and do not expose private client data.
+- For ads, prepare a `1200x630` crop from either `hotel-door-series-workshop.jpg` or `hotel-door-installed-corridor.jpg`.
+
 ### 2026-06-14 - `kajax-photo-assets-v2.zip`
 
 Decision: replaced all live mapped website images with the v2 package from `Downloads`. This includes all 19 root JPG assets, matching responsive WebP exports and the six `1200x630` Open Graph/social preview images. `docs/photo-assets-manifest.csv` now reflects the v2 manifest.
@@ -1011,15 +1039,15 @@ Target use:
 - future B2B landing pages for hotel doors, doors for guesthouses, office/local fit-out and repeatable interior joinery
 - social previews and ads aimed at contractors, developers, hotel owners and fit-out companies
 
-Files to create:
+Current status:
 
-| Planned filename | Size | Crop | What it should show |
-| --- | --- | --- | --- |
-| `hotel-door-series-workshop.jpg` | `2400x1800` | 4:3 | Several matching wooden doors or door leaves arranged in a workshop before delivery; repeated standard, clean rows, visible wood grain, no fake labels. |
-| `hotel-door-series-detail.jpg` | `2400x2400` | 1:1 | Close detail of edge, frame/opaska, hinge side or threshold; should communicate repeatability and finish quality. |
-| `hotel-door-series-packed.jpg` | `2400x1800` | 4:3 | Door leaves, opaski or trims protected with spacers/cardboard/foam, ready for pickup or delivery; show logistics without clutter. |
-| `hotel-door-installed-corridor.jpg` | `2400x1800` | 4:3 | Corridor or local interior with several matching wooden doors installed; calm practical investment look, not a luxury render. |
-| `hotel-door-numbered-batch.jpg` | `2400x1800` | 4:3 | Batch of similar door parts subtly organized by room/opening; use plain removable tags with no readable private data. |
+| Planned filename | Status | Current note |
+| --- | --- | --- |
+| `hotel-door-series-workshop.jpg` | Received and live | Several matching wooden doors in workshop; strongest current B2B proof for repeatable hotel/local batches. |
+| `hotel-door-series-detail.jpg` | Still needed | Close detail of edge, frame/opaska, hinge side or threshold; should communicate repeatability and finish quality. |
+| `hotel-door-series-packed.jpg` | Received and live | Door batches protected for pickup or delivery; good logistics proof. |
+| `hotel-door-installed-corridor.jpg` | Received, saved for future use | Corridor with several matching wooden doors installed; good for future landing page or social crop. |
+| `hotel-door-numbered-batch.jpg` | Still needed | Batch of similar door parts subtly organized by room/opening; use plain removable tags with no readable private data. |
 
 Preferred framing:
 
@@ -1043,13 +1071,13 @@ warped doors, impossible hinges, unreadable fake labels, hotel logo, showroom CG
 
 ### Repeatable Trim / Profile Batch For Contractors
 
-Files to create:
+Current status:
 
-| Planned filename | Size | Crop | What it should show |
-| --- | --- | --- | --- |
-| `contractor-trim-profile-batch.jpg` | `2400x1800` | 4:3 | Long repeated wooden trims/profiles prepared for one investment or contractor order; clear profile shape and quantity. |
-| `contractor-trim-profile-detail.jpg` | `2400x2400` | 1:1 | Close-up of the profile cross-section, clean sanding, edge, grain and consistent finish. |
-| `contractor-trim-profiles-packed.jpg` | `2400x1800` | 4:3 | Bundles of trims prepared for pickup/shipping, protected and grouped by length or room. |
+| Planned filename | Status | Current note |
+| --- | --- | --- |
+| `contractor-trim-profile-batch.jpg` | Received and live | Long repeated wooden profiles prepared for a contractor order; clear profile shape and quantity. |
+| `contractor-trim-profile-detail.jpg` | Received, saved for future use | Close-up of profile cross-sections; useful for detail cards and ads. |
+| `contractor-trim-profiles-packed.jpg` | Still needed | Bundles of trims prepared for pickup/shipping, protected and grouped by length or room. |
 
 Use these for:
 
@@ -1059,13 +1087,12 @@ Use these for:
 
 ### B2B Proof Shots To Prioritize
 
-When you send the next photo pack, prioritize these real or generated images in this order:
+For the next photo pack, prioritize only the gaps that still improve the B2B story:
 
-1. `hotel-door-series-workshop.jpg` - strongest new B2B proof for hotel/local door batches.
-2. `hotel-door-installed-corridor.jpg` - makes the hotel/local use case obvious for customers.
-3. `hotel-door-series-packed.jpg` - proves logistics and contractor readiness.
-4. `contractor-trim-profile-batch.jpg` - supports repeatable contractor orders.
-5. `contractor-trim-profile-detail.jpg` - supports quality/detail closeups for cards and ads.
+1. `hotel-door-series-detail.jpg` - close edge/frame/hinge detail for quality proof.
+2. `hotel-door-numbered-batch.jpg` - room/opening organization for contractor confidence.
+3. `contractor-trim-profiles-packed.jpg` - packed profile bundles for pickup/shipping.
+4. Real Kajax workshop equivalents for the currently generated previews, under the same filenames.
 
 ## Nice-To-Have Photo Set
 
