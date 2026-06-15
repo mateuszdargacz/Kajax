@@ -116,11 +116,12 @@ def robots_txt(request):
             "",
         ]
     )
-    return HttpResponse(body, content_type="text/plain")
+    response = HttpResponse(body, content_type="text/plain; charset=utf-8")
+    response["Cache-Control"] = "public, max-age=300"
+    return response
 
 
 def sitemap_xml(request):
-    language = get_language() or settings.LANGUAGE_CODE
     items = []
     for code, _label in settings.LANGUAGES:
         for page in iter_sitemap_pages(code):
@@ -144,14 +145,16 @@ def sitemap_xml(request):
                 )
             )
 
+    sitemap_items = "\n".join(items)
     body = (
-        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
-        'xmlns:xhtml="http://www.w3.org/1999/xhtml">'
-        f'{"".join(items)}</urlset>'
+        'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        f"{sitemap_items}\n"
+        "</urlset>\n"
     )
-    response = HttpResponse(body, content_type="application/xml")
-    response["Content-Language"] = language
+    response = HttpResponse(body, content_type="application/xml; charset=utf-8")
+    response["Cache-Control"] = "public, max-age=300"
     return response
 
 

@@ -33,8 +33,12 @@ class PublicPagesTests(TestCase):
         sitemap = self.client.get(reverse("sitemap_xml"))
 
         self.assertEqual(robots.status_code, 200)
+        self.assertEqual(robots["Content-Type"], "text/plain; charset=utf-8")
+        self.assertEqual(robots["Cache-Control"], "public, max-age=300")
         self.assertContains(robots, "Sitemap:")
         self.assertEqual(sitemap.status_code, 200)
+        self.assertEqual(sitemap["Content-Type"], "application/xml; charset=utf-8")
+        self.assertEqual(sitemap["Cache-Control"], "public, max-age=300")
         self.assertContains(sitemap, "<urlset")
         self.assertContains(sitemap, 'xmlns:xhtml="http://www.w3.org/1999/xhtml"')
         self.assertContains(sitemap, 'hreflang="de"')
