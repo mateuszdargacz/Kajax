@@ -48,7 +48,7 @@ SITEMAP_PRIORITIES = {
     "stairs_pricing": "0.8",
 }
 
-SITEMAP_LASTMOD = "2026-06-14"
+SITEMAP_LASTMOD = "2026-06-15"
 
 SERVICE_AREAS = {
     "production": ["Polska", "Europa", "Europa B2B"],

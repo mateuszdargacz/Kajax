@@ -45,7 +45,7 @@ class PublicPagesTests(TestCase):
         self.assertContains(sitemap, "https://kajax.eu/schody-drewniane-co-wplywa-na-cene-i-termin/")
         self.assertContains(sitemap, "https://kajax.eu/stolarka-budowlana-wejherowo/")
         self.assertContains(sitemap, "https://kajax.eu/stolarka-budowlana-trojmiasto/")
-        self.assertContains(sitemap, "<lastmod>2026-06-14</lastmod>")
+        self.assertContains(sitemap, "<lastmod>2026-06-15</lastmod>")
 
     def test_localized_page_keeps_language_in_links_and_meta(self):
         response = self.client.get("/de/")
