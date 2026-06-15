@@ -288,6 +288,49 @@ test.describe("public marketing pages", () => {
 });
 
 test.describe("localized pages", () => {
+  test("international home pages expose B2B export positioning", async ({ page }) => {
+    const localizedHomes = [
+      {
+        path: "/en/",
+        h1: "Wood components, samples and short production runs from Poland",
+        message: "Outsource a wooden component without building a joinery line",
+        cta: "Send a component to review",
+      },
+      {
+        path: "/de/",
+        h1: "Holzelemente, Muster und Kleinserien aus Polen",
+        message: "Holzelement auslagern, ohne eigene Tischlereilinie aufzubauen",
+        cta: "Element prüfen lassen",
+      },
+      {
+        path: "/sv/",
+        h1: "Träkomponenter, prover och korta serier från Polen",
+        message: "Lägg ut träkomponenten utan egen snickerikapacitet",
+        cta: "Skicka komponent för granskning",
+      },
+      {
+        path: "/da/",
+        h1: "Trækomponenter, prøver og korte serier fra Polen",
+        message: "Outsource trækomponenten uden egen snedkerkapacitet",
+        cta: "Send komponent til vurdering",
+      },
+      {
+        path: "/no/",
+        h1: "Trekomponenter, prøver og korte serier fra Polen",
+        message: "Sett bort trekomponenten uten egen snekkerkapasitet",
+        cta: "Send komponent for vurdering",
+      },
+    ];
+
+    for (const localizedHome of localizedHomes) {
+      await page.goto(localizedHome.path);
+      await expect(page.locator("h1")).toContainText(localizedHome.h1);
+      await expect(page.locator("body")).toContainText(localizedHome.message);
+      await expect(page.getByRole("link", { name: localizedHome.cta })).toBeVisible();
+      await expectNoHorizontalOverflow(page);
+    }
+  });
+
   test("German and Norwegian pages render translated content", async ({ page }) => {
     await page.goto("/de/");
     await expect(page.locator("html")).toHaveAttribute("lang", "de");

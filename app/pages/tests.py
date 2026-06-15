@@ -71,6 +71,23 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, 'href="https://kajax.eu/no/"')
         self.assertContains(response, 'href="/no/wycena/"')
 
+    def test_international_home_pages_keep_b2b_positioning(self):
+        expectations = [
+            ("/en/", "Wood components, samples and short production runs from Poland", "Outsource a wooden component without building a joinery line", "Poland"),
+            ("/de/", "Holzelemente, Muster und Kleinserien aus Polen", "Holzelement auslagern, ohne eigene Tischlereilinie aufzubauen", "Polen"),
+            ("/sv/", "Träkomponenter, prover och korta serier från Polen", "Lägg ut träkomponenten utan egen snickerikapacitet", "Polen"),
+            ("/da/", "Trækomponenter, prøver og korte serier fra Polen", "Outsource trækomponenten uden egen snedkerkapacitet", "Polen"),
+            ("/no/", "Trekomponenter, prøver og korte serier fra Polen", "Sett bort trekomponenten uten egen snekkerkapasitet", "Polen"),
+        ]
+
+        for path, h1, b2b_message, country in expectations:
+            with self.subTest(path=path):
+                response = self.client.get(path)
+                self.assertEqual(response.status_code, 200)
+                self.assertContains(response, h1)
+                self.assertContains(response, b2b_message)
+                self.assertContains(response, country)
+
     def test_structured_data_uses_graph_and_page_service_entities(self):
         response = self.client.get(reverse("production"))
 
