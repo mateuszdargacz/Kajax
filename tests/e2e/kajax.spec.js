@@ -8,7 +8,7 @@ const publicPages = [
   { path: "/stolarka-budowlana-wejherowo/", h1: "Stolarka budowlana Wejherowo" },
   { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
-  { path: "/dla-architektow-i-firm/", h1: "Drewniane detale pod projekt, którego nie da się kupić z półki" },
+  { path: "/dla-architektow-i-firm/", h1: "Drewniane detale i zabudowy pod konkretny projekt" },
   { path: "/realizacje/", h1: "Drewno w serii, na wymiar i pod projekt" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać rzeczową odpowiedź?" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Krótka seria elementów drewnianych: kiedy ma sens?" },
@@ -80,7 +80,7 @@ test.describe("public marketing pages", () => {
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
     await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
-    await expect(page.locator("body")).toContainText("czy zacząć od próbki, partii testowej, pomiaru czy od razu od wyceny");
+    await expect(page.locator("body")).toContainText("proponujemy pierwszy krok: próbkę, partię testową, pomiar albo wycenę");
     await expect(page.locator("body")).not.toContainText("Czego nie obiecujemy bez danych");
     await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
@@ -291,8 +291,8 @@ test.describe("localized pages", () => {
   test("German and Norwegian pages render translated content", async ({ page }) => {
     await page.goto("/de/");
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
-    await expect(page.locator("h1")).toContainText("Tischlerei für Unternehmen");
-    await expect(page.locator('a[href="/de/produkcja-elementow-drewnianych/"]').first()).toHaveText("Elementfertigung");
+    await expect(page.locator("h1")).toContainText("Holzelemente, Muster und Kleinserien");
+    await expect(page.locator('a[href="/de/produkcja-elementow-drewnianych/"]').first()).toHaveText("B2B-Elemente");
     await expect(page.locator('a[href="/de/produkcja-elementow-drewnianych/"]').first()).toHaveAttribute(
       "href",
       "/de/produkcja-elementow-drewnianych/",
@@ -301,7 +301,7 @@ test.describe("localized pages", () => {
 
     await page.goto("/no/");
     await expect(page.locator("html")).toHaveAttribute("lang", "no");
-    await expect(page.locator("h1")).toContainText("Snekkerverksted for bedrifter");
+    await expect(page.locator("h1")).toContainText("Trekomponenter, prøver og korte serier");
     await expect(page.locator('a[href="/no/wycena/"]').first()).toHaveText("Forespørsel");
     await expect(page.locator(".mobile-action-bar [data-track-cta='mobile_quote']")).toHaveAttribute("href", "/no/wycena/");
     await expectNoHorizontalOverflow(page);

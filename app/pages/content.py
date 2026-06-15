@@ -111,7 +111,7 @@ PHOTO_PLACEHOLDERS = {
         "key": "artistic_detail",
         "filename": "architectural-woodwork-detail.jpg",
         "label": "Architectural woodwork detail",
-        "description": "Unusual detail, premium element or architectural woodwork.",
+        "description": "Project-based wooden detail or architectural woodwork.",
     },
     "materials": {
         "key": "materials",
@@ -202,7 +202,7 @@ CONTENT = {
                 "hero_alt": "Warsztat Kajax z maszynami stolarskimi i drewnem przygotowanym do obróbki",
                 "eyebrow": "Stolarnia w Gościcinie",
                 "h1": "Elementy drewniane dla firm i stolarka na wymiar",
-                "lead": "Wykonujemy elementy drewniane pod produkcję, wnętrza i montaż: krótkie serie dla firm, półprodukty, profile, listwy, drzwi, schody i zabudowy. Najlepszy start to zdjęcie, rysunek, wzór albo wymiary. Na tej podstawie oceniamy, czy zacząć od próbki, partii testowej, pomiaru czy od razu od wyceny.",
+                "lead": "Wykonujemy drewniane elementy do produkcji, wnętrz i montażu: krótkie serie dla firm, półprodukty, profile, listwy, drzwi, schody i zabudowy. Na start wystarczy zdjęcie, rysunek, wzór albo podstawowe wymiary. Po sprawdzeniu materiału, skali i zastosowania proponujemy pierwszy krok: próbkę, partię testową, pomiar albo wycenę.",
                 "primary_cta": "Wyślij projekt do wyceny",
                 "secondary_cta": "Zobacz, co warto wysłać",
             },
@@ -218,7 +218,7 @@ CONTENT = {
                 "sections": [
                     {
                         "title": "Co opłaca się zlecić na zewnątrz",
-                        "body": "Najlepiej pasują elementy, które będą zamawiane ponownie albo zabierają firmie czas, miejsce i ludzi potrzebnych gdzie indziej. Wtedy stolarnia może przejąć wydzielony fragment pracy: powtarzalny detal, partię testową, listwy, profile, elementy POS albo części do dalszego montażu.",
+                        "body": "Najlepiej pasują elementy, które wracają w kolejnych zamówieniach albo zajmują firmie ludzi, miejsce i narzędzia potrzebne przy głównej produkcji. Wtedy stolarnia może przejąć wydzielony fragment pracy: powtarzalny detal, partię testową, listwy, profile, elementy POS albo części do dalszego montażu.",
                         "items": ["profile, listwy, ramy i półprodukty", "elementy POS, displaye i ekspozytory", "drewniane części do produktów, mebli i lokali", "próbki, partie testowe i krótkie serie"],
                     },
                     {
@@ -275,8 +275,8 @@ CONTENT = {
                 "hero_photo": "artistic_detail",
                 "hero_alt": "Precyzyjny detal stolarski wykonany z drewna",
                 "eyebrow": "Nietypowe detale i projekty specjalne",
-                "h1": "Drewniane detale pod projekt, którego nie da się kupić z półki",
-                "lead": "Dla architektów, projektantów, wykonawców i firm, które potrzebują drewnianego elementu dopasowanego do konkretnego miejsca, lokalu, ekspozycji albo produktu. Możemy zacząć od rysunku, wizualizacji, zdjęcia inspiracyjnego, próbki materiału albo starego elementu do odtworzenia.",
+                "h1": "Drewniane detale i zabudowy pod konkretny projekt",
+                "lead": "Dla architektów, projektantów, wykonawców i firm, które potrzebują drewnianego elementu dopasowanego do miejsca, lokalu, ekspozycji albo produktu. Możemy zacząć od rysunku, wizualizacji, zdjęcia inspiracyjnego, próbki materiału albo starego elementu do odtworzenia.",
                 "primary_cta": "Wyślij detal do konsultacji",
                 "sections": [
                     {
@@ -299,13 +299,13 @@ CONTENT = {
                 "title": "Realizacje i przykłady projektów stolarskich | Kajax",
                 "description": "Serie elementów dla firm, drzwi do lokali, schody, listwy i detale pod projekt. Zobacz, przy jakich zleceniach Kajax może pomóc.",
                 "h1": "Drewno w serii, na wymiar i pod projekt",
-                "lead": "Od powtarzalnych profili dla firmy po drzwi do lokalu, schody i detale do wnętrz. Poniżej pokazujemy zlecenia, w których liczy się dokładny wymiar, powtarzalność, wykończenie i sprawna logistyka.",
+                "lead": "Od powtarzalnych profili dla firmy po drzwi do lokalu, schody i detale do wnętrz. Poniżej pokazujemy typy zleceń, w których liczy się wymiar, powtarzalność, wykończenie i sprawna logistyka.",
             },
             "quote": {
                 "title": "Wyślij zapytanie | Kajax Stolarstwo",
                 "description": "Wyślij zdjęcie, rysunek albo opis. Kajax odpowie, czy może wykonać element z drewna, krótką serię lub stolarkę na wymiar.",
-                "h1": "Opisz, co mamy wykonać",
-                "lead": "Nie potrzebujesz gotowego projektu technicznego. Wystarczy zdjęcie, rysunek, wzór albo kilka zdań o elemencie. Zostaw telefon lub email, a jeśli temat pasuje do warsztatu, dopytamy o wymiary, materiał, ilość, termin i odbiór.",
+                "h1": "Pokaż, co mamy wykonać",
+                "lead": "Nie potrzebujesz gotowego projektu technicznego. Wystarczy zdjęcie, rysunek, wzór albo kilka zdań o elemencie. Zostaw telefon albo email. Jeśli temat pasuje do warsztatu, dopytamy o wymiary, materiał, ilość, termin, pakowanie, odbiór lub wysyłkę.",
             },
             "contact": {
                 "title": "Kontakt | Kajax Stolarstwo Gościcino",
@@ -316,7 +316,7 @@ CONTENT = {
         },
         "process_steps": [
             ("Pokazujesz element albo miejsce", "Wystarczy zdjęcie, rysunek, wzór, szkic lub opis tego, do czego element będzie używany."),
-            ("Dopytujemy o konkrety", "Materiał, wymiar, ilość, termin, montaż, odbiór, pakowanie albo wysyłka."),
+            ("Ustalamy dane do wyceny", "Materiał, wymiar, ilość, termin, montaż, odbiór, pakowanie albo wysyłka."),
             ("Wybieramy pierwszy krok", "Próbka, mała partia, pomiar na miejscu, rozmowa techniczna albo wycena."),
             ("Wracamy z jasną odpowiedzią", "Piszemy, czy temat pasuje do warsztatu, czego brakuje i co warto zrobić dalej."),
         ],
@@ -344,16 +344,16 @@ CONTENT["en"] = {
     },
     "pages": {
         "home": {
-            "title": "Kajax Joinery | Wooden components for companies and made-to-measure joinery",
-            "description": "A Gościcino workshop for companies, architects and investors. Short runs of wooden components, stairs, doors, trims and demanding made-to-measure projects.",
+            "title": "Kajax Joinery | Wooden components and short runs for companies",
+            "description": "B2B wooden components from Poland: samples, short runs, semi-finished parts, POS/display elements, profiles and fit-out batches made from drawings, samples or specifications.",
             "hero_photo": "hero_workshop",
             "b2b_photo": "b2b_components_series",
             "hero_alt": "Joinery workshop prepared for wooden component production and made-to-measure projects",
-            "eyebrow": "Production and construction joinery from Pomerania",
-            "h1": "A joinery workshop for companies, architects and demanding wood projects",
-            "lead": "We make wooden components for companies, short runs, construction joinery and unusual details. We work from photos, drawings and specifications, then clarify scope, material, timing and logistics before pricing.",
-            "primary_cta": "Send project for a quote",
-            "secondary_cta": "See what we do",
+            "eyebrow": "B2B wood component production from Poland",
+            "h1": "Wooden components, samples and short runs for companies",
+            "lead": "We make repeatable wooden parts for manufacturers, contractors, advertising and fit-out companies from drawings, samples, photos and specifications.",
+            "primary_cta": "Send a component for assessment",
+            "secondary_cta": "See what to prepare",
         },
         "production": {
             "title": "Wooden components and short runs for companies | Kajax",
@@ -402,7 +402,7 @@ CONTENT["en"] = {
             "lead": "We help turn a concept into a feasible wooden detail for interiors, displays, venues and special projects. We work from drawings, references, photos and technical agreements with an architect or contractor.",
             "primary_cta": "Discuss a project",
             "sections": [
-                {"title": "When it is worth writing", "body": "When a project needs a conversation about detail, material, installation method or production technology, and a ready-made solution does not deliver the intended effect.", "items": ["premium interior details", "display and commercial elements", "project-based built-ins", "recreated or unusual profiles"]},
+                {"title": "When it is worth writing", "body": "When a project needs a conversation about detail, material, installation method or production technology, and a ready-made solution does not deliver the intended effect.", "items": ["visible interior details", "display and commercial elements", "project-based built-ins", "recreated or unusual profiles"]},
                 {"title": "How we cooperate", "body": "First we clarify the design intent and technical constraints. Then we specify material, dimensions, finish, installation and timing.", "items": ["drawing or photo review", "technical refinement", "sample if it makes sense", "production and handover"]},
             ],
             "faq": [
@@ -438,12 +438,12 @@ CONTENT["en"] = {
     "audience_cards": [
         {"title": "Wooden components for companies", "body": "Short runs, semi-finished parts, sample-based components and B2B projects where repeatability and a safe sample start matter.", "url": PATHS["production"], "cta": "See B2B production"},
         {"title": "Construction joinery", "body": "Stairs, doors, trims, built-ins and wooden finishing elements for local projects in Pomerania.", "url": PATHS["construction"], "cta": "See construction joinery"},
-        {"title": "Unusual and demanding projects", "body": "Unusual details, project-based work and cooperation with architects, designers and contractors.", "url": PATHS["architects"], "cta": "See project cooperation"},
+        {"title": "Project-based wooden details", "body": "Wooden details for products, interiors, displays and contractor-led projects.", "url": PATHS["architects"], "cta": "See project cooperation"},
     ],
     "realization_cases": [
         {"title": "Repeatable profiles and wooden components for companies", "category": "B2B production", "photo": "b2b_components_detail", "alt": "Repeatable wooden profiles and components prepared for a company", "meta": ["profiles and semi-finished parts", "sample or short batch", "pickup or shipping"], "body": "A strong fit when a company needs a wooden component for a product, display or further assembly. We can start with a sample, then move toward repeatable batches."},
-        {"title": "Wooden stairs with refined details", "category": "Construction joinery", "photo": "stairs_project", "alt": "Wooden stairs with railing as an example of made-to-measure joinery", "meta": ["solid or laminated wood", "measurement and fitting", "private projects in Pomerania"], "body": "A good fit for projects where measurement, a stable structure, interior alignment and careful finishing of visible details all matter."},
-        {"title": "Wooden detail for an interior or display", "category": "Special projects", "photo": "precision_detail", "alt": "Precise wooden detail for a premium interior", "meta": ["visible detail", "individual project", "technical discussion"], "body": "A useful inquiry starts with a photo, drawing or reference. After reviewing material, scale and installation method, we can choose a sensible production approach."},
+        {"title": "Wooden stairs with refined details", "category": "Construction joinery", "photo": "stairs_project", "alt": "Wooden stairs with railing as an example of made-to-measure joinery", "meta": ["solid or laminated wood", "measurement and fitting", "projects in Pomerania"], "body": "A good fit for projects where measurement, a stable structure, interior alignment and careful finishing of visible details all matter."},
+        {"title": "Wooden detail for an interior or display", "category": "Special projects", "photo": "precision_detail", "alt": "Precise wooden detail for an interior or display", "meta": ["visible detail", "individual project", "technical discussion"], "body": "A useful inquiry starts with a photo, drawing or reference. After reviewing material, scale and installation method, we can choose a sensible production approach."},
     ],
 }
 
@@ -451,7 +451,7 @@ CONTENT["en"] = {
 _SERVICE_TRANSLATIONS = {
     "de": {
         "nav": {"production": "Elementfertigung", "construction": "Bauschreinerei", "architects": "Für Architekten und Firmen", "realizations": "Referenzen", "quote": "Anfrage", "contact": "Kontakt"},
-        "home": ("Kajax Tischlerei | Holzelemente für Unternehmen und Schreinerei nach Maß", "Tischlerei aus Gościcino für Unternehmen, Architekten und Investoren. Kleinserien von Holzelementen, Treppen, Türen, Leisten und anspruchsvolle Sonderanfertigungen.", "Tischlerei für Unternehmen, Architekten und anspruchsvolle Holzprojekte", "Wir fertigen Holzelemente für Firmen, Kleinserien, Bauschreinerei und ungewöhnliche Details. Wir arbeiten nach Fotos, Zeichnungen und Spezifikationen und klären vor der Anfrage Umfang, Material, Termin und Logistik.", "Projekt zur Anfrage senden", "Leistungsumfang ansehen"),
+        "home": ("Kajax Tischlerei | Holzelemente und Kleinserien für Unternehmen", "B2B-Holzelemente aus Polen: Muster, Kleinserien, Halbzeuge, POS-/Display-Elemente, Profile und Objektserien nach Zeichnung, Muster oder Spezifikation.", "Holzelemente, Muster und Kleinserien für Unternehmen", "Wir fertigen wiederholbare Holzteile für Hersteller, Ausbauer, Werbe- und Ladenbaufirmen nach Zeichnung, Muster oder Spezifikation.", "Element zur Prüfung senden", "Was vorbereiten?"),
         "production_h1": "Holzelemente und Kleinserien für Unternehmen",
         "production_lead": "Wir helfen Unternehmen, Holzdetails, Halbzeuge und Kleinserien zu bestellen, ohne eigene Tischlereikapazitäten aufzubauen. Der Start kann mit Foto, Zeichnung, Muster oder Spezifikation erfolgen; nach Abstimmung des Prozesses sind wiederkehrende Bestellungen möglich.",
         "construction_h1": "Holztreppen, Türen und Bauschreinerei nach Maß in Pommern",
@@ -479,7 +479,7 @@ _SERVICE_TRANSLATIONS = {
     },
     "da": {
         "nav": {"production": "Komponentproduktion", "construction": "Byggesnedkeri", "architects": "For arkitekter og virksomheder", "realizations": "Referencer", "quote": "Tilbud", "contact": "Kontakt"},
-        "home": ("Kajax Snedkeri | Trækomponenter til virksomheder og snedkeri på mål", "Snedkeri fra Gościcino for virksomheder, arkitekter og investorer. Korte serier af trækomponenter, trapper, døre, lister og krævende specialprojekter.", "Snedkeri for virksomheder, arkitekter og krævende træprojekter", "Vi fremstiller trækomponenter til virksomheder, korte serier, byggesnedkeri og usædvanlige detaljer. Vi arbejder ud fra fotos, tegninger og specifikationer og afklarer omfang, materiale, tidsplan og logistik før tilbud.", "Send projekt til tilbud", "Se hvad vi laver"),
+        "home": ("Kajax Snedkeri | Trækomponenter og korte serier til virksomheder", "B2B-trækomponenter fra Polen: prøver, korte serier, halvfabrikata, POS-/displayelementer, profiler og interiørserier efter tegning, prøve eller specifikation.", "Trækomponenter, prøver og korte serier til virksomheder", "Vi fremstiller gentagelige trædele til producenter, entreprenører, reklame- og interiørfirmaer efter tegning, prøve eller specifikation.", "Send komponent til vurdering", "Se hvad der skal forberedes"),
         "production_h1": "Trækomponenter og korte serier til virksomheder",
         "production_lead": "Vi hjælper virksomheder med at bestille trædetaljer, halvfabrikata og korte serier uden at opbygge egen snedkerkapacitet. Starten kan være foto, tegning, prøve eller specifikation, og efter procesafstemning kan arbejdet blive løbende.",
         "construction_h1": "Trapper, døre og byggesnedkeri i træ i Pommern",
@@ -493,7 +493,7 @@ _SERVICE_TRANSLATIONS = {
     },
     "no": {
         "nav": {"production": "Komponentproduksjon", "construction": "Byggsnekkerarbeid", "architects": "For arkitekter og bedrifter", "realizations": "Referanser", "quote": "Forespørsel", "contact": "Kontakt"},
-        "home": ("Kajax Snekkerverksted | Trekomponenter for bedrifter og snekkerarbeid på mål", "Snekkerverksted fra Gościcino for bedrifter, arkitekter og investorer. Korte serier av trekomponenter, trapper, dører, lister og krevende spesialprosjekter.", "Snekkerverksted for bedrifter, arkitekter og krevende treprosjekter", "Vi lager trekomponenter for bedrifter, korte serier, byggsnekkerarbeid og uvanlige detaljer. Vi arbeider ut fra bilder, tegninger og spesifikasjoner og avklarer omfang, materiale, tidsplan og logistikk før vurdering.", "Send prosjekt til vurdering", "Se hva vi gjør"),
+        "home": ("Kajax Snekkerverksted | Trekomponenter og korte serier for bedrifter", "B2B-trekomponenter fra Polen: prøver, korte serier, halvfabrikata, POS-/displayelementer, profiler og interiørserier etter tegning, prøve eller spesifikasjon.", "Trekomponenter, prøver og korte serier for bedrifter", "Vi lager repeterbare tredeler for produsenter, entreprenører, reklame- og interiørbedrifter etter tegning, prøve eller spesifikasjon.", "Send komponent for vurdering", "Se hva du bør sende"),
         "production_h1": "Trekomponenter og korte serier for bedrifter",
         "production_lead": "Vi hjelper bedrifter med å bestille tredetaljer, halvfabrikata og korte serier uten å bygge egen snekkerkapasitet. Starten kan være bilde, tegning, prøve eller spesifikasjon, og etter prosessavklaring kan arbeidet bli fast.",
         "construction_h1": "Trapper, dører og byggsnekkerarbeid i tre i Pommern",
@@ -579,7 +579,7 @@ _LOCALIZED_DETAILS = {
             ("Kan jag skicka foton istället för ritning?", "Ja. Foton räcker för första samtalet, men för offert behövs mått och tekniska detaljer."),
         ],
         "architects_sections": [
-            {"title": "När det är värt att skriva", "body": "När projektet kräver samtal om detalj, material, montage eller tillverkningsteknik och färdiga lösningar inte ger rätt effekt.", "items": ["detaljer till premiuminteriörer", "display- och kommersiella element", "specialanpassade inbyggnader", "återskapade eller ovanliga profiler"]},
+            {"title": "När det är värt att skriva", "body": "När projektet kräver samtal om detalj, material, montage eller tillverkningsteknik och färdiga lösningar inte ger rätt effekt.", "items": ["synliga interiördetaljer", "display- och kommersiella element", "specialanpassade inbyggnader", "återskapade eller ovanliga profiler"]},
             {"title": "Så samarbetar vi", "body": "Först klargör vi designintention och tekniska begränsningar. Därefter specificerar vi material, mått, ytbehandling, montage och tidplan.", "items": ["granskning av ritning eller foto", "teknisk precisering", "prov om det är relevant", "tillverkning och överlämning"]},
         ],
         "architects_faq": [
@@ -600,7 +600,7 @@ _LOCALIZED_DETAILS = {
         "realization_cases": [
             {"title": "Repeterbara profiler och träkomponenter för företag", "category": "B2B-produktion", "photo": "b2b_components_detail", "alt": "Repeterbara träprofiler och komponenter för ett företag", "meta": ["profiler och halvfabrikat", "prov eller kort serie", "upphämtning eller frakt"], "body": "Passar när ett företag behöver en träkomponent till produkt, display eller vidare montage. Vi kan börja med ett prov och sedan gå mot repeterbara serier."},
             {"title": "Trätrappa med genomarbetad detalj", "category": "Byggsnickeri", "photo": "stairs_project", "alt": "Trätrappa med räcke som exempel på specialsnickeri", "meta": ["massivt eller limmat trä", "mätning och anpassning", "projekt i Pommern"], "body": "Passar projekt där mätning, stabil konstruktion, anpassning till interiören och noggrann finish av synliga detaljer är viktigt."},
-            {"title": "Trädetalj för interiör eller display", "category": "Specialprojekt", "photo": "precision_detail", "alt": "Precis trädetalj för en premiuminteriör", "meta": ["synlig detalj", "individuellt projekt", "teknisk dialog"], "body": "En bra förfrågan börjar med foto, ritning eller referens. Efter granskning av material, skala och montage kan vi välja rätt tillverkningssätt."},
+            {"title": "Trädetalj för interiör eller display", "category": "Specialprojekt", "photo": "precision_detail", "alt": "Precis trädetalj för interiör eller display", "meta": ["synlig detalj", "individuellt projekt", "teknisk dialog"], "body": "En bra förfrågan börjar med foto, ritning eller referens. Efter granskning av material, skala och montage kan vi välja rätt tillverkningssätt."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snickeriverkstad för träkomponenter, byggsnickeri och specialprojekt", "eyebrow": "Produktions- och byggsnickeri från Pommern"},
@@ -631,7 +631,7 @@ _LOCALIZED_DETAILS = {
             ("Kan jeg sende fotos i stedet for tegning?", "Ja. Fotos er nok til den første samtale, men et tilbud kræver mål og tekniske detaljer."),
         ],
         "architects_sections": [
-            {"title": "Hvornår det er værd at skrive", "body": "Når projektet kræver dialog om detalje, materiale, montage eller produktionsteknik, og færdige løsninger ikke giver den ønskede effekt.", "items": ["detaljer til premiuminteriør", "display- og erhvervselementer", "specialtilpassede indbygninger", "genskabte eller usædvanlige profiler"]},
+            {"title": "Hvornår det er værd at skrive", "body": "Når projektet kræver dialog om detalje, materiale, montage eller produktionsteknik, og færdige løsninger ikke giver den ønskede effekt.", "items": ["synlige interiørdetaljer", "display- og erhvervselementer", "specialtilpassede indbygninger", "genskabte eller usædvanlige profiler"]},
             {"title": "Sådan samarbejder vi", "body": "Først afklarer vi designintention og tekniske begrænsninger. Derefter præciserer vi materiale, mål, finish, montage og tidsplan.", "items": ["gennemgang af tegning eller foto", "teknisk præcisering", "prøve hvis det giver mening", "produktion og aflevering"]},
         ],
         "architects_faq": [
@@ -652,7 +652,7 @@ _LOCALIZED_DETAILS = {
         "realization_cases": [
             {"title": "Gentagelige profiler og trækomponenter til virksomheder", "category": "B2B-produktion", "photo": "b2b_components_detail", "alt": "Gentagelige træprofiler og komponenter til en virksomhed", "meta": ["profiler og halvfabrikata", "prøve eller kort serie", "afhentning eller forsendelse"], "body": "Passer når en virksomhed har brug for en trækomponent til produkt, display eller videre montage. Vi kan starte med en prøve og derefter gå mod gentagelige serier."},
             {"title": "Trætrappe med gennemarbejdet detalje", "category": "Byggesnedkeri", "photo": "stairs_project", "alt": "Trætrappe med rækværk som eksempel på specialsnedkeri", "meta": ["massivt eller limtræ", "opmåling og tilpasning", "projekter i Pommern"], "body": "Passer til projekter, hvor opmåling, stabil konstruktion, tilpasning til interiøret og omhyggelig finish af synlige detaljer er vigtig."},
-            {"title": "Trædetalje til interiør eller display", "category": "Specialprojekter", "photo": "precision_detail", "alt": "Præcis trædetalje til et premiuminteriør", "meta": ["synlig detalje", "individuelt projekt", "teknisk dialog"], "body": "En god forespørgsel starter med foto, tegning eller reference. Efter vurdering af materiale, skala og montage kan vi vælge en fornuftig produktionsmetode."},
+            {"title": "Trædetalje til interiør eller display", "category": "Specialprojekter", "photo": "precision_detail", "alt": "Præcis trædetalje til interiør eller display", "meta": ["synlig detalje", "individuelt projekt", "teknisk dialog"], "body": "En god forespørgsel starter med foto, tegning eller reference. Efter vurdering af materiale, skala og montage kan vi vælge en fornuftig produktionsmetode."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snedkerværksted til trækomponenter, byggesnedkeri og specialprojekter", "eyebrow": "Produktions- og byggesnedkeri fra Pommern"},
@@ -683,7 +683,7 @@ _LOCALIZED_DETAILS = {
             ("Kan jeg sende bilder i stedet for tegning?", "Ja. Bilder holder for første samtale, men et tilbud krever mål og tekniske detaljer."),
         ],
         "architects_sections": [
-            {"title": "Når det er verdt å skrive", "body": "Når prosjektet krever dialog om detalj, materiale, montering eller produksjonsteknikk, og ferdige løsninger ikke gir ønsket effekt.", "items": ["detaljer til premiuminteriør", "display- og næringselementer", "spesialtilpassede innbygginger", "gjenskapte eller uvanlige profiler"]},
+            {"title": "Når det er verdt å skrive", "body": "Når prosjektet krever dialog om detalj, materiale, montering eller produksjonsteknikk, og ferdige løsninger ikke gir ønsket effekt.", "items": ["synlige interiørdetaljer", "display- og næringselementer", "spesialtilpassede innbygginger", "gjenskapte eller uvanlige profiler"]},
             {"title": "Slik samarbeider vi", "body": "Først avklarer vi designintensjon og tekniske begrensninger. Deretter presiserer vi materiale, mål, overflate, montering og tidsplan.", "items": ["gjennomgang av tegning eller bilde", "teknisk presisering", "prøve hvis det gir mening", "produksjon og overlevering"]},
         ],
         "architects_faq": [
@@ -704,7 +704,7 @@ _LOCALIZED_DETAILS = {
         "realization_cases": [
             {"title": "Repeterbare profiler og trekomponenter for bedrifter", "category": "B2B-produksjon", "photo": "b2b_components_detail", "alt": "Repeterbare treprofiler og komponenter for en bedrift", "meta": ["profiler og halvfabrikata", "prøve eller kort serie", "henting eller frakt"], "body": "Passer når en bedrift trenger en trekomponent til produkt, display eller videre montering. Vi kan starte med en prøve og deretter gå mot repeterbare serier."},
             {"title": "Tretrapp med gjennomarbeidet detalj", "category": "Byggsnekkerarbeid", "photo": "stairs_project", "alt": "Tretrapp med rekkverk som eksempel på spesialtilpasset snekkerarbeid", "meta": ["massivt eller limt tre", "oppmåling og tilpasning", "prosjekter i Pommern"], "body": "Passer prosjekter der oppmåling, stabil konstruksjon, tilpasning til interiøret og nøyaktig finish på synlige detaljer er viktig."},
-            {"title": "Tredetalj til interiør eller display", "category": "Spesialprosjekter", "photo": "precision_detail", "alt": "Presis tredetalj til et premiuminteriør", "meta": ["synlig detalj", "individuelt prosjekt", "teknisk dialog"], "body": "En god forespørsel starter med bilde, tegning eller referanse. Etter vurdering av materiale, skala og montering kan vi velge en fornuftig produksjonsmåte."},
+            {"title": "Tredetalj til interiør eller display", "category": "Spesialprosjekter", "photo": "precision_detail", "alt": "Presis tredetalj til interiør eller display", "meta": ["synlig detalj", "individuelt prosjekt", "teknisk dialog"], "body": "En god forespørsel starter med bilde, tegning eller referanse. Etter vurdering av materiale, skala og montering kan vi velge en fornuftig produksjonsmåte."},
         ],
         "page_updates": {
             "home": {"hero_alt": "Snekkerverksted for trekomponenter, byggsnekkerarbeid og spesialprosjekter", "eyebrow": "Produksjons- og byggsnekkerverksted fra Pommern"},
@@ -1219,13 +1219,13 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
         "description": "Wooden POS elements, displays, prototypes and short runs for advertising, event and exhibition companies.",
         "eyebrow": "B2B / advertising / events",
         "h1": "Wooden components for advertising and event companies",
-        "lead": "Wood works well when a display, stand or brand element should feel more solid, warmer and more premium than a typical plastic carrier. We make prototypes, short runs and repeatable components based on a photo, drawing, sample or specification.",
+        "lead": "Wood works well when a display, stand or brand element should feel more solid, warmer and more distinctive than a typical plastic carrier. We make prototypes, short runs and repeatable components based on a photo, drawing, sample or specification.",
         "primary_cta": "Ask about advertising components",
         "aside_title": "The best inquiries include",
         "aside_body": "For advertising projects, timing, scale and a clear description of the intended effect matter most. If the component is going to an event or retail locations, packing, transport and usage durability should be considered from the start.",
         "aside_items": ["visual, sketch or reference photo", "quantity and event deadline", "dimensions and use case", "which surfaces will be visible", "packing or transport requirements"],
         "sections": [
-            {"title": "When wood makes sense in advertising and POS", "body": "Wood is worth considering when the element should improve brand perception, return in future campaigns or work as a premium display detail. The best projects are described by dimensions, material and assembly method.", "items": ["displays and POS elements", "bases, frames and exhibition details", "stand and scenery components", "wooden sign carriers", "short campaign production runs"]},
+            {"title": "When wood makes sense in advertising and POS", "body": "Wood is worth considering when the element should improve brand perception, return in future campaigns or work as a visible display detail. The best projects are described by dimensions, material and assembly method.", "items": ["displays and POS elements", "bases, frames and exhibition details", "stand and scenery components", "wooden sign carriers", "short campaign production runs"]},
             {"title": "Prototype, sample and short run", "body": "For campaigns and events, the best first step is often a prototype or a first small batch. It helps confirm proportions, stability, finish, visible edges and whether the component can be packed sensibly.", "items": ["first sample for approval", "material and colour alignment", "stability or assembly test", "short run after sample approval", "repeatability for future campaigns"]},
             {"title": "What affects timing and cost", "body": "Quantity, size, shape complexity, finish and event date matter most. Larger or delicate components also require checking whether packing and shipping are realistic within the timeline.", "items": ["quantity and target deadline", "flat, spatial or foldable element", "visible sides and finish standard", "holes, milling, logo or extra details", "packing, pickup or shipping"]},
         ],
@@ -1243,13 +1243,13 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
         "description": "Holzelemente für POS, Displays, Prototypen und Kleinserien für Werbe-, Event- und Messefirmen.",
         "eyebrow": "B2B / Werbung / Events",
         "h1": "Holzelemente für Werbe- und Eventfirmen",
-        "lead": "Holz funktioniert dort gut, wo ein Display, Stand oder Markenelement solider, wärmer und hochwertiger wirken soll als ein typischer Kunststoffträger. Wir fertigen Prototypen, Kleinserien und wiederholbare Elemente nach Foto, Zeichnung, Muster oder Spezifikation.",
+        "lead": "Holz funktioniert dort gut, wo ein Display, Stand oder Markenelement solider, wärmer und markanter wirken soll als ein typischer Kunststoffträger. Wir fertigen Prototypen, Kleinserien und wiederholbare Elemente nach Foto, Zeichnung, Muster oder Spezifikation.",
         "primary_cta": "Werbeelemente anfragen",
         "aside_title": "Gute Anfragen enthalten",
         "aside_body": "Bei Werbeprojekten zählen Termin, Umfang und eine klare Beschreibung des gewünschten Effekts. Wenn das Element zu einem Event muss, sollten Verpackung und Transport früh mitgedacht werden.",
         "aside_items": ["Visualisierung, Skizze oder Referenzfoto", "Menge und Eventtermin", "Maße und Nutzung", "sichtbare Flächen", "Anforderungen an Verpackung oder Transport"],
         "sections": [
-            {"title": "Wann Holz in Werbung und POS sinnvoll ist", "body": "Holz lohnt sich, wenn ein Element die Markenwirkung verbessert, wiederholbar sein soll oder als hochwertiges Displaydetail dient. Am besten sind Projekte, die sich über Maße, Material und Montageart beschreiben lassen.", "items": ["Displays und POS-Elemente", "Sockel, Rahmen und Ausstellungsteile", "Stand- und Szenografieelemente", "Holzträger für Beschriftung", "Kleinserien für Kampagnen"]},
+            {"title": "Wann Holz in Werbung und POS sinnvoll ist", "body": "Holz lohnt sich, wenn ein Element die Markenwirkung verbessert, wiederholbar sein soll oder als sichtbares Displaydetail dient. Am besten sind Projekte, die sich über Maße, Material und Montageart beschreiben lassen.", "items": ["Displays und POS-Elemente", "Sockel, Rahmen und Ausstellungsteile", "Stand- und Szenografieelemente", "Holzträger für Beschriftung", "Kleinserien für Kampagnen"]},
             {"title": "Prototyp, Muster und Kleinserie", "body": "Bei Kampagnen und Events ist ein Prototyp oder eine kleine erste Serie oft der beste Start. So lassen sich Proportionen, Stabilität, Oberfläche, sichtbare Kanten und Verpackbarkeit prüfen.", "items": ["erstes Muster zur Freigabe", "Abstimmung von Material und Farbe", "Test von Stabilität oder Montage", "Kleinserie nach Musterfreigabe", "Wiederholbarkeit für weitere Kampagnen"]},
             {"title": "Was Termin und Kosten beeinflusst", "body": "Menge, Größe, Formkomplexität, Oberfläche und Eventdatum sind entscheidend. Bei größeren oder empfindlichen Elementen muss zusätzlich geprüft werden, ob Verpackung und Versand im Termin realistisch sind.", "items": ["Menge und Zieltermin", "flaches, räumliches oder klappbares Element", "sichtbare Seiten und Oberflächenstandard", "Bohrungen, Fräsungen, Logo oder Zusatzdetails", "Verpackung, Abholung oder Versand"]},
         ],
@@ -1267,13 +1267,13 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
         "description": "Träkomponenter för POS, displayer, prototyper och korta serier för reklam-, event- och utställningsföretag.",
         "eyebrow": "B2B / reklam / event",
         "h1": "Träkomponenter för reklam- och eventföretag",
-        "lead": "Trä fungerar bra när en display, monter eller varumärkesdetalj ska kännas mer gedigen, varm och premium än en vanlig plastbärare. Vi tillverkar prototyper, korta serier och återkommande komponenter efter foto, ritning, prov eller specifikation.",
+        "lead": "Trä fungerar bra när en display, monter eller varumärkesdetalj ska kännas mer gedigen, varm och tydlig än en vanlig plastbärare. Vi tillverkar prototyper, korta serier och återkommande komponenter efter foto, ritning, prov eller specifikation.",
         "primary_cta": "Fråga om reklamkomponenter",
         "aside_title": "Bra förfrågningar innehåller",
         "aside_body": "För reklamprojekt är tidplan, omfattning och tydlig effektbeskrivning viktigast. Om komponenten ska till ett event behöver packning och transport bedömas tidigt.",
         "aside_items": ["visualisering, skiss eller referensfoto", "antal och eventdeadline", "mått och användning", "vilka ytor som är synliga", "krav på packning eller transport"],
         "sections": [
-            {"title": "När trä passar i reklam och POS", "body": "Trä är värt att välja när detaljen ska stärka varumärkesintrycket, kunna upprepas eller fungera som premiumdetalj i exponering. Bäst är projekt som kan beskrivas med mått, material och montage.", "items": ["displayer och POS-element", "baser, ramar och utställningsdetaljer", "monter- och scenografidetaljer", "träbärare för skyltning", "korta serier för kampanjer"]},
+            {"title": "När trä passar i reklam och POS", "body": "Trä är värt att välja när detaljen ska stärka varumärkesintrycket, kunna upprepas eller fungera som synlig detalj i exponering. Bäst är projekt som kan beskrivas med mått, material och montage.", "items": ["displayer och POS-element", "baser, ramar och utställningsdetaljer", "monter- och scenografidetaljer", "träbärare för skyltning", "korta serier för kampanjer"]},
             {"title": "Prototyp, prov och kort serie", "body": "För kampanjer och event är en prototyp eller liten första serie ofta bästa starten. Den visar proportioner, stabilitet, finish, synliga kanter och om detaljen kan packas rimligt.", "items": ["första prov för godkännande", "material- och färgavstämning", "test av stabilitet eller montage", "kort serie efter godkänt prov", "upprepning i kommande kampanjer"]},
             {"title": "Vad påverkar tid och kostnad", "body": "Antal, storlek, formens komplexitet, finish och eventdatum påverkar mest. Större eller känsliga delar kräver också kontroll av packning och frakt inom tidplanen.", "items": ["antal och måltermin", "platt, rumslig eller hopfällbar komponent", "synliga sidor och finishnivå", "hål, fräsningar, logotyp eller extra detaljer", "packning, upphämtning eller frakt"]},
         ],
@@ -1291,13 +1291,13 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
         "description": "Trækomponenter til POS, displays, prototyper og korte serier for reklame-, event- og udstillingsfirmaer.",
         "eyebrow": "B2B / reklame / events",
         "h1": "Trækomponenter til reklame- og eventfirmaer",
-        "lead": "Træ fungerer godt, når en display, stand eller branddetalje skal føles mere solid, varm og premium end en typisk plastbærer. Vi fremstiller prototyper, korte serier og gentagelige komponenter efter foto, tegning, prøve eller specifikation.",
+        "lead": "Træ fungerer godt, når en display, stand eller branddetalje skal føles mere solid, varm og tydelig end en typisk plastbærer. Vi fremstiller prototyper, korte serier og gentagelige komponenter efter foto, tegning, prøve eller specifikation.",
         "primary_cta": "Spørg om reklamekomponenter",
         "aside_title": "Gode forespørgsler indeholder",
         "aside_body": "For reklameprojekter er tidsplan, omfang og en tydelig beskrivelse af effekten vigtigst. Hvis komponenten skal til et event, bør pakning og transport vurderes fra starten.",
         "aside_items": ["visualisering, skitse eller referencefoto", "antal og eventdeadline", "mål og brug", "hvilke flader der er synlige", "krav til pakning eller transport"],
         "sections": [
-            {"title": "Hvornår træ giver mening i reklame og POS", "body": "Træ er værd at vælge, når elementet skal styrke brandindtrykket, kunne gentages eller fungere som en premiumdetalje i en udstilling. De bedste projekter kan beskrives med mål, materiale og montage.", "items": ["displays og POS-elementer", "baser, rammer og udstillingsdetaljer", "stand- og scenografidele", "træbærere til skiltning", "korte serier til kampagner"]},
+            {"title": "Hvornår træ giver mening i reklame og POS", "body": "Træ er værd at vælge, når elementet skal styrke brandindtrykket, kunne gentages eller fungere som en synlig detalje i en udstilling. De bedste projekter kan beskrives med mål, materiale og montage.", "items": ["displays og POS-elementer", "baser, rammer og udstillingsdetaljer", "stand- og scenografidele", "træbærere til skiltning", "korte serier til kampagner"]},
             {"title": "Prototype, prøve og kort serie", "body": "Ved kampagner og events er en prototype eller lille første serie ofte den bedste start. Den viser proportioner, stabilitet, finish, synlige kanter og om elementet kan pakkes fornuftigt.", "items": ["første prøve til godkendelse", "afstemning af materiale og farve", "test af stabilitet eller montage", "kort serie efter godkendt prøve", "gentagelse i kommende kampagner"]},
             {"title": "Hvad påvirker tid og pris", "body": "Antal, størrelse, formens kompleksitet, finish og eventdato betyder mest. Større eller sarte dele kræver også vurdering af pakning og forsendelse inden for tidsplanen.", "items": ["antal og måltermin", "flad, rumlig eller foldbar komponent", "synlige sider og finishniveau", "huller, fræsninger, logo eller ekstra detaljer", "pakning, afhentning eller forsendelse"]},
         ],
@@ -1315,13 +1315,13 @@ ADVERTISING_EVENT_GUIDE_PAGES = {
         "description": "Trekomponenter for POS, displayer, prototyper og korte serier for reklame-, event- og utstillingsbedrifter.",
         "eyebrow": "B2B / reklame / event",
         "h1": "Trekomponenter for reklame- og eventbedrifter",
-        "lead": "Tre fungerer godt når en display, stand eller merkevaredetalj skal føles mer solid, varm og premium enn en vanlig plastbærer. Vi lager prototyper, korte serier og repeterbare komponenter etter bilde, tegning, prøve eller spesifikasjon.",
+        "lead": "Tre fungerer godt når en display, stand eller merkevaredetalj skal føles mer solid, varm og tydelig enn en vanlig plastbærer. Vi lager prototyper, korte serier og repeterbare komponenter etter bilde, tegning, prøve eller spesifikasjon.",
         "primary_cta": "Spør om reklamekomponenter",
         "aside_title": "Gode forespørsler inneholder",
         "aside_body": "For reklameprosjekter er tidsplan, omfang og en tydelig beskrivelse av ønsket effekt viktigst. Hvis komponenten skal til et event, bør pakking og transport vurderes fra start.",
         "aside_items": ["visualisering, skisse eller referansebilde", "antall og eventfrist", "mål og bruk", "hvilke flater som er synlige", "krav til pakking eller transport"],
         "sections": [
-            {"title": "Når tre passer i reklame og POS", "body": "Tre er verdt å velge når elementet skal styrke merkevareinntrykket, kunne repeteres eller fungere som en premiumdetalj i en utstilling. De beste prosjektene kan beskrives med mål, materiale og montering.", "items": ["displayer og POS-elementer", "baser, rammer og utstillingsdetaljer", "stand- og scenografideler", "trebærere for skilt", "korte serier for kampanjer"]},
+            {"title": "Når tre passer i reklame og POS", "body": "Tre er verdt å velge når elementet skal styrke merkevareinntrykket, kunne repeteres eller fungere som en synlig detalj i en utstilling. De beste prosjektene kan beskrives med mål, materiale og montering.", "items": ["displayer og POS-elementer", "baser, rammer og utstillingsdetaljer", "stand- og scenografideler", "trebærere for skilt", "korte serier for kampanjer"]},
             {"title": "Prototype, prøve og kort serie", "body": "Ved kampanjer og eventer er en prototype eller liten første serie ofte beste start. Den viser proporsjoner, stabilitet, overflate, synlige kanter og om elementet kan pakkes fornuftig.", "items": ["første prøve for godkjenning", "avklaring av materiale og farge", "test av stabilitet eller montering", "kort serie etter godkjent prøve", "gjentakelse i kommende kampanjer"]},
             {"title": "Hva påvirker tid og pris", "body": "Antall, størrelse, formens kompleksitet, overflate og eventdato betyr mest. Større eller skjøre deler krever også vurdering av pakking og frakt innenfor tidsplanen.", "items": ["antall og målfrist", "flat, romlig eller sammenleggbar komponent", "synlige sider og finishnivå", "hull, fresing, logo eller ekstra detaljer", "pakking, henting eller frakt"]},
         ],
@@ -2180,6 +2180,261 @@ CONTENT["pl"]["realization_cases"] = [
         "body": "Dobre przy lokalach, wnętrzach prywatnych i projektach, gdzie drewno jest widocznym elementem jakości.",
     },
 ]
+
+
+FOREIGN_B2B_REFOCUS = {
+    "en": {
+        "nav": {
+            "production": "B2B components",
+            "construction": "Fit-out batches",
+            "architects": "Technical projects",
+            "realizations": "Cases",
+        },
+        "hero_proofs": [
+            {"title": "B2B components", "body": "profiles, trims, semi-finished parts and details for further assembly"},
+            {"title": "Samples and short runs", "body": "start with one approved sample, then repeat the batch"},
+            {"title": "POS and display work", "body": "wooden parts for stands, retail displays and campaign rollouts"},
+            {"title": "Fit-out batches", "body": "doors, trims and wooden details for contractors and commercial interiors"},
+        ],
+        "pages": {
+            "home": {
+                "title": "Kajax Joinery | Wooden components and short runs for companies",
+                "description": "B2B wooden components from Poland: samples, short runs, semi-finished parts, POS/display elements, profiles and fit-out batches made from drawings, samples or specifications.",
+                "eyebrow": "B2B wood component production from Poland",
+                "h1": "Wooden components, samples and short runs for companies",
+                "lead": "We make repeatable wooden parts for manufacturers, contractors, advertising and fit-out companies: profiles, trims, POS/display elements, semi-finished parts and batches prepared from a drawing, sample or specification. Start with a reference; if the component fits the workshop, we can move from sample to recurring orders.",
+                "primary_cta": "Send a component for assessment",
+                "secondary_cta": "See what to prepare",
+            },
+            "production": {
+                "title": "B2B wooden components and short runs from Poland | Kajax",
+                "description": "Wooden semi-finished parts, profiles, POS elements, samples and short production runs for companies in Poland and Europe.",
+                "eyebrow": "B2B components / samples / short runs",
+                "h1": "B2B wooden components, samples and short runs",
+                "lead": "For companies that need a wooden part without setting up their own joinery process. We work from a drawing, sample, photo or specification, then agree the material, tolerances, finish, packing and the first sensible batch size.",
+                "primary_cta": "Send a drawing or sample",
+                "sections": [
+                    {"title": "What is worth outsourcing", "body": "The best fit is a component that returns in future orders or blocks your own team from higher-value work. We can take over a defined wooden part of the process instead of forcing you to build a small joinery setup internally.", "items": ["profiles, trims, frames and semi-finished parts", "POS, display and retail components", "wooden parts for products, furniture and fit-outs", "samples, pilot batches and short production runs"]},
+                    {"title": "Sample first, then repeatable batch", "body": "A sample protects both sides. It confirms dimensions, edges, colour, holes, milling, finish and packing before a larger order starts.", "items": ["one sample or a first small batch", "approval of dimensions and finish", "clear production standard for future batches", "packing for pickup or shipment"]},
+                    {"title": "What speeds up assessment", "body": "You do not need perfect technical documentation to start, but we need a reference point. A drawing, sample, photo or old component lets us decide whether a sample, pilot batch or quote is the right next step.", "items": ["photo, drawing, specification or physical sample", "dimensions, tolerances, holes, milling and visible edges", "material, colour and finish standard", "quantity, deadline, packing, pickup or shipping"]},
+                ],
+                "faq": [
+                    ("Do you handle B2B orders outside Poland?", "Yes, if the component can be packed and shipped safely. We can discuss B2B cooperation in Poland and across Europe."),
+                    ("Can we start with one sample?", "Yes. For repeatable components, a sample is often the best first step before a larger batch."),
+                    ("Can you quote without a technical drawing?", "We can start with a photo, reference or existing sample, but pricing still needs dimensions, material, quantity and expected finish."),
+                ],
+            },
+            "construction": {
+                "title": "Wooden fit-out batches and contractor joinery | Kajax",
+                "description": "Doors, trims, profiles and wooden fit-out elements for contractors, hotels, offices and commercial projects.",
+                "eyebrow": "Contractors / hotels / commercial interiors",
+                "h1": "Wooden fit-out components for contractors and commercial projects",
+                "lead": "For contractors and fit-out companies that need a repeatable wooden standard across several rooms, openings or locations. We can discuss doors, trims, thresholds, profiles and fitted wooden details based on a drawing, sample, measurement set or project specification.",
+                "primary_cta": "Send a fit-out scope",
+                "sections": [
+                    {"title": "When a batch makes sense", "body": "Hotels, offices, venues and retail interiors often need more than one custom element. The value is in keeping the same material, finish and dimensions across the whole batch.", "items": ["door leaves, frames and trims", "thresholds, casings and wooden profiles", "repeatable details for rooms and corridors", "packing and labelling for contractors"]},
+                    {"title": "What we need before pricing", "body": "A fit-out batch should start from a clear standard: drawing, sample, measurements, material, finish and expected quantity. If acoustic, fire or access-control requirements matter, they should be listed at the beginning.", "items": ["drawing, sample or measurement table", "quantity and room/opening schedule", "material, finish and fittings", "packing, pickup or delivery expectations"]},
+                ],
+                "faq": [
+                    ("Do you make hotel or commercial door batches?", "We can discuss repeatable door and trim batches when the specification, quantity and required standard are clear."),
+                    ("Do you install outside Pomerania?", "Installation is mainly local. For B2B batches outside the region, pickup or shipping is assessed after dimensions and packing are known."),
+                ],
+            },
+            "architects": {
+                "title": "Project-based wooden details for companies and designers | Kajax",
+                "description": "Wooden details for contractors, architects, brands and fit-out companies: technical assessment, sample, short run and production from a drawing or reference.",
+                "eyebrow": "Technical wooden details",
+                "h1": "Project-based wooden details for companies, contractors and designers",
+                "lead": "For projects where the wooden detail has to match a product, interior, display or installation system. We help translate a drawing, visual, reference photo or sample into a detail that can be made, finished, packed and repeated when needed.",
+                "primary_cta": "Send a detail for review",
+                "sections": [
+                    {"title": "When to involve the workshop", "body": "The right moment is before the detail becomes a problem on site or in production. We can flag material, edge, finish, assembly and packing questions early.", "items": ["details for commercial interiors and displays", "wooden parts for brands and contractors", "elements recreated from a sample or old profile", "visible edges, joints and finish decisions"]},
+                    {"title": "How the technical review works", "body": "We first check the intended effect and use case. Then we discuss material, dimensions, visible sides, assembly, finish, sample and repeatability.", "items": ["drawing, visual, photo or sample", "material matched to the project", "assembly method and visible sides", "sample when the element will be repeated"]},
+                ],
+                "faq": [
+                    ("Can you make one unusual component?", "Yes, if the shape, material, use case and finish can be described clearly enough."),
+                    ("Do you work with designers and contractors?", "Yes. A drawing, reference image, material note and intended effect are the best starting point."),
+                ],
+            },
+            "realizations": {
+                "title": "B2B wooden component cases | Kajax",
+                "description": "Examples of wooden components, POS/display elements, fit-out batches and project-based details for companies.",
+                "h1": "B2B woodwork: components, fit-out batches and project details",
+                "lead": "Examples of work where the business value is repeatability, sample approval, consistent finish, packing and fit to the next assembly stage.",
+            },
+            "quote": {
+                "h1": "Send a drawing, sample or component description",
+                "lead": "A photo, drawing, sample, specification or short description is enough to start. Leave a phone number or email; if the topic fits the workshop, we will ask about dimensions, material, quantity, finish, deadline, packing and shipping.",
+            },
+            "contact": {
+                "description": "Contact Kajax Joinery in Gościcino, Poland. B2B wooden components, short runs, POS/display elements, fit-out batches and project-based details.",
+                "lead": "The best start is a short inquiry with a photo, drawing, sample or specification. That lets us assess whether the component fits the workshop and what information is still needed for pricing.",
+            },
+        },
+        "process_steps": [
+            ("You send a reference", "A photo, drawing, specification, physical sample or short description of the component and its use."),
+            ("We clarify the production data", "Material, dimensions, tolerances, quantity, finish, deadline, packing, pickup or shipping."),
+            ("We choose the first step", "Sample, pilot batch, technical call, measurement check or quote."),
+            ("You get a practical answer", "We say whether the topic fits the workshop, what is missing and which option makes sense next."),
+        ],
+        "audience_cards": [
+            {"title": "B2B wooden components", "body": "Profiles, trims, POS elements, semi-finished parts and short runs made from a drawing, sample or specification.", "url": PATHS["production"], "cta": "See B2B production"},
+            {"title": "POS, displays and event parts", "body": "Wooden parts for retail displays, stands, campaign rollouts and brand details that need a sample before the batch.", "url": PATHS["advertising_events"], "cta": "See POS components"},
+            {"title": "Fit-out batches and project details", "body": "Doors, trims, profiles and wooden details for contractors, hotels, offices and commercial interiors.", "url": PATHS["construction"], "cta": "See fit-out work"},
+        ],
+        "realization_cases": [
+            {"title": "Repeatable wooden components for companies", "category": "B2B production", "photo": "b2b_components_detail", "alt": "Repeatable wooden profiles prepared as a batch for a company", "meta": ["drawing, sample or specification", "sample before batch", "pickup or shipping"], "body": "For companies that need profiles, POS elements, semi-finished parts or wooden components for further assembly without running their own joinery setup."},
+            {"title": "POS and display components", "category": "Advertising and events", "photo": "b2b_components_series", "alt": "Short run of repeatable wooden elements prepared for a display project", "meta": ["display", "campaign or event", "short run after approval"], "body": "For agencies and brands that need a wooden display element with a clear deadline, visible finish and sensible packing plan."},
+            {"title": "Door and trim batches for hotels or venues", "category": "Commercial fit-out", "photo": "hotel_door_series", "alt": "Batch of wooden doors prepared for a commercial fit-out project", "meta": ["hotel and venue doors", "repeatable standard", "batch by approved sample"], "body": "For contractors working on hotels, guesthouses, offices and venues where many openings need one finish standard, clear labelling and predictable handover."},
+        ],
+    },
+    "de": {
+        "nav": {"production": "B2B-Elemente", "construction": "Objektserien", "architects": "Technische Projekte", "realizations": "Cases"},
+        "hero_proofs": [
+            {"title": "B2B-Holzelemente", "body": "Profile, Leisten, Halbzeuge und Details zur weiteren Montage"},
+            {"title": "Muster und Kleinserien", "body": "erst ein freigegebenes Muster, dann wiederholbare Chargen"},
+            {"title": "POS und Displays", "body": "Holzteile für Stände, Verkaufsdisplays und Kampagnen"},
+            {"title": "Objektserien", "body": "Türen, Leisten und Holzdetails für Ausbauer und Gewerbeobjekte"},
+        ],
+        "pages": {
+            "home": {"title": "Kajax Tischlerei | Holzelemente und Kleinserien für Unternehmen", "description": "B2B-Holzelemente aus Polen: Muster, Kleinserien, Halbzeuge, POS-/Display-Elemente, Profile und Objektserien nach Zeichnung, Muster oder Spezifikation.", "eyebrow": "B2B-Fertigung von Holzelementen aus Polen", "h1": "Holzelemente, Muster und Kleinserien für Unternehmen", "lead": "Wir fertigen wiederholbare Holzteile für Hersteller, Ausbauer, Werbe- und Ladenbaufirmen: Profile, Leisten, POS-/Display-Elemente, Halbzeuge und Serien nach Zeichnung, Muster oder Spezifikation. Der beste Start ist ein Referenzpunkt; wenn das Element zur Werkstatt passt, gehen wir vom Muster zur wiederkehrenden Bestellung.", "primary_cta": "Element zur Prüfung senden", "secondary_cta": "Was vorbereiten?"},
+            "production": {"title": "B2B-Holzelemente und Kleinserien aus Polen | Kajax", "description": "Holz-Halbzeuge, Profile, POS-Elemente, Muster und Kleinserien für Unternehmen in Polen und Europa.", "eyebrow": "B2B-Elemente / Muster / Kleinserien", "h1": "B2B-Holzelemente, Muster und Kleinserien", "lead": "Für Unternehmen, die ein Holzelement brauchen, ohne einen eigenen Tischlereiprozess aufzubauen. Wir arbeiten nach Zeichnung, Muster, Foto oder Spezifikation und klären Material, Toleranzen, Oberfläche, Verpackung und die erste sinnvolle Chargengröße.", "primary_cta": "Zeichnung oder Muster senden"},
+            "construction": {"title": "Holzserien für Ausbauer, Hotels und Gewerbeobjekte | Kajax", "description": "Türen, Leisten, Profile und Holzdetails für Ausbauer, Hotels, Büros und gewerbliche Innenräume.", "eyebrow": "Ausbauer / Hotels / Gewerbeobjekte", "h1": "Holzdetails und Objektserien für Ausbauer", "lead": "Für Ausbauer und Unternehmen, die einen wiederholbaren Holzstandard über mehrere Räume, Öffnungen oder Standorte brauchen. Wir können Türen, Leisten, Schwellen, Profile und Details nach Zeichnung, Muster, Maßliste oder Projektspezifikation prüfen.", "primary_cta": "Objektumfang senden"},
+            "architects": {"title": "Projektbezogene Holzdetails für Unternehmen und Planer | Kajax", "description": "Holzdetails für Ausbauer, Planer, Marken und Unternehmen: technische Prüfung, Muster, Kleinserie und Fertigung nach Zeichnung oder Referenz.", "eyebrow": "Technische Holzdetails", "h1": "Projektbezogene Holzdetails für Unternehmen, Ausbauer und Planer", "lead": "Für Projekte, bei denen ein Holzdetail zu Produkt, Innenraum, Display oder Montagesystem passen muss. Wir übersetzen Zeichnung, Visualisierung, Referenzfoto oder Muster in ein Detail, das gefertigt, veredelt, verpackt und bei Bedarf wiederholt werden kann.", "primary_cta": "Detail prüfen lassen"},
+            "realizations": {"title": "B2B-Cases für Holzelemente | Kajax", "description": "Beispiele für Holzelemente, POS-/Display-Teile, Objektserien und projektbezogene Details für Unternehmen.", "h1": "B2B-Holzarbeiten: Elemente, Objektserien und Projektdetails", "lead": "Beispiele für Arbeiten, bei denen Wiederholbarkeit, Musterfreigabe, konstante Oberfläche, Verpackung und Passung zur nächsten Montagestufe den geschäftlichen Wert ausmachen."},
+            "quote": {"h1": "Zeichnung, Muster oder Elementbeschreibung senden", "lead": "Foto, Zeichnung, Muster, Spezifikation oder kurze Beschreibung reichen für den Start. Hinterlassen Sie Telefon oder E-Mail; wenn das Thema zur Werkstatt passt, fragen wir nach Maßen, Material, Menge, Oberfläche, Termin, Verpackung und Versand."},
+            "contact": {"description": "Kontakt zu Kajax Tischlerei in Gościcino, Polen. B2B-Holzelemente, Kleinserien, POS-/Display-Teile, Objektserien und projektbezogene Details.", "lead": "Der beste Start ist eine kurze Anfrage mit Foto, Zeichnung, Muster oder Spezifikation. So können wir prüfen, ob das Element zur Werkstatt passt und welche Daten für die Preisfindung fehlen."},
+        },
+        "process_steps": [
+            ("Sie senden eine Referenz", "Foto, Zeichnung, Spezifikation, physisches Muster oder kurze Beschreibung des Elements und seiner Nutzung."),
+            ("Wir klären Produktionsdaten", "Material, Maße, Toleranzen, Menge, Oberfläche, Termin, Verpackung, Abholung oder Versand."),
+            ("Wir wählen den ersten Schritt", "Muster, Pilotcharge, technisches Gespräch, Maßprüfung oder Angebot."),
+            ("Sie erhalten eine praktische Antwort", "Wir sagen, ob das Thema zur Werkstatt passt, was fehlt und welcher nächste Schritt sinnvoll ist."),
+        ],
+        "audience_cards": [
+            {"title": "B2B-Holzelemente", "body": "Profile, Leisten, POS-Elemente, Halbzeuge und Kleinserien nach Zeichnung, Muster oder Spezifikation.", "url": PATHS["production"], "cta": "B2B-Fertigung ansehen"},
+            {"title": "POS, Displays und Eventteile", "body": "Holzteile für Verkaufsdisplays, Stände, Kampagnen und Markendetails mit Muster vor der Serie.", "url": PATHS["advertising_events"], "cta": "POS-Elemente ansehen"},
+            {"title": "Objektserien und Projektdetails", "body": "Türen, Leisten, Profile und Holzdetails für Ausbauer, Hotels, Büros und gewerbliche Innenräume.", "url": PATHS["construction"], "cta": "Objektserien ansehen"},
+        ],
+        "realization_cases": [
+            {"title": "Wiederholbare Holzelemente für Unternehmen", "category": "B2B-Fertigung", "photo": "b2b_components_detail", "alt": "Wiederholbare Holzprofile als Serie für ein Unternehmen", "meta": ["Zeichnung, Muster oder Spezifikation", "Muster vor Serie", "Abholung oder Versand"], "body": "Für Unternehmen, die Profile, POS-Elemente, Halbzeuge oder Holzteile zur weiteren Montage brauchen, ohne eigene Tischlerei aufzubauen."},
+            {"title": "POS- und Display-Elemente", "category": "Werbung und Events", "photo": "b2b_components_series", "alt": "Kleinserie wiederholbarer Holzelemente für ein Displayprojekt", "meta": ["Display", "Kampagne oder Event", "Kleinserie nach Freigabe"], "body": "Für Agenturen und Marken, die ein Holzelement mit klarem Termin, sichtbarer Oberfläche und sinnvoller Verpackung brauchen."},
+            {"title": "Türen- und Leistenserien für Hotels oder Objekte", "category": "Gewerblicher Ausbau", "photo": "hotel_door_series", "alt": "Serie von Holztüren für ein gewerbliches Ausbauprojekt", "meta": ["Hotel- und Objekttüren", "wiederholbarer Standard", "Charge nach freigegebenem Muster"], "body": "Für Ausbauer von Hotels, Pensionen, Büros und Gewerbeflächen, bei denen viele Öffnungen denselben Standard, klare Kennzeichnung und planbare Übergabe brauchen."},
+        ],
+    },
+    "sv": {
+        "nav": {"production": "B2B-komponenter", "construction": "Inredningsserier", "architects": "Tekniska projekt", "realizations": "Case"},
+        "hero_proofs": [
+            {"title": "B2B-komponenter", "body": "profiler, lister, halvfabrikat och detaljer för vidare montage"},
+            {"title": "Prover och korta serier", "body": "först ett godkänt prov, sedan återkommande batcher"},
+            {"title": "POS och displayer", "body": "trädelar för montrar, butiksdisplayer och kampanjer"},
+            {"title": "Inredningsserier", "body": "dörrar, lister och trädetaljer för entreprenörer och kommersiella interiörer"},
+        ],
+        "pages": {
+            "home": {"title": "Kajax Snickeri | Träkomponenter och korta serier för företag", "description": "B2B-träkomponenter från Polen: prover, korta serier, halvfabrikat, POS-/displayelement, profiler och inredningsserier efter ritning, prov eller specifikation.", "eyebrow": "B2B-produktion av träkomponenter från Polen", "h1": "Träkomponenter, prover och korta serier för företag", "lead": "Vi tillverkar återkommande trädelar för producenter, entreprenörer, reklam- och inredningsföretag: profiler, lister, POS-/displayelement, halvfabrikat och serier efter ritning, prov eller specifikation. Börja med en referens; om komponenten passar verkstaden kan vi gå från prov till återkommande order.", "primary_cta": "Skicka komponent för bedömning", "secondary_cta": "Se vad som behövs"},
+            "production": {"title": "B2B-träkomponenter och korta serier från Polen | Kajax", "description": "Halvfabrikat i trä, profiler, POS-element, prover och korta serier för företag i Polen och Europa.", "eyebrow": "B2B-komponenter / prover / korta serier", "h1": "B2B-träkomponenter, prover och korta serier", "lead": "För företag som behöver en trädel utan att bygga en egen snickeriprocess. Vi arbetar efter ritning, prov, foto eller specifikation och klargör material, toleranser, finish, packning och första rimliga batchstorlek.", "primary_cta": "Skicka ritning eller prov"},
+            "construction": {"title": "Träserier för inredningsentreprenörer, hotell och lokaler | Kajax", "description": "Dörrar, lister, profiler och trädetaljer för entreprenörer, hotell, kontor och kommersiella projekt.", "eyebrow": "Entreprenörer / hotell / kommersiella interiörer", "h1": "Trädetaljer och inredningsserier för entreprenörer", "lead": "För entreprenörer och inredningsföretag som behöver samma trästandard i flera rum, öppningar eller lokaler. Vi kan bedöma dörrar, lister, trösklar, profiler och detaljer utifrån ritning, prov, måttlista eller projektspecifikation.", "primary_cta": "Skicka projektets omfattning"},
+            "architects": {"title": "Projektbaserade trädetaljer för företag och designers | Kajax", "description": "Trädetaljer för entreprenörer, designers, varumärken och företag: teknisk bedömning, prov, kort serie och produktion efter ritning eller referens.", "eyebrow": "Tekniska trädetaljer", "h1": "Projektbaserade trädetaljer för företag, entreprenörer och designers", "lead": "För projekt där trädetaljen måste passa en produkt, interiör, display eller monteringslösning. Vi hjälper att översätta ritning, visualisering, referensfoto eller prov till en detalj som kan tillverkas, ytbehandlas, packas och vid behov upprepas.", "primary_cta": "Skicka detalj för granskning"},
+            "realizations": {"title": "B2B-case för träkomponenter | Kajax", "description": "Exempel på träkomponenter, POS-/displayelement, inredningsserier och projektbaserade detaljer för företag.", "h1": "B2B-snickeri: komponenter, inredningsserier och projektdetaljer", "lead": "Exempel på arbeten där affärsvärdet ligger i repeterbarhet, provgodkännande, jämn finish, packning och passning till nästa monteringssteg."},
+            "quote": {"h1": "Skicka ritning, prov eller komponentbeskrivning", "lead": "Foto, ritning, prov, specifikation eller kort beskrivning räcker för start. Lämna telefon eller e-post; om uppdraget passar verkstaden frågar vi om mått, material, antal, finish, deadline, packning och frakt."},
+            "contact": {"description": "Kontakt med Kajax Snickeri i Gościcino, Polen. B2B-träkomponenter, korta serier, POS-/displayelement, inredningsserier och projektbaserade detaljer.", "lead": "Bästa starten är en kort förfrågan med foto, ritning, prov eller specifikation. Då kan vi bedöma om komponenten passar verkstaden och vilka uppgifter som saknas för prissättning."},
+        },
+        "process_steps": [
+            ("Du skickar en referens", "Foto, ritning, specifikation, fysiskt prov eller kort beskrivning av komponenten och användningen."),
+            ("Vi klargör produktionsdata", "Material, mått, toleranser, antal, finish, deadline, packning, upphämtning eller frakt."),
+            ("Vi väljer första steg", "Prov, pilotbatch, tekniskt samtal, måttkontroll eller offert."),
+            ("Du får ett praktiskt svar", "Vi säger om uppdraget passar verkstaden, vad som saknas och vilket steg som är rimligt."),
+        ],
+        "audience_cards": [
+            {"title": "B2B-träkomponenter", "body": "Profiler, lister, POS-element, halvfabrikat och korta serier efter ritning, prov eller specifikation.", "url": PATHS["production"], "cta": "Se B2B-produktion"},
+            {"title": "POS, displayer och eventdelar", "body": "Trädelar för butiksdisplayer, montrar, kampanjer och varumärkesdetaljer med prov före serien.", "url": PATHS["advertising_events"], "cta": "Se POS-komponenter"},
+            {"title": "Inredningsserier och projektdetaljer", "body": "Dörrar, lister, profiler och trädetaljer för entreprenörer, hotell, kontor och kommersiella interiörer.", "url": PATHS["construction"], "cta": "Se inredningsserier"},
+        ],
+        "realization_cases": [
+            {"title": "Återkommande träkomponenter för företag", "category": "B2B-produktion", "photo": "b2b_components_detail", "alt": "Återkommande träprofiler som batch för ett företag", "meta": ["ritning, prov eller specifikation", "prov före serie", "upphämtning eller frakt"], "body": "För företag som behöver profiler, POS-element, halvfabrikat eller trädelar för vidare montage utan att driva egen snickeriprocess."},
+            {"title": "POS- och displaykomponenter", "category": "Reklam och event", "photo": "b2b_components_series", "alt": "Kort serie återkommande träelement för ett displayprojekt", "meta": ["display", "kampanj eller event", "kort serie efter godkännande"], "body": "För byråer och varumärken som behöver ett träelement med tydlig deadline, synlig finish och genomtänkt packning."},
+            {"title": "Dörr- och listserier för hotell eller lokaler", "category": "Kommersiell inredning", "photo": "hotel_door_series", "alt": "Serie trädörrar för ett kommersiellt inredningsprojekt", "meta": ["hotell- och lokaldörrar", "återkommande standard", "batch efter godkänt prov"], "body": "För entreprenörer som arbetar med hotell, pensionat, kontor och lokaler där flera öppningar behöver samma standard, tydlig märkning och planerad överlämning."},
+        ],
+    },
+    "da": {
+        "nav": {"production": "B2B-komponenter", "construction": "Interiørserier", "architects": "Tekniske projekter", "realizations": "Cases"},
+        "hero_proofs": [
+            {"title": "B2B-komponenter", "body": "profiler, lister, halvfabrikata og detaljer til videre montage"},
+            {"title": "Prøver og korte serier", "body": "først en godkendt prøve, derefter gentagelige partier"},
+            {"title": "POS og displays", "body": "trædele til stande, butiksdisplays og kampagner"},
+            {"title": "Interiørserier", "body": "døre, lister og trædetaljer til entreprenører og erhvervsinteriør"},
+        ],
+        "pages": {
+            "home": {"title": "Kajax Snedkeri | Trækomponenter og korte serier til virksomheder", "description": "B2B-trækomponenter fra Polen: prøver, korte serier, halvfabrikata, POS-/displayelementer, profiler og interiørserier efter tegning, prøve eller specifikation.", "eyebrow": "B2B-produktion af trækomponenter fra Polen", "h1": "Trækomponenter, prøver og korte serier til virksomheder", "lead": "Vi fremstiller gentagelige trædele til producenter, entreprenører, reklame- og interiørfirmaer: profiler, lister, POS-/displayelementer, halvfabrikata og serier efter tegning, prøve eller specifikation. Start med en reference; hvis komponenten passer til værkstedet, kan vi gå fra prøve til gentagelige ordrer.", "primary_cta": "Send komponent til vurdering", "secondary_cta": "Se hvad der skal forberedes"},
+            "production": {"title": "B2B-trækomponenter og korte serier fra Polen | Kajax", "description": "Halvfabrikata i træ, profiler, POS-elementer, prøver og korte serier til virksomheder i Polen og Europa.", "eyebrow": "B2B-komponenter / prøver / korte serier", "h1": "B2B-trækomponenter, prøver og korte serier", "lead": "For virksomheder der har brug for en trædel uden at opbygge egen snedkerproces. Vi arbejder efter tegning, prøve, foto eller specifikation og afklarer materiale, tolerancer, finish, pakning og første fornuftige partistørrelse.", "primary_cta": "Send tegning eller prøve"},
+            "construction": {"title": "Træserier til interiørentreprenører, hoteller og lokaler | Kajax", "description": "Døre, lister, profiler og trædetaljer til entreprenører, hoteller, kontorer og kommercielle projekter.", "eyebrow": "Entreprenører / hoteller / erhvervsinteriør", "h1": "Trædetaljer og interiørserier til entreprenører", "lead": "For entreprenører og interiørfirmaer der har brug for samme træstandard i flere rum, åbninger eller lokationer. Vi kan vurdere døre, lister, tærskler, profiler og detaljer ud fra tegning, prøve, målliste eller projektspecifikation.", "primary_cta": "Send projektets omfang"},
+            "architects": {"title": "Projektbaserede trædetaljer til virksomheder og designere | Kajax", "description": "Trædetaljer til entreprenører, designere, brands og virksomheder: teknisk vurdering, prøve, kort serie og produktion efter tegning eller reference.", "eyebrow": "Tekniske trædetaljer", "h1": "Projektbaserede trædetaljer til virksomheder, entreprenører og designere", "lead": "Til projekter hvor trædetaljen skal passe til et produkt, interiør, display eller monteringssystem. Vi hjælper med at omsætte tegning, visualisering, referencefoto eller prøve til en detalje, der kan fremstilles, overfladebehandles, pakkes og gentages efter behov.", "primary_cta": "Send detalje til vurdering"},
+            "realizations": {"title": "B2B-cases for trækomponenter | Kajax", "description": "Eksempler på trækomponenter, POS-/displayelementer, interiørserier og projektbaserede detaljer til virksomheder.", "h1": "B2B-snedkeri: komponenter, interiørserier og projektdetaljer", "lead": "Eksempler på arbejde hvor forretningsværdien ligger i gentagelighed, prøvegodkendelse, ensartet finish, pakning og pasning til næste montagetrin."},
+            "quote": {"h1": "Send tegning, prøve eller komponentbeskrivelse", "lead": "Foto, tegning, prøve, specifikation eller kort beskrivelse er nok til start. Angiv telefon eller e-mail; hvis opgaven passer til værkstedet, spørger vi om mål, materiale, antal, finish, deadline, pakning og forsendelse."},
+            "contact": {"description": "Kontakt Kajax Snedkeri i Gościcino, Polen. B2B-trækomponenter, korte serier, POS-/displayelementer, interiørserier og projektbaserede detaljer.", "lead": "Den bedste start er en kort forespørgsel med foto, tegning, prøve eller specifikation. Så kan vi vurdere, om komponenten passer til værkstedet, og hvilke data der mangler for pris."},
+        },
+        "process_steps": [
+            ("Du sender en reference", "Foto, tegning, specifikation, fysisk prøve eller kort beskrivelse af komponenten og brugen."),
+            ("Vi afklarer produktionsdata", "Materiale, mål, tolerancer, antal, finish, deadline, pakning, afhentning eller forsendelse."),
+            ("Vi vælger første skridt", "Prøve, pilotparti, teknisk samtale, målkontrol eller tilbud."),
+            ("Du får et praktisk svar", "Vi siger, om opgaven passer til værkstedet, hvad der mangler, og hvilket skridt der giver mening."),
+        ],
+        "audience_cards": [
+            {"title": "B2B-trækomponenter", "body": "Profiler, lister, POS-elementer, halvfabrikata og korte serier efter tegning, prøve eller specifikation.", "url": PATHS["production"], "cta": "Se B2B-produktion"},
+            {"title": "POS, displays og eventdele", "body": "Trædele til butiksdisplays, stande, kampagner og branddetaljer med prøve før serien.", "url": PATHS["advertising_events"], "cta": "Se POS-komponenter"},
+            {"title": "Interiørserier og projektdetaljer", "body": "Døre, lister, profiler og trædetaljer til entreprenører, hoteller, kontorer og erhvervsinteriør.", "url": PATHS["construction"], "cta": "Se interiørserier"},
+        ],
+        "realization_cases": [
+            {"title": "Gentagelige trækomponenter til virksomheder", "category": "B2B-produktion", "photo": "b2b_components_detail", "alt": "Gentagelige træprofiler som parti til en virksomhed", "meta": ["tegning, prøve eller specifikation", "prøve før serie", "afhentning eller forsendelse"], "body": "For virksomheder der har brug for profiler, POS-elementer, halvfabrikata eller trædele til videre montage uden at drive egen snedkerproces."},
+            {"title": "POS- og displaykomponenter", "category": "Reklame og events", "photo": "b2b_components_series", "alt": "Kort serie gentagelige træelementer til et displayprojekt", "meta": ["display", "kampagne eller event", "kort serie efter godkendelse"], "body": "For bureauer og brands der har brug for et træelement med tydelig deadline, synlig finish og gennemtænkt pakning."},
+            {"title": "Dør- og listeserier til hoteller eller lokaler", "category": "Kommercielt interiør", "photo": "hotel_door_series", "alt": "Serie af trædøre til et kommercielt interiørprojekt", "meta": ["hotel- og lokaledøre", "gentagelig standard", "parti efter godkendt prøve"], "body": "For entreprenører der arbejder med hoteller, pensionater, kontorer og lokaler, hvor flere åbninger kræver samme standard, tydelig mærkning og planlagt overdragelse."},
+        ],
+    },
+    "no": {
+        "nav": {"production": "B2B-komponenter", "construction": "Interiørserier", "architects": "Tekniske prosjekter", "realizations": "Cases"},
+        "hero_proofs": [
+            {"title": "B2B-komponenter", "body": "profiler, lister, halvfabrikata og detaljer for videre montering"},
+            {"title": "Prøver og korte serier", "body": "først en godkjent prøve, deretter repeterbare partier"},
+            {"title": "POS og displayer", "body": "tredeler for stands, butikkdisplayer og kampanjer"},
+            {"title": "Interiørserier", "body": "dører, lister og tredetaljer for entreprenører og kommersielle interiører"},
+        ],
+        "pages": {
+            "home": {"title": "Kajax Snekkerverksted | Trekomponenter og korte serier for bedrifter", "description": "B2B-trekomponenter fra Polen: prøver, korte serier, halvfabrikata, POS-/displayelementer, profiler og interiørserier etter tegning, prøve eller spesifikasjon.", "eyebrow": "B2B-produksjon av trekomponenter fra Polen", "h1": "Trekomponenter, prøver og korte serier for bedrifter", "lead": "Vi lager repeterbare tredeler for produsenter, entreprenører, reklame- og interiørbedrifter: profiler, lister, POS-/displayelementer, halvfabrikata og serier etter tegning, prøve eller spesifikasjon. Start med en referanse; hvis komponenten passer verkstedet, kan vi gå fra prøve til repeterbare ordre.", "primary_cta": "Send komponent for vurdering", "secondary_cta": "Se hva du bør sende"},
+            "production": {"title": "B2B-trekomponenter og korte serier fra Polen | Kajax", "description": "Halvfabrikata i tre, profiler, POS-elementer, prøver og korte serier for bedrifter i Polen og Europa.", "eyebrow": "B2B-komponenter / prøver / korte serier", "h1": "B2B-trekomponenter, prøver og korte serier", "lead": "For bedrifter som trenger en tredel uten å bygge egen snekkerprosess. Vi jobber etter tegning, prøve, bilde eller spesifikasjon og avklarer materiale, toleranser, overflate, pakking og første fornuftige partistørrelse.", "primary_cta": "Send tegning eller prøve"},
+            "construction": {"title": "Treserier for interiørentreprenører, hoteller og lokaler | Kajax", "description": "Dører, lister, profiler og tredetaljer for entreprenører, hoteller, kontorer og kommersielle prosjekter.", "eyebrow": "Entreprenører / hoteller / kommersielle interiører", "h1": "Tredetaljer og interiørserier for entreprenører", "lead": "For entreprenører og interiørbedrifter som trenger samme trestandard i flere rom, åpninger eller lokasjoner. Vi kan vurdere dører, lister, terskler, profiler og detaljer ut fra tegning, prøve, målliste eller prosjektspesifikasjon.", "primary_cta": "Send prosjektomfang"},
+            "architects": {"title": "Prosjektbaserte tredetaljer for bedrifter og designere | Kajax", "description": "Tredetaljer for entreprenører, designere, merkevarer og bedrifter: teknisk vurdering, prøve, kort serie og produksjon etter tegning eller referanse.", "eyebrow": "Tekniske tredetaljer", "h1": "Prosjektbaserte tredetaljer for bedrifter, entreprenører og designere", "lead": "For prosjekter der tredetaljen må passe til et produkt, interiør, display eller monteringssystem. Vi hjelper med å gjøre tegning, visualisering, referansebilde eller prøve om til en detalj som kan lages, overflatebehandles, pakkes og repeteres ved behov.", "primary_cta": "Send detalj til vurdering"},
+            "realizations": {"title": "B2B-cases for trekomponenter | Kajax", "description": "Eksempler på trekomponenter, POS-/displayelementer, interiørserier og prosjektbaserte detaljer for bedrifter.", "h1": "B2B-snekkerarbeid: komponenter, interiørserier og prosjektdetaljer", "lead": "Eksempler på arbeid der forretningsverdien ligger i repeterbarhet, prøvegodkjenning, jevn finish, pakking og passform til neste monteringssteg."},
+            "quote": {"h1": "Send tegning, prøve eller komponentbeskrivelse", "lead": "Bilde, tegning, prøve, spesifikasjon eller kort beskrivelse er nok for start. Legg igjen telefon eller e-post; hvis oppdraget passer verkstedet, spør vi om mål, materiale, antall, overflate, frist, pakking og frakt."},
+            "contact": {"description": "Kontakt Kajax Snekkerverksted i Gościcino, Polen. B2B-trekomponenter, korte serier, POS-/displayelementer, interiørserier og prosjektbaserte detaljer.", "lead": "Beste start er en kort forespørsel med bilde, tegning, prøve eller spesifikasjon. Da kan vi vurdere om komponenten passer verkstedet og hvilke data som mangler for pris."},
+        },
+        "process_steps": [
+            ("Du sender en referanse", "Bilde, tegning, spesifikasjon, fysisk prøve eller kort beskrivelse av komponenten og bruken."),
+            ("Vi avklarer produksjonsdata", "Materiale, mål, toleranser, antall, overflate, frist, pakking, henting eller frakt."),
+            ("Vi velger første steg", "Prøve, pilotparti, teknisk samtale, målkontroll eller tilbud."),
+            ("Du får et praktisk svar", "Vi sier om oppdraget passer verkstedet, hva som mangler og hvilket steg som gir mening."),
+        ],
+        "audience_cards": [
+            {"title": "B2B-trekomponenter", "body": "Profiler, lister, POS-elementer, halvfabrikata og korte serier etter tegning, prøve eller spesifikasjon.", "url": PATHS["production"], "cta": "Se B2B-produksjon"},
+            {"title": "POS, displayer og eventdeler", "body": "Tredeler for butikkdisplayer, stands, kampanjer og merkevaredetaljer med prøve før serien.", "url": PATHS["advertising_events"], "cta": "Se POS-komponenter"},
+            {"title": "Interiørserier og prosjektdetaljer", "body": "Dører, lister, profiler og tredetaljer for entreprenører, hoteller, kontorer og kommersielle interiører.", "url": PATHS["construction"], "cta": "Se interiørserier"},
+        ],
+        "realization_cases": [
+            {"title": "Repeterbare trekomponenter for bedrifter", "category": "B2B-produksjon", "photo": "b2b_components_detail", "alt": "Repeterbare treprofiler som parti for en bedrift", "meta": ["tegning, prøve eller spesifikasjon", "prøve før serie", "henting eller frakt"], "body": "For bedrifter som trenger profiler, POS-elementer, halvfabrikata eller tredeler for videre montering uten å drive egen snekkerprosess."},
+            {"title": "POS- og displaykomponenter", "category": "Reklame og event", "photo": "b2b_components_series", "alt": "Kort serie repeterbare treelementer for et displayprosjekt", "meta": ["display", "kampanje eller event", "kort serie etter godkjenning"], "body": "For byråer og merkevarer som trenger et treelement med tydelig frist, synlig finish og gjennomtenkt pakking."},
+            {"title": "Dør- og listeserier for hoteller eller lokaler", "category": "Kommersiell innredning", "photo": "hotel_door_series", "alt": "Serie tredører for et kommersielt innredningsprosjekt", "meta": ["hotell- og lokaledører", "repeterbar standard", "parti etter godkjent prøve"], "body": "For entreprenører som jobber med hoteller, pensjonater, kontorer og lokaler der flere åpninger trenger samme standard, tydelig merking og planlagt overlevering."},
+        ],
+    },
+}
+
+for _code, _updates in FOREIGN_B2B_REFOCUS.items():
+    _content = CONTENT[_code]
+    _content["nav"].update(_updates["nav"])
+    _content["pages"]["home"]["hero_proofs"] = _updates["hero_proofs"]
+    for _page_key, _page_updates in _updates["pages"].items():
+        _content["pages"][_page_key].update(_page_updates)
+    _content["process_steps"] = _updates["process_steps"]
+    _content["audience_cards"] = _updates["audience_cards"]
+    _content["realization_cases"] = _updates["realization_cases"]
 
 
 def _with_runtime_fields(page_key, page, language_code=None):

@@ -52,7 +52,7 @@ class PublicPagesTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '<html lang="de">')
-        self.assertContains(response, "Produktions- und Bauschreinerei aus Pommern")
+        self.assertContains(response, "B2B-Fertigung von Holzelementen aus Polen")
         self.assertContains(response, 'href="https://kajax.eu/de/"')
         self.assertContains(response, 'hreflang="en" href="https://kajax.eu/en/"')
         self.assertContains(response, 'href="/de/produkcja-elementow-drewnianych/"')
@@ -63,7 +63,7 @@ class PublicPagesTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '<html lang="no">')
-        self.assertContains(response, "Produksjons- og byggsnekkerverksted fra Pommern")
+        self.assertContains(response, "B2B-produksjon av trekomponenter fra Polen")
         self.assertContains(response, 'href="https://kajax.eu/no/"')
         self.assertContains(response, 'href="/no/wycena/"')
 
