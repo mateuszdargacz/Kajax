@@ -78,6 +78,7 @@ class QuoteRequestTests(TestCase):
 
     @override_settings(
         PIECODE_LEAD_SYNC_ENABLED=True,
+        PIECODE_LEAD_SYNC_SEND_LEAD=True,
         PIECODE_LEAD_SYNC_LEAD_URL="https://piecode.example/api/leads",
         PIECODE_LEAD_SYNC_EVENT_URL="https://piecode.example/api/events",
     )
@@ -118,3 +119,39 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(lead_payload["workspace_id"], "kajax")
         self.assertEqual(lead_payload["gclid"], "test-click-id")
         self.assertEqual(lead_payload["last_utm_campaign"], "kajax_test")
+
+    @override_settings(
+        PIECODE_LEAD_SYNC_ENABLED=True,
+        PIECODE_LEAD_SYNC_SEND_LEAD=False,
+        PIECODE_LEAD_SYNC_LEAD_URL="https://piecode.example/api/leads",
+        PIECODE_LEAD_SYNC_EVENT_URL="https://piecode.example/api/events",
+    )
+    @patch("leads.piecode_sync.post_json")
+    def test_quote_form_syncs_only_non_pii_event_by_default(self, post_json):
+        post_json.return_value = {"ok": True, "accepted": 1}
+
+        response = self.client.post(
+            f"{reverse('quote')}?utm_source=google&utm_medium=cpc&utm_campaign=kajax_test&gclid=test-click-id",
+            {
+                "name": "Event Only Lead",
+                "email": "lead@example.com",
+                "phone": "123456789",
+                "inquiry_type": QuoteRequest.InquiryType.CONSTRUCTION_JOINERY,
+                "message": "Proszę o wycenę schodów drewnianych.",
+                "consent": "on",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        quote = QuoteRequest.objects.get(name="Event Only Lead")
+        self.assertEqual(quote.central_sync_status, "event_only")
+        self.assertEqual(quote.central_lead_id, "")
+        self.assertEqual(post_json.call_count, 1)
+
+        event_url, event_payload = post_json.call_args.args
+        self.assertEqual(event_url, "https://piecode.example/api/events")
+        self.assertEqual(event_payload["workspace_id"], "kajax")
+        self.assertEqual(event_payload["event_name"], "lead_form_capture")
+        self.assertNotIn("email", event_payload["params"])
+        self.assertNotIn("phone", event_payload["params"])
+        self.assertNotIn("message", event_payload["params"])

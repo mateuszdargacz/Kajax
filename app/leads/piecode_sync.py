@@ -142,7 +142,7 @@ def sync_quote_request_to_piecode(quote_request, request):
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as error:
             errors.append(f"event_sync_failed: {error}")
 
-    if quote_request.email and settings.PIECODE_LEAD_SYNC_LEAD_URL:
+    if settings.PIECODE_LEAD_SYNC_SEND_LEAD and quote_request.email and settings.PIECODE_LEAD_SYNC_LEAD_URL:
         try:
             lead_response = post_json(settings.PIECODE_LEAD_SYNC_LEAD_URL, lead_payload(quote_request, request, attribution))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as error:
