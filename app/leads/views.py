@@ -8,6 +8,7 @@ from leads.copy import get_form_copy
 from leads.email import send_quote_emails
 from leads.forms import QuoteRequestForm
 from leads.models import QuoteAttachment
+from leads.piecode_sync import sync_quote_request_to_piecode
 from pages.content import get_page_content
 from pages.views import build_seo_context
 
@@ -54,6 +55,7 @@ class QuoteRequestView(FormView):
             )
 
         send_quote_emails(quote_request)
+        sync_quote_request_to_piecode(quote_request, self.request)
         self.request.session["quote_success_event"] = {
             "lead_type": "quote_request",
             "project_type": quote_request.inquiry_type,

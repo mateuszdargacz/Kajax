@@ -16,6 +16,23 @@
         custom_artistic: "custom_architectural_details",
         other: "mixed",
     };
+    var trackingFields = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "utm_id",
+        "gclid",
+        "gbraid",
+        "wbraid",
+        "fbclid",
+        "msclkid",
+        "ttclid",
+        "li_fat_id",
+    ];
+    var attributionStorageKey = "kajax_attribution_v1";
+    var attributionTtlMs = 30 * 24 * 60 * 60 * 1000;
 
     function assign(target, source) {
         Object.keys(source || {}).forEach(function (key) {
@@ -28,6 +45,53 @@
 
     function pushEvent(name, params) {
         window.dataLayer.push(assign(assign({ event: name }, pageContext), params || {}));
+    }
+
+    function readStoredAttribution() {
+        try {
+            var stored = JSON.parse(window.localStorage.getItem(attributionStorageKey) || "{}") || {};
+            if (stored.captured_at && Date.now() - Date.parse(stored.captured_at) > attributionTtlMs) {
+                window.localStorage.removeItem(attributionStorageKey);
+                return {};
+            }
+            return stored;
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function writeStoredAttribution(value) {
+        try {
+            window.localStorage.setItem(attributionStorageKey, JSON.stringify(value || {}));
+        } catch (error) {
+            return false;
+        }
+        return true;
+    }
+
+    function captureAttribution() {
+        var params = new URLSearchParams(window.location.search || "");
+        var stored = readStoredAttribution();
+        var changed = false;
+        trackingFields.forEach(function (field) {
+            var value = params.get(field);
+            if (value) {
+                stored[field] = value.slice(0, 500);
+                changed = true;
+            }
+        });
+        if (changed) {
+            stored.landing_path = window.location.pathname + window.location.search;
+            stored.captured_at = new Date().toISOString();
+            writeStoredAttribution(stored);
+        }
+        document.querySelectorAll("[data-attribution-field]").forEach(function (input) {
+            var field = input.dataset.attributionField || "";
+            if (field && stored[field]) {
+                input.value = stored[field];
+            }
+        });
+        return stored;
     }
 
     function linkUrl(link) {
@@ -112,7 +176,8 @@
         };
     }
 
-    pushEvent("kajax_page_view");
+    var storedAttribution = captureAttribution();
+    pushEvent("kajax_page_view", storedAttribution);
 
     var scrollThresholds = [25, 50, 75, 90];
     var sentScrollDepths = {};

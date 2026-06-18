@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "leads.middleware.AttributionCaptureMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -143,6 +144,11 @@ LEAD_EMAIL_FAIL_SILENTLY = env_bool("LEAD_EMAIL_FAIL_SILENTLY", default=True)
 GTM_ID = os.environ.get("GTM_ID", "")
 GA4_MEASUREMENT_ID = os.environ.get("GA4_MEASUREMENT_ID", "")
 GOOGLE_SITE_VERIFICATION = os.environ.get("GOOGLE_SITE_VERIFICATION", "")
+
+PIECODE_LEAD_SYNC_ENABLED = env_bool("PIECODE_LEAD_SYNC_ENABLED", default=False)
+PIECODE_LEAD_SYNC_LEAD_URL = os.environ.get("PIECODE_LEAD_SYNC_LEAD_URL", "").strip()
+PIECODE_LEAD_SYNC_EVENT_URL = os.environ.get("PIECODE_LEAD_SYNC_EVENT_URL", "").strip()
+PIECODE_LEAD_SYNC_TIMEOUT_SECONDS = float(os.environ.get("PIECODE_LEAD_SYNC_TIMEOUT_SECONDS", "4"))
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = not DEBUG

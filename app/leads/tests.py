@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from django.core import mail
 from django.test import TestCase, override_settings
 from django.urls import reverse
@@ -73,3 +75,46 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(quote.email, "")
         self.assertEqual(quote.phone, "123456789")
         self.assertEqual(quote.scale, QuoteRequest.Scale.UNKNOWN)
+
+    @override_settings(
+        PIECODE_LEAD_SYNC_ENABLED=True,
+        PIECODE_LEAD_SYNC_LEAD_URL="https://piecode.example/api/leads",
+        PIECODE_LEAD_SYNC_EVENT_URL="https://piecode.example/api/events",
+    )
+    @patch("leads.piecode_sync.post_json")
+    def test_quote_form_syncs_central_event_and_lead_after_success(self, post_json):
+        post_json.side_effect = [
+            {"ok": True, "accepted": 1},
+            {"ok": True, "id": "central-123", "status": "new"},
+        ]
+
+        response = self.client.post(
+            f"{reverse('quote')}?utm_source=google&utm_medium=cpc&utm_campaign=kajax_test&gclid=test-click-id",
+            {
+                "name": "Paid Lead",
+                "email": "lead@example.com",
+                "phone": "123456789",
+                "company": "Example Company",
+                "inquiry_type": QuoteRequest.InquiryType.B2B_COMPONENTS,
+                "scale": QuoteRequest.Scale.SMALL_SERIES,
+                "message": "Potrzebujemy krótkiej serii elementów według rysunku.",
+                "consent": "on",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        quote = QuoteRequest.objects.get(name="Paid Lead")
+        self.assertEqual(quote.central_sync_status, "synced")
+        self.assertEqual(quote.central_lead_id, "central-123")
+        self.assertEqual(post_json.call_count, 2)
+
+        event_url, event_payload = post_json.call_args_list[0].args
+        lead_url, lead_payload = post_json.call_args_list[1].args
+        self.assertEqual(event_url, "https://piecode.example/api/events")
+        self.assertEqual(lead_url, "https://piecode.example/api/leads")
+        self.assertEqual(event_payload["workspace_id"], "kajax")
+        self.assertEqual(event_payload["event_name"], "lead_form_capture")
+        self.assertEqual(event_payload["params"]["gclid"], "test-click-id")
+        self.assertEqual(lead_payload["workspace_id"], "kajax")
+        self.assertEqual(lead_payload["gclid"], "test-click-id")
+        self.assertEqual(lead_payload["last_utm_campaign"], "kajax_test")

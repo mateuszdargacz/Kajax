@@ -23,6 +23,10 @@ services:
       GTM_ID: ${GTM_ID:-}
       GA4_MEASUREMENT_ID: ${GA4_MEASUREMENT_ID:-}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
+      PIECODE_LEAD_SYNC_ENABLED: ${PIECODE_LEAD_SYNC_ENABLED:-false}
+      PIECODE_LEAD_SYNC_LEAD_URL: ${PIECODE_LEAD_SYNC_LEAD_URL:-https://piecode.pl/api/leads}
+      PIECODE_LEAD_SYNC_EVENT_URL: ${PIECODE_LEAD_SYNC_EVENT_URL:-https://piecode.pl/api/events}
+      PIECODE_LEAD_SYNC_TIMEOUT_SECONDS: ${PIECODE_LEAD_SYNC_TIMEOUT_SECONDS:-4}
     command: sh -c "python manage.py collectstatic --noinput && gunicorn config.wsgi:application --workers 2 --bind unix:///nginx/kajax.sock"
     volumes:
       - ./app/:/app/

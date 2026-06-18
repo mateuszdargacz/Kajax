@@ -19,9 +19,20 @@ class QuoteRequestAdmin(admin.ModelAdmin):
         "scale",
         "email",
         "phone",
+        "central_sync_status",
         "is_handled",
     ]
-    list_filter = ["inquiry_type", "scale", "is_handled", "created_at"]
+    list_filter = ["inquiry_type", "scale", "central_sync_status", "is_handled", "created_at"]
     search_fields = ["name", "email", "phone", "company", "message"]
-    readonly_fields = ["created_at", "updated_at", "language", "source_path", "user_agent"]
+    readonly_fields = [
+        "created_at",
+        "updated_at",
+        "language",
+        "source_path",
+        "user_agent",
+        "central_lead_id",
+        "central_sync_status",
+        "central_sync_last_error",
+        "central_synced_at",
+    ]
     inlines = [QuoteAttachmentInline]
