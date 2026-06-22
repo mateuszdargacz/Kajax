@@ -9,6 +9,8 @@
         service_area: body.dataset ? body.dataset.serviceArea || "" : "",
         language: body.dataset ? body.dataset.language || document.documentElement.lang || "" : document.documentElement.lang || "",
     };
+    var visitorStorageKey = "kajax_visitor_id_v1";
+    var sessionStorageKey = "kajax_session_id_v1";
 
     var projectBusinessLines = {
         b2b_components: "b2b_wooden_components",
@@ -33,6 +35,7 @@
     ];
     var attributionStorageKey = "kajax_attribution_v1";
     var attributionTtlMs = 30 * 24 * 60 * 60 * 1000;
+    var storedAttribution = {};
 
     function assign(target, source) {
         Object.keys(source || {}).forEach(function (key) {
@@ -43,8 +46,128 @@
         return target;
     }
 
+    function randomId(prefix) {
+        if (window.crypto && window.crypto.randomUUID) {
+            return prefix + "_" + window.crypto.randomUUID();
+        }
+        return prefix + "_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 10);
+    }
+
+    function readOrCreateStoredId(storage, key, prefix) {
+        try {
+            var current = storage.getItem(key);
+            if (current) {
+                return current;
+            }
+            var next = randomId(prefix);
+            storage.setItem(key, next);
+            return next;
+        } catch (error) {
+            return randomId(prefix);
+        }
+    }
+
+    function centralEventName(name) {
+        if (name === "kajax_page_view") {
+            return "page_view";
+        }
+        if (name === "quote_form_submit_attempt") {
+            return "quote_form_submit";
+        }
+        if (name === "quote_form_submit_error") {
+            return "quote_form_error";
+        }
+        return name;
+    }
+
+    function piecodeEventEndpoint() {
+        return body.dataset ? body.dataset.piecodeEventsUrl || "" : "";
+    }
+
+    function isSafeCentralParam(key, value) {
+        var paramKey = String(key || "").toLowerCase();
+        if (!paramKey) {
+            return false;
+        }
+        if (/(^|[_-])(email|mail|phone|message|company|contact|full_name|first_name|last_name)([_-]|$)/.test(paramKey)) {
+            return false;
+        }
+        if (paramKey === "link_url" && /^(mailto:|tel:)/i.test(String(value || ""))) {
+            return false;
+        }
+        if (/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(String(value || ""))) {
+            return false;
+        }
+        return true;
+    }
+
+    function safeCentralParams(params) {
+        var raw = assign(assign(assign({}, pageContext), storedAttribution), params || {});
+        var safe = {};
+        Object.keys(raw).forEach(function (key) {
+            var value = raw[key];
+            if (value === undefined || value === null || value === "") {
+                return;
+            }
+            if (!isSafeCentralParam(key, value)) {
+                return;
+            }
+            if (typeof value === "string") {
+                safe[key] = value.slice(0, 500);
+            } else if (typeof value === "number" || typeof value === "boolean") {
+                safe[key] = value;
+            }
+        });
+        safe.workspace_id = "kajax";
+        safe.page_path = window.location.pathname + window.location.search;
+        safe.page_location = window.location.href;
+        return safe;
+    }
+
+    function sendPiecodeEvent(name, params) {
+        var endpoint = piecodeEventEndpoint();
+        if (!endpoint) {
+            return;
+        }
+        var eventName = centralEventName(name);
+        var safeParams = safeCentralParams(assign({ source_event_name: name }, params || {}));
+        var sessionId = readOrCreateStoredId(window.sessionStorage, sessionStorageKey, "s");
+        var payload = {
+            event_name: eventName,
+            event_id: sessionId + ":" + eventName + ":" + Date.now() + ":" + Math.random().toString(36).slice(2, 10),
+            workspace_id: "kajax",
+            visitor_id: readOrCreateStoredId(window.localStorage, visitorStorageKey, "v"),
+            session_id: sessionId,
+            occurred_at: new Date().toISOString(),
+            page_path: window.location.pathname + window.location.search,
+            params: safeParams,
+        };
+        var bodyText = JSON.stringify(payload);
+        try {
+            if (navigator.sendBeacon) {
+                var sent = navigator.sendBeacon(endpoint, new Blob([bodyText], { type: "application/json" }));
+                if (sent) {
+                    return;
+                }
+            }
+            window.fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: bodyText,
+                mode: "cors",
+                credentials: "omit",
+                keepalive: true,
+            }).catch(function () {
+                return false;
+            });
+        } catch (error) {
+            return;
+        }
+    }
+
     function pushEvent(name, params) {
         window.dataLayer.push(assign(assign({ event: name }, pageContext), params || {}));
+        sendPiecodeEvent(name, params);
     }
 
     function readStoredAttribution() {
@@ -176,7 +299,7 @@
         };
     }
 
-    var storedAttribution = captureAttribution();
+    storedAttribution = captureAttribution();
     pushEvent("kajax_page_view", storedAttribution);
 
     var scrollThresholds = [25, 50, 75, 90];

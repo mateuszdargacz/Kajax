@@ -54,7 +54,8 @@
     data-page-type="{{ page_analytics.page_type|default:'' }}"
     data-business-line="{{ page_analytics.business_line|default:'' }}"
     data-service-area="{{ page_analytics.service_area|default:'' }}"
-    data-language="{{ page_analytics.language|default:LANGUAGE_CODE }}">
+    data-language="{{ page_analytics.language|default:LANGUAGE_CODE }}"
+    data-piecode-events-url="{{ site.piecode_events_url|default:'' }}">
 {% if site.gtm_id %}
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% endif %}

@@ -52,6 +52,7 @@ def site_context(request):
             "gtm_id": settings.GTM_ID,
             "ga4_measurement_id": settings.GA4_MEASUREMENT_ID,
             "google_site_verification": settings.GOOGLE_SITE_VERIFICATION,
+            "piecode_events_url": settings.PIECODE_LEAD_SYNC_EVENT_URL,
         },
         "nav_items": get_nav_items(language),
     }

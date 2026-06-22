@@ -377,7 +377,22 @@ test.describe("localized pages", () => {
 test.describe("quote form", () => {
   test("submits a qualified lead with optional fields and tracking events", async ({ page }) => {
     await installDataLayerRecorder(page, "e2eDataLayerEvents");
+    const centralEvents = [];
+    await page.route("https://piecode.example/api/events", async (route) => {
+      centralEvents.push(JSON.parse(route.request().postData() || "{}"));
+      await route.fulfill({
+        status: 202,
+        contentType: "application/json",
+        body: JSON.stringify({ ok: true, accepted: 1, stored: true }),
+      });
+    });
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, "sendBeacon", { value: undefined, configurable: true });
+    });
     await page.goto("/wycena/");
+    await page.evaluate(() => {
+      document.body.dataset.piecodeEventsUrl = "https://piecode.example/api/events";
+    });
 
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");
@@ -417,6 +432,24 @@ test.describe("quote form", () => {
     expect(eventPayload).not.toContain("604000000");
     expect(eventPayload).not.toContain("rysunek-testowy.txt");
     expect(eventPayload).not.toContain("Potrzebujemy krótkiej serii");
+    expect(centralEvents).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          event_name: "quote_form_start",
+          workspace_id: "kajax",
+          page_path: "/wycena/",
+          params: expect.objectContaining({
+            workspace_id: "kajax",
+            page_type: "conversion",
+          }),
+        }),
+      ]),
+    );
+    const centralPayload = JSON.stringify(centralEvents);
+    expect(centralPayload).not.toContain("Lead E2E");
+    expect(centralPayload).not.toContain("604000000");
+    expect(centralPayload).not.toContain("rysunek-testowy.txt");
+    expect(centralPayload).not.toContain("Potrzebujemy krótkiej serii");
     await expectNoHorizontalOverflow(page);
   });
 
