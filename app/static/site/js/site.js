@@ -9,9 +9,6 @@
         service_area: body.dataset ? body.dataset.serviceArea || "" : "",
         language: body.dataset ? body.dataset.language || document.documentElement.lang || "" : document.documentElement.lang || "",
     };
-    var visitorStorageKey = "kajax_visitor_id_v1";
-    var sessionStorageKey = "kajax_session_id_v1";
-
     var projectBusinessLines = {
         b2b_components: "b2b_wooden_components",
         construction_joinery: "construction_joinery",
@@ -46,50 +43,44 @@
         return target;
     }
 
-    function randomId(prefix) {
-        if (window.crypto && window.crypto.randomUUID) {
-            return prefix + "_" + window.crypto.randomUUID();
-        }
-        return prefix + "_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 10);
-    }
-
-    function readOrCreateStoredId(storage, key, prefix) {
-        try {
-            var current = storage.getItem(key);
-            if (current) {
-                return current;
-            }
-            var next = randomId(prefix);
-            storage.setItem(key, next);
-            return next;
-        } catch (error) {
-            return randomId(prefix);
-        }
-    }
-
     function centralEventName(name) {
         if (name === "kajax_page_view") {
             return "page_view";
         }
+        if (name === "quote_form_view") {
+            return "lead_form_view";
+        }
+        if (name === "quote_form_start") {
+            return "lead_form_start";
+        }
+        if (name === "quote_form_step") {
+            return "lead_form_step";
+        }
+        if (name === "quote_form_field_complete") {
+            return "lead_form_field_complete";
+        }
         if (name === "quote_form_submit_attempt") {
-            return "quote_form_submit";
+            return "lead_form_submit_attempt";
         }
         if (name === "quote_form_submit_error") {
-            return "quote_form_error";
+            return "lead_form_error";
+        }
+        if (name === "file_upload_complete") {
+            return "quote_attachment_added";
         }
         return name;
     }
 
-    function piecodeEventEndpoint() {
-        return body.dataset ? body.dataset.piecodeEventsUrl || "" : "";
+    function piecodeSdk() {
+        return window.PiecodeEvents && typeof window.PiecodeEvents.track === "function" ? window.PiecodeEvents : null;
     }
 
-    function isSafeCentralParam(key, value) {
+    function isSafePiecodeParam(key, value) {
         var paramKey = String(key || "").toLowerCase();
         if (!paramKey) {
             return false;
         }
-        if (/(^|[_-])(email|mail|phone|message|company|contact|full_name|first_name|last_name)([_-]|$)/.test(paramKey)) {
+        if (/(^|[_-])(email|mail|phone|message|company|contact|full_name|first_name|last_name|nip|tax|invoice|xml|file|filename|token|secret|password)([_-]|$)/.test(paramKey)) {
             return false;
         }
         if (paramKey === "link_url" && /^(mailto:|tel:)/i.test(String(value || ""))) {
@@ -101,15 +92,20 @@
         return true;
     }
 
-    function safeCentralParams(params) {
-        var raw = assign(assign(assign({}, pageContext), storedAttribution), params || {});
+    function safePiecodeParams(params) {
+        var normalized = assign({}, params || {});
+        if (normalized.file_count !== undefined && normalized.file_count !== null) {
+            normalized.attachment_count = normalized.file_count;
+            delete normalized.file_count;
+        }
+        var raw = assign(assign({}, pageContext), normalized);
         var safe = {};
         Object.keys(raw).forEach(function (key) {
             var value = raw[key];
             if (value === undefined || value === null || value === "") {
                 return;
             }
-            if (!isSafeCentralParam(key, value)) {
+            if (!isSafePiecodeParam(key, value)) {
                 return;
             }
             if (typeof value === "string") {
@@ -118,56 +114,56 @@
                 safe[key] = value;
             }
         });
-        safe.workspace_id = "kajax";
-        safe.page_path = window.location.pathname + window.location.search;
-        safe.page_location = window.location.href;
         return safe;
     }
 
-    function sendPiecodeEvent(name, params) {
-        var endpoint = piecodeEventEndpoint();
-        if (!endpoint) {
+    function piecodeOptions(name, options) {
+        var next = assign({ pagePath: window.location.pathname + window.location.search }, options || {});
+        if (name === "generate_lead") {
+            next.immediate = true;
+        }
+        return next;
+    }
+
+    function configurePiecode() {
+        var sdk = piecodeSdk();
+        if (!sdk) {
             return;
         }
-        var eventName = centralEventName(name);
-        var safeParams = safeCentralParams(assign({ source_event_name: name }, params || {}));
-        var sessionId = readOrCreateStoredId(window.sessionStorage, sessionStorageKey, "s");
-        var payload = {
-            event_name: eventName,
-            event_id: sessionId + ":" + eventName + ":" + Date.now() + ":" + Math.random().toString(36).slice(2, 10),
-            workspace_id: "kajax",
-            visitor_id: readOrCreateStoredId(window.localStorage, visitorStorageKey, "v"),
-            session_id: sessionId,
-            occurred_at: new Date().toISOString(),
-            page_path: window.location.pathname + window.location.search,
-            params: safeParams,
-        };
-        var bodyText = JSON.stringify(payload);
         try {
-            if (navigator.sendBeacon) {
-                var sent = navigator.sendBeacon(endpoint, new Blob([bodyText], { type: "application/json" }));
-                if (sent) {
-                    return;
-                }
+            if (typeof sdk.setContext === "function") {
+                sdk.setContext(pageContext);
             }
-            window.fetch(endpoint, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: bodyText,
-                mode: "cors",
-                credentials: "omit",
-                keepalive: true,
-            }).catch(function () {
-                return false;
-            });
+            if (body.dataset && body.dataset.piecodeAutoConsent === "true" && typeof sdk.setConsent === "function") {
+                sdk.setConsent(true);
+            }
         } catch (error) {
             return;
         }
     }
 
-    function pushEvent(name, params) {
+    function sendPiecodeEvent(name, params, options) {
+        var sdk = piecodeSdk();
+        if (!sdk) {
+            return;
+        }
+        if (name === "kajax_page_view" && body.dataset && body.dataset.piecodeAutoPageView === "true") {
+            return;
+        }
+        try {
+            sdk.track(
+                centralEventName(name),
+                safePiecodeParams(assign({ source_event_name: name }, params || {})),
+                piecodeOptions(name, options),
+            );
+        } catch (error) {
+            return;
+        }
+    }
+
+    function pushEvent(name, params, options) {
         window.dataLayer.push(assign(assign({ event: name }, pageContext), params || {}));
-        sendPiecodeEvent(name, params);
+        sendPiecodeEvent(name, params, options);
     }
 
     function readStoredAttribution() {
@@ -300,6 +296,8 @@
     }
 
     storedAttribution = captureAttribution();
+    configurePiecode();
+    window.addEventListener("piecode-events:ready", configurePiecode);
     pushEvent("kajax_page_view", storedAttribution);
 
     var scrollThresholds = [25, 50, 75, 90];
@@ -455,8 +453,12 @@
             project_type: success.dataset.projectType || "",
             business_line: success.dataset.businessLine || eventBusinessLine(success, success.dataset.projectType || ""),
         };
+        var successOptions = {};
+        if (success.dataset.quoteId) {
+            successOptions.eventId = "kajax-quote-" + success.dataset.quoteId + "-generate-lead";
+        }
         pushEvent("quote_thank_you_view", successParams);
-        pushEvent("generate_lead", successParams);
+        pushEvent("generate_lead", successParams, successOptions);
     }
 
     if ("IntersectionObserver" in window) {

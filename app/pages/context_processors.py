@@ -52,7 +52,11 @@ def site_context(request):
             "gtm_id": settings.GTM_ID,
             "ga4_measurement_id": settings.GA4_MEASUREMENT_ID,
             "google_site_verification": settings.GOOGLE_SITE_VERIFICATION,
-            "piecode_events_url": settings.PIECODE_LEAD_SYNC_EVENT_URL,
+            "piecode_workspace_id": settings.PIECODE_WORKSPACE_ID,
+            "piecode_events_sdk_enabled": settings.PIECODE_EVENTS_SDK_ENABLED,
+            "piecode_events_sdk_url": settings.PIECODE_EVENTS_SDK_URL,
+            "piecode_events_auto_consent": settings.PIECODE_EVENTS_AUTO_CONSENT,
+            "piecode_events_auto_page_view": settings.PIECODE_EVENTS_AUTO_PAGE_VIEW,
         },
         "nav_items": get_nav_items(language),
     }

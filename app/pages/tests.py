@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 
@@ -27,6 +27,23 @@ class PublicPagesTests(TestCase):
             with self.subTest(name=name):
                 response = self.client.get(reverse(name))
                 self.assertEqual(response.status_code, 200)
+
+    @override_settings(
+        PIECODE_EVENTS_SDK_ENABLED=True,
+        PIECODE_WORKSPACE_ID="kajax",
+        PIECODE_EVENTS_SDK_URL="https://piecode.pl/sdk/piecode-events.js",
+        PIECODE_EVENTS_AUTO_CONSENT=True,
+        PIECODE_EVENTS_AUTO_PAGE_VIEW=True,
+    )
+    def test_piecode_sdk_is_loaded_with_kajax_workspace(self):
+        response = self.client.get(reverse("home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'src="https://piecode.pl/sdk/piecode-events.js"')
+        self.assertContains(response, 'data-workspace-id="kajax"')
+        self.assertContains(response, 'data-consent="manual"')
+        self.assertContains(response, 'data-auto-page-view="true"')
+        self.assertContains(response, 'data-piecode-auto-consent="true"')
 
     def test_robots_and_sitemap_render(self):
         robots = self.client.get(reverse("robots_txt"))

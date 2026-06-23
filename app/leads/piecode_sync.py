@@ -36,7 +36,7 @@ def post_json(url, payload):
         method="POST",
         headers={
             "Content-Type": "application/json",
-            "User-Agent": "kajax-lead-sync/1.0",
+            "User-Agent": "kajax-piecode-sync/1.1",
         },
     )
     with urlopen(request, timeout=settings.PIECODE_LEAD_SYNC_TIMEOUT_SECONDS) as response:
@@ -80,9 +80,9 @@ def event_payload(quote_request, request, attribution):
         "page_key": "quote",
     }
     return {
-        "event_name": "lead_form_capture",
-        "event_id": f"kajax-quote-{quote_request.pk}-lead-form-capture",
-        "workspace_id": "kajax",
+        "event_name": "generate_lead",
+        "event_id": f"kajax-quote-{quote_request.pk}-generate-lead",
+        "workspace_id": settings.PIECODE_WORKSPACE_ID,
         "page_path": request.get_full_path()[:400],
         "occurred_at": timezone.now().isoformat(),
         "params": params,
@@ -92,7 +92,7 @@ def event_payload(quote_request, request, attribution):
 def lead_payload(quote_request, request, attribution):
     return {
         **attribution,
-        "workspace_id": "kajax",
+        "workspace_id": settings.PIECODE_WORKSPACE_ID,
         "form_name": "kajax-quote-request",
         "name": quote_request.name,
         "email": quote_request.email,

@@ -48,6 +48,14 @@
             gtag('config', '{{ site.ga4_measurement_id }}');
         </script>
     {% endif %}
+    {% if site.piecode_events_sdk_enabled and site.piecode_workspace_id and site.piecode_events_sdk_url %}
+        <script
+            defer
+            src="{{ site.piecode_events_sdk_url }}"
+            data-workspace-id="{{ site.piecode_workspace_id }}"
+            data-consent="manual"
+            data-auto-page-view="{{ site.piecode_events_auto_page_view|yesno:'true,false' }}"></script>
+    {% endif %}
 </head>
 <body{% if page.key %} class="page-{{ page.key }}"{% endif %}
     data-page-key="{{ page_analytics.page_key|default:page.key }}"
@@ -55,7 +63,9 @@
     data-business-line="{{ page_analytics.business_line|default:'' }}"
     data-service-area="{{ page_analytics.service_area|default:'' }}"
     data-language="{{ page_analytics.language|default:LANGUAGE_CODE }}"
-    data-piecode-events-url="{{ site.piecode_events_url|default:'' }}">
+    data-piecode-workspace-id="{{ site.piecode_workspace_id|default:'' }}"
+    data-piecode-auto-consent="{{ site.piecode_events_auto_consent|yesno:'true,false' }}"
+    data-piecode-auto-page-view="{{ site.piecode_events_auto_page_view|yesno:'true,false' }}">
 {% if site.gtm_id %}
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% endif %}

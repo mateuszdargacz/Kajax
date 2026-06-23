@@ -13,6 +13,7 @@
         {% if quote_success_event %}
             <div hidden
                 data-quote-success
+                data-quote-id="{{ quote_success_event.quote_id }}"
                 data-lead-type="{{ quote_success_event.lead_type }}"
                 data-project-type="{{ quote_success_event.project_type }}"
                 data-business-line="{{ quote_success_event.business_line }}"></div>

@@ -47,6 +47,7 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(
             self.client.session["quote_success_event"],
             {
+                "quote_id": quote.pk,
                 "lead_type": "quote_request",
                 "project_type": QuoteRequest.InquiryType.B2B_COMPONENTS,
                 "business_line": "b2b_wooden_components",
@@ -114,7 +115,8 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(event_url, "https://piecode.example/api/events")
         self.assertEqual(lead_url, "https://piecode.example/api/leads")
         self.assertEqual(event_payload["workspace_id"], "kajax")
-        self.assertEqual(event_payload["event_name"], "lead_form_capture")
+        self.assertEqual(event_payload["event_name"], "generate_lead")
+        self.assertEqual(event_payload["event_id"], f"kajax-quote-{quote.pk}-generate-lead")
         self.assertEqual(event_payload["params"]["gclid"], "test-click-id")
         self.assertEqual(lead_payload["workspace_id"], "kajax")
         self.assertEqual(lead_payload["gclid"], "test-click-id")
@@ -151,7 +153,8 @@ class QuoteRequestTests(TestCase):
         event_url, event_payload = post_json.call_args.args
         self.assertEqual(event_url, "https://piecode.example/api/events")
         self.assertEqual(event_payload["workspace_id"], "kajax")
-        self.assertEqual(event_payload["event_name"], "lead_form_capture")
+        self.assertEqual(event_payload["event_name"], "generate_lead")
+        self.assertEqual(event_payload["event_id"], f"kajax-quote-{quote.pk}-generate-lead")
         self.assertNotIn("email", event_payload["params"])
         self.assertNotIn("phone", event_payload["params"])
         self.assertNotIn("message", event_payload["params"])

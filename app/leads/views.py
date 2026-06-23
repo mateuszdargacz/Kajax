@@ -57,6 +57,7 @@ class QuoteRequestView(FormView):
         send_quote_emails(quote_request)
         sync_quote_request_to_piecode(quote_request, self.request)
         self.request.session["quote_success_event"] = {
+            "quote_id": quote_request.pk,
             "lead_type": "quote_request",
             "project_type": quote_request.inquiry_type,
             "business_line": INQUIRY_BUSINESS_LINES.get(quote_request.inquiry_type, "mixed"),

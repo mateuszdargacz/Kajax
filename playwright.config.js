@@ -11,6 +11,7 @@ const djangoEnv = [
   `DATA_DIR=${dataDir}`,
   "EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend",
   "DJANGO_DEBUG=true",
+  "PIECODE_EVENTS_SDK_ENABLED=false",
 ].join(" ");
 
 module.exports = defineConfig({

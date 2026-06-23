@@ -47,6 +47,50 @@ async function installDataLayerRecorder(page, storageKey) {
   }, storageKey);
 }
 
+async function installPiecodeRecorder(page, storageKey) {
+  await page.addInitScript((key) => {
+    const state = {
+      context: {},
+      consentGranted: false,
+      devMode: false,
+    };
+    const saveEvent = (event) => {
+      const events = JSON.parse(window.localStorage.getItem(key) || "[]");
+      events.push(event);
+      window.localStorage.setItem(key, JSON.stringify(events));
+    };
+    window.PiecodeEvents = {
+      setContext(context) {
+        state.context = { ...state.context, ...(context || {}) };
+      },
+      setConsent(granted) {
+        state.consentGranted = granted === true;
+      },
+      setDevMode(enabled) {
+        state.devMode = enabled === true;
+      },
+      track(eventName, params, options) {
+        saveEvent({
+          event_name: eventName,
+          params: { ...state.context, ...(params || {}) },
+          options: options || {},
+          consent_granted: state.consentGranted,
+          dev_mode: state.devMode,
+        });
+      },
+      page(params) {
+        this.track("page_view", { page_type: "page", ...(params || {}) }, { immediate: true });
+      },
+      flush() {
+        return Promise.resolve(true);
+      },
+      getState() {
+        return { consent_granted: state.consentGranted, dev_mode: state.devMode };
+      },
+    };
+  }, storageKey);
+}
+
 test.describe("public marketing pages", () => {
   for (const publicPage of publicPages) {
     test(`${publicPage.path} renders cleanly`, async ({ page }, testInfo) => {
@@ -377,22 +421,8 @@ test.describe("localized pages", () => {
 test.describe("quote form", () => {
   test("submits a qualified lead with optional fields and tracking events", async ({ page }) => {
     await installDataLayerRecorder(page, "e2eDataLayerEvents");
-    const centralEvents = [];
-    await page.route("https://piecode.example/api/events", async (route) => {
-      centralEvents.push(JSON.parse(route.request().postData() || "{}"));
-      await route.fulfill({
-        status: 202,
-        contentType: "application/json",
-        body: JSON.stringify({ ok: true, accepted: 1, stored: true }),
-      });
-    });
-    await page.addInitScript(() => {
-      Object.defineProperty(navigator, "sendBeacon", { value: undefined, configurable: true });
-    });
-    await page.goto("/wycena/");
-    await page.evaluate(() => {
-      document.body.dataset.piecodeEventsUrl = "https://piecode.example/api/events";
-    });
+    await installPiecodeRecorder(page, "e2ePiecodeEvents");
+    await page.goto("/wycena/?piecode_dev=1");
 
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");
@@ -432,20 +462,38 @@ test.describe("quote form", () => {
     expect(eventPayload).not.toContain("604000000");
     expect(eventPayload).not.toContain("rysunek-testowy.txt");
     expect(eventPayload).not.toContain("Potrzebujemy krótkiej serii");
-    expect(centralEvents).toEqual(
+    const piecodeEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2ePiecodeEvents") || "[]"));
+    expect(piecodeEvents).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          event_name: "quote_form_start",
-          workspace_id: "kajax",
-          page_path: "/wycena/",
+          event_name: "lead_form_start",
+          consent_granted: true,
           params: expect.objectContaining({
-            workspace_id: "kajax",
             page_type: "conversion",
+          }),
+        }),
+        expect.objectContaining({
+          event_name: "quote_attachment_added",
+          params: expect.objectContaining({
+            attachment_count: 1,
+            project_type: "custom_artistic",
+          }),
+        }),
+        expect.objectContaining({
+          event_name: "generate_lead",
+          options: expect.objectContaining({
+            immediate: true,
+            eventId: expect.stringMatching(/^kajax-quote-\d+-generate-lead$/),
+          }),
+          params: expect.objectContaining({
+            lead_type: "quote_request",
+            project_type: "custom_artistic",
+            business_line: "custom_architectural_details",
           }),
         }),
       ]),
     );
-    const centralPayload = JSON.stringify(centralEvents);
+    const centralPayload = JSON.stringify(piecodeEvents);
     expect(centralPayload).not.toContain("Lead E2E");
     expect(centralPayload).not.toContain("604000000");
     expect(centralPayload).not.toContain("rysunek-testowy.txt");
