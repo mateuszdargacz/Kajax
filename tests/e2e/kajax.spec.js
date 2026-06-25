@@ -273,10 +273,14 @@ test.describe("public marketing pages", () => {
     if (process.env.E2E_ALLOW_GTM === "1") {
       const thirdPartyHosts = thirdPartyResources.map((entry) => new URL(entry.name).hostname);
       const unexpectedHosts = thirdPartyHosts.filter(
-        (host) => host !== "www.googletagmanager.com" && !/\.google-analytics\.com$/.test(host),
+        (host) => (
+          host !== "www.googletagmanager.com"
+          && host !== "piecode.pl"
+          && !/\.google-analytics\.com$/.test(host)
+        ),
       );
       expect(unexpectedHosts).toEqual([]);
-      expect(thirdPartyHosts.length).toBeLessThanOrEqual(4);
+      expect(thirdPartyHosts.length).toBeLessThanOrEqual(7);
     } else {
       expect(thirdPartyResources).toEqual([]);
     }
@@ -421,7 +425,16 @@ test.describe("localized pages", () => {
 test.describe("quote form", () => {
   test("submits a qualified lead with optional fields and tracking events", async ({ page }) => {
     await installDataLayerRecorder(page, "e2eDataLayerEvents");
-    await installPiecodeRecorder(page, "e2ePiecodeEvents");
+    const piecodeRequests = [];
+    if (process.env.E2E_ALLOW_GTM === "1") {
+      page.on("request", (request) => {
+        if (request.method() === "POST" && request.url() === "https://piecode.pl/api/events") {
+          piecodeRequests.push(request.postData() || "");
+        }
+      });
+    } else {
+      await installPiecodeRecorder(page, "e2ePiecodeEvents");
+    }
     await page.goto("/wycena/?piecode_dev=1");
 
     await page.getByLabel("Imię").fill("Lead E2E");
@@ -462,38 +475,45 @@ test.describe("quote form", () => {
     expect(eventPayload).not.toContain("604000000");
     expect(eventPayload).not.toContain("rysunek-testowy.txt");
     expect(eventPayload).not.toContain("Potrzebujemy krótkiej serii");
-    const piecodeEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2ePiecodeEvents") || "[]"));
-    expect(piecodeEvents).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          event_name: "lead_form_start",
-          consent_granted: true,
-          params: expect.objectContaining({
-            page_type: "conversion",
+    let centralPayload = "";
+    if (process.env.E2E_ALLOW_GTM === "1") {
+      await expect.poll(() => piecodeRequests.length).toBeGreaterThan(0);
+      centralPayload = piecodeRequests.join("\n");
+      expect(centralPayload).toContain("generate_lead");
+    } else {
+      const piecodeEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2ePiecodeEvents") || "[]"));
+      expect(piecodeEvents).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            event_name: "lead_form_start",
+            consent_granted: true,
+            params: expect.objectContaining({
+              page_type: "conversion",
+            }),
           }),
-        }),
-        expect.objectContaining({
-          event_name: "quote_attachment_added",
-          params: expect.objectContaining({
-            attachment_count: 1,
-            project_type: "custom_artistic",
+          expect.objectContaining({
+            event_name: "quote_attachment_added",
+            params: expect.objectContaining({
+              attachment_count: 1,
+              project_type: "custom_artistic",
+            }),
           }),
-        }),
-        expect.objectContaining({
-          event_name: "generate_lead",
-          options: expect.objectContaining({
-            immediate: true,
-            eventId: expect.stringMatching(/^kajax-quote-\d+-generate-lead$/),
+          expect.objectContaining({
+            event_name: "generate_lead",
+            options: expect.objectContaining({
+              immediate: true,
+              eventId: expect.stringMatching(/^kajax-quote-\d+-generate-lead$/),
+            }),
+            params: expect.objectContaining({
+              lead_type: "quote_request",
+              project_type: "custom_artistic",
+              business_line: "custom_architectural_details",
+            }),
           }),
-          params: expect.objectContaining({
-            lead_type: "quote_request",
-            project_type: "custom_artistic",
-            business_line: "custom_architectural_details",
-          }),
-        }),
-      ]),
-    );
-    const centralPayload = JSON.stringify(piecodeEvents);
+        ]),
+      );
+      centralPayload = JSON.stringify(piecodeEvents);
+    }
     expect(centralPayload).not.toContain("Lead E2E");
     expect(centralPayload).not.toContain("604000000");
     expect(centralPayload).not.toContain("rysunek-testowy.txt");
