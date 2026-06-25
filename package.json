@@ -5,7 +5,9 @@
     "test:e2e:install": "playwright install chromium",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
-    "test:e2e:update": "playwright test --update-snapshots"
+    "test:e2e:update": "playwright test --update-snapshots",
+    "test:prod-smoke": "bash scripts/prod-smoke.sh",
+    "smoke:cleanup": "bash scripts/cleanup-prod-smoke-leads.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"
