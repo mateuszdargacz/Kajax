@@ -499,6 +499,29 @@ h3 {
     font-weight: 760;
 }
 
+.hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    max-width: 780px;
+    padding: 0;
+    margin: 24px 0 28px;
+    list-style: none;
+}
+
+.hero-points li {
+    padding: 8px 11px;
+    background: #f5efe5;
+    border: 1px solid rgba(154, 135, 112, 0.28);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-weight: 780;
+}
+
+.hero-points + .button {
+    margin-top: 0;
+}
+
 .hero-proof-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -6,6 +6,13 @@
             <p class="eyebrow">{{ page.eyebrow }}</p>
             <h1>{{ page.h1 }}</h1>
             <p class="hero-lead">{{ page.lead }}</p>
+            {% if page.hero_points %}
+                <ul class="hero-points" aria-label="{{ ui.trust_aria }}">
+                    {% for point in page.hero_points %}
+                        <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
         </div>
         <figure class="page-hero-image">

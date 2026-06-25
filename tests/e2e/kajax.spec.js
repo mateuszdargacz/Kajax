@@ -1,15 +1,15 @@
 const { test, expect } = require("@playwright/test");
 
 const publicPages = [
-  { path: "/", h1: "Elementy drewniane dla firm i stolarka na wymiar" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane dla firm, próbki i krótkie serie" },
+  { path: "/", h1: "Komponenty drewniane dla firm oraz schody i drzwi na wymiar" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Komponenty drewniane dla firm z rysunku, próbki albo wzoru" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane displaye, elementy POS i detale eventowe" },
-  { path: "/stolarka-budowlana/", h1: "Schody, drzwi i drewniane wykończenia dopasowane do miejsca" },
+  { path: "/stolarka-budowlana/", h1: "Schody drewniane, drzwi i stolarka na wymiar w Pomorskiem" },
   { path: "/stolarka-budowlana-wejherowo/", h1: "Stolarka budowlana Wejherowo" },
   { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
-  { path: "/dla-architektow-i-firm/", h1: "Drewniane detale i zabudowy pod konkretny projekt" },
-  { path: "/realizacje/", h1: "Drewno w serii, na wymiar i pod projekt" },
+  { path: "/dla-architektow-i-firm/", h1: "Zabudowy i detale drewniane, których nie bierze się z katalogu" },
+  { path: "/realizacje/", h1: "Przykłady zleceń: komponenty, schody, drzwi i detale" },
   { path: "/jak-przygotowac-zapytanie/", h1: "Jak opisać zlecenie, żeby szybciej dostać rzeczową odpowiedź?" },
   { path: "/kiedy-oplaca-sie-zamowic-elementy-drewniane-w-krotkiej-serii/", h1: "Krótka seria elementów drewnianych: kiedy ma sens?" },
   { path: "/kontakt/", h1: "Kontakt z Kajax Stolarstwo" },
@@ -119,12 +119,12 @@ test.describe("public marketing pages", () => {
   test("home has visible conversion CTAs and mapped images", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "Wyślij projekt do wyceny" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Zobacz, co warto wysłać" })).toHaveAttribute("href", "/jak-przygotowac-zapytanie/");
+    await expect(page.getByRole("link", { name: "Wyślij zdjęcie lub rysunek" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Co przygotować do wyceny" })).toHaveAttribute("href", "/jak-przygotowac-zapytanie/");
     await expect(page.getByRole("link", { name: "Sprawdź checklistę" })).toBeVisible();
     await expect(page.locator(".hero-proof-grid")).toContainText("Produkcja dla firm");
     await expect(page.locator(".hero-proof-grid")).toContainText("Elementy POS");
-    await expect(page.locator("body")).toContainText("proponujemy pierwszy krok: próbkę, partię testową, pomiar albo wycenę");
+    await expect(page.locator("body")).toContainText("Dla firm wykonujemy elementy z drewna na podstawie rysunku, próbki albo wzoru");
     await expect(page.locator("body")).not.toContainText("Czego nie obiecujemy bez danych");
     await expect(page.locator('a[hreflang="en"]').first()).toHaveAttribute("href", "https://kajax.eu/en/");
     await expect(page.locator('a[hreflang="de"]').first()).toHaveAttribute("href", "https://kajax.eu/de/");
@@ -242,7 +242,7 @@ test.describe("public marketing pages", () => {
     await page.goto("/realizacje/");
 
     await expect(page.locator(".realization")).toHaveCount(9);
-    await expect(page.locator("body")).toContainText("Od powtarzalnych profili dla firmy po drzwi do lokalu");
+    await expect(page.locator("body")).toContainText("przykłady tematów, które warto wysłać do oceny");
     await expect(page.locator("body")).not.toContainText("To nie jest katalog gotowych produktów");
     await expect(page.locator("body")).toContainText("Serie drzwi i elementów do hoteli lub lokali");
     await expect(page.locator("body")).toContainText("drzwi do hoteli i lokali");
@@ -288,7 +288,7 @@ test.describe("public marketing pages", () => {
     await installDataLayerRecorder(page, "e2eCtaEvents");
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
-    await page.getByRole("link", { name: "Zobacz, co warto wysłać" }).click();
+    await page.getByRole("link", { name: "Co przygotować do wyceny" }).click();
     const ctaEvents = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2eCtaEvents") || "[]"));
     expect(ctaEvents).toContainEqual(
       expect.objectContaining({

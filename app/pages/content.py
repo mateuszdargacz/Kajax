@@ -195,30 +195,31 @@ CONTENT = {
         },
         "pages": {
             "home": {
-                "title": "Kajax Stolarstwo | Elementy drewniane dla firm i stolarka na wymiar",
-                "description": "Rodzinna stolarnia z Gościcina. Elementy drewniane dla firm, próbki i krótkie serie, schody, drzwi, listwy oraz detale pod projekt. Pomorskie i wysyłkowe zlecenia B2B.",
+                "title": "Kajax Stolarstwo | Elementy drewniane B2B i stolarka Pomorskie",
+                "description": "Stolarnia z Gościcina: komponenty drewniane dla firm, próbki i krótkie serie oraz schody, drzwi, listwy i zabudowy na wymiar w Pomorskiem.",
                 "hero_photo": "hero_workshop",
                 "b2b_photo": "b2b_components_series",
                 "hero_alt": "Warsztat Kajax z maszynami stolarskimi i drewnem przygotowanym do obróbki",
-                "eyebrow": "Stolarnia w Gościcinie",
-                "h1": "Elementy drewniane dla firm i stolarka na wymiar",
-                "lead": "Wykonujemy drewniane elementy do produkcji, wnętrz i montażu: krótkie serie dla firm, półprodukty, profile, listwy, drzwi, schody i zabudowy. Na start wystarczy zdjęcie, rysunek, wzór albo podstawowe wymiary. Po sprawdzeniu materiału, skali i zastosowania proponujemy pierwszy krok: próbkę, partię testową, pomiar albo wycenę.",
-                "primary_cta": "Wyślij projekt do wyceny",
-                "secondary_cta": "Zobacz, co warto wysłać",
+                "eyebrow": "Stolarnia w Gościcinie: B2B i Pomorskie",
+                "h1": "Komponenty drewniane dla firm oraz schody i drzwi na wymiar",
+                "lead": "Dla firm wykonujemy elementy z drewna na podstawie rysunku, próbki albo wzoru: profile, listwy, półprodukty, elementy POS i krótkie serie. Lokalnie w Pomorskiem robimy schody, drzwi, zabudowy i nietypową stolarkę. Wyślij zdjęcie, rysunek albo wymiary; odpowiemy, czego brakuje do sensownej wyceny.",
+                "primary_cta": "Wyślij zdjęcie lub rysunek",
+                "secondary_cta": "Co przygotować do wyceny",
             },
             "production": {
-                "title": "Elementy drewniane dla firm i krótkie serie | Kajax",
-                "description": "Produkcja elementów drewnianych według wzoru, rysunku lub specyfikacji. Profile, listwy, elementy POS, próbki i krótkie serie dla firm.",
+                "title": "Komponenty drewniane B2B z rysunku lub wzoru | Kajax",
+                "description": "Elementy drewniane dla firm: profile, listwy, półprodukty, elementy POS, próbki i krótkie serie z rysunku, wzoru albo specyfikacji.",
                 "hero_photo": "b2b_components_series",
                 "hero_alt": "Seria jednakowych drewnianych elementów ułożona na stole warsztatowym",
-                "eyebrow": "Produkcja dla firm",
-                "h1": "Elementy drewniane dla firm, próbki i krótkie serie",
-                "lead": "Dla firm, które potrzebują drewnianego elementu bez uruchamiania własnej stolarni: profilu, listwy, części do produktu, detalu POS, półproduktu albo krótkiej serii. Zaczynamy od wzoru, rysunku, próbki lub małej partii, a po ustaleniu standardu możemy przejść do powtarzalnych zamówień.",
-                "primary_cta": "Wyślij specyfikację do oceny",
+                "eyebrow": "B2B: próbka, krótka seria, powtarzalny detal",
+                "h1": "Komponenty drewniane dla firm z rysunku, próbki albo wzoru",
+                "lead": "To landing dla firm, które potrzebują konkretnej części z drewna: profilu, listwy, półproduktu, elementu POS, detalu do produktu lub partii do dalszego montażu. Zaczynamy od wzoru, rysunku, zdjęcia albo próbki. Jeśli temat pasuje do warsztatu, ustalamy materiał, tolerancje, wykończenie i pierwszy bezpieczny krok.",
+                "primary_cta": "Wyślij rysunek, próbkę albo opis",
+                "hero_points": ["Polska i wysyłkowe B2B po ocenie gabarytu", "próbka lub partia testowa przed większą serią", "profile, listwy, POS, półprodukty i detale montażowe"],
                 "sections": [
                     {
-                        "title": "Co opłaca się zlecić na zewnątrz",
-                        "body": "Najlepiej pasują elementy, które wracają w kolejnych zamówieniach albo zajmują firmie ludzi, miejsce i narzędzia potrzebne przy głównej produkcji. Wtedy stolarnia może przejąć wydzielony fragment pracy: powtarzalny detal, partię testową, listwy, profile, elementy POS albo części do dalszego montażu.",
+                        "title": "Kiedy outsourcing stolarni ma sens",
+                        "body": "Najlepiej pasują elementy, które wracają w zamówieniach albo blokują firmie ludzi, miejsce i narzędzia potrzebne przy głównej produkcji. Wtedy możemy przejąć wydzielony fragment pracy: powtarzalny detal, partię testową, listwy, profile, elementy POS albo części do dalszego montażu.",
                         "items": ["profile, listwy, ramy i półprodukty", "elementy POS, displaye i ekspozytory", "drewniane części do produktów, mebli i lokali", "próbki, partie testowe i krótkie serie"],
                     },
                     {
@@ -244,18 +245,19 @@ CONTENT = {
                 ],
             },
             "construction": {
-                "title": "Stolarka budowlana Pomorskie | Schody, drzwi i listwy | Kajax",
-                "description": "Schody drewniane, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Stolarnia Gościcino, Wejherowo, Trójmiasto i Pomorskie.",
+                "title": "Schody drewniane i drzwi na wymiar Pomorskie | Kajax",
+                "description": "Stolarka budowlana w Pomorskiem: schody drewniane, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Gościcino, Wejherowo, Trójmiasto.",
                 "hero_photo": "stairs_project",
                 "hero_alt": "Drewniane schody z balustradą w jasnym wnętrzu",
-                "eyebrow": "Schody, drzwi, listwy, zabudowy",
-                "h1": "Schody, drzwi i drewniane wykończenia dopasowane do miejsca",
-                "lead": "W domach, lokalach i inwestycjach gotowy element często nie pasuje wymiarem, materiałem albo standardem wykończenia. Wykonujemy schody, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Przy montażu pracujemy głównie w Pomorskiem: Gościcino, Wejherowo, Trójmiasto i okolice.",
-                "primary_cta": "Opisz zakres prac",
+                "eyebrow": "Pomorskie: schody, drzwi, listwy, zabudowy",
+                "h1": "Schody drewniane, drzwi i stolarka na wymiar w Pomorskiem",
+                "lead": "Robimy stolarkę tam, gdzie gotowy produkt nie pasuje do otworu, wnętrza albo oczekiwanego standardu. Wykonujemy schody, drzwi, listwy, progi, opaski, parapety i zabudowy na wymiar. Przy pomiarze i montażu pracujemy głównie lokalnie: Gościcino, Wejherowo, Trójmiasto i okolice.",
+                "primary_cta": "Wyślij zdjęcia miejsca",
+                "hero_points": ["schody, drzwi, listwy i zabudowy", "pomiar i montaż głównie w Pomorskiem", "pierwsza ocena ze zdjęć i orientacyjnych wymiarów"],
                 "sections": [
                     {
-                        "title": "Pomiar, montaż i wykończenie dopasowane do wnętrza",
-                        "body": "To prace, w których liczy się miejsce montażu, stabilna konstrukcja i czyste wykończenie widocznych krawędzi. Dlatego przed wyceną potrzebujemy zobaczyć przestrzeń, a nie tylko nazwę elementu.",
+                        "title": "Co wykonujemy lokalnie",
+                        "body": "To prace, w których liczy się miejsce montażu, stabilna konstrukcja i czyste wykończenie widocznych krawędzi. Do pierwszej rozmowy potrzebujemy zobaczyć przestrzeń, a nie tylko samą nazwę elementu.",
                         "items": ["schody drewniane", "drzwi wewnętrzne i zewnętrzne", "listwy, progi, opaski i parapety", "zabudowy i nietypowe elementy wykończeniowe"],
                     },
                     {
@@ -270,14 +272,15 @@ CONTENT = {
                 ],
             },
             "architects": {
-                "title": "Stolarnia dla architektów i firm | Detale drewniane pod projekt",
-                "description": "Nietypowe detale drewniane, elementy do wnętrz, lokali, ekspozycji i projektów specjalnych. Wykonanie według rysunku, zdjęcia lub wizualizacji.",
+                "title": "Zabudowy i detale drewniane pod projekt | Kajax",
+                "description": "Drewniane detale, zabudowy i elementy do wnętrz, lokali, ekspozycji oraz projektów specjalnych. Praca od rysunku, zdjęcia, wzoru lub wizualizacji.",
                 "hero_photo": "artistic_detail",
                 "hero_alt": "Precyzyjny detal stolarski wykonany z drewna",
-                "eyebrow": "Nietypowe detale i projekty specjalne",
-                "h1": "Drewniane detale i zabudowy pod konkretny projekt",
+                "eyebrow": "Zabudowy, detale i projekty specjalne",
+                "h1": "Zabudowy i detale drewniane, których nie bierze się z katalogu",
                 "lead": "Dla architektów, projektantów, wykonawców i firm, które potrzebują drewnianego elementu dopasowanego do miejsca, lokalu, ekspozycji albo produktu. Możemy zacząć od rysunku, wizualizacji, zdjęcia inspiracyjnego, próbki materiału albo starego elementu do odtworzenia.",
-                "primary_cta": "Wyślij detal do konsultacji",
+                "primary_cta": "Wyślij projekt do oceny",
+                "hero_points": ["wnętrza, lokale, ekspozycje i detale marki", "rozmowa o materiale, montażu i widocznych krawędziach", "próbka, gdy element ma być powtarzany"],
                 "sections": [
                     {
                         "title": "Gdy detal ma być widoczny",
@@ -296,16 +299,16 @@ CONTENT = {
                 ],
             },
             "realizations": {
-                "title": "Realizacje i przykłady projektów stolarskich | Kajax",
-                "description": "Serie elementów dla firm, drzwi do lokali, schody, listwy i detale pod projekt. Zobacz, przy jakich zleceniach Kajax może pomóc.",
-                "h1": "Drewno w serii, na wymiar i pod projekt",
-                "lead": "Od powtarzalnych profili dla firmy po drzwi do lokalu, schody i detale do wnętrz. Poniżej pokazujemy typy zleceń, w których liczy się wymiar, powtarzalność, wykończenie i sprawna logistyka.",
+                "title": "Realizacje stolarskie: B2B, schody, drzwi | Kajax",
+                "description": "Przykłady zleceń: komponenty drewniane B2B, serie drzwi, schody w Pomorskiem, listwy, profile, zabudowy i detale pod projekt.",
+                "h1": "Przykłady zleceń: komponenty, schody, drzwi i detale",
+                "lead": "To nie katalog produktów do kliknięcia, tylko przykłady tematów, które warto wysłać do oceny. Pokazują, kiedy możemy pomóc: przy powtarzalnych elementach dla firm, seriach drzwi i listew, schodach w Pomorskiem oraz detalach robionych pod projekt.",
             },
             "quote": {
-                "title": "Wyślij zapytanie | Kajax Stolarstwo",
-                "description": "Wyślij zdjęcie, rysunek albo opis. Kajax odpowie, czy może wykonać element z drewna, krótką serię lub stolarkę na wymiar.",
-                "h1": "Pokaż, co mamy wykonać",
-                "lead": "Nie potrzebujesz gotowego projektu technicznego. Wystarczy zdjęcie, rysunek, wzór albo kilka zdań o elemencie. Zostaw telefon albo email. Jeśli temat pasuje do warsztatu, dopytamy o wymiary, materiał, ilość, termin, pakowanie, odbiór lub wysyłkę.",
+                "title": "Wycena stolarni: wyślij zdjęcie lub rysunek | Kajax",
+                "description": "Wyślij zdjęcie, rysunek, wzór albo opis. Odpowiemy, czy możemy wykonać komponent drewniany, krótką serię, schody, drzwi lub stolarkę na wymiar.",
+                "h1": "Wyślij zdjęcie, rysunek albo opis",
+                "lead": "Nie potrzebujesz pełnego projektu technicznego. Do pierwszej oceny wystarczy zdjęcie, rysunek, wzór albo kilka zdań: co ma powstać, ile sztuk lub gdzie ma być montowane. Jeśli temat pasuje do warsztatu, dopytamy o wymiary, materiał, termin, pakowanie, odbiór albo wysyłkę.",
             },
             "contact": {
                 "title": "Kontakt | Kajax Stolarstwo Gościcino",
@@ -1950,8 +1953,8 @@ HOME_HERO_PROOFS_EN = [
 
 CONTENT["pl"]["pages"]["home"].update(
     {
-        "title": "Kajax Stolarstwo | Elementy drewniane B2B i stolarka na wymiar",
-        "description": "Stolarnia z Gościcina: elementy drewniane dla firm, krótkie serie, schody, drzwi, listwy i detale pod projekt. Pomorskie i zlecenia B2B.",
+        "title": "Kajax Stolarstwo | Elementy drewniane B2B i stolarka Pomorskie",
+        "description": "Stolarnia z Gościcina: komponenty drewniane dla firm, próbki i krótkie serie oraz schody, drzwi, listwy i zabudowy na wymiar w Pomorskiem.",
         "hero_proofs": HOME_HERO_PROOFS_PL,
         "og_image": "og-home-workshop.jpg",
     }
@@ -1980,14 +1983,15 @@ for _code, _content in CONTENT.items():
 
 def _local_page_pl(city, where, area, nearby):
     return {
-        "title": f"Stolarka budowlana {city} | Schody, drzwi i listwy | Kajax",
+        "title": f"Stolarka budowlana {city}: schody i drzwi | Kajax",
         "description": f"Schody drewniane, drzwi, listwy, progi i zabudowy na wymiar {where}. Stolarnia Kajax z Gościcina, obsługa: {nearby}.",
         "hero_photo": "stairs_detail",
         "hero_alt": f"Detal schodów i stolarki drewnianej dla {area}",
-        "eyebrow": "Stolarka lokalna",
+        "eyebrow": "Stolarka lokalna w Pomorskiem",
         "h1": f"Stolarka budowlana {city}: schody, drzwi i listwy na wymiar",
-        "lead": f"Kajax to stolarnia z Gościcina. Przy pracach {where} i w okolicy najlepiej zacząć od zdjęć miejsca, orientacyjnych wymiarów, etapu prac i terminu. Wykonujemy schody, drzwi, listwy, opaski, progi, parapety i nietypowe elementy wykończeniowe dopasowane do wnętrza.",
+        "lead": f"Kajax to stolarnia z Gościcina. Przy pracach {where} i w okolicy najlepiej zacząć od zdjęć miejsca, orientacyjnych wymiarów, etapu prac i terminu. Wykonujemy schody, drzwi, listwy, opaski, progi, parapety i nietypowe elementy wykończeniowe dopasowane do konkretnego wnętrza.",
         "primary_cta": "Wyślij zdjęcia miejsca do oceny",
+        "hero_points": ["schody, drzwi, listwy, opaski i progi", "pierwsza ocena ze zdjęć i wymiarów", f"obsługa lokalna: {nearby}"],
         "og_image": "og-construction-joinery.jpg",
         "sections": [
             {

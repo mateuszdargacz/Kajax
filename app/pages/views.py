@@ -220,6 +220,8 @@ def build_structured_data(page, canonical_url=None, language_code=None, image_ur
         "areaServed": ["Pomorskie", "Polska", "Europa B2B"],
         "description": str(page.get("description", "")),
     }
+    if image_url:
+        organization["image"] = image_url
     website = {
         "@id": website_id,
         "@type": "WebSite",

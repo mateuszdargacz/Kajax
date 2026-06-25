@@ -123,14 +123,15 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, 'data-page-key="production"')
         self.assertContains(response, 'data-business-line="b2b_wooden_components"')
         self.assertContains(response, 'property="og:image"')
+        self.assertContains(response, '"image": "https://kajax.eu/static/site/img/og-b2b-components.jpg"')
         self.assertContains(response, "og-b2b-components.jpg")
 
     def test_home_uses_shorter_meta_and_b2b_proof_strip(self):
         response = self.client.get(reverse("home"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Kajax Stolarstwo | Elementy drewniane B2B i stolarka na wymiar")
-        self.assertContains(response, "Stolarnia z Gościcina: elementy drewniane dla firm")
+        self.assertContains(response, "Kajax Stolarstwo | Elementy drewniane B2B i stolarka Pomorskie")
+        self.assertContains(response, "Stolarnia z Gościcina: komponenty drewniane dla firm")
         self.assertContains(response, "Produkcja dla firm")
         self.assertContains(response, "Elementy POS")
         self.assertContains(response, "og-home-workshop.jpg")
@@ -140,7 +141,7 @@ class PublicPagesTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Stolarka budowlana Wejherowo")
-        self.assertContains(response, "Schody, drzwi i listwy")
+        self.assertContains(response, "schody, drzwi i listwy")
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, 'data-page-type="local_service"')
         self.assertContains(response, "og-construction-joinery.jpg")
