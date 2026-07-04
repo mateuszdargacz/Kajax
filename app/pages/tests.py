@@ -122,9 +122,13 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "CommunicateAction"')
         self.assertContains(response, 'data-page-key="production"')
         self.assertContains(response, 'data-business-line="b2b_wooden_components"')
+        self.assertContains(response, 'data-service-area="poland_wide"')
         self.assertContains(response, 'property="og:image"')
         self.assertContains(response, '"image": "https://kajax.eu/static/site/img/og-b2b-components.jpg"')
         self.assertContains(response, "og-b2b-components.jpg")
+        self.assertContains(response, "Elementy drewniane B2B dla firm w całej Polsce")
+        self.assertContains(response, "Wyślij zapytanie o wycenę")
+        self.assertContains(response, "Profile i półprodukty")
 
     def test_home_uses_shorter_meta_and_b2b_proof_strip(self):
         response = self.client.get(reverse("home"))
@@ -145,6 +149,16 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, '"@type": "Service"')
         self.assertContains(response, 'data-page-type="local_service"')
         self.assertContains(response, "og-construction-joinery.jpg")
+
+    def test_pomorskie_paid_landing_has_above_fold_conversion_copy(self):
+        response = self.client.get(reverse("local_pomorskie"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Schody, drzwi, listwy i custom joinery w Pomorskiem")
+        self.assertContains(response, "Poproś o wycenę")
+        self.assertContains(response, "Drzwi, listwy i detale")
+        self.assertContains(response, 'data-business-line="construction_joinery"')
+        self.assertContains(response, 'data-service-area="pomerania"')
 
     def test_realizations_include_case_study_facts(self):
         response = self.client.get(reverse("realizations"))

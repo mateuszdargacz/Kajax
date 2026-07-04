@@ -28,6 +28,14 @@ BUSINESS_LINES = {
 }
 
 
+SERVICE_AREAS = {
+    "b2b_components": "poland_wide",
+    "construction_joinery": "pomerania",
+    "custom_artistic": "poland_pomerania",
+    "other": "mixed",
+}
+
+
 def post_json(url, payload):
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     request = Request(
@@ -67,11 +75,13 @@ def lead_message(quote_request):
 
 def event_payload(quote_request, request, attribution):
     business_line = BUSINESS_LINES.get(quote_request.inquiry_type, "mixed")
+    service_area = SERVICE_AREAS.get(quote_request.inquiry_type, "mixed")
     params = {
         **attribution,
         "lead_type": "quote_request",
         "project_type": quote_request.inquiry_type,
         "business_line": business_line,
+        "service_area": service_area,
         "inquiry_type": quote_request.inquiry_type,
         "scale": quote_request.scale,
         "locale": quote_request.language or "pl",

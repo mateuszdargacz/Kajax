@@ -815,6 +815,73 @@ h3 {
     align-items: center;
 }
 
+.hero-quote-panel {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid rgba(217, 208, 194, 0.9);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-quote-panel .page-hero-image img,
+.hero-quote-panel .page-hero-image .photo-placeholder {
+    aspect-ratio: 16 / 10;
+    box-shadow: none;
+}
+
+.service-proof-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.service-proof-list div,
+.compact-case {
+    padding: 12px;
+    background: #f7f2ea;
+    border: 1px solid rgba(217, 208, 194, 0.82);
+    border-radius: var(--radius);
+}
+
+.service-proof-list strong,
+.compact-case strong {
+    display: block;
+    color: var(--ink);
+    font-size: 0.92rem;
+    line-height: 1.18;
+}
+
+.service-proof-list span,
+.compact-case span {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.32;
+}
+
+.hero-panel-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+}
+
+.hero-contact-link {
+    color: var(--forest);
+    font-weight: 850;
+    text-align: center;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.compact-cases {
+    display: grid;
+    gap: 8px;
+}
+
 .page-title {
     background:
         linear-gradient(180deg, #f7f2ea, #fbfaf7);

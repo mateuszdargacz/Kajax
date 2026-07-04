@@ -20,6 +20,13 @@ INQUIRY_BUSINESS_LINES = {
     "other": "mixed",
 }
 
+INQUIRY_SERVICE_AREAS = {
+    "b2b_components": "poland_wide",
+    "construction_joinery": "pomerania",
+    "custom_artistic": "poland_pomerania",
+    "other": "mixed",
+}
+
 
 class QuoteRequestView(FormView):
     form_class = QuoteRequestForm
@@ -61,6 +68,7 @@ class QuoteRequestView(FormView):
             "lead_type": "quote_request",
             "project_type": quote_request.inquiry_type,
             "business_line": INQUIRY_BUSINESS_LINES.get(quote_request.inquiry_type, "mixed"),
+            "service_area": INQUIRY_SERVICE_AREAS.get(quote_request.inquiry_type, "mixed"),
         }
         messages.success(self.request, get_form_copy(quote_request.language)["success_message"])
         return redirect(self.get_success_url())

@@ -13,11 +13,48 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
+            <div class="hero-actions">
+                <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
+                {% if page.secondary_cta %}
+                    <a class="button button-secondary" href="{{ page.secondary_url }}" data-track-cta="{{ page.key }}_hero_secondary" data-cta-location="{{ page.key }}_hero" data-cta-intent="{{ page.secondary_intent|default:'guide' }}">{{ page.secondary_cta }}</a>
+                {% endif %}
+            </div>
         </div>
-        <figure class="page-hero-image">
-            {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" loading="eager" %}
-        </figure>
+        <aside class="hero-quote-panel" aria-label="{{ ui.quote_eyebrow }}">
+            <figure class="page-hero-image">
+                {% include "includes/photo_placeholder.html" with photo=page.hero_photo alt=page.hero_alt variant="section" loading="eager" %}
+            </figure>
+            {% if page.hero_proofs %}
+                <div class="service-proof-list" aria-label="{{ ui.trust_aria }}">
+                    {% for proof in page.hero_proofs %}
+                        <div>
+                            <strong>{{ proof.title }}</strong>
+                            <span>{{ proof.body }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="hero-panel-actions">
+                <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_panel_quote" data-cta-location="{{ page.key }}_hero_panel" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
+                <a class="hero-contact-link" href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="{{ page.key }}_hero_panel">{{ site.phone }}</a>
+                <a class="hero-contact-link" href="mailto:{{ site.email }}" data-track="email_click" data-cta-location="{{ page.key }}_hero_panel">{{ site.email }}</a>
+            </div>
+            {% if page.hero_cases %}
+                <div class="compact-cases" aria-label="{{ ui.portfolio_eyebrow }}">
+                    {% for case in page.hero_cases %}
+                        <article class="compact-case"
+                            data-track-view="portfolio_view"
+                            data-case-id="{{ page.key }}_hero_case_{{ forloop.counter }}"
+                            data-case-type="{{ case.category }}"
+                            data-business-line="{{ case.business_line }}"
+                            data-service-area="{{ case.service_area }}">
+                            <strong>{{ case.title }}</strong>
+                            <span>{{ case.body }}</span>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </aside>
     </div>
 </section>
 

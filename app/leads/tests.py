@@ -51,6 +51,7 @@ class QuoteRequestTests(TestCase):
                 "lead_type": "quote_request",
                 "project_type": QuoteRequest.InquiryType.B2B_COMPONENTS,
                 "business_line": "b2b_wooden_components",
+                "service_area": "poland_wide",
             },
         )
 
@@ -118,6 +119,8 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(event_payload["event_name"], "generate_lead")
         self.assertEqual(event_payload["event_id"], f"kajax-quote-{quote.pk}-generate-lead")
         self.assertEqual(event_payload["params"]["gclid"], "test-click-id")
+        self.assertEqual(event_payload["params"]["business_line"], "b2b_wooden_components")
+        self.assertEqual(event_payload["params"]["service_area"], "poland_wide")
         self.assertEqual(lead_payload["workspace_id"], "kajax")
         self.assertEqual(lead_payload["gclid"], "test-click-id")
         self.assertEqual(lead_payload["last_utm_campaign"], "kajax_test")
@@ -155,6 +158,8 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(event_payload["workspace_id"], "kajax")
         self.assertEqual(event_payload["event_name"], "generate_lead")
         self.assertEqual(event_payload["event_id"], f"kajax-quote-{quote.pk}-generate-lead")
+        self.assertEqual(event_payload["params"]["business_line"], "construction_joinery")
+        self.assertEqual(event_payload["params"]["service_area"], "pomerania")
         self.assertNotIn("email", event_payload["params"])
         self.assertNotIn("phone", event_payload["params"])
         self.assertNotIn("message", event_payload["params"])

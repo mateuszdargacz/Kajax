@@ -16,7 +16,8 @@
                 data-quote-id="{{ quote_success_event.quote_id }}"
                 data-lead-type="{{ quote_success_event.lead_type }}"
                 data-project-type="{{ quote_success_event.project_type }}"
-                data-business-line="{{ quote_success_event.business_line }}"></div>
+                data-business-line="{{ quote_success_event.business_line }}"
+                data-service-area="{{ quote_success_event.service_area }}"></div>
         {% endif %}
         <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form{% if form.errors %} data-has-errors="true"{% endif %}>
             {% csrf_token %}

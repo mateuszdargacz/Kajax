@@ -2083,6 +2083,96 @@ CONTENT["pl"]["pages"]["construction"].update(
     }
 )
 
+PAID_LANDING_PROOFS = {
+    "production": [
+        {"title": "Dla firm w Polsce", "body": "powtarzalne części, półprodukty i krótkie serie"},
+        {"title": "Start od danych", "body": "rysunek, próbka, zdjęcie albo specyfikacja"},
+        {"title": "Próbka przed serią", "body": "wzór i standard ustalone przed większą partią"},
+        {"title": "Pakowanie i wysyłka", "body": "ocena gabarytu, zabezpieczenia i odbioru"},
+    ],
+    "construction": [
+        {"title": "Pomorskie", "body": "Gościcino, Wejherowo, Trójmiasto i okolice"},
+        {"title": "Schody i drzwi", "body": "pomiar, materiał, montaż i wykończenie"},
+        {"title": "Listwy i detale", "body": "opaski, progi, parapety i profile na wymiar"},
+        {"title": "Custom joinery", "body": "nietypowe elementy dopasowane do wnętrza"},
+    ],
+}
+
+CONTENT["pl"]["pages"]["production"].update(
+    {
+        "title": "Elementy drewniane B2B Polska | Krótkie serie i komponenty | Kajax",
+        "description": "Kajax wykonuje B2B drewniane komponenty dla firm w całej Polsce: powtarzalne części z rysunku, próbki, krótkie serie, pakowanie i wysyłka po ocenie gabarytu.",
+        "eyebrow": "B2B wooden components: cała Polska",
+        "h1": "Elementy drewniane B2B dla firm w całej Polsce",
+        "lead": "Kajax wykonuje powtarzalne części z drewna dla producentów, wykonawców, agencji i firm wyposażeniowych: profile, listwy, półprodukty, elementy POS, detale z rysunku oraz krótkie serie. Pracujemy od rysunku, próbki, zdjęcia albo specyfikacji; przed wyceną ustalamy materiał, tolerancje, ilość, pakowanie i wysyłkę.",
+        "primary_cta": "Wyślij zapytanie o wycenę",
+        "secondary_cta": "Zobacz przykłady B2B",
+        "secondary_url": PATHS["realizations"],
+        "secondary_intent": "portfolio",
+        "hero_points": ["powtarzalne elementy dla firm w Polsce", "rysunek, próbka, zdjęcie albo specyfikacja", "krótka seria, partia testowa lub stały standard"],
+        "hero_proofs": PAID_LANDING_PROOFS["production"],
+        "hero_cases": [
+            {
+                "title": "Profile i półprodukty",
+                "body": "powtarzalny detal według wzoru albo rysunku",
+                "category": "Produkcja B2B",
+                "business_line": "b2b_wooden_components",
+                "service_area": "poland_wide",
+            },
+            {
+                "title": "Krótkie serie i próbki",
+                "body": "najpierw akceptacja, potem większa partia",
+                "category": "Krótka seria",
+                "business_line": "b2b_wooden_components",
+                "service_area": "poland_wide",
+            },
+        ],
+    }
+)
+
+CONTENT["pl"]["pages"]["local_pomorskie"].update(
+    {
+        "title": "Stolarka budowlana Pomorskie: schody, drzwi, listwy | Kajax",
+        "description": "Schody drewniane, drzwi, listwy, opaski, progi, zabudowy i custom joinery w Pomorskiem. Kajax z Gościcina: pierwsza ocena ze zdjęć i wymiarów.",
+        "eyebrow": "Stolarka budowlana Pomorskie",
+        "h1": "Schody, drzwi, listwy i custom joinery w Pomorskiem",
+        "lead": "Kajax to stolarnia z Gościcina dla domów, lokali i inwestycji w Pomorskiem. Wykonujemy schody drewniane, drzwi, listwy, opaski, progi, parapety, zabudowy oraz nietypowe elementy stolarskie dopasowane do miejsca. Wyślij zdjęcia, miejscowość, orientacyjne wymiary i termin; ocenimy, czy temat pasuje do warsztatu i co jest potrzebne do wyceny.",
+        "primary_cta": "Poproś o wycenę",
+        "secondary_cta": "Co wpływa na cenę schodów",
+        "secondary_url": PATHS["stairs_pricing"],
+        "secondary_intent": "guide",
+        "hero_points": ["Pomorskie: Gościcino, Wejherowo, Trójmiasto i okolice", "schody, drzwi, listwy, zabudowy i nietypowe detale", "pierwsza ocena ze zdjęć miejsca i wymiarów"],
+        "hero_proofs": PAID_LANDING_PROOFS["construction"],
+        "hero_cases": [
+            {
+                "title": "Schody drewniane",
+                "body": "układ, materiał, pomiar i montaż w Pomorskiem",
+                "category": "Stolarka budowlana",
+                "business_line": "construction_joinery",
+                "service_area": "pomerania",
+            },
+            {
+                "title": "Drzwi, listwy i detale",
+                "body": "elementy na wymiar do domu, lokalu lub inwestycji",
+                "category": "Stolarka budowlana",
+                "business_line": "construction_joinery",
+                "service_area": "pomerania",
+            },
+        ],
+    }
+)
+
+CONTENT["pl"]["pages"]["construction"].update(
+    {
+        "primary_cta": "Poproś o wycenę",
+        "secondary_cta": "Stolarka budowlana Pomorskie",
+        "secondary_url": PATHS["local_pomorskie"],
+        "secondary_intent": "service_navigation",
+        "hero_proofs": PAID_LANDING_PROOFS["construction"],
+        "hero_cases": CONTENT["pl"]["pages"]["local_pomorskie"]["hero_cases"],
+    }
+)
+
 CONTENT["pl"]["realization_cases"] = [
     {
         "title": "Krótka seria drewnianych elementów dla firmy",
@@ -2639,6 +2729,8 @@ def _with_runtime_fields(page_key, page, language_code=None):
         page["b2b_photo"] = _resolve_photo(page["b2b_photo"])
     if "aside_photo" in page:
         page["aside_photo"] = _resolve_photo(page["aside_photo"])
+    if "hero_cases" in page:
+        page["hero_cases"] = [case.copy() for case in page["hero_cases"]]
     if "related_links" in page:
         links = []
         for link in page["related_links"]:

@@ -64,7 +64,7 @@ SERVICE_AREAS = {
 
 PAGE_ANALYTICS = {
     "home": {"page_type": "landing", "business_line": "mixed", "service_area": "pomorskie_b2b_europe"},
-    "production": {"page_type": "service", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
+    "production": {"page_type": "service", "business_line": "b2b_wooden_components", "service_area": "poland_wide"},
     "short_series": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
     "advertising_events": {"page_type": "guide", "business_line": "b2b_wooden_components", "service_area": "poland_europe_b2b"},
     "construction": {"page_type": "service", "business_line": "construction_joinery", "service_area": "pomerania"},

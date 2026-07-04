@@ -2,11 +2,12 @@ const { test, expect } = require("@playwright/test");
 
 const publicPages = [
   { path: "/", h1: "Komponenty drewniane dla firm oraz schody i drzwi na wymiar" },
-  { path: "/produkcja-elementow-drewnianych/", h1: "Komponenty drewniane dla firm z rysunku, próbki albo wzoru" },
+  { path: "/produkcja-elementow-drewnianych/", h1: "Elementy drewniane B2B dla firm w całej Polsce" },
   { path: "/elementy-drewniane-dla-firm-reklamowych-i-eventowych/", h1: "Drewniane displaye, elementy POS i detale eventowe" },
   { path: "/stolarka-budowlana/", h1: "Schody drewniane, drzwi i stolarka na wymiar w Pomorskiem" },
   { path: "/stolarka-budowlana-wejherowo/", h1: "Stolarka budowlana Wejherowo" },
   { path: "/stolarka-budowlana-trojmiasto/", h1: "Stolarka budowlana Trójmiasto" },
+  { path: "/stolarka-budowlana-pomorskie/", h1: "Schody, drzwi, listwy i custom joinery w Pomorskiem" },
   { path: "/schody-drewniane-co-wplywa-na-cene-i-termin/", h1: "Schody drewniane: od czego zależy cena i termin?" },
   { path: "/dla-architektow-i-firm/", h1: "Zabudowy i detale drewniane, których nie bierze się z katalogu" },
   { path: "/realizacje/", h1: "Przykłady zleceń: komponenty, schody, drzwi i detale" },
@@ -180,6 +181,9 @@ test.describe("public marketing pages", () => {
   test("production page links to B2B guides", async ({ page }) => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
+    await expect(page.getByRole("link", { name: "Wyślij zapytanie o wycenę" }).first()).toBeVisible();
+    await expect(page.locator(".service-proof-list")).toContainText("Dla firm w Polsce");
+    await expect(page.locator(".compact-case").first()).toContainText("Profile i półprodukty");
     await expect(page.locator("body")).toContainText("Proces B2B: próbka, akceptacja, seria");
     await expect(page.locator("body")).toContainText("Co ustalamy przed powtarzalną serią");
     await expect(page.getByRole("link", { name: /Kiedy krótka seria ma sens/ })).toHaveAttribute(
@@ -229,12 +233,41 @@ test.describe("public marketing pages", () => {
   test("construction page links to stairs quote guide", async ({ page }) => {
     await page.goto("/stolarka-budowlana/");
 
+    await expect(page.getByRole("link", { name: "Poproś o wycenę" }).first()).toBeVisible();
+    await expect(page.locator(".service-proof-list")).toContainText("Schody i drzwi");
     await expect(page.getByRole("link", { name: /Od czego zależy cena schodów drewnianych/ })).toHaveAttribute(
       "href",
       "/schody-drewniane-co-wplywa-na-cene-i-termin/",
     );
     await expect(page.getByRole("link", { name: /Stolarka budowlana Wejherowo/ })).toHaveAttribute("href", "/stolarka-budowlana-wejherowo/");
     await expect(page.getByRole("link", { name: /Stolarka budowlana Trójmiasto/ })).toHaveAttribute("href", "/stolarka-budowlana-trojmiasto/");
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("pomorskie paid landing keeps quote CTA and portfolio proof above fold", async ({ page }) => {
+    await installDataLayerRecorder(page, "e2ePomorskieEvents");
+    await page.goto("/stolarka-budowlana-pomorskie/");
+
+    await expect(page.locator("h1")).toContainText("Schody, drzwi, listwy i custom joinery w Pomorskiem");
+    await expect(page.getByRole("link", { name: "Poproś o wycenę" }).first()).toBeVisible();
+    await expect(page.locator(".service-proof-list")).toContainText("Pomorskie");
+    await expect(page.locator(".compact-case").first()).toContainText("Schody drewniane");
+    await expect(page.locator("body")).toContainText("Gościcino, Wejherowo, Trójmiasto");
+    await page.locator(".compact-case").first().scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => {
+      const events = JSON.parse(window.localStorage.getItem("e2ePomorskieEvents") || "[]");
+      return events.some((event) => event.event === "portfolio_view");
+    });
+    const events = await page.evaluate(() => JSON.parse(window.localStorage.getItem("e2ePomorskieEvents") || "[]"));
+    expect(events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          event: "portfolio_view",
+          business_line: "construction_joinery",
+          service_area: "pomerania",
+        }),
+      ]),
+    );
     await expectNoHorizontalOverflow(page);
   });
 
@@ -463,11 +496,12 @@ test.describe("quote form", () => {
     expect(events).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ event: "quote_form_start", field_name: "name" }),
-        expect.objectContaining({ event: "project_type_select", project_type: "custom_artistic", business_line: "custom_architectural_details" }),
+        expect.objectContaining({ event: "project_type_select", project_type: "custom_artistic", business_line: "custom_architectural_details", service_area: "poland_pomerania" }),
         expect.objectContaining({ event: "file_upload_complete", file_count: 1, project_type: "custom_artistic" }),
         expect.objectContaining({ event: "quote_form_submit_attempt", project_type: "custom_artistic" }),
         expect.objectContaining({ event: "quote_thank_you_view", project_type: "custom_artistic" }),
-        expect.objectContaining({ event: "generate_lead", lead_type: "quote_request", project_type: "custom_artistic" }),
+        expect.objectContaining({ event: "quote_sent", lead_type: "quote_request", project_type: "custom_artistic", service_area: "poland_pomerania" }),
+        expect.objectContaining({ event: "generate_lead", lead_type: "quote_request", project_type: "custom_artistic", service_area: "poland_pomerania" }),
       ]),
     );
     const eventPayload = JSON.stringify(events);
@@ -496,6 +530,15 @@ test.describe("quote form", () => {
             params: expect.objectContaining({
               attachment_count: 1,
               project_type: "custom_artistic",
+              service_area: "poland_pomerania",
+            }),
+          }),
+          expect.objectContaining({
+            event_name: "quote_sent",
+            params: expect.objectContaining({
+              lead_type: "quote_request",
+              project_type: "custom_artistic",
+              service_area: "poland_pomerania",
             }),
           }),
           expect.objectContaining({
@@ -508,6 +551,7 @@ test.describe("quote form", () => {
               lead_type: "quote_request",
               project_type: "custom_artistic",
               business_line: "custom_architectural_details",
+              service_area: "poland_pomerania",
             }),
           }),
         ]),

@@ -15,6 +15,12 @@
         custom_artistic: "custom_architectural_details",
         other: "mixed",
     };
+    var projectServiceAreas = {
+        b2b_components: "poland_wide",
+        construction_joinery: "pomerania",
+        custom_artistic: "poland_pomerania",
+        other: "mixed",
+    };
     var trackingFields = [
         "utm_source",
         "utm_medium",
@@ -227,6 +233,16 @@
         return pageContext.business_line;
     }
 
+    function eventServiceArea(element, projectType) {
+        if (projectType && projectServiceAreas[projectType]) {
+            return projectServiceAreas[projectType];
+        }
+        if (element && element.dataset && element.dataset.serviceArea) {
+            return element.dataset.serviceArea;
+        }
+        return pageContext.service_area;
+    }
+
     function eventIntent(link) {
         var href = linkUrl(link);
         if (link.dataset && link.dataset.ctaIntent) {
@@ -292,6 +308,7 @@
             case_id: element.dataset.caseId || "",
             case_type: element.dataset.caseType || "",
             business_line: eventBusinessLine(element),
+            service_area: eventServiceArea(element),
         };
     }
 
@@ -328,6 +345,7 @@
                 link_url: linkUrl(link),
                 cta_location: link.dataset.ctaLocation || "",
                 business_line: eventBusinessLine(link),
+                service_area: eventServiceArea(link),
             });
         });
     });
@@ -338,6 +356,7 @@
                 link_url: linkUrl(link),
                 cta_location: link.dataset.ctaLocation || "",
                 business_line: eventBusinessLine(link),
+                service_area: eventServiceArea(link),
             });
         });
     });
@@ -350,6 +369,7 @@
                 cta_text: (link.textContent || "").trim(),
                 link_url: linkUrl(link),
                 business_line: eventBusinessLine(link),
+                service_area: eventServiceArea(link),
                 intent: eventIntent(link),
             };
             pushEvent("cta_click", params);
@@ -376,6 +396,7 @@
                 {
                     project_type: projectType,
                     business_line: eventBusinessLine(quoteForm, projectType),
+                    service_area: eventServiceArea(quoteForm, projectType),
                 },
                 extra || {},
             );
@@ -452,12 +473,14 @@
             lead_type: success.dataset.leadType || "quote_request",
             project_type: success.dataset.projectType || "",
             business_line: success.dataset.businessLine || eventBusinessLine(success, success.dataset.projectType || ""),
+            service_area: success.dataset.serviceArea || eventServiceArea(success, success.dataset.projectType || ""),
         };
         var successOptions = {};
         if (success.dataset.quoteId) {
             successOptions.eventId = "kajax-quote-" + success.dataset.quoteId + "-generate-lead";
         }
         pushEvent("quote_thank_you_view", successParams);
+        pushEvent("quote_sent", successParams, successOptions);
         pushEvent("generate_lead", successParams, successOptions);
     }
 

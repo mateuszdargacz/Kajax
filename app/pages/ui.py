@@ -43,7 +43,7 @@ UI_COPY = {
         "faq_title": "Najczęstsze pytania przed pierwszą rozmową",
         "quote_eyebrow": "Wycena",
         "quote_cta_title": "Masz zdjęcie, rysunek albo wzór? Wyślij go do pierwszej oceny.",
-        "quote_cta_button": "Wyślij zapytanie",
+        "quote_cta_button": "Wyślij zapytanie o wycenę",
         "realizations_eyebrow": "Realizacje",
         "realizations_similar_cta": "Zapytaj o podobny temat",
         "quote_submit": "Wyślij zapytanie",
