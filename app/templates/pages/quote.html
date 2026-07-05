@@ -51,12 +51,14 @@
             {% endif %}
             <div class="form-grid">
                 {% for field in form.primary_bound_fields %}
-                    <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field }}
-                        {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
-                        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
-                    </div>
+                    {% if field.name != "consent" %}
+                        <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                            {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="field file-field file-field-primary">
@@ -65,6 +67,14 @@
                 {% if form.attachments.help_text %}<small>{{ form.attachments.help_text }}</small>{% endif %}
                 {% for error in form.attachments.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
             </div>
+            {% with field=form.consent %}
+                <div class="field field-{{ field.name }} field-checkbox">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                    {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                </div>
+            {% endwith %}
             <details class="optional-fields"{% if form.has_optional_errors %} open{% endif %}>
                 <summary>{{ ui.quote_more_summary }}</summary>
                 <p>{{ ui.quote_more_hint }}</p>
