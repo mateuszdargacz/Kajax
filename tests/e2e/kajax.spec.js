@@ -181,7 +181,8 @@ test.describe("public marketing pages", () => {
   test("production page links to B2B guides", async ({ page }) => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
-    await expect(page.getByRole("link", { name: "Wyślij zapytanie o wycenę" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij rysunek lub próbkę" }).first()).toBeVisible();
+    await expect(page.locator("body")).toContainText("nie musisz budować własnego zaplecza stolarskiego");
     await expect(page.locator(".service-proof-list")).toContainText("Dla firm w Polsce");
     await expect(page.locator(".compact-case").first()).toContainText("Profile i półprodukty");
     await expect(page.locator("body")).toContainText("Proces B2B: próbka, akceptacja, seria");
@@ -569,12 +570,15 @@ test.describe("quote form", () => {
   test("keeps the quick form compact but exposes optional fields on demand", async ({ page }) => {
     await page.goto("/wycena/");
 
+    await expect(page.locator("h1")).toContainText("Wyślij rysunek, zdjęcia miejsca albo opis elementu");
+    await expect(page.locator(".quote-paths")).toContainText("B2B: element z rysunku");
+    await expect(page.locator(".quote-paths")).toContainText("Pomorskie: schody, drzwi");
     await expect(page.locator(".file-prompt")).toContainText("Masz zdjęcie, rysunek albo wzór?");
+    await expect(page.getByLabel("Zdjęcie, rysunek albo wzór")).toBeVisible();
     await expect(page.locator(".optional-fields")).not.toHaveAttribute("open", "");
     await page.locator("summary", { hasText: "Mam więcej danych" }).click();
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");
     await expect(page.getByLabel("Firma")).toBeVisible();
-    await expect(page.getByLabel("Zdjęcie, rysunek albo wzór")).toBeVisible();
     await expect(page.locator(".quote-aside").getByRole("link", { name: "Jak opisać zlecenie" })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });

@@ -5,6 +5,16 @@
         <p class="eyebrow">{{ ui.quote_eyebrow }}</p>
         <h1>{{ page.h1 }}</h1>
         <p>{{ page.lead }}</p>
+        {% if page.quote_paths %}
+            <div class="quote-paths" aria-label="{{ ui.trust_aria }}">
+                {% for path in page.quote_paths %}
+                    <article class="quote-path-card">
+                        <strong>{{ path.title }}</strong>
+                        <span>{{ path.body }}</span>
+                    </article>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 </section>
 
@@ -49,17 +59,25 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="field file-field file-field-primary">
+                <label for="{{ form.attachments.id_for_label }}">{{ form.attachments.label }}</label>
+                {{ form.attachments }}
+                {% if form.attachments.help_text %}<small>{{ form.attachments.help_text }}</small>{% endif %}
+                {% for error in form.attachments.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+            </div>
             <details class="optional-fields"{% if form.has_optional_errors %} open{% endif %}>
                 <summary>{{ ui.quote_more_summary }}</summary>
                 <p>{{ ui.quote_more_hint }}</p>
                 <div class="form-grid">
                     {% for field in form.optional_bound_fields %}
-                        <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
-                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                            {{ field }}
-                            {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
-                            {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
-                        </div>
+                        {% if field.name != "attachments" %}
+                            <div class="field field-{{ field.name }}{% if field.field.widget.input_type == 'checkbox' %} field-checkbox{% endif %}">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                                {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </details>

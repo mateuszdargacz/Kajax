@@ -305,10 +305,20 @@ CONTENT = {
                 "lead": "To nie katalog produktów do kliknięcia, tylko przykłady tematów, które warto wysłać do oceny. Pokazują, kiedy możemy pomóc: przy powtarzalnych elementach dla firm, seriach drzwi i listew, schodach w Pomorskiem oraz detalach robionych pod projekt.",
             },
             "quote": {
-                "title": "Wycena stolarni: wyślij zdjęcie lub rysunek | Kajax",
-                "description": "Wyślij zdjęcie, rysunek, wzór albo opis. Odpowiemy, czy możemy wykonać komponent drewniany, krótką serię, schody, drzwi lub stolarkę na wymiar.",
-                "h1": "Wyślij zdjęcie, rysunek albo opis",
-                "lead": "Nie potrzebujesz pełnego projektu technicznego. Do pierwszej oceny wystarczy zdjęcie, rysunek, wzór albo kilka zdań: co ma powstać, ile sztuk lub gdzie ma być montowane. Jeśli temat pasuje do warsztatu, dopytamy o wymiary, materiał, termin, pakowanie, odbiór albo wysyłkę.",
+                "title": "Wycena stolarni: elementy z rysunku, schody i drzwi | Kajax",
+                "description": "Wyślij zdjęcie, rysunek, wzór lub opis. Kajax oceni elementy drewniane B2B, krótkie serie, schody, drzwi i stolarkę na wymiar w Pomorskiem.",
+                "h1": "Wyślij rysunek, zdjęcia miejsca albo opis elementu",
+                "lead": "Najkrótsza droga do konkretnej odpowiedzi to materiał do obejrzenia: rysunek, próbka, zdjęcie elementu, zdjęcia miejsca montażu albo prosty opis. Dla firm oceniamy komponenty drewniane, próbki i krótkie serie. Lokalnie w Pomorskiem: schody, drzwi, listwy, zabudowy i nietypowe detale.",
+                "quote_paths": [
+                    {
+                        "title": "B2B: element z rysunku, próbki albo wzoru",
+                        "body": "Napisz, ile sztuk ma powstać, do czego element służy i czy po próbce planowana jest kolejna partia.",
+                    },
+                    {
+                        "title": "Pomorskie: schody, drzwi i stolarka montowana",
+                        "body": "Wyślij zdjęcia miejsca, miejscowość, orientacyjne wymiary, etap prac i oczekiwany termin.",
+                    },
+                ],
             },
             "contact": {
                 "title": "Kontakt | Kajax Stolarstwo Gościcino",
@@ -2101,11 +2111,11 @@ PAID_LANDING_PROOFS = {
 CONTENT["pl"]["pages"]["production"].update(
     {
         "title": "Elementy drewniane B2B Polska | Krótkie serie i komponenty | Kajax",
-        "description": "Kajax wykonuje B2B drewniane komponenty dla firm w całej Polsce: powtarzalne części z rysunku, próbki, krótkie serie, pakowanie i wysyłka po ocenie gabarytu.",
-        "eyebrow": "B2B wooden components: cała Polska",
+        "description": "Komponenty drewniane B2B z rysunku, próbki lub wzoru: profile, listwy, elementy POS, półprodukty, krótkie serie i partie testowe dla firm w Polsce.",
+        "eyebrow": "B2B: element z rysunku, próbki albo wzoru",
         "h1": "Elementy drewniane B2B dla firm w całej Polsce",
-        "lead": "Kajax wykonuje powtarzalne części z drewna dla producentów, wykonawców, agencji i firm wyposażeniowych: profile, listwy, półprodukty, elementy POS, detale z rysunku oraz krótkie serie. Pracujemy od rysunku, próbki, zdjęcia albo specyfikacji; przed wyceną ustalamy materiał, tolerancje, ilość, pakowanie i wysyłkę.",
-        "primary_cta": "Wyślij zapytanie o wycenę",
+        "lead": "Jeśli w produkcie, ekspozycji albo montażu wraca ten sam drewniany detal, nie musisz budować własnego zaplecza stolarskiego. Wyślij rysunek, próbkę, zdjęcie albo specyfikację. Sprawdzimy materiał, tolerancje, wykończenie, ilość i logistykę, a przy większym temacie zaproponujemy próbkę albo partię testową.",
+        "primary_cta": "Wyślij rysunek lub próbkę",
         "secondary_cta": "Zobacz przykłady B2B",
         "secondary_url": PATHS["realizations"],
         "secondary_intent": "portfolio",
@@ -2136,7 +2146,7 @@ CONTENT["pl"]["pages"]["local_pomorskie"].update(
         "description": "Schody drewniane, drzwi, listwy, opaski, progi, zabudowy i custom joinery w Pomorskiem. Kajax z Gościcina: pierwsza ocena ze zdjęć i wymiarów.",
         "eyebrow": "Stolarka budowlana Pomorskie",
         "h1": "Schody, drzwi, listwy i custom joinery w Pomorskiem",
-        "lead": "Kajax to stolarnia z Gościcina dla domów, lokali i inwestycji w Pomorskiem. Wykonujemy schody drewniane, drzwi, listwy, opaski, progi, parapety, zabudowy oraz nietypowe elementy stolarskie dopasowane do miejsca. Wyślij zdjęcia, miejscowość, orientacyjne wymiary i termin; ocenimy, czy temat pasuje do warsztatu i co jest potrzebne do wyceny.",
+        "lead": "Dla domów, lokali i inwestycji w Pomorskiem wykonujemy stolarkę, która musi pasować do konkretnego miejsca: schody, drzwi, listwy, opaski, progi, parapety, zabudowy i nietypowe detale. Do pierwszej oceny wyślij zdjęcia miejsca, miejscowość, orientacyjne wymiary, etap prac i termin.",
         "primary_cta": "Poproś o wycenę",
         "secondary_cta": "Co wpływa na cenę schodów",
         "secondary_url": PATHS["stairs_pricing"],

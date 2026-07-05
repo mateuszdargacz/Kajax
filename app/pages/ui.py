@@ -47,9 +47,9 @@ UI_COPY = {
         "realizations_eyebrow": "Realizacje",
         "realizations_similar_cta": "Zapytaj o podobny temat",
         "quote_submit": "Wyślij zapytanie",
-        "quote_quick_hint": "Wystarczy kilka zdań. Napisz, co ma powstać, w jakiej ilości lub gdzie ma być montowane. Zostaw telefon albo email, a wrócimy z konkretnymi pytaniami.",
+        "quote_quick_hint": "Opisz krótko temat i zostaw telefon albo email. Przy B2B napisz, jaki element ma powstać i w ilu sztukach. Przy schodach, drzwiach lub montażu podaj miejscowość i etap prac.",
         "quote_more_summary": "Mam więcej danych",
-        "quote_more_hint": "Tu możesz dodać firmę, liczbę sztuk, lokalizację, termin albo pliki, jeśli masz je pod ręką.",
+        "quote_more_hint": "Tu możesz dodać firmę, liczbę sztuk, lokalizację i termin. Te dane przyspieszają ocenę, ale nie musisz znać wszystkiego od razu.",
         "quote_aside_title": "Co przyspiesza odpowiedź?",
         "quote_aside_photo": "zdjęcie, rysunek, wzór lub podobny przykład",
         "quote_aside_dimensions": "wymiary albo orientacyjny rozmiar",
@@ -428,27 +428,27 @@ _MENU_LABELS = {
 _QUOTE_FILE_PROMPTS = {
     "pl": {
         "quote_file_prompt_strong": "Masz zdjęcie, rysunek albo wzór?",
-        "quote_file_prompt": "Dodaj plik w sekcji „Mam więcej danych” albo opisz, co możesz dosłać później.",
+        "quote_file_prompt": "Możesz dodać go od razu pod opisem. Jeśli nie masz pliku teraz, napisz, co możesz dosłać później.",
     },
     "en": {
         "quote_file_prompt_strong": "Do you have a photo, drawing or sample?",
-        "quote_file_prompt": "Add a file under “More information” or describe what you can send later.",
+        "quote_file_prompt": "You can add it below the description. If you do not have it now, describe what you can send later.",
     },
     "de": {
         "quote_file_prompt_strong": "Haben Sie ein Foto, eine Zeichnung oder ein Muster?",
-        "quote_file_prompt": "Fügen Sie die Datei unter „Weitere Informationen” hinzu oder beschreiben Sie, was Sie später senden können.",
+        "quote_file_prompt": "Sie können die Datei direkt unter der Beschreibung hinzufügen. Wenn sie noch nicht vorliegt, beschreiben Sie, was Sie später senden können.",
     },
     "sv": {
         "quote_file_prompt_strong": "Har du ett foto, en ritning eller ett prov?",
-        "quote_file_prompt": "Lägg till filen under ”Mer information” eller beskriv vad du kan skicka senare.",
+        "quote_file_prompt": "Du kan lägga till den direkt under beskrivningen. Om filen inte finns nu, beskriv vad du kan skicka senare.",
     },
     "da": {
         "quote_file_prompt_strong": "Har du foto, tegning eller prøve?",
-        "quote_file_prompt": "Tilføj filen under “Mere information” eller beskriv, hvad du kan sende senere.",
+        "quote_file_prompt": "Du kan tilføje den direkte under beskrivelsen. Hvis filen ikke findes nu, så beskriv hvad du kan sende senere.",
     },
     "no": {
         "quote_file_prompt_strong": "Har du bilde, tegning eller prøve?",
-        "quote_file_prompt": "Legg til filen under «Mer informasjon» eller beskriv hva du kan sende senere.",
+        "quote_file_prompt": "Du kan legge den til rett under beskrivelsen. Hvis filen ikke finnes nå, beskriv hva du kan sende senere.",
     },
 }
 
