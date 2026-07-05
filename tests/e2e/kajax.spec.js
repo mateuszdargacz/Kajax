@@ -468,7 +468,8 @@ test.describe("quote form", () => {
     } else {
       await installPiecodeRecorder(page, "e2ePiecodeEvents");
     }
-    await page.goto("/wycena/?piecode_dev=1");
+    const quoteUrl = process.env.E2E_PROD_SMOKE === "1" ? "/wycena/?piecode_dev=1&kajax_smoke=1" : "/wycena/?piecode_dev=1";
+    await page.goto(quoteUrl);
 
     await page.getByLabel("Imię").fill("Lead E2E");
     await page.getByLabel("Telefon").fill("604000000");

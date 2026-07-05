@@ -10,4 +10,5 @@ trap cleanup EXIT
 
 E2E_BASE_URL="${E2E_BASE_URL:-https://kajax.eu}" \
 E2E_ALLOW_GTM="${E2E_ALLOW_GTM:-1}" \
+E2E_PROD_SMOKE=1 \
 npm run test:e2e -- --project=desktop --grep "home keeps the frontend payload lean|submits a qualified lead"

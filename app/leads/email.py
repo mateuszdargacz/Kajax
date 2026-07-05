@@ -1,4 +1,6 @@
 import logging
+import mimetypes
+from pathlib import Path
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -30,7 +32,14 @@ def _send_company_notification(quote_request, recipients):
         {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display},
     )
     reply_to = [quote_request.email] if quote_request.email else None
-    _send(subject, body, recipients, html_body=html_body, reply_to=reply_to)
+    _send(
+        subject,
+        body,
+        recipients,
+        html_body=html_body,
+        reply_to=reply_to,
+        attachments=_notification_attachments(quote_request),
+    )
 
 
 def _send_requester_confirmation(quote_request):
@@ -49,7 +58,7 @@ def _send_requester_confirmation(quote_request):
     _send(subject, body, [quote_request.email], html_body=html_body)
 
 
-def _send(subject, body, recipients, html_body=None, reply_to=None):
+def _send(subject, body, recipients, html_body=None, reply_to=None, attachments=None):
     try:
         email = EmailMultiAlternatives(
             subject=subject,
@@ -60,12 +69,33 @@ def _send(subject, body, recipients, html_body=None, reply_to=None):
         )
         if html_body:
             email.attach_alternative(html_body, "text/html")
+        for filename, content, mimetype in attachments or []:
+            email.attach(filename, content, mimetype)
         email.send(fail_silently=False)
     except Exception:
         if settings.LEAD_EMAIL_FAIL_SILENTLY:
             logger.exception("Failed to send quote email.")
             return
         raise
+
+
+def _notification_attachments(quote_request):
+    for attachment in quote_request.attachments.all():
+        if not attachment.file:
+            continue
+        filename = Path(attachment.original_name or attachment.file.name).name or "zalacznik"
+        try:
+            with attachment.file.open("rb") as file_handle:
+                content = file_handle.read()
+        except (FileNotFoundError, OSError, ValueError):
+            logger.exception(
+                "Skipping missing quote attachment %s for Kajax quote %s.",
+                attachment.pk,
+                quote_request.pk,
+            )
+            continue
+        content_type = mimetypes.guess_type(filename)[0] or "application/octet-stream"
+        yield filename, content, content_type
 
 
 def get_quote_display(quote_request, language_code):
