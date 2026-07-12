@@ -4,6 +4,20 @@ from leads.copy import get_form_copy
 from leads.models import QuoteRequest
 
 
+SEGMENT_INITIALS = {
+    "b2b": {
+        "inquiry_type": QuoteRequest.InquiryType.B2B_COMPONENTS,
+        "scale": QuoteRequest.Scale.SMALL_SERIES,
+    },
+    "pomorskie": {
+        "inquiry_type": QuoteRequest.InquiryType.CONSTRUCTION_JOINERY,
+    },
+    "custom": {
+        "inquiry_type": QuoteRequest.InquiryType.CUSTOM_ARTISTIC,
+    },
+}
+
+
 class MultipleFileInput(forms.ClearableFileInput):
     allow_multiple_selected = True
 
@@ -53,6 +67,7 @@ class QuoteRequestForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         language_code = kwargs.pop("language_code", "pl")
+        quote_segment = kwargs.pop("quote_segment", "")
         super().__init__(*args, **kwargs)
         copy = get_form_copy(language_code)
 
@@ -95,6 +110,10 @@ class QuoteRequestForm(forms.ModelForm):
         self.fields["expected_timing"].help_text = copy["expected_timing_help"]
         self.fields["message"].help_text = copy["message_help"]
         self.contact_required_message = copy["contact_required"]
+
+        if not self.is_bound:
+            for field_name, value in SEGMENT_INITIALS.get(quote_segment, {}).items():
+                self.fields[field_name].initial = value
 
         for field in self.fields.values():
             css_class = "form-control"

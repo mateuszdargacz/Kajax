@@ -182,6 +182,10 @@ test.describe("public marketing pages", () => {
     await page.goto("/produkcja-elementow-drewnianych/");
 
     await expect(page.getByRole("link", { name: "Wyślij rysunek lub próbkę" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Wyślij rysunek lub próbkę" }).first()).toHaveAttribute(
+      "href",
+      "/wycena/?segment=b2b",
+    );
     await expect(page.locator("body")).toContainText("nie musisz budować własnego zaplecza stolarskiego");
     await expect(page.locator(".service-proof-list")).toContainText("Dla firm w Polsce");
     await expect(page.locator(".compact-case").first()).toContainText("Profile i półprodukty");
@@ -235,6 +239,10 @@ test.describe("public marketing pages", () => {
     await page.goto("/stolarka-budowlana/");
 
     await expect(page.getByRole("link", { name: "Poproś o wycenę" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Poproś o wycenę" }).first()).toHaveAttribute(
+      "href",
+      "/wycena/?segment=pomorskie",
+    );
     await expect(page.locator(".service-proof-list")).toContainText("Schody i drzwi");
     await expect(page.getByRole("link", { name: /Od czego zależy cena schodów drewnianych/ })).toHaveAttribute(
       "href",
@@ -571,8 +579,14 @@ test.describe("quote form", () => {
     await page.goto("/wycena/");
 
     await expect(page.locator("h1")).toContainText("Wyślij rysunek, zdjęcia miejsca albo opis elementu");
-    await expect(page.locator(".quote-paths")).toContainText("B2B: element z rysunku");
-    await expect(page.locator(".quote-paths")).toContainText("Pomorskie: schody, drzwi");
+    await expect(page.locator(".quote-paths").getByRole("link", { name: /B2B: element z rysunku/ })).toHaveAttribute(
+      "href",
+      "/wycena/?segment=b2b",
+    );
+    await expect(page.locator(".quote-paths").getByRole("link", { name: /Pomorskie: schody, drzwi/ })).toHaveAttribute(
+      "href",
+      "/wycena/?segment=pomorskie",
+    );
     await expect(page.locator(".file-prompt")).toContainText("Masz zdjęcie, rysunek albo wzór?");
     await expect(page.getByLabel("Zdjęcie, rysunek albo wzór")).toBeVisible();
     await expect(page.locator(".optional-fields")).not.toHaveAttribute("open", "");
@@ -580,6 +594,25 @@ test.describe("quote form", () => {
     await expect(page.locator(".optional-fields")).toHaveAttribute("open", "");
     await expect(page.getByLabel("Firma")).toBeVisible();
     await expect(page.locator(".quote-aside").getByRole("link", { name: "Jak opisać zlecenie" })).toBeVisible();
+    await expectNoHorizontalOverflow(page);
+  });
+
+  test("paid traffic segments preselect the right quote path", async ({ page }) => {
+    await page.goto("/wycena/?segment=b2b");
+
+    await expect(page.locator("h1")).toContainText("Wyślij rysunek, próbkę albo opis elementu do produkcji");
+    await expect(page.locator(".form-intro")).toContainText("ile sztuk ma powstać");
+    await expect(page.getByLabel("Co mamy wykonać?")).toHaveValue("b2b_components");
+    await expect(page.locator(".optional-fields")).not.toHaveAttribute("open", "");
+    await expect(page.locator(".quote-phone-box").getByRole("link", { name: "604 238 246" })).toHaveAttribute("href", "tel:604238246");
+    await expectNoHorizontalOverflow(page);
+
+    await page.goto("/wycena/?segment=pomorskie");
+
+    await expect(page.locator("h1")).toContainText("Wyślij zdjęcia miejsca: schody, drzwi, listwy albo zabudowa");
+    await expect(page.locator(".form-intro")).toContainText("Podaj miejscowość");
+    await expect(page.getByLabel("Co mamy wykonać?")).toHaveValue("construction_joinery");
+    await expect(page.locator(".quote-phone-box").getByRole("link", { name: "604 238 246" })).toHaveAttribute("href", "tel:604238246");
     await expectNoHorizontalOverflow(page);
   });
 });

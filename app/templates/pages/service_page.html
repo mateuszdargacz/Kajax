@@ -14,7 +14,7 @@
                 </ul>
             {% endif %}
             <div class="hero-actions">
-                <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
+                <a class="button button-primary" href="{{ page.quote_url }}" data-track-cta="{{ page.key }}_hero_quote" data-cta-location="{{ page.key }}_hero" data-cta-intent="quote">{{ page.primary_cta }}</a>
                 {% if page.secondary_cta %}
                     <a class="button button-secondary" href="{{ page.secondary_url }}" data-track-cta="{{ page.key }}_hero_secondary" data-cta-location="{{ page.key }}_hero" data-cta-intent="{{ page.secondary_intent|default:'guide' }}">{{ page.secondary_cta }}</a>
                 {% endif %}
@@ -35,7 +35,7 @@
                 </div>
             {% endif %}
             <div class="hero-panel-actions">
-                <a class="button button-primary" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_panel_quote" data-cta-location="{{ page.key }}_hero_panel" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
+                <a class="button button-primary" href="{{ page.quote_url }}" data-track-cta="{{ page.key }}_panel_quote" data-cta-location="{{ page.key }}_hero_panel" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
                 <a class="hero-contact-link" href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="{{ page.key }}_hero_panel">{{ site.phone }}</a>
                 <a class="hero-contact-link" href="mailto:{{ site.email }}" data-track="email_click" data-cta-location="{{ page.key }}_hero_panel">{{ site.email }}</a>
             </div>
@@ -121,7 +121,7 @@
             <p class="eyebrow">{{ ui.quote_eyebrow }}</p>
             <h2>{{ ui.quote_cta_title }}</h2>
         </div>
-        <a class="button button-light" href="{% url 'quote' %}" data-track-cta="{{ page.key }}_quote_band" data-cta-location="{{ page.key }}_cta_band" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
+        <a class="button button-light" href="{{ page.quote_url }}" data-track-cta="{{ page.key }}_quote_band" data-cta-location="{{ page.key }}_cta_band" data-cta-intent="quote">{{ ui.quote_cta_button }}</a>
     </div>
 </section>
 {% endblock %}

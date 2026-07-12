@@ -8,10 +8,10 @@
         {% if page.quote_paths %}
             <div class="quote-paths" aria-label="{{ ui.trust_aria }}">
                 {% for path in page.quote_paths %}
-                    <article class="quote-path-card">
+                    <a class="quote-path-card{% if path.active %} is-active{% endif %}" href="{{ path.url }}" data-track-cta="quote_segment_{{ forloop.counter }}" data-cta-location="quote_header" data-cta-intent="segment_select">
                         <strong>{{ path.title }}</strong>
                         <span>{{ path.body }}</span>
-                    </article>
+                    </a>
                 {% endfor %}
             </div>
         {% endif %}
@@ -44,7 +44,7 @@
             <input type="hidden" name="msclkid" data-attribution-field="msclkid">
             <input type="hidden" name="ttclid" data-attribution-field="ttclid">
             <input type="hidden" name="li_fat_id" data-attribution-field="li_fat_id">
-            <p class="form-intro">{{ ui.quote_quick_hint }}</p>
+            <p class="form-intro">{{ page.form_intro|default:ui.quote_quick_hint }}</p>
             <p class="file-prompt"><strong>{{ ui.quote_file_prompt_strong }}</strong> {{ ui.quote_file_prompt }}</p>
             {% if form.non_field_errors %}
                 <div class="form-errors">{{ form.non_field_errors }}</div>
@@ -103,6 +103,10 @@
                 <li>{{ ui.quote_aside_timing }}</li>
             </ul>
             <p>{{ ui.quote_aside_note }}</p>
+            <div class="quote-phone-box">
+                <span>{{ ui.quote_phone_prompt }}</span>
+                <a href="tel:{{ site.phone_uri }}" data-track="phone_click" data-cta-location="quote_aside">{{ site.phone }}</a>
+            </div>
             <a class="text-link light-link" href="{% url 'guide' %}" data-track-cta="quote_guide" data-cta-location="quote_aside" data-cta-intent="guide">{{ ui.quote_guide_link }}</a>
         </aside>
     </div>

@@ -452,6 +452,15 @@ _QUOTE_FILE_PROMPTS = {
     },
 }
 
+_QUOTE_PHONE_PROMPTS = {
+    "pl": "Wolisz najpierw krótko zadzwonić?",
+    "en": "Prefer a quick call first?",
+    "de": "Lieber zuerst kurz anrufen?",
+    "sv": "Vill du ringa först?",
+    "da": "Vil du ringe først?",
+    "no": "Vil du ringe først?",
+}
+
 FOREIGN_UI_B2B_REFOCUS = {
     "en": {
         "footer_about": "A Gościcino joinery workshop for companies that need wooden components, short runs, POS/display elements and project-based details made from a drawing, sample or specification.",
@@ -683,6 +692,7 @@ for _code, _updates in FOREIGN_UI_MARKET_REFINEMENT.items():
 for _code, _copy in UI_COPY.items():
     _copy.setdefault("menu_label", _MENU_LABELS.get(_code, "Menu"))
     _copy.update(_QUOTE_FILE_PROMPTS.get(_code, _QUOTE_FILE_PROMPTS["en"]))
+    _copy["quote_phone_prompt"] = _QUOTE_PHONE_PROMPTS.get(_code, _QUOTE_PHONE_PROMPTS["en"])
 
 
 def get_ui_copy(language_code):

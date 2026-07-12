@@ -183,6 +183,21 @@ TEMPLATES = {
 
 PAGE_ORDER = ["home", "production", "short_series", "advertising_events", "construction", "stairs_pricing", "architects", "realizations", "guide", "quote", "contact"]
 
+QUOTE_SEGMENTS_BY_PAGE = {
+    "production": "b2b",
+    "short_series": "b2b",
+    "advertising_events": "b2b",
+    "construction": "pomorskie",
+    "stairs_pricing": "pomorskie",
+    "local_goscicino": "pomorskie",
+    "local_wejherowo": "pomorskie",
+    "local_gdynia": "pomorskie",
+    "local_gdansk": "pomorskie",
+    "local_trojmiasto": "pomorskie",
+    "local_pomorskie": "pomorskie",
+    "architects": "custom",
+}
+
 CONTENT = {
     "pl": {
         "nav": {
@@ -2733,6 +2748,9 @@ def _with_runtime_fields(page_key, page, language_code=None):
     page["key"] = page_key
     page["path"] = PATHS[page_key]
     page["template"] = TEMPLATES[page_key]
+    quote_path = get_localized_path(PATHS["quote"], language_code)
+    quote_segment = QUOTE_SEGMENTS_BY_PAGE.get(page_key)
+    page["quote_url"] = f"{quote_path}?segment={quote_segment}" if quote_segment else quote_path
     if "hero_photo" in page:
         page["hero_photo"] = _resolve_photo(page["hero_photo"])
     if "b2b_photo" in page:

@@ -27,7 +27,7 @@ class QuoteRequestTests(TestCase):
 
     def test_quote_form_creates_lead_and_sends_emails(self):
         response = self.client.post(
-            reverse("quote"),
+            f"{reverse('quote')}?segment=b2b&utm_campaign=test",
             {
                 "name": "Test Lead",
                 "email": "lead@example.com",
@@ -58,6 +58,7 @@ class QuoteRequestTests(TestCase):
         quote = QuoteRequest.objects.get()
         self.assertEqual(quote.email, "lead@example.com")
         self.assertEqual(quote.inquiry_type, QuoteRequest.InquiryType.B2B_COMPONENTS)
+        self.assertEqual(quote.source_path, "/wycena/?segment=b2b&utm_campaign=test")
         self.assertEqual(
             self.client.session["quote_success_event"],
             {
@@ -68,6 +69,21 @@ class QuoteRequestTests(TestCase):
                 "service_area": "poland_wide",
             },
         )
+
+    def test_quote_segments_preselect_relevant_inquiry_type(self):
+        b2b_response = self.client.get(f"{reverse('quote')}?segment=b2b")
+        pomorskie_response = self.client.get(f"{reverse('quote')}?segment=pomorskie")
+
+        self.assertEqual(b2b_response.context["form"]["inquiry_type"].value(), QuoteRequest.InquiryType.B2B_COMPONENTS)
+        self.assertEqual(b2b_response.context["form"]["scale"].value(), QuoteRequest.Scale.SMALL_SERIES)
+        self.assertContains(b2b_response, "Wyślij rysunek, próbkę albo opis elementu do produkcji")
+        self.assertContains(b2b_response, 'href="/wycena/?segment=b2b"')
+        self.assertEqual(
+            pomorskie_response.context["form"]["inquiry_type"].value(),
+            QuoteRequest.InquiryType.CONSTRUCTION_JOINERY,
+        )
+        self.assertContains(pomorskie_response, "Wyślij zdjęcia miejsca: schody, drzwi, listwy albo zabudowa")
+        self.assertContains(pomorskie_response, 'href="/wycena/?segment=pomorskie"')
 
     def test_quote_form_accepts_phone_without_email(self):
         response = self.client.post(
