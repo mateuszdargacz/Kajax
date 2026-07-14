@@ -35,7 +35,15 @@
         "msclkid",
         "ttclid",
         "li_fat_id",
+        "visitor_id",
+        "session_id",
+        "piecode_visitor_id",
+        "piecode_session_id",
     ];
+    var identityAliases = {
+        visitor_id: ["visitor_id", "visitorId", "client_id", "clientId", "piecode_visitor_id", "piecodeVisitorId"],
+        session_id: ["session_id", "sessionId", "piecode_session_id", "piecodeSessionId"],
+    };
     var attributionStorageKey = "kajax_attribution_v1";
     var attributionTtlMs = 30 * 24 * 60 * 60 * 1000;
     var storedAttribution = {};
@@ -79,6 +87,23 @@
 
     function piecodeSdk() {
         return window.PiecodeEvents && typeof window.PiecodeEvents.track === "function" ? window.PiecodeEvents : null;
+    }
+
+    function isDevSubmission() {
+        var params = new URLSearchParams(window.location.search || "");
+        return params.get("piecode_dev") === "1" || params.get("kajax_smoke") === "1";
+    }
+
+    function devSubmissionParams() {
+        if (!isDevSubmission()) {
+            return {};
+        }
+        var params = new URLSearchParams(window.location.search || "");
+        return {
+            is_test: true,
+            environment: "dev",
+            test_source: params.get("kajax_smoke") === "1" ? "kajax_smoke" : "piecode_dev",
+        };
     }
 
     function isSafePiecodeParam(key, value) {
@@ -143,6 +168,9 @@
             if (body.dataset && body.dataset.piecodeAutoConsent === "true" && typeof sdk.setConsent === "function") {
                 sdk.setConsent(true);
             }
+            if (isDevSubmission() && typeof sdk.setDevMode === "function") {
+                sdk.setDevMode(true);
+            }
         } catch (error) {
             return;
         }
@@ -168,8 +196,9 @@
     }
 
     function pushEvent(name, params, options) {
-        window.dataLayer.push(assign(assign({ event: name }, pageContext), params || {}));
-        sendPiecodeEvent(name, params, options);
+        var eventParams = assign(assign(assign({}, storedAttribution), devSubmissionParams()), params || {});
+        window.dataLayer.push(assign(assign({ event: name }, pageContext), eventParams));
+        sendPiecodeEvent(name, eventParams, options);
     }
 
     function readStoredAttribution() {
@@ -194,6 +223,98 @@
         return true;
     }
 
+    function readIdentityValue(source, aliases, depth) {
+        if (!source || depth > 3) {
+            return "";
+        }
+        for (var i = 0; i < aliases.length; i += 1) {
+            if (source[aliases[i]]) {
+                return String(source[aliases[i]]).slice(0, 500);
+            }
+        }
+        var matched = "";
+        Object.keys(source || {}).some(function (key) {
+            var value = source[key];
+            if (value && typeof value === "object") {
+                value = readIdentityValue(value, aliases, depth + 1);
+                if (value) {
+                    matched = value;
+                    return true;
+                }
+            }
+            return false;
+        });
+        return matched;
+    }
+
+    function normalizeIdentity(source) {
+        var identity = {};
+        Object.keys(identityAliases).forEach(function (field) {
+            var value = readIdentityValue(source, identityAliases[field], 0);
+            if (value) {
+                identity[field] = value;
+            }
+        });
+        return identity;
+    }
+
+    function readPiecodeIdentity() {
+        var identity = {};
+        var sdk = piecodeSdk();
+        if (!sdk) {
+            return identity;
+        }
+        try {
+            if (typeof sdk.getState === "function") {
+                assign(identity, normalizeIdentity(sdk.getState() || {}));
+            }
+            if (typeof sdk.getVisitorId === "function") {
+                assign(identity, { visitor_id: String(sdk.getVisitorId() || "").slice(0, 500) });
+            }
+            if (typeof sdk.getSessionId === "function") {
+                assign(identity, { session_id: String(sdk.getSessionId() || "").slice(0, 500) });
+            }
+        } catch (error) {
+            return identity;
+        }
+        return identity;
+    }
+
+    function readStorageIdentity() {
+        var identity = {};
+        [window.localStorage, window.sessionStorage].forEach(function (storage) {
+            if (!storage) {
+                return;
+            }
+            try {
+                for (var index = 0; index < storage.length; index += 1) {
+                    var key = storage.key(index) || "";
+                    if (key !== attributionStorageKey && key.toLowerCase().indexOf("piecode") === -1) {
+                        continue;
+                    }
+                    var raw = storage.getItem(key) || "";
+                    try {
+                        assign(identity, normalizeIdentity(JSON.parse(raw) || {}));
+                    } catch (error) {
+                        assign(identity, normalizeIdentity({ value: raw }));
+                    }
+                }
+            } catch (error) {
+                return;
+            }
+        });
+        return identity;
+    }
+
+    function fillAttributionFields(stored) {
+        document.querySelectorAll("[data-attribution-field]").forEach(function (input) {
+            var field = input.dataset.attributionField || "";
+            if (field && stored[field]) {
+                input.value = stored[field];
+            }
+        });
+    }
+
     function captureAttribution() {
         var params = new URLSearchParams(window.location.search || "");
         var stored = readStoredAttribution();
@@ -210,13 +331,24 @@
             stored.captured_at = new Date().toISOString();
             writeStoredAttribution(stored);
         }
-        document.querySelectorAll("[data-attribution-field]").forEach(function (input) {
-            var field = input.dataset.attributionField || "";
-            if (field && stored[field]) {
-                input.value = stored[field];
-            }
+        [readStorageIdentity(), readPiecodeIdentity()].forEach(function (identity) {
+            Object.keys(identity).forEach(function (field) {
+                if (identity[field] && stored[field] !== identity[field]) {
+                    stored[field] = identity[field];
+                    changed = true;
+                }
+            });
         });
+        if (changed) {
+            writeStoredAttribution(stored);
+        }
+        fillAttributionFields(stored);
         return stored;
+    }
+
+    function refreshAttribution() {
+        storedAttribution = captureAttribution();
+        return storedAttribution;
     }
 
     function linkUrl(link) {
@@ -312,9 +444,12 @@
         };
     }
 
-    storedAttribution = captureAttribution();
+    storedAttribution = refreshAttribution();
     configurePiecode();
-    window.addEventListener("piecode-events:ready", configurePiecode);
+    window.addEventListener("piecode-events:ready", function () {
+        configurePiecode();
+        refreshAttribution();
+    });
     pushEvent("kajax_page_view", storedAttribution);
 
     var scrollThresholds = [25, 50, 75, 90];
@@ -463,6 +598,7 @@
         });
 
         quoteForm.addEventListener("submit", function () {
+            refreshAttribution();
             pushEvent("quote_form_submit_attempt", quoteParams({ intent: "quote" }));
         });
     }
@@ -474,6 +610,9 @@
             project_type: success.dataset.projectType || "",
             business_line: success.dataset.businessLine || eventBusinessLine(success, success.dataset.projectType || ""),
             service_area: success.dataset.serviceArea || eventServiceArea(success, success.dataset.projectType || ""),
+            is_test: success.dataset.isTest === "true" ? true : "",
+            environment: success.dataset.environment || "",
+            test_source: success.dataset.testSource || "",
         };
         var successOptions = {};
         if (success.dataset.quoteId) {

@@ -163,7 +163,19 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(mail.outbox[0].attachments, [])
         self.assertEqual(mail.outbox[1].attachments, [])
 
-    def test_prod_smoke_quote_is_saved_labeled_and_does_not_send_email(self):
+    @override_settings(
+        PIECODE_LEAD_SYNC_ENABLED=True,
+        PIECODE_LEAD_SYNC_SEND_LEAD=True,
+        PIECODE_LEAD_SYNC_LEAD_URL="https://piecode.example/api/leads",
+        PIECODE_LEAD_SYNC_EVENT_URL="https://piecode.example/api/events",
+    )
+    @patch("leads.piecode_sync.post_json")
+    def test_prod_smoke_quote_is_saved_labeled_synced_as_dev_and_does_not_send_email(self, post_json):
+        post_json.side_effect = [
+            {"ok": True, "accepted": 1},
+            {"ok": True, "id": "central-smoke", "status": "test"},
+        ]
+
         response = self.client.post(
             f"{reverse('quote')}?piecode_dev=1&kajax_smoke=1",
             {
@@ -182,8 +194,25 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(response.status_code, 302)
         quote = QuoteRequest.objects.get(name="Lead E2E", phone="604000000")
         self.assertIn(SMOKE_ADMIN_NOTE_PREFIX, quote.admin_notes)
+        self.assertEqual(quote.central_sync_status, "synced")
+        self.assertEqual(quote.central_lead_id, "central-smoke")
         self.assertEqual(len(mail.outbox), 0)
         self.assertEqual(list(smoke_cleanup_queryset()), [quote])
+        self.assertEqual(post_json.call_count, 2)
+
+        event_payload = post_json.call_args_list[0].args[1]
+        lead_payload = post_json.call_args_list[1].args[1]
+        self.assertEqual(event_payload["params"]["is_test"], True)
+        self.assertEqual(event_payload["params"]["environment"], "dev")
+        self.assertEqual(event_payload["params"]["test_source"], "kajax_smoke")
+        self.assertEqual(lead_payload["is_test"], True)
+        self.assertEqual(lead_payload["environment"], "dev")
+        self.assertEqual(lead_payload["test_source"], "kajax_smoke")
+        self.assertEqual(lead_payload["email"], "")
+        self.assertEqual(lead_payload["phone"], "604000000")
+        self.assertEqual(self.client.session["quote_success_event"]["is_test"], True)
+        self.assertEqual(self.client.session["quote_success_event"]["environment"], "dev")
+        self.assertEqual(self.client.session["quote_success_event"]["test_source"], "kajax_smoke")
 
     @override_settings(
         PIECODE_LEAD_SYNC_ENABLED=True,
@@ -193,6 +222,11 @@ class QuoteRequestTests(TestCase):
     )
     @patch("leads.piecode_sync.post_json")
     def test_quote_form_syncs_central_event_and_lead_after_success(self, post_json):
+        uploaded_file = SimpleUploadedFile(
+            "rysunek-testowy.txt",
+            b"testowy opis rysunku",
+            content_type="text/plain",
+        )
         post_json.side_effect = [
             {"ok": True, "accepted": 1},
             {"ok": True, "id": "central-123", "status": "new"},
@@ -209,6 +243,9 @@ class QuoteRequestTests(TestCase):
                 "scale": QuoteRequest.Scale.SMALL_SERIES,
                 "message": "Potrzebujemy krótkiej serii elementów według rysunku.",
                 "consent": "on",
+                "visitor_id": "visitor-123",
+                "session_id": "session-456",
+                "attachments": uploaded_file,
             },
         )
 
@@ -226,11 +263,21 @@ class QuoteRequestTests(TestCase):
         self.assertEqual(event_payload["event_name"], "generate_lead")
         self.assertEqual(event_payload["event_id"], f"kajax-quote-{quote.pk}-generate-lead")
         self.assertEqual(event_payload["params"]["gclid"], "test-click-id")
+        self.assertEqual(event_payload["params"]["visitor_id"], "visitor-123")
+        self.assertEqual(event_payload["params"]["session_id"], "session-456")
         self.assertEqual(event_payload["params"]["business_line"], "b2b_wooden_components")
         self.assertEqual(event_payload["params"]["service_area"], "poland_wide")
+        self.assertEqual(event_payload["params"]["attachment_count"], 1)
         self.assertEqual(lead_payload["workspace_id"], "kajax")
         self.assertEqual(lead_payload["gclid"], "test-click-id")
+        self.assertEqual(lead_payload["visitor_id"], "visitor-123")
+        self.assertEqual(lead_payload["session_id"], "session-456")
         self.assertEqual(lead_payload["last_utm_campaign"], "kajax_test")
+        self.assertEqual(lead_payload["phone"], "123456789")
+        self.assertEqual(lead_payload["attachment_count"], 1)
+        self.assertEqual(lead_payload["attachment_names"], ["rysunek-testowy.txt"])
+        self.assertEqual(lead_payload["attachments"][0]["filename"], "rysunek-testowy.txt")
+        self.assertIn("rysunek-testowy.txt", lead_payload["message"])
 
     @override_settings(
         PIECODE_LEAD_SYNC_ENABLED=True,

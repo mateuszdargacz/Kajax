@@ -15,7 +15,14 @@ TRACKING_FIELDS = [
     "msclkid",
     "ttclid",
     "li_fat_id",
+    "visitor_id",
+    "session_id",
+    "piecode_visitor_id",
+    "piecode_session_id",
 ]
+
+VISITOR_ID_FIELDS = ["visitor_id", "piecode_visitor_id"]
+SESSION_ID_FIELDS = ["session_id", "piecode_session_id"]
 
 SESSION_KEY = "marketing_attribution"
 
@@ -55,6 +62,10 @@ def extract_tracking_params(mapping):
 
 def tracking_from_post(request):
     return extract_tracking_params(request.POST)
+
+
+def tracking_from_cookies(request):
+    return extract_tracking_params(request.COOKIES)
 
 
 def update_attribution_from_request(request):
@@ -100,6 +111,7 @@ def update_attribution_from_request(request):
 def attribution_for_lead(request):
     session_attribution = dict(request.session.get(SESSION_KEY, {}) or {})
     posted_tracking = {
+        **tracking_from_cookies(request),
         **extract_tracking_params(request.GET),
         **tracking_from_post(request),
     }
@@ -136,6 +148,18 @@ def attribution_for_lead(request):
         value = session_attribution.get(f"last_{click_id}") or posted_tracking.get(click_id, "")
         if value:
             payload[click_id] = value
+
+    for output_key, fields in {"visitor_id": VISITOR_ID_FIELDS, "session_id": SESSION_ID_FIELDS}.items():
+        value = next(
+            (
+                session_attribution.get(f"last_{field}") or posted_tracking.get(field, "")
+                for field in fields
+                if session_attribution.get(f"last_{field}") or posted_tracking.get(field, "")
+            ),
+            "",
+        )
+        if value:
+            payload[output_key] = value
 
     return {key: value for key, value in payload.items() if value}
 

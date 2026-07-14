@@ -54,6 +54,8 @@ async function installPiecodeRecorder(page, storageKey) {
       context: {},
       consentGranted: false,
       devMode: false,
+      visitorId: "e2e-visitor-id",
+      sessionId: "e2e-session-id",
     };
     const saveEvent = (event) => {
       const events = JSON.parse(window.localStorage.getItem(key) || "[]");
@@ -86,7 +88,18 @@ async function installPiecodeRecorder(page, storageKey) {
         return Promise.resolve(true);
       },
       getState() {
-        return { consent_granted: state.consentGranted, dev_mode: state.devMode };
+        return {
+          consent_granted: state.consentGranted,
+          dev_mode: state.devMode,
+          visitorId: state.visitorId,
+          sessionId: state.sessionId,
+        };
+      },
+      getVisitorId() {
+        return state.visitorId;
+      },
+      getSessionId() {
+        return state.sessionId;
       },
     };
   }, storageKey);
@@ -531,7 +544,11 @@ test.describe("quote form", () => {
           expect.objectContaining({
             event_name: "lead_form_start",
             consent_granted: true,
+            dev_mode: true,
             params: expect.objectContaining({
+              is_test: true,
+              environment: "dev",
+              test_source: "piecode_dev",
               page_type: "conversion",
             }),
           }),
@@ -562,6 +579,11 @@ test.describe("quote form", () => {
               project_type: "custom_artistic",
               business_line: "custom_architectural_details",
               service_area: "poland_pomerania",
+              is_test: true,
+              environment: "dev",
+              test_source: "piecode_dev",
+              visitor_id: "e2e-visitor-id",
+              session_id: "e2e-session-id",
             }),
           }),
         ]),

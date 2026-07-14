@@ -1,5 +1,6 @@
 import json
 import logging
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -7,6 +8,7 @@ from django.conf import settings
 from django.utils import timezone
 
 from leads.attribution import attribution_for_lead
+from leads.smoke import is_smoke_quote_request
 
 
 logger = logging.getLogger(__name__)
@@ -58,7 +60,25 @@ def lead_interest(quote_request):
     return INQUIRY_LABELS.get(quote_request.inquiry_type, quote_request.inquiry_type or "Zapytanie ofertowe")
 
 
+def attachment_items(quote_request):
+    items = []
+    for attachment in quote_request.attachments.all():
+        if not attachment.file:
+            continue
+        filename = Path(attachment.original_name or attachment.file.name).name
+        if not filename:
+            continue
+        item = {"filename": filename}
+        try:
+            item["size"] = attachment.file.size
+        except (OSError, ValueError):
+            pass
+        items.append(item)
+    return items
+
+
 def lead_message(quote_request):
+    attachment_names = [item["filename"] for item in attachment_items(quote_request)]
     parts = [
         quote_request.message,
         "",
@@ -70,7 +90,23 @@ def lead_message(quote_request):
         f"- Termin: {quote_request.expected_timing or '-'}",
         f"- Telefon: {quote_request.phone or '-'}",
     ]
+    if attachment_names:
+        parts.append(f"- Załączniki: {', '.join(attachment_names)}")
     return "\n".join(parts).strip()
+
+
+def is_dev_submission(quote_request, request):
+    return request.GET.get("piecode_dev") == "1" or is_smoke_quote_request(request, quote_request)
+
+
+def dev_submission_params(quote_request, request):
+    if not is_dev_submission(quote_request, request):
+        return {}
+    return {
+        "is_test": True,
+        "environment": "dev",
+        "test_source": "kajax_smoke" if is_smoke_quote_request(request, quote_request) else "piecode_dev",
+    }
 
 
 def event_payload(quote_request, request, attribution):
@@ -78,12 +114,14 @@ def event_payload(quote_request, request, attribution):
     service_area = SERVICE_AREAS.get(quote_request.inquiry_type, "mixed")
     params = {
         **attribution,
+        **dev_submission_params(quote_request, request),
         "lead_type": "quote_request",
         "project_type": quote_request.inquiry_type,
         "business_line": business_line,
         "service_area": service_area,
         "inquiry_type": quote_request.inquiry_type,
         "scale": quote_request.scale,
+        "attachment_count": quote_request.attachments.count(),
         "locale": quote_request.language or "pl",
         "lead_source": "kajax-quote-form",
         "page_type": "quote",
@@ -100,12 +138,16 @@ def event_payload(quote_request, request, attribution):
 
 
 def lead_payload(quote_request, request, attribution):
-    return {
+    attachments = attachment_items(quote_request)
+    payload = {
         **attribution,
+        **dev_submission_params(quote_request, request),
         "workspace_id": settings.PIECODE_WORKSPACE_ID,
         "form_name": "kajax-quote-request",
+        "local_quote_id": str(quote_request.pk),
         "name": quote_request.name,
         "email": quote_request.email,
+        "phone": quote_request.phone,
         "company": quote_request.company,
         "interest": lead_interest(quote_request),
         "message": lead_message(quote_request),
@@ -118,6 +160,15 @@ def lead_payload(quote_request, request, attribution):
         "marketing_opt_in": False,
         "submitted_at": timezone.now().isoformat(),
     }
+    if attachments:
+        payload["attachment_count"] = len(attachments)
+        payload["attachments"] = attachments
+        payload["attachment_names"] = [item["filename"] for item in attachments]
+    return payload
+
+
+def has_contact_details(quote_request):
+    return bool(quote_request.email or quote_request.phone)
 
 
 def mark_sync(quote_request, status, central_lead_id="", error=""):
@@ -152,7 +203,7 @@ def sync_quote_request_to_piecode(quote_request, request):
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as error:
             errors.append(f"event_sync_failed: {error}")
 
-    if settings.PIECODE_LEAD_SYNC_SEND_LEAD and quote_request.email and settings.PIECODE_LEAD_SYNC_LEAD_URL:
+    if settings.PIECODE_LEAD_SYNC_SEND_LEAD and has_contact_details(quote_request) and settings.PIECODE_LEAD_SYNC_LEAD_URL:
         try:
             lead_response = post_json(settings.PIECODE_LEAD_SYNC_LEAD_URL, lead_payload(quote_request, request, attribution))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as error:

@@ -27,7 +27,10 @@
                 data-lead-type="{{ quote_success_event.lead_type }}"
                 data-project-type="{{ quote_success_event.project_type }}"
                 data-business-line="{{ quote_success_event.business_line }}"
-                data-service-area="{{ quote_success_event.service_area }}"></div>
+                data-service-area="{{ quote_success_event.service_area }}"
+                {% if quote_success_event.is_test %}data-is-test="true"{% endif %}
+                {% if quote_success_event.environment %}data-environment="{{ quote_success_event.environment }}"{% endif %}
+                {% if quote_success_event.test_source %}data-test-source="{{ quote_success_event.test_source }}"{% endif %}></div>
         {% endif %}
         <form class="quote-form" method="post" enctype="multipart/form-data" data-quote-form{% if form.errors %} data-has-errors="true"{% endif %}>
             {% csrf_token %}
@@ -44,6 +47,10 @@
             <input type="hidden" name="msclkid" data-attribution-field="msclkid">
             <input type="hidden" name="ttclid" data-attribution-field="ttclid">
             <input type="hidden" name="li_fat_id" data-attribution-field="li_fat_id">
+            <input type="hidden" name="visitor_id" data-attribution-field="visitor_id">
+            <input type="hidden" name="session_id" data-attribution-field="session_id">
+            <input type="hidden" name="piecode_visitor_id" data-attribution-field="piecode_visitor_id">
+            <input type="hidden" name="piecode_session_id" data-attribution-field="piecode_session_id">
             <p class="form-intro">{{ page.form_intro|default:ui.quote_quick_hint }}</p>
             <p class="file-prompt"><strong>{{ ui.quote_file_prompt_strong }}</strong> {{ ui.quote_file_prompt }}</p>
             {% if form.non_field_errors %}

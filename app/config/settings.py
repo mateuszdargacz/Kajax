@@ -92,7 +92,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.environ.get("SQLITE_PATH", str(DATA_DIR / "site.sqlite3")),
+        "NAME": os.environ.get("SQLITE_PATH", str(DATA_DIR / "kajax.db")),
     }
 }
 
