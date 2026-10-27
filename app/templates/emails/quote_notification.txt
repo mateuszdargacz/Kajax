@@ -13,3 +13,5 @@
 {{ quote.message }}
 
 {{ notification.saved_note }}
+
+Zapytanie i zalaczniki w panelu: {{ admin_url }}

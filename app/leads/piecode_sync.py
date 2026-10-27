@@ -8,6 +8,7 @@ from django.conf import settings
 from django.utils import timezone
 
 from leads.attribution import attribution_for_lead
+from leads.attachments import attachment_grant
 from leads.smoke import is_smoke_quote_request
 
 
@@ -68,7 +69,12 @@ def attachment_items(quote_request):
         filename = Path(attachment.original_name or attachment.file.name).name
         if not filename:
             continue
-        item = {"filename": filename}
+        item = {
+            "filename": filename,
+            "source_attachment_id": str(attachment.pk),
+            "source_quote_id": str(quote_request.pk),
+            "source_grant": attachment_grant(attachment),
+        }
         try:
             item["size"] = attachment.file.size
         except (OSError, ValueError):

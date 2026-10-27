@@ -7,6 +7,7 @@ from django.urls import include, path
 from django.utils import translation
 
 from leads.views import QuoteRequestView
+from leads.attachments import source_attachment
 from pages.views import MarketingPageView
 
 
@@ -15,6 +16,7 @@ def health(request):
 
 
 urlpatterns = [
+    path("api/piecode/attachments/<int:attachment_id>/", source_attachment, name="piecode-attachment"),
     path("admin/", admin.site.urls),
     path("health/", health, name="health"),
     path("i18n/", include("django.conf.urls.i18n")),
