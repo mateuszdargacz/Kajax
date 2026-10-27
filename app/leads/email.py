@@ -23,23 +23,34 @@ def send_quote_emails(quote_request):
 def _send_company_notification(quote_request, recipients):
     display = get_quote_display(quote_request, "pl")
     subject = NOTIFICATION_COPY["subject"].format(inquiry_type=display["inquiry_type"])
+    context = {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display,
+        "admin_url": f"https://kajax.eu/admin/leads/quoterequest/{quote_request.pk}/change/"}
     body = render_to_string(
         "emails/quote_notification.txt",
-        {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display},
+        context,
     )
     html_body = render_to_string(
         "emails/quote_notification.html",
-        {"quote": quote_request, "notification": NOTIFICATION_COPY, "display": display},
+        context,
     )
     reply_to = [quote_request.email] if quote_request.email else None
-    _send(
-        subject,
-        body,
-        recipients,
-        html_body=html_body,
-        reply_to=reply_to,
-        attachments=_notification_attachments(quote_request),
-    )
+    batches = notification_attachment_batches(_notification_attachments(quote_request))
+    for index, attachments in enumerate(batches, start=1):
+        part = f" [{index}/{len(batches)}]" if len(batches) > 1 else ""
+        _send(subject + part, body, recipients, html_body=html_body,
+            reply_to=reply_to, attachments=attachments)
+
+
+def notification_attachment_batches(attachments, max_bytes=8 * 1024 * 1024):
+    # Base64 adds about one third. Split large photo sets without dropping any file.
+    batches, batch, size = [], [], 0
+    for attachment in attachments:
+        if batch and size + len(attachment[1]) > max_bytes:
+            batches.append(batch)
+            batch, size = [], 0
+        batch.append(attachment)
+        size += len(attachment[1])
+    return batches + [batch] if batch else batches or [[]]
 
 
 def _send_requester_confirmation(quote_request):
